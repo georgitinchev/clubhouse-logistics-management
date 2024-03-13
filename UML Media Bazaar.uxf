@@ -1,0 +1,104 @@
+<diagram program="umletino" version="15.1"><zoom_level>6</zoom_level><element><id>UMLClass</id><coordinates><x>588</x><y>14</y><w>126</w><h>114</h></coordinates><panel_attributes>
+User
+
+--
+- id: int
+- name: string
+- email: string
+- password: string
+- address: string
+- BSN: int
+
+--
++ GetUsername(): string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>738</x><y>212</y><w>240</w><h>126</h></coordinates><panel_attributes>
+HR Manager/ Admin
+
+--
+- id: int
+- name: string
+- department: Department
+- username: string
+- password: string
+
+--
++ GetName(): string
++ GetDepartment(): Department
++ GetUsername(): string
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>252</x><y>176</y><w>162</w><h>162</h></coordinates><panel_attributes>
+Employee
+
+--
+- id: int
+- name: string
+- department: Department
+- username: string
+- password: string
+- worksheets: List&lt;Worksheet&gt;
+- hoursOfWork: List&lt;WorkHours&gt;
+
+--
++ GetName(): string
++ GetDepartment(): Department
++ GetUsername(): string
++ GetWorksheets(): List&lt;Worksheet&gt;
++ GetHoursOfWork(): List&lt;WorkHours&gt;
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>264</x><y>410</y><w>126</w><h>66</h></coordinates><panel_attributes>Support
+
+--
+
+--
++ HandleCustomerInquiries(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>132</x><y>410</y><w>126</w><h>66</h></coordinates><panel_attributes>Sales Representative
+
+--
+
+--
++ SellProducts(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>312</x><y>122</y><w>348</w><h>66</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>10;90;560;10</additional_attributes></element><element><id>Relation</id><coordinates><x>660</x><y>122</y><w>222</w><h>102</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>350;150;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>396</x><y>410</y><w>126</w><h>66</h></coordinates><panel_attributes>Cashier
+
+--
+
+--
++ ProcessTransactions(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>324</x><y>332</y><w>18</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>360</x><y>368</y><w>114</w><h>54</h></coordinates><panel_attributes></panel_attributes><additional_attributes>170;70;170;20;10;20</additional_attributes></element><element><id>Relation</id><coordinates><x>198</x><y>368</y><w>180</w><h>54</h></coordinates><panel_attributes></panel_attributes><additional_attributes>280;20;10;20;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>294</x><y>8</y><w>204</w><h>114</h></coordinates><panel_attributes>
+User Managment
+
+--
+- users: Dictionary&lt;string, User&gt;
+
+--
++ AddUser(user: User): void
++ RemoveUser(username: string): void
++ GetUser(username: string): User
++ Authenticate(username: string, password: string): bool
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>492</x><y>62</y><w>108</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>160;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>516</x><y>212</y><w>156</w><h>126</h></coordinates><panel_attributes>Worksheet
+
+--
+- id: int
+- description: string
+- employee: Employee
+- status: string
+
+--
++ GetDescription(): string
++ GetEmployee(): Employee
++ GetStatus(): string</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>0</x><y>410</y><w>126</w><h>66</h></coordinates><panel_attributes>Security Guard
+
+--
+
+--
++ MonitorPremises(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>54</x><y>368</y><w>162</w><h>54</h></coordinates><panel_attributes></panel_attributes><additional_attributes>250;20;10;20;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>528</x><y>410</y><w>126</w><h>66</h></coordinates><panel_attributes>Depot Worker
+
+--
+
+--
++ ManageInventory(): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>456</x><y>368</y><w>150</w><h>54</h></coordinates><panel_attributes></panel_attributes><additional_attributes>230;70;230;20;10;20</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1044</x><y>212</y><w>252</w><h>120</h></coordinates><panel_attributes>Employee Manager System
+
+--
+- employees: List&lt;Employee&gt;
+
+--
+
++ AssignWork(employee: Employee, worksheet: 
++ AddEmployee(employee: Employee): void
++ RemoveEmployee(employee: Employee): void
++ SearchEmployees(criteria: string): List&lt;Employee&gt;
++ SortEmployees(criteria: string): List&lt;Employee&gt;
++ SetWorkingHours(employee: Employee, hours: List&lt;WorkHours&gt;): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>972</x><y>266</y><w>84</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;120;10</additional_attributes></element><element><id>Relation</id><coordinates><x>408</x><y>260</y><w>120</w><h>18</h></coordinates><panel_attributes>lt=&lt;&lt;-</panel_attributes><additional_attributes>180;10;10;10</additional_attributes></element></diagram>
