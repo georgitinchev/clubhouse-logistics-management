@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Classes
 {
-    public enum ManagerType
+    internal class EmployeeHandler
     {
-        DepartmentManager,
-        HRManager,
     }
 }
