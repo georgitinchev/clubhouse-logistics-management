@@ -39,25 +39,26 @@
             textBoxSearch = new TextBox();
             comboBoxDepartment = new ComboBox();
             pictureBoxSearch = new PictureBox();
-            checkedListBoxEmployees = new CheckedListBox();
             vScrollBar1 = new VScrollBar();
             groupBox1 = new GroupBox();
-            panel1 = new Panel();
-            lblName = new Label();
-            lblSurname = new Label();
-            lblRole = new Label();
-            comboBoxRole = new ComboBox();
-            label1 = new Label();
-            textBoxName = new TextBox();
-            textBoxSurname = new TextBox();
-            textBoxEmail = new TextBox();
-            btnEditEmployee = new Button();
             button1 = new Button();
+            btnEditEmployee = new Button();
+            textBoxEmail = new TextBox();
+            textBoxSurname = new TextBox();
+            textBoxName = new TextBox();
+            label1 = new Label();
+            comboBoxRole = new ComboBox();
+            lblRole = new Label();
+            lblSurname = new Label();
+            lblName = new Label();
+            panel1 = new Panel();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
             groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // pictureBoxJupiter
@@ -102,7 +103,7 @@
             // 
             // btnAddEmployee
             // 
-            btnAddEmployee.Location = new Point(668, 95);
+            btnAddEmployee.Location = new Point(668, 97);
             btnAddEmployee.Name = "btnAddEmployee";
             btnAddEmployee.Size = new Size(193, 28);
             btnAddEmployee.TabIndex = 8;
@@ -123,7 +124,7 @@
             comboBoxDepartment.FormattingEnabled = true;
             comboBoxDepartment.IntegralHeight = false;
             comboBoxDepartment.ItemHeight = 20;
-            comboBoxDepartment.Location = new Point(467, 96);
+            comboBoxDepartment.Location = new Point(481, 96);
             comboBoxDepartment.Name = "comboBoxDepartment";
             comboBoxDepartment.Size = new Size(151, 28);
             comboBoxDepartment.TabIndex = 10;
@@ -139,19 +140,11 @@
             pictureBoxSearch.TabIndex = 11;
             pictureBoxSearch.TabStop = false;
             // 
-            // checkedListBoxEmployees
-            // 
-            checkedListBoxEmployees.FormattingEnabled = true;
-            checkedListBoxEmployees.Location = new Point(41, 146);
-            checkedListBoxEmployees.Name = "checkedListBoxEmployees";
-            checkedListBoxEmployees.Size = new Size(929, 488);
-            checkedListBoxEmployees.TabIndex = 12;
-            // 
             // vScrollBar1
             // 
-            vScrollBar1.Location = new Point(962, 145);
+            vScrollBar1.Location = new Point(960, 170);
             vScrollBar1.Name = "vScrollBar1";
-            vScrollBar1.Size = new Size(26, 489);
+            vScrollBar1.Size = new Size(26, 462);
             vScrollBar1.TabIndex = 13;
             // 
             // groupBox1
@@ -173,40 +166,53 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Employee Details";
             // 
-            // panel1
+            // button1
             // 
-            panel1.BackColor = SystemColors.ButtonShadow;
-            panel1.Location = new Point(-5, -5);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(1360, 81);
-            panel1.TabIndex = 15;
+            button1.Location = new Point(23, 492);
+            button1.Name = "button1";
+            button1.Size = new Size(280, 28);
+            button1.TabIndex = 21;
+            button1.Text = "Remove employee";
+            button1.UseVisualStyleBackColor = true;
             // 
-            // lblName
+            // btnEditEmployee
             // 
-            lblName.AutoSize = true;
-            lblName.Location = new Point(23, 56);
-            lblName.Name = "lblName";
-            lblName.Size = new Size(49, 20);
-            lblName.TabIndex = 0;
-            lblName.Text = "Name";
+            btnEditEmployee.Location = new Point(23, 458);
+            btnEditEmployee.Name = "btnEditEmployee";
+            btnEditEmployee.Size = new Size(280, 28);
+            btnEditEmployee.TabIndex = 16;
+            btnEditEmployee.Text = "Edit employee";
+            btnEditEmployee.UseVisualStyleBackColor = true;
             // 
-            // lblSurname
+            // textBoxEmail
             // 
-            lblSurname.AutoSize = true;
-            lblSurname.Location = new Point(23, 95);
-            lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(67, 20);
-            lblSurname.TabIndex = 1;
-            lblSurname.Text = "Surname";
+            textBoxEmail.Location = new Point(121, 179);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(176, 27);
+            textBoxEmail.TabIndex = 20;
             // 
-            // lblRole
+            // textBoxSurname
             // 
-            lblRole.AutoSize = true;
-            lblRole.Location = new Point(23, 137);
-            lblRole.Name = "lblRole";
-            lblRole.Size = new Size(39, 20);
-            lblRole.TabIndex = 2;
-            lblRole.Text = "Role";
+            textBoxSurname.Location = new Point(121, 95);
+            textBoxSurname.Name = "textBoxSurname";
+            textBoxSurname.Size = new Size(176, 27);
+            textBoxSurname.TabIndex = 19;
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(121, 56);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(176, 27);
+            textBoxName.TabIndex = 18;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(23, 179);
+            label1.Name = "label1";
+            label1.Size = new Size(46, 20);
+            label1.TabIndex = 17;
+            label1.Text = "Email";
             // 
             // comboBoxRole
             // 
@@ -220,62 +226,58 @@
             comboBoxRole.TabIndex = 16;
             comboBoxRole.Text = "HR Manager";
             // 
-            // label1
+            // lblRole
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(23, 179);
-            label1.Name = "label1";
-            label1.Size = new Size(46, 20);
-            label1.TabIndex = 17;
-            label1.Text = "Email";
+            lblRole.AutoSize = true;
+            lblRole.Location = new Point(23, 137);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(39, 20);
+            lblRole.TabIndex = 2;
+            lblRole.Text = "Role";
             // 
-            // textBoxName
+            // lblSurname
             // 
-            textBoxName.Location = new Point(121, 56);
-            textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(176, 27);
-            textBoxName.TabIndex = 18;
+            lblSurname.AutoSize = true;
+            lblSurname.Location = new Point(23, 95);
+            lblSurname.Name = "lblSurname";
+            lblSurname.Size = new Size(67, 20);
+            lblSurname.TabIndex = 1;
+            lblSurname.Text = "Surname";
             // 
-            // textBoxSurname
+            // lblName
             // 
-            textBoxSurname.Location = new Point(121, 95);
-            textBoxSurname.Name = "textBoxSurname";
-            textBoxSurname.Size = new Size(176, 27);
-            textBoxSurname.TabIndex = 19;
+            lblName.AutoSize = true;
+            lblName.Location = new Point(23, 56);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(49, 20);
+            lblName.TabIndex = 0;
+            lblName.Text = "Name";
             // 
-            // textBoxEmail
+            // panel1
             // 
-            textBoxEmail.Location = new Point(121, 179);
-            textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(176, 27);
-            textBoxEmail.TabIndex = 20;
+            panel1.BackColor = SystemColors.ButtonShadow;
+            panel1.Location = new Point(-5, -5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1360, 81);
+            panel1.TabIndex = 15;
             // 
-            // btnEditEmployee
+            // dataGridView1
             // 
-            btnEditEmployee.Location = new Point(23, 458);
-            btnEditEmployee.Name = "btnEditEmployee";
-            btnEditEmployee.Size = new Size(280, 28);
-            btnEditEmployee.TabIndex = 16;
-            btnEditEmployee.Text = "Edit employee";
-            btnEditEmployee.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            button1.Location = new Point(23, 492);
-            button1.Name = "button1";
-            button1.Size = new Size(280, 28);
-            button1.TabIndex = 21;
-            button1.Text = "Remove employee";
-            button1.UseVisualStyleBackColor = true;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(41, 170);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(918, 463);
+            dataGridView1.TabIndex = 16;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1353, 641);
+            Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
             Controls.Add(vScrollBar1);
-            Controls.Add(checkedListBoxEmployees);
             Controls.Add(pictureBoxSearch);
             Controls.Add(comboBoxDepartment);
             Controls.Add(textBoxSearch);
@@ -294,6 +296,7 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -308,7 +311,6 @@
         private TextBox textBoxSearch;
         private ComboBox comboBoxDepartment;
         private PictureBox pictureBoxSearch;
-        private CheckedListBox checkedListBoxEmployees;
         private VScrollBar vScrollBar1;
         private GroupBox groupBox1;
         private ComboBox comboBoxRole;
@@ -322,5 +324,6 @@
         private TextBox textBoxSurname;
         private TextBox textBoxName;
         private Label label1;
+        private DataGridView dataGridView1;
     }
 }
