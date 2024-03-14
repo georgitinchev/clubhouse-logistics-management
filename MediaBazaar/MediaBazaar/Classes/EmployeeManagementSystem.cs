@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Classes
 {
-    internal class EmployeeManager
+    public class EmployeeManagementSystem
     {
     }
 }

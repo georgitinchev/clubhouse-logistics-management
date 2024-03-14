@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>1274</x>
-      <y>104</y>
+      <y>221</y>
       <w>273</w>
       <h>260</h>
     </coordinates>
@@ -27,13 +27,13 @@ User
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1599</x>
-      <y>546</y>
+      <x>2223</x>
+      <y>611</y>
       <w>520</w>
       <h>273</h>
     </coordinates>
     <panel_attributes>
-HR Manager/ Admin
+Admin
 
 --
 - id: int
@@ -53,7 +53,7 @@ HR Manager/ Admin
     <id>UMLClass</id>
     <coordinates>
       <x>546</x>
-      <y>468</y>
+      <y>585</y>
       <w>351</w>
       <h>351</h>
     </coordinates>
@@ -82,7 +82,7 @@ Employee
     <id>UMLClass</id>
     <coordinates>
       <x>572</x>
-      <y>975</y>
+      <y>1092</y>
       <w>273</w>
       <h>143</h>
     </coordinates>
@@ -98,7 +98,7 @@ Employee
     <id>UMLClass</id>
     <coordinates>
       <x>286</x>
-      <y>975</y>
+      <y>1092</y>
       <w>273</w>
       <h>143</h>
     </coordinates>
@@ -114,7 +114,7 @@ Employee
     <id>Relation</id>
     <coordinates>
       <x>676</x>
-      <y>351</y>
+      <y>468</y>
       <w>754</w>
       <h>143</h>
     </coordinates>
@@ -125,18 +125,18 @@ Employee
     <id>Relation</id>
     <coordinates>
       <x>1430</x>
-      <y>351</y>
-      <w>481</w>
-      <h>221</h>
+      <y>468</y>
+      <w>1105</w>
+      <h>169</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>350.0;150.0;10.0;10.0</additional_attributes>
+    <additional_attributes>830.0;110.0;10.0;10.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>858</x>
-      <y>975</y>
+      <y>1092</y>
       <w>273</w>
       <h>143</h>
     </coordinates>
@@ -152,7 +152,7 @@ Employee
     <id>Relation</id>
     <coordinates>
       <x>702</x>
-      <y>806</y>
+      <y>923</y>
       <w>39</w>
       <h>195</h>
     </coordinates>
@@ -163,7 +163,7 @@ Employee
     <id>Relation</id>
     <coordinates>
       <x>780</x>
-      <y>884</y>
+      <y>1001</y>
       <w>247</w>
       <h>117</h>
     </coordinates>
@@ -174,7 +174,7 @@ Employee
     <id>Relation</id>
     <coordinates>
       <x>429</x>
-      <y>884</y>
+      <y>1001</y>
       <w>390</w>
       <h>117</h>
     </coordinates>
@@ -185,7 +185,7 @@ Employee
     <id>UMLClass</id>
     <coordinates>
       <x>637</x>
-      <y>104</y>
+      <y>221</y>
       <w>442</w>
       <h>247</h>
     </coordinates>
@@ -207,7 +207,7 @@ User Managment
     <id>Relation</id>
     <coordinates>
       <x>1066</x>
-      <y>221</y>
+      <y>338</y>
       <w>234</w>
       <h>39</h>
     </coordinates>
@@ -218,7 +218,7 @@ User Managment
     <id>UMLClass</id>
     <coordinates>
       <x>1118</x>
-      <y>546</y>
+      <y>663</y>
       <w>338</w>
       <h>273</h>
     </coordinates>
@@ -240,7 +240,7 @@ User Managment
     <id>UMLClass</id>
     <coordinates>
       <x>0</x>
-      <y>975</y>
+      <y>1092</y>
       <w>273</w>
       <h>143</h>
     </coordinates>
@@ -256,7 +256,7 @@ User Managment
     <id>Relation</id>
     <coordinates>
       <x>117</x>
-      <y>884</y>
+      <y>1001</y>
       <w>351</w>
       <h>117</h>
     </coordinates>
@@ -267,7 +267,7 @@ User Managment
     <id>UMLClass</id>
     <coordinates>
       <x>1144</x>
-      <y>975</y>
+      <y>1092</y>
       <w>273</w>
       <h>143</h>
     </coordinates>
@@ -283,7 +283,7 @@ User Managment
     <id>Relation</id>
     <coordinates>
       <x>988</x>
-      <y>884</y>
+      <y>1001</y>
       <w>325</w>
       <h>117</h>
     </coordinates>
@@ -293,12 +293,12 @@ User Managment
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2262</x>
-      <y>546</y>
+      <x>1586</x>
+      <y>637</y>
       <w>546</w>
       <h>260</h>
     </coordinates>
-    <panel_attributes>Employee Manager System
+    <panel_attributes>Employee Management System
 
 --
 - employees: List&lt;Employee&gt;
@@ -316,19 +316,19 @@ User Managment
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2106</x>
-      <y>663</y>
-      <w>182</w>
+      <x>2119</x>
+      <y>754</y>
+      <w>130</w>
       <h>39</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;80.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
       <x>884</x>
-      <y>650</y>
+      <y>767</y>
       <w>260</w>
       <h>39</h>
     </coordinates>
@@ -338,12 +338,12 @@ User Managment
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1586</x>
-      <y>923</y>
+      <x>1573</x>
+      <y>988</y>
       <w>520</w>
       <h>234</h>
     </coordinates>
-    <panel_attributes>Worksheet Manager System
+    <panel_attributes>Worksheet Management System
 
 --
 - worksheets: List&lt;Worksheet&gt;
@@ -361,18 +361,18 @@ User Managment
     <id>Relation</id>
     <coordinates>
       <x>1443</x>
-      <y>806</y>
-      <w>169</w>
-      <h>247</h>
+      <y>923</y>
+      <w>156</w>
+      <h>195</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;110.0;170.0</additional_attributes>
+    <additional_attributes>10.0;10.0;100.0;130.0</additional_attributes>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>2249</x>
-      <y>962</y>
+      <x>2223</x>
+      <y>1014</y>
       <w>546</w>
       <h>156</h>
     </coordinates>
@@ -391,7 +391,7 @@ connectionString: string
     <id>Relation</id>
     <coordinates>
       <x>1066</x>
-      <y>169</y>
+      <y>286</y>
       <w>234</w>
       <h>39</h>
     </coordinates>
@@ -401,23 +401,34 @@ connectionString: string
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2093</x>
-      <y>1027</y>
-      <w>182</w>
+      <x>2080</x>
+      <y>1092</y>
+      <w>169</w>
       <h>39</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;120.0;10.0</additional_attributes>
+    <additional_attributes>10.0;10.0;110.0;10.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>2496</x>
-      <y>793</y>
-      <w>39</w>
-      <h>195</h>
+      <x>2119</x>
+      <y>884</y>
+      <w>390</w>
+      <h>156</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-    <additional_attributes>10.0;10.0;10.0;130.0</additional_attributes>
+    <additional_attributes>10.0;10.0;280.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2080</x>
+      <y>871</y>
+      <w>442</w>
+      <h>143</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;90.0;320.0;10.0</additional_attributes>
   </element>
 </diagram>
