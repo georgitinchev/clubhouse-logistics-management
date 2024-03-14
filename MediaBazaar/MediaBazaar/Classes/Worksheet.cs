@@ -8,5 +8,9 @@ namespace MediaBazaar.Classes
 {
     internal class Worksheet
     {
+        public int Id { get; set; }
+        public DateTime Date { get; set; }
+
+        public List<Worksheet> Worksheets { get; set; }
     }
 }
