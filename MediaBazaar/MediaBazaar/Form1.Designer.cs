@@ -30,94 +30,297 @@
         {
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
-            button1 = new Button();
-            pictureBox1 = new PictureBox();
-            pictureBox2 = new PictureBox();
-            button2 = new Button();
-            button3 = new Button();
+            pictureBoxJupiter = new PictureBox();
+            pictureBoxLogo = new PictureBox();
+            btnEmployeeManagment = new Button();
+            btnWorksheetManagment = new Button();
             bindingSource1 = new BindingSource(components);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            btnAddEmployee = new Button();
+            textBoxSearch = new TextBox();
+            comboBoxDepartment = new ComboBox();
+            pictureBoxSearch = new PictureBox();
+            checkedListBoxEmployees = new CheckedListBox();
+            vScrollBar1 = new VScrollBar();
+            groupBox1 = new GroupBox();
+            panel1 = new Panel();
+            lblName = new Label();
+            lblSurname = new Label();
+            lblRole = new Label();
+            comboBoxRole = new ComboBox();
+            label1 = new Label();
+            textBoxName = new TextBox();
+            textBoxSurname = new TextBox();
+            textBoxEmail = new TextBox();
+            btnEditEmployee = new Button();
+            button1 = new Button();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
+            groupBox1.SuspendLayout();
             SuspendLayout();
+            // 
+            // pictureBoxJupiter
+            // 
+            pictureBoxJupiter.BackColor = SystemColors.ButtonShadow;
+            pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
+            pictureBoxJupiter.Location = new Point(41, -5);
+            pictureBoxJupiter.Name = "pictureBoxJupiter";
+            pictureBoxJupiter.Size = new Size(177, 73);
+            pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxJupiter.TabIndex = 2;
+            pictureBoxJupiter.TabStop = false;
+            // 
+            // pictureBoxLogo
+            // 
+            pictureBoxLogo.BackColor = SystemColors.ButtonShadow;
+            pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
+            pictureBoxLogo.Location = new Point(657, 6);
+            pictureBoxLogo.Name = "pictureBoxLogo";
+            pictureBoxLogo.Size = new Size(125, 62);
+            pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxLogo.TabIndex = 3;
+            pictureBoxLogo.TabStop = false;
+            // 
+            // btnEmployeeManagment
+            // 
+            btnEmployeeManagment.Location = new Point(448, 16);
+            btnEmployeeManagment.Name = "btnEmployeeManagment";
+            btnEmployeeManagment.Size = new Size(221, 40);
+            btnEmployeeManagment.TabIndex = 4;
+            btnEmployeeManagment.Text = "Employee Managment";
+            btnEmployeeManagment.UseVisualStyleBackColor = true;
+            // 
+            // btnWorksheetManagment
+            // 
+            btnWorksheetManagment.Location = new Point(767, 15);
+            btnWorksheetManagment.Name = "btnWorksheetManagment";
+            btnWorksheetManagment.Size = new Size(221, 41);
+            btnWorksheetManagment.TabIndex = 7;
+            btnWorksheetManagment.Text = "Worksheet Managment";
+            btnWorksheetManagment.UseVisualStyleBackColor = true;
+            // 
+            // btnAddEmployee
+            // 
+            btnAddEmployee.Location = new Point(668, 95);
+            btnAddEmployee.Name = "btnAddEmployee";
+            btnAddEmployee.Size = new Size(193, 28);
+            btnAddEmployee.TabIndex = 8;
+            btnAddEmployee.Text = "Add employee";
+            btnAddEmployee.UseVisualStyleBackColor = true;
+            // 
+            // textBoxSearch
+            // 
+            textBoxSearch.Location = new Point(41, 96);
+            textBoxSearch.Name = "textBoxSearch";
+            textBoxSearch.Size = new Size(387, 27);
+            textBoxSearch.TabIndex = 9;
+            textBoxSearch.Text = "Search";
+            // 
+            // comboBoxDepartment
+            // 
+            comboBoxDepartment.DropDownHeight = 108;
+            comboBoxDepartment.FormattingEnabled = true;
+            comboBoxDepartment.IntegralHeight = false;
+            comboBoxDepartment.ItemHeight = 20;
+            comboBoxDepartment.Location = new Point(467, 96);
+            comboBoxDepartment.Name = "comboBoxDepartment";
+            comboBoxDepartment.Size = new Size(151, 28);
+            comboBoxDepartment.TabIndex = 10;
+            comboBoxDepartment.Text = "Department";
+            // 
+            // pictureBoxSearch
+            // 
+            pictureBoxSearch.Image = Properties.Resources.search_icon;
+            pictureBoxSearch.Location = new Point(397, 97);
+            pictureBoxSearch.Name = "pictureBoxSearch";
+            pictureBoxSearch.Size = new Size(27, 23);
+            pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxSearch.TabIndex = 11;
+            pictureBoxSearch.TabStop = false;
+            // 
+            // checkedListBoxEmployees
+            // 
+            checkedListBoxEmployees.FormattingEnabled = true;
+            checkedListBoxEmployees.Location = new Point(41, 146);
+            checkedListBoxEmployees.Name = "checkedListBoxEmployees";
+            checkedListBoxEmployees.Size = new Size(929, 488);
+            checkedListBoxEmployees.TabIndex = 12;
+            // 
+            // vScrollBar1
+            // 
+            vScrollBar1.Location = new Point(962, 145);
+            vScrollBar1.Name = "vScrollBar1";
+            vScrollBar1.Size = new Size(26, 489);
+            vScrollBar1.TabIndex = 13;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btnEditEmployee);
+            groupBox1.Controls.Add(textBoxEmail);
+            groupBox1.Controls.Add(textBoxSurname);
+            groupBox1.Controls.Add(textBoxName);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(comboBoxRole);
+            groupBox1.Controls.Add(lblRole);
+            groupBox1.Controls.Add(lblSurname);
+            groupBox1.Controls.Add(lblName);
+            groupBox1.Location = new Point(1015, 96);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(326, 537);
+            groupBox1.TabIndex = 14;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Employee Details";
+            // 
+            // panel1
+            // 
+            panel1.BackColor = SystemColors.ButtonShadow;
+            panel1.Location = new Point(-5, -5);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1360, 81);
+            panel1.TabIndex = 15;
+            // 
+            // lblName
+            // 
+            lblName.AutoSize = true;
+            lblName.Location = new Point(23, 56);
+            lblName.Name = "lblName";
+            lblName.Size = new Size(49, 20);
+            lblName.TabIndex = 0;
+            lblName.Text = "Name";
+            // 
+            // lblSurname
+            // 
+            lblSurname.AutoSize = true;
+            lblSurname.Location = new Point(23, 95);
+            lblSurname.Name = "lblSurname";
+            lblSurname.Size = new Size(67, 20);
+            lblSurname.TabIndex = 1;
+            lblSurname.Text = "Surname";
+            // 
+            // lblRole
+            // 
+            lblRole.AutoSize = true;
+            lblRole.Location = new Point(23, 137);
+            lblRole.Name = "lblRole";
+            lblRole.Size = new Size(39, 20);
+            lblRole.TabIndex = 2;
+            lblRole.Text = "Role";
+            // 
+            // comboBoxRole
+            // 
+            comboBoxRole.DropDownHeight = 108;
+            comboBoxRole.FormattingEnabled = true;
+            comboBoxRole.IntegralHeight = false;
+            comboBoxRole.ItemHeight = 20;
+            comboBoxRole.Location = new Point(121, 137);
+            comboBoxRole.Name = "comboBoxRole";
+            comboBoxRole.Size = new Size(176, 28);
+            comboBoxRole.TabIndex = 16;
+            comboBoxRole.Text = "HR Manager";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(23, 179);
+            label1.Name = "label1";
+            label1.Size = new Size(46, 20);
+            label1.TabIndex = 17;
+            label1.Text = "Email";
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(121, 56);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(176, 27);
+            textBoxName.TabIndex = 18;
+            // 
+            // textBoxSurname
+            // 
+            textBoxSurname.Location = new Point(121, 95);
+            textBoxSurname.Name = "textBoxSurname";
+            textBoxSurname.Size = new Size(176, 27);
+            textBoxSurname.TabIndex = 19;
+            // 
+            // textBoxEmail
+            // 
+            textBoxEmail.Location = new Point(121, 179);
+            textBoxEmail.Name = "textBoxEmail";
+            textBoxEmail.Size = new Size(176, 27);
+            textBoxEmail.TabIndex = 20;
+            // 
+            // btnEditEmployee
+            // 
+            btnEditEmployee.Location = new Point(23, 458);
+            btnEditEmployee.Name = "btnEditEmployee";
+            btnEditEmployee.Size = new Size(280, 28);
+            btnEditEmployee.TabIndex = 16;
+            btnEditEmployee.Text = "Edit employee";
+            btnEditEmployee.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
-            button1.BackColor = SystemColors.ButtonShadow;
-            button1.Enabled = false;
-            button1.Location = new Point(-8, -8);
+            button1.Location = new Point(23, 492);
             button1.Name = "button1";
-            button1.Size = new Size(1189, 104);
-            button1.TabIndex = 1;
-            button1.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.BackColor = SystemColors.ButtonShadow;
-            pictureBox1.Image = Properties.Resources.Jupiter_logo2;
-            pictureBox1.Location = new Point(1, -14);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(203, 91);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 2;
-            pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.BackColor = SystemColors.ButtonShadow;
-            pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(605, 15);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(125, 62);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 3;
-            pictureBox2.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(425, 28);
-            button2.Name = "button2";
-            button2.Size = new Size(193, 40);
-            button2.TabIndex = 4;
-            button2.Text = "Employee Managment";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(716, 27);
-            button3.Name = "button3";
-            button3.Size = new Size(193, 41);
-            button3.TabIndex = 7;
-            button3.Text = "Worksheet Managment";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click_1;
+            button1.Size = new Size(280, 28);
+            button1.TabIndex = 21;
+            button1.Text = "Remove employee";
+            button1.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1175, 641);
-            Controls.Add(button3);
-            Controls.Add(button2);
-            Controls.Add(pictureBox2);
-            Controls.Add(pictureBox1);
-            Controls.Add(button1);
+            ClientSize = new Size(1353, 641);
+            Controls.Add(groupBox1);
+            Controls.Add(vScrollBar1);
+            Controls.Add(checkedListBoxEmployees);
+            Controls.Add(pictureBoxSearch);
+            Controls.Add(comboBoxDepartment);
+            Controls.Add(textBoxSearch);
+            Controls.Add(btnAddEmployee);
+            Controls.Add(btnWorksheetManagment);
+            Controls.Add(btnEmployeeManagment);
+            Controls.Add(pictureBoxLogo);
+            Controls.Add(pictureBoxJupiter);
+            Controls.Add(panel1);
             Name = "Form1";
             Text = "Media Bazaar Managment";
             Load += Form1_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
-
-        private Button button1;
-        private PictureBox pictureBox1;
-        private PictureBox pictureBox2;
-        private Button button2;
-        private Button button3;
+        private PictureBox pictureBoxJupiter;
+        private PictureBox pictureBoxLogo;
+        private Button btnEmployeeManagment;
+        private Button btnWorksheetManagment;
         private BindingSource bindingSource1;
+        private Button btnAddEmployee;
+        private TextBox textBoxSearch;
+        private ComboBox comboBoxDepartment;
+        private PictureBox pictureBoxSearch;
+        private CheckedListBox checkedListBoxEmployees;
+        private VScrollBar vScrollBar1;
+        private GroupBox groupBox1;
+        private ComboBox comboBoxRole;
+        private Label lblRole;
+        private Label lblSurname;
+        private Label lblName;
+        private Panel panel1;
+        private Button button1;
+        private Button btnEditEmployee;
+        private TextBox textBoxEmail;
+        private TextBox textBoxSurname;
+        private TextBox textBoxName;
+        private Label label1;
     }
 }
