@@ -1,20 +1,76 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace MediaBazaar
+namespace MediaBazaar.Classes
 {
-    public class Employee
-    {
-        public string name { get; private set; }
-        public string email { get; private set; }
-        public string password { get; private set; }
-        public DateTime birthday { get; private set; }
+	public class Employee
+	{
+		private int Id { get; set; }
+		private string Name { get; set; }
+		private string Email { get; set; }
+		private string Password { get; set; }
+		private int BSN { get; set; }
+		private Date Birthday { get; set; }
+		public EmployeeRoleEnum Role { get; private set; }
+		public ManagerRoleEnum ManagerRole { get; private set; }
+		public bool IsManager { get; set; }
 
-        public EmployeeRoleEnum role { get; private set; }
+		public Employee(int id, string name, string email, string password, Date birthday, EmployeeRoleEnum role, ManagerRoleEnum managerRole, bool isManager)
+		{
+			Id = id;
+			Name = name;
+			Email = email;
+			Password = password;
+			Birthday = birthday;
+			Role = role;
+			ManagerRole = managerRole;
+			IsManager = isManager;
+		}
 
-        public ManagerRoleEnum? managerRole { get; private set; }
-    }
+		public void UpdateInformation(string newName, string newEmail, string newPassword, Date newBirthday, EmployeeRoleEnum newRole, bool newIsManager)
+		{
+			Name = newName;
+			Email = newEmail;
+			Password = newPassword;
+			Birthday = newBirthday;
+			Role = newRole;
+			IsManager = newIsManager;
+		}
+
+		public void Deactivate()
+		{
+			// Add deactivation logic
+		}
+
+		public void ChangeRole(EmployeeRoleEnum newRole)
+		{
+			Role = newRole;
+		}
+
+		public int GetId()
+		{
+			return Id;
+		}
+
+		public string GetName()
+		{
+			return Name;
+		}
+
+		public string GetUsername()
+		{
+			return Name.Replace(" ", "");
+		}
+
+		public bool ValidatePassword(string inputPassword)
+		{
+			return Password == inputPassword;
+		}
+
+		public int GetBSN()
+		{
+			return BSN;
+		}
+	}
 }
