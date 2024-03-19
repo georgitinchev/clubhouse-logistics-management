@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaar.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,9 @@ namespace MediaBazaar
         private List<EmployeeWorksheet> assignedWorksheets = new List<EmployeeWorksheet>();
         private List<Employee> managesEmployees = new List<Employee>();
 
-        public void createWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
+        //   Fix this:
+
+		/*public void createWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
         {
 			EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
 			assignedWorksheets.Add(worksheet);
@@ -19,8 +22,9 @@ namespace MediaBazaar
         public void deleteWorksheet(EmployeeWorksheet worksheet)
         {
             assignedWorksheets.Remove(worksheet);
-        }
-        public void viewEmployeeWorksheets()
+        }*/
+
+		public void viewEmployeeWorksheets()
         {
 			foreach (EmployeeWorksheet worksheet in assignedWorksheets)
             {

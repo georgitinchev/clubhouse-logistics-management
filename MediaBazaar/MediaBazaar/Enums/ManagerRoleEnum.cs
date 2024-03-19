@@ -9,6 +9,6 @@ namespace MediaBazaar
     public enum ManagerRoleEnum
     {
         DepartmentManager,
-        HRManager,
+        HRManager
     }
 }
