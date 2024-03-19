@@ -1,9 +1,11 @@
 namespace MediaBazaar
 {
+
 	public partial class Dashboard : Form
 	{
 		public Dashboard()
 		{
+			Application.EnableVisualStyles();
 			InitializeComponent();
 		}
 
