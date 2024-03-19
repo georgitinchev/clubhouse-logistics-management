@@ -1,6 +1,6 @@
 ﻿namespace MediaBazaar
 {
-    partial class Form1
+    partial class Dashboard
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
 			pictureBoxJupiter = new PictureBox();
 			pictureBoxLogo = new PictureBox();
 			bindingSource1 = new BindingSource(components);
