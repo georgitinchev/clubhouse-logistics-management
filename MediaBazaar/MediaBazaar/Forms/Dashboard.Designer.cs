@@ -38,8 +38,6 @@
             pictureBoxSearch = new PictureBox();
             vScrollBar = new VScrollBar();
             groupBox1 = new GroupBox();
-            btnRemoveEmployee = new CustomButton();
-            btnEditEmployee = new CustomButton();
             pictureBox2 = new PictureBox();
             label2 = new Label();
             pictureBox1 = new PictureBox();
@@ -53,11 +51,10 @@
             lblName = new Label();
             panel1 = new Panel();
             lineWorksheet = new PictureBox();
-            customButton1 = new CustomButton();
             lineEmployee = new PictureBox();
-            btnEmployeeManagment = new CustomButton();
             dataGridView1 = new DataGridView();
-            btnAddEmployee = new CustomButton();
+            btnEmployeeManagement = new Button();
+            btnWorksheetManagement = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
@@ -75,9 +72,10 @@
             // 
             pictureBoxJupiter.BackColor = SystemColors.ButtonShadow;
             pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
-            pictureBoxJupiter.Location = new Point(29, -5);
+            pictureBoxJupiter.Location = new Point(25, -4);
+            pictureBoxJupiter.Margin = new Padding(3, 2, 3, 2);
             pictureBoxJupiter.Name = "pictureBoxJupiter";
-            pictureBoxJupiter.Size = new Size(177, 73);
+            pictureBoxJupiter.Size = new Size(155, 55);
             pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxJupiter.TabIndex = 2;
             pictureBoxJupiter.TabStop = false;
@@ -86,18 +84,20 @@
             // 
             pictureBoxLogo.BackColor = SystemColors.ButtonShadow;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
-            pictureBoxLogo.Location = new Point(688, 11);
+            pictureBoxLogo.Location = new Point(602, 8);
+            pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(61, 62);
+            pictureBoxLogo.Size = new Size(53, 46);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 3;
             pictureBoxLogo.TabStop = false;
             // 
             // textBoxSearch
             // 
-            textBoxSearch.Location = new Point(41, 92);
+            textBoxSearch.Location = new Point(36, 69);
+            textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(357, 27);
+            textBoxSearch.Size = new Size(313, 23);
             textBoxSearch.TabIndex = 9;
             textBoxSearch.Text = "Search";
             // 
@@ -106,10 +106,11 @@
             comboBoxDepartment.DropDownHeight = 108;
             comboBoxDepartment.FormattingEnabled = true;
             comboBoxDepartment.IntegralHeight = false;
-            comboBoxDepartment.ItemHeight = 20;
-            comboBoxDepartment.Location = new Point(406, 92);
+            comboBoxDepartment.ItemHeight = 15;
+            comboBoxDepartment.Location = new Point(355, 69);
+            comboBoxDepartment.Margin = new Padding(3, 2, 3, 2);
             comboBoxDepartment.Name = "comboBoxDepartment";
-            comboBoxDepartment.Size = new Size(286, 28);
+            comboBoxDepartment.Size = new Size(251, 23);
             comboBoxDepartment.TabIndex = 10;
             comboBoxDepartment.Text = "Department";
             // 
@@ -117,24 +118,23 @@
             // 
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(369, 94);
+            pictureBoxSearch.Location = new Point(323, 70);
+            pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(21, 22);
+            pictureBoxSearch.Size = new Size(18, 16);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 11;
             pictureBoxSearch.TabStop = false;
             // 
             // vScrollBar
             // 
-            vScrollBar.Location = new Point(960, 152);
+            vScrollBar.Location = new Point(840, 114);
             vScrollBar.Name = "vScrollBar";
-            vScrollBar.Size = new Size(26, 480);
+            vScrollBar.Size = new Size(26, 360);
             vScrollBar.TabIndex = 13;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnRemoveEmployee);
-            groupBox1.Controls.Add(btnEditEmployee);
             groupBox1.Controls.Add(pictureBox2);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(pictureBox1);
@@ -146,54 +146,21 @@
             groupBox1.Controls.Add(lblRole);
             groupBox1.Controls.Add(lblSurname);
             groupBox1.Controls.Add(lblName);
-            groupBox1.Location = new Point(1015, 82);
+            groupBox1.Location = new Point(888, 62);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(326, 551);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(285, 413);
             groupBox1.TabIndex = 14;
             groupBox1.TabStop = false;
-            // 
-            // btnRemoveEmployee
-            // 
-            btnRemoveEmployee.BackColor = Color.White;
-            btnRemoveEmployee.BackgroundColor = Color.White;
-            btnRemoveEmployee.BorderColor = Color.PaleVioletRed;
-            btnRemoveEmployee.BorderRadius = 0;
-            btnRemoveEmployee.BorderSize = 0;
-            btnRemoveEmployee.FlatAppearance.BorderSize = 0;
-            btnRemoveEmployee.FlatStyle = FlatStyle.Flat;
-            btnRemoveEmployee.ForeColor = Color.Black;
-            btnRemoveEmployee.Location = new Point(20, 507);
-            btnRemoveEmployee.Name = "btnRemoveEmployee";
-            btnRemoveEmployee.Size = new Size(288, 28);
-            btnRemoveEmployee.TabIndex = 27;
-            btnRemoveEmployee.Text = "Remove employee";
-            btnRemoveEmployee.TextColor = Color.Black;
-            btnRemoveEmployee.UseVisualStyleBackColor = false;
-            // 
-            // btnEditEmployee
-            // 
-            btnEditEmployee.BackColor = Color.White;
-            btnEditEmployee.BackgroundColor = Color.White;
-            btnEditEmployee.BorderColor = Color.PaleVioletRed;
-            btnEditEmployee.BorderRadius = 0;
-            btnEditEmployee.BorderSize = 0;
-            btnEditEmployee.FlatAppearance.BorderSize = 0;
-            btnEditEmployee.FlatStyle = FlatStyle.Flat;
-            btnEditEmployee.ForeColor = Color.Black;
-            btnEditEmployee.Location = new Point(20, 468);
-            btnEditEmployee.Name = "btnEditEmployee";
-            btnEditEmployee.Size = new Size(288, 28);
-            btnEditEmployee.TabIndex = 18;
-            btnEditEmployee.Text = "Edit employee";
-            btnEditEmployee.TextColor = Color.Black;
-            btnEditEmployee.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.DimGray;
-            pictureBox2.Location = new Point(20, 69);
+            pictureBox2.Location = new Point(18, 52);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(290, 2);
+            pictureBox2.Size = new Size(254, 2);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
@@ -203,9 +170,9 @@
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(57, 49);
+            label2.Location = new Point(50, 37);
             label2.Name = "label2";
-            label2.Size = new Size(124, 20);
+            label2.Size = new Size(96, 15);
             label2.TabIndex = 26;
             label2.Text = "Employee details";
             // 
@@ -213,9 +180,10 @@
             // 
             pictureBox1.BackColor = SystemColors.Control;
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(6, 30);
+            pictureBox1.Location = new Point(5, 22);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(61, 39);
+            pictureBox1.Size = new Size(53, 29);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 25;
             pictureBox1.TabStop = false;
@@ -223,36 +191,39 @@
             // textBoxEmail
             // 
             textBoxEmail.BackColor = SystemColors.ControlDark;
-            textBoxEmail.Location = new Point(117, 207);
+            textBoxEmail.Location = new Point(102, 155);
+            textBoxEmail.Margin = new Padding(3, 2, 3, 2);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.ReadOnly = true;
-            textBoxEmail.Size = new Size(193, 27);
+            textBoxEmail.Size = new Size(169, 23);
             textBoxEmail.TabIndex = 20;
             // 
             // textBoxSurname
             // 
             textBoxSurname.BackColor = SystemColors.ControlDark;
-            textBoxSurname.Location = new Point(117, 131);
+            textBoxSurname.Location = new Point(102, 98);
+            textBoxSurname.Margin = new Padding(3, 2, 3, 2);
             textBoxSurname.Name = "textBoxSurname";
             textBoxSurname.ReadOnly = true;
-            textBoxSurname.Size = new Size(193, 27);
+            textBoxSurname.Size = new Size(169, 23);
             textBoxSurname.TabIndex = 19;
             // 
             // textBoxName
             // 
             textBoxName.BackColor = SystemColors.ControlDark;
-            textBoxName.Location = new Point(117, 95);
+            textBoxName.Location = new Point(102, 71);
+            textBoxName.Margin = new Padding(3, 2, 3, 2);
             textBoxName.Name = "textBoxName";
             textBoxName.ReadOnly = true;
-            textBoxName.Size = new Size(193, 27);
+            textBoxName.Size = new Size(169, 23);
             textBoxName.TabIndex = 18;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 207);
+            label1.Location = new Point(14, 155);
             label1.Name = "label1";
-            label1.Size = new Size(49, 20);
+            label1.Size = new Size(39, 15);
             label1.TabIndex = 17;
             label1.Text = "Email:";
             // 
@@ -263,141 +234,109 @@
             comboBoxRole.Enabled = false;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.ItemHeight = 20;
+            comboBoxRole.ItemHeight = 15;
             comboBoxRole.Items.AddRange(new object[] { "Security Guard" });
-            comboBoxRole.Location = new Point(117, 169);
+            comboBoxRole.Location = new Point(102, 127);
+            comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(193, 28);
+            comboBoxRole.Size = new Size(169, 23);
             comboBoxRole.TabIndex = 16;
             comboBoxRole.Text = "HR Manager";
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(16, 171);
+            lblRole.Location = new Point(14, 128);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(42, 20);
+            lblRole.Size = new Size(33, 15);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
             // 
             // lblSurname
             // 
             lblSurname.AutoSize = true;
-            lblSurname.Location = new Point(16, 133);
+            lblSurname.Location = new Point(14, 100);
             lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(70, 20);
+            lblSurname.Size = new Size(57, 15);
             lblSurname.TabIndex = 1;
             lblSurname.Text = "Surname:";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(17, 95);
+            lblName.Location = new Point(15, 71);
             lblName.Name = "lblName";
-            lblName.Size = new Size(52, 20);
+            lblName.Size = new Size(42, 15);
             lblName.TabIndex = 0;
             lblName.Text = "Name:";
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonShadow;
+            panel1.Controls.Add(btnWorksheetManagement);
+            panel1.Controls.Add(btnEmployeeManagement);
             panel1.Controls.Add(lineWorksheet);
-            panel1.Controls.Add(customButton1);
             panel1.Controls.Add(lineEmployee);
-            panel1.Controls.Add(btnEmployeeManagment);
             panel1.Controls.Add(pictureBoxLogo);
-            panel1.Location = new Point(-5, -5);
+            panel1.Location = new Point(-2, -2);
+            panel1.Margin = new Padding(3, 2, 3, 2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1360, 81);
+            panel1.Size = new Size(1190, 61);
             panel1.TabIndex = 15;
             // 
             // lineWorksheet
             // 
             lineWorksheet.BackColor = Color.FromArgb(255, 128, 0);
-            lineWorksheet.Location = new Point(767, 55);
+            lineWorksheet.Location = new Point(668, 41);
+            lineWorksheet.Margin = new Padding(3, 2, 3, 2);
             lineWorksheet.Name = "lineWorksheet";
-            lineWorksheet.Size = new Size(160, 2);
+            lineWorksheet.Size = new Size(150, 2);
             lineWorksheet.TabIndex = 24;
             lineWorksheet.TabStop = false;
-            // 
-            // customButton1
-            // 
-            customButton1.BackColor = Color.DimGray;
-            customButton1.BackgroundColor = Color.DimGray;
-            customButton1.BorderColor = Color.Black;
-            customButton1.BorderRadius = 18;
-            customButton1.BorderSize = 1;
-            customButton1.FlatAppearance.BorderSize = 0;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.ForeColor = Color.White;
-            customButton1.Location = new Point(753, 25);
-            customButton1.Name = "customButton1";
-            customButton1.Size = new Size(187, 37);
-            customButton1.TabIndex = 23;
-            customButton1.Text = "Worksheet Managment";
-            customButton1.TextColor = Color.White;
-            customButton1.UseVisualStyleBackColor = false;
             // 
             // lineEmployee
             // 
             lineEmployee.BackColor = Color.FromArgb(255, 128, 0);
-            lineEmployee.Location = new Point(510, 55);
+            lineEmployee.Location = new Point(436, 41);
+            lineEmployee.Margin = new Padding(3, 2, 3, 2);
             lineEmployee.Name = "lineEmployee";
-            lineEmployee.Size = new Size(160, 2);
+            lineEmployee.Size = new Size(150, 2);
             lineEmployee.TabIndex = 20;
             lineEmployee.TabStop = false;
-            // 
-            // btnEmployeeManagment
-            // 
-            btnEmployeeManagment.BackColor = Color.Black;
-            btnEmployeeManagment.BackgroundColor = Color.Black;
-            btnEmployeeManagment.BorderColor = Color.Black;
-            btnEmployeeManagment.BorderRadius = 18;
-            btnEmployeeManagment.BorderSize = 1;
-            btnEmployeeManagment.FlatAppearance.BorderSize = 0;
-            btnEmployeeManagment.FlatStyle = FlatStyle.Flat;
-            btnEmployeeManagment.ForeColor = Color.White;
-            btnEmployeeManagment.Location = new Point(496, 25);
-            btnEmployeeManagment.Name = "btnEmployeeManagment";
-            btnEmployeeManagment.Size = new Size(187, 37);
-            btnEmployeeManagment.TabIndex = 21;
-            btnEmployeeManagment.Text = "Employee Managment";
-            btnEmployeeManagment.TextColor = Color.White;
-            btnEmployeeManagment.UseVisualStyleBackColor = false;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(41, 152);
+            dataGridView1.Location = new Point(36, 114);
+            dataGridView1.Margin = new Padding(3, 2, 3, 2);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(918, 481);
+            dataGridView1.Size = new Size(803, 361);
             dataGridView1.TabIndex = 16;
             // 
-            // btnAddEmployee
+            // btnEmployeeManagement
             // 
-            btnAddEmployee.BackColor = Color.White;
-            btnAddEmployee.BackgroundColor = Color.White;
-            btnAddEmployee.BorderColor = Color.PaleVioletRed;
-            btnAddEmployee.BorderRadius = 0;
-            btnAddEmployee.BorderSize = 0;
-            btnAddEmployee.FlatAppearance.BorderSize = 0;
-            btnAddEmployee.FlatStyle = FlatStyle.Flat;
-            btnAddEmployee.ForeColor = Color.Black;
-            btnAddEmployee.Location = new Point(698, 92);
-            btnAddEmployee.Name = "btnAddEmployee";
-            btnAddEmployee.Size = new Size(261, 28);
-            btnAddEmployee.TabIndex = 17;
-            btnAddEmployee.Text = "Add employee";
-            btnAddEmployee.TextColor = Color.Black;
-            btnAddEmployee.UseVisualStyleBackColor = false;
+            btnEmployeeManagement.Location = new Point(436, 13);
+            btnEmployeeManagement.Name = "btnEmployeeManagement";
+            btnEmployeeManagement.Size = new Size(150, 23);
+            btnEmployeeManagement.TabIndex = 25;
+            btnEmployeeManagement.Text = "Employee Management";
+            btnEmployeeManagement.UseVisualStyleBackColor = true;
+            // 
+            // btnWorksheetManagement
+            // 
+            btnWorksheetManagement.Location = new Point(671, 13);
+            btnWorksheetManagement.Name = "btnWorksheetManagement";
+            btnWorksheetManagement.Size = new Size(147, 23);
+            btnWorksheetManagement.TabIndex = 26;
+            btnWorksheetManagement.Text = "Worksheet Management";
+            btnWorksheetManagement.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1353, 641);
-            Controls.Add(btnAddEmployee);
+            ClientSize = new Size(1184, 481);
             Controls.Add(dataGridView1);
             Controls.Add(groupBox1);
             Controls.Add(vScrollBar);
@@ -406,6 +345,7 @@
             Controls.Add(textBoxSearch);
             Controls.Add(pictureBoxJupiter);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Media Bazaar Managment";
             Load += Form1_Load;
@@ -454,5 +394,7 @@
         private PictureBox pictureBox1;
         private CustomButton btnEditEmployee;
         private CustomButton btnRemoveEmployee;
+        private Button btnWorksheetManagement;
+        private Button btnEmployeeManagement;
     }
 }
