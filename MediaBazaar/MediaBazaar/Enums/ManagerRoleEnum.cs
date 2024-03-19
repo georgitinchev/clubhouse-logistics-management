@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.Classes
+namespace MediaBazaar
 {
-    public enum ManagerTypeEnum
+    public enum ManagerRoleEnum
     {
         DepartmentManager,
         HRManager,

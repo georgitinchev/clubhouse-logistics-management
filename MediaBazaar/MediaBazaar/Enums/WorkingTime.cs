@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.Classes
+namespace MediaBazaar
 {
-    public class EmployeeManagementSystem
-    {
-    }
+	internal enum WorkingTime
+	{
+		Morning,
+		Afternoon,
+		Evening
+	}
 }
