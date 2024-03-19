@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar
 {
-    internal enum EmployeeRoleEnum
+    public enum EmployeeRoleEnum
     {
         SalesRepresentative,
         SupportEmployee,
