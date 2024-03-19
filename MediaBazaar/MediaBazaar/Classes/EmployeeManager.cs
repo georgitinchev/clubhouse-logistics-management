@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace MediaBazaar.Classes
 {
@@ -43,6 +44,7 @@ namespace MediaBazaar.Classes
 		{
 			employees.Add(new Employee(id, name, email, password, birthday, role, managerRole, false));
 		}
+
 
 		public void DeactivateEmployee(List<Employee> employees, int employeeId)
 		{

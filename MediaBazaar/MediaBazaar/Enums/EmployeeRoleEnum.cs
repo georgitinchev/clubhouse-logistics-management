@@ -8,6 +8,7 @@ namespace MediaBazaar
 {
     public enum EmployeeRoleEnum
     {
+        Default,
         SalesRepresentative,
         SupportEmployee,
         Cashier,

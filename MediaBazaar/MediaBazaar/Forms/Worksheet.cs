@@ -10,12 +10,16 @@ using System.Windows.Forms;
 
 namespace MediaBazaar.Forms
 {
-    public partial class Worksheet : Form
-    {
-        public Worksheet()
-        {
-            InitializeComponent();
-        }
+	public partial class Worksheet : Form
+	{
+		public Worksheet()
+		{
+			InitializeComponent();
+		}
 
-    }
+		private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+	}
 }
