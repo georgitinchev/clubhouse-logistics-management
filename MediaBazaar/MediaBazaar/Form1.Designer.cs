@@ -75,7 +75,7 @@
             // 
             pictureBoxJupiter.BackColor = SystemColors.ButtonShadow;
             pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
-            pictureBoxJupiter.Location = new Point(41, -5);
+            pictureBoxJupiter.Location = new Point(29, -5);
             pictureBoxJupiter.Name = "pictureBoxJupiter";
             pictureBoxJupiter.Size = new Size(177, 73);
             pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
@@ -107,9 +107,9 @@
             comboBoxDepartment.FormattingEnabled = true;
             comboBoxDepartment.IntegralHeight = false;
             comboBoxDepartment.ItemHeight = 20;
-            comboBoxDepartment.Location = new Point(434, 92);
+            comboBoxDepartment.Location = new Point(406, 92);
             comboBoxDepartment.Name = "comboBoxDepartment";
-            comboBoxDepartment.Size = new Size(285, 28);
+            comboBoxDepartment.Size = new Size(286, 28);
             comboBoxDepartment.TabIndex = 10;
             comboBoxDepartment.Text = "Department";
             // 
@@ -384,9 +384,9 @@
             btnAddEmployee.FlatAppearance.BorderSize = 0;
             btnAddEmployee.FlatStyle = FlatStyle.Flat;
             btnAddEmployee.ForeColor = Color.Black;
-            btnAddEmployee.Location = new Point(725, 92);
+            btnAddEmployee.Location = new Point(698, 92);
             btnAddEmployee.Name = "btnAddEmployee";
-            btnAddEmployee.Size = new Size(234, 28);
+            btnAddEmployee.Size = new Size(261, 28);
             btnAddEmployee.TabIndex = 17;
             btnAddEmployee.Text = "Add employee";
             btnAddEmployee.TextColor = Color.Black;
