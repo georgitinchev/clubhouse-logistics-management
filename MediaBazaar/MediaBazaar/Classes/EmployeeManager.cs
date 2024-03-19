@@ -9,70 +9,33 @@ namespace MediaBazaar.Classes
 {
 	public class EmployeeManager
 	{
-		public List<Employee> GetAllRegularEmployees(List<Employee> employees)
+		public void AddEmployee(List<Employee> employees, Employee newEmployee)
 		{
-			List<Employee> regularEmployees = new List<Employee>();
-			foreach (Employee employee in employees)
+			if (employees.Any(e => e.GetId() == newEmployee.GetId()))
 			{
-				if (!employee.IsManager)
-				{
-					regularEmployees.Add(employee);
-				}
+				throw new Exception("Employee with the same ID already exists.");
 			}
-			return regularEmployees;
+			employees.Add(newEmployee);
 		}
 
-		public List<Employee> GetAllManagerEmployees(List<Employee> employees)
+		public void UpdateEmployee(List<Employee> employees, Employee updatedEmployee)
 		{
-			List<Employee> managerEmployees = new List<Employee>();
-			foreach (Employee employee in employees)
+			var employee = employees.FirstOrDefault(e => e.GetId() == updatedEmployee.GetId());
+			if (employee == null)
 			{
-				if (employee.IsManager)
-				{
-					managerEmployees.Add(employee);
-				}
+				throw new Exception("Employee not found.");
 			}
-			return managerEmployees;
-		}
-
-		public List<Employee> GetAllEmployees(List<Employee> employees)
-		{
-			return employees;
-		}
-
-		public void AddEmployee(List<Employee> employees, int id, string name, string email, string password, Date birthday, EmployeeRoleEnum role, ManagerRoleEnum managerRole)
-		{
-			employees.Add(new Employee(id, name, email, password, birthday, role, managerRole, false));
-		}
-
-
-		public void DeactivateEmployee(List<Employee> employees, int employeeId)
-		{
-			foreach (Employee employee in employees)
-			{
-				if (employee.GetId() == employeeId)
-				{
-					employee.Deactivate();
-					break;
-				}
-			}
+			// Update the employee's information here
 		}
 
 		public void DeleteEmployee(List<Employee> employees, int employeeId)
 		{
-			employees.RemoveAll(e => e.GetId() == employeeId);
-		}
-
-		public void ChangeEmployeeRole(List<Employee> employees, int employeeId, EmployeeRoleEnum newRole)
-		{
-			foreach (Employee employee in employees)
+			var employee = employees.FirstOrDefault(e => e.GetId() == employeeId);
+			if (employee == null)
 			{
-				if (employee.GetId() == employeeId)
-				{
-					employee.ChangeRole(newRole);
-					break;
-				}
+				throw new Exception("Employee not found.");
 			}
+			employees.Remove(employee);
 		}
 	}
 }
