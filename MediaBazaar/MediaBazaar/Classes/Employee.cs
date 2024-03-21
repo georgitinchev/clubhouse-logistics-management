@@ -13,10 +13,10 @@ namespace MediaBazaar.Classes
 		private int BSN { get; set; }
 		private Date Birthday { get; set; }
 		public EmployeeRoleEnum Role { get; private set; }
-		public ManagerRoleEnum ManagerRole { get; private set; }
-		public bool IsManager { get; set; }
+		public bool IsManager { get; private set; }
+		public bool IsActive { get; private set; } = true;
 
-		public Employee(int id, string name, string email, string password, Date birthday, EmployeeRoleEnum role, ManagerRoleEnum managerRole, bool isManager)
+		public Employee(int id, string name, string email, string password, Date birthday, EmployeeRoleEnum role, bool isManager)
 		{
 			Id = id;
 			Name = name;
@@ -24,7 +24,6 @@ namespace MediaBazaar.Classes
 			Password = password;
 			Birthday = birthday;
 			Role = role;
-			ManagerRole = managerRole;
 			IsManager = isManager;
 		}
 
@@ -40,7 +39,7 @@ namespace MediaBazaar.Classes
 
 		public void Deactivate()
 		{
-			// Add deactivation logic
+			IsActive = false;
 		}
 
 		public void ChangeRole(EmployeeRoleEnum newRole)

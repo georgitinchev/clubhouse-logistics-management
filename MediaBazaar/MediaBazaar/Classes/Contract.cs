@@ -10,7 +10,6 @@ namespace MediaBazaar.Classes
 	{
 		private int Id;
 		private EmployeeRoleEnum role;
-		private ManagerRoleEnum? isManager;
 		private double hourlyWage;
 		private int weeklyHours;
 		private DateTime startDate;
