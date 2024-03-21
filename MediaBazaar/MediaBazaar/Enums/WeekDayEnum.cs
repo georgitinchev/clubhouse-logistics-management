@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar
 {
-	internal enum WeekDayEnum
+	public enum WeekDayEnum
 	{
 		Monday,
 		Tuesday,
