@@ -9,9 +9,9 @@ namespace MediaBazaar
 {
     public class CustomButton : Button
     {
-        private int borderSize = 0;
-        private int borderRadius = 0;
-        private Color borderColor = Color.PaleVioletRed;
+        private int borderSize = 1;
+        private int borderRadius = 15;
+        private Color borderColor = Color.DarkOrange;
 
         public int BorderSize
         {
@@ -58,18 +58,18 @@ namespace MediaBazaar
             set { this.ForeColor = value; }
         }
 
-        //Constructor
         public CustomButton()
         {
             this.FlatStyle = FlatStyle.Flat;
-            this.FlatAppearance.BorderSize = 0;
+            this.FlatAppearance.BorderSize = 1;
             this.Size = new Size(150, 40);
-            this.BackColor = Color.MediumSlateBlue;
+            this.BackColor = Color.DarkOrange;
             this.ForeColor = Color.White;
+            this.borderColor = Color.White;
+            this.BorderRadius = 15;
             this.Resize += new EventHandler(Button_Resize);
         }
 
-        //Methods
         private GraphicsPath GetFigurePath(Rectangle rect, int radius)
         {
             GraphicsPath path = new GraphicsPath();
