@@ -1,5 +1,6 @@
-using MediaBazaar.Classes;
 using MediaBazaar.Forms;
+using DataAccess;
+using BusinessLogic;
 
 namespace MediaBazaar
 {
