@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.Classes
+namespace DataAccess
 {
-    internal class WorksheetDAL
-    {
-    }
+	internal class WorksheetDAL
+	{
+	}
 }
