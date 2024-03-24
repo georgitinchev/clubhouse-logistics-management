@@ -1,49 +1,75 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using BusinessLogic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace BusinessLogic
+namespace MediaBazaar.Classes
 {
 	public class Employee
 	{
-		public int Id { get; private set; }
-		public string FirstName { get; private set; }
-		public string LastName { get; private set; }
-		public string Email { get; private set; }
-		public string Password { get; private set; }
-		public DateTime Birthday { get; private set; }
-		public string Address { get; private set; }
-		public string PhoneNumber { get; private set; }
-		public long Bsn { get; private set; }
-		public Contract ActiveContract { get; private set; }
-		public EmergencyContact EmergencyContact { get; private set; }
-		public bool IsManager { get; private set; }
+		private int Id { get; set; }
+		private string Name { get; set; }
+		private string Email { get; set; }
+		private string Password { get; set; }
+		private int BSN { get; set; }
+		private Date Birthday { get; set; }
 		public EmployeeRoleEnum Role { get; private set; }
-		public List<EmployeeWorksheet> Worksheets { get; private set; }
+		public bool IsManager { get; private set; }
+		public bool IsActive { get; private set; } = true;
 
-		public Employee(int id, string firstName, string lastName, string email, string password, DateTime birthday, string address, string phoneNumber, long bsn, Contract activeContract, EmergencyContact emergencyContact, bool isManager, EmployeeRoleEnum role)
+		public Employee(int id, string name, string email, string password, Date birthday, EmployeeRoleEnum role, bool isManager)
 		{
 			Id = id;
-			FirstName = firstName;
-			LastName = lastName;
+			Name = name;
 			Email = email;
 			Password = password;
 			Birthday = birthday;
-			Address = address;
-			PhoneNumber = phoneNumber;
-			Bsn = bsn;
-			ActiveContract = activeContract;
-			EmergencyContact = emergencyContact;
-			IsManager = isManager;
 			Role = role;
-			Worksheets = new List<EmployeeWorksheet>();
+			IsManager = isManager;
 		}
 
-		public void AddWorksheet(EmployeeWorksheet worksheet)
+		public void UpdateInformation(string newName, string newEmail, string newPassword, Date newBirthday, EmployeeRoleEnum newRole, bool newIsManager)
 		{
-			Worksheets.Add(worksheet);
+			Name = newName;
+			Email = newEmail;
+			Password = newPassword;
+			Birthday = newBirthday;
+			Role = newRole;
+			IsManager = newIsManager;
+		}
+
+		public void Deactivate()
+		{
+			IsActive = false;
+		}
+
+		public void ChangeRole(EmployeeRoleEnum newRole)
+		{
+			Role = newRole;
+		}
+
+		public int GetId()
+		{
+			return Id;
+		}
+
+		public string GetName()
+		{
+			return Name;
+		}
+
+		public string GetUsername()
+		{
+			return Name.Replace(" ", "");
+		}
+
+		public bool ValidatePassword(string inputPassword)
+		{
+			return Password == inputPassword;
+		}
+
+		public int GetBSN()
+		{
+			return BSN;
 		}
 	}
 }

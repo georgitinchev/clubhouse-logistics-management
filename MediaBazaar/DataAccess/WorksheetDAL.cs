@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar
+namespace DataAccess
 {
-	public enum WorkingTime
+	internal class WorksheetDAL
 	{
-		Morning,
-		Afternoon,
-		Evening
 	}
 }

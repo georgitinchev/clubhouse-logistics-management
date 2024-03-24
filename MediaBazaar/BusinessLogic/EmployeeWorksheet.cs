@@ -1,25 +1,25 @@
-﻿using BusinessLogic;
+﻿using MediaBazaar.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace MediaBazaar
 {
 	public class EmployeeWorksheet
 	{
-		public WorkingTime TimeSlot { get; private set; }
-		public WeekDayEnum WeekDay { get; private set; }
-		public Employee Employee { get; private set; }
-		public int WeekNr { get; private set; }
+		private WorkingTime timeSlot;
+		private WeekDayEnum weekDay;
+		private Employee employee;
+		private int weekNr;
 
 		public EmployeeWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
 		{
-			TimeSlot = timeSlot;
-			WeekDay = weekDay;
-			Employee = employee;
-			WeekNr = weekNr;
+			this.timeSlot = timeSlot;
+			this.weekDay = weekDay;
+			this.employee = employee;
+			this.weekNr = weekNr;
 		}
 	}
 }
