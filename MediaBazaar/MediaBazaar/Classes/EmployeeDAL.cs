@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLogic
+namespace MediaBazaar.Classes
 {
-	public class EmergencyContact
-	{
-	}
+    internal class EmployeeDAL
+    {
+    }
 }
