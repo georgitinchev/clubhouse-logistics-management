@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Classes
 {
-    public class WorksheetDAL : Database
+    public class WorksheetDTO
     {
-        public WorksheetDAL() : base() { }
+        public WorkingTime timeSlot;
+        public WeekDayEnum weekDay;
+        public Employee employee;
+        public int weekNr;
     }
 }

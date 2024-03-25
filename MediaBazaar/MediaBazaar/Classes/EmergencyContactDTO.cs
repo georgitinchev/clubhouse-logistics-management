@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Classes
 {
-    public class WorksheetDAL : Database
+    public class EmergencyContactDTO
     {
-        public WorksheetDAL() : base() { }
+        public string firstName;
+        public string lastName;
+        public string phoneNumber;
+        public string email;
     }
 }

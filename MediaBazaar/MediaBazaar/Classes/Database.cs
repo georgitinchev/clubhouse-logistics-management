@@ -9,37 +9,29 @@ using System.Data.SqlClient;
 
 namespace MediaBazaar.Classes
 {
-    internal class Database
+    public class Database
     {
 
-        private string connectionString = "Server=mssqlstud.fhict.local;Database=dbi523343_mediabz;User Id=dbi523343_mediabz;Password=sem2group;";
+        protected static string connectionString;
 
-
-        protected SqlConnection CreateConnection()
+        public Database()
         {
-
+            if (string.IsNullOrEmpty(connectionString))
+                connectionString = "Server=mssqlstud.fhict.local;Database=dbi523343_mediabz;User Id=dbi523343_mediabz;Password=sem2group;";
         }
-
-        public void addEmployeeToDatabase()
+        protected SqlConnection OpenConnection()
         {
-            // some logic
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            return connection;
         }
-
-        public void updateEmployeeInDatabase()
+        
+        protected void CloseConnection(SqlConnection connection)
         {
-            // some logic
+            if(connection != null && connection.State == ConnectionState.Open)
+                connection.Close();
         }
-
-        public void deleteEmployeeFromDatabase()
-        {
-            // some logic
-        }
-
-        public List<Employee> retrieveEmployeeFromDatabase()
-        {
-            // some logic
-            return new List<Employee>();
-        }
+        
     }
 }
 

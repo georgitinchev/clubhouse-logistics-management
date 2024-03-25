@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MediaBazaar.Classes
 {
-    public class WorksheetDAL : Database
+    public class EmergencyContactDAL : Database
     {
-        public WorksheetDAL() : base() { }
+        public EmergencyContactDAL() : base() { }
     }
 }
