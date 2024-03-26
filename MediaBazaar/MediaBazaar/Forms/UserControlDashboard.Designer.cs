@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlDashboard));
-            dataGridView1 = new DataGridView();
+            userDataGridView = new DataGridView();
             groupBox1 = new GroupBox();
-            btnRemoveEmployee = new CustomButton();
-            btnEditEmployee = new CustomButton();
+            removeEmployeeBtn = new CustomButton();
+            editEmployeeBtn = new CustomButton();
             pictureBox2 = new PictureBox();
-            label2 = new Label();
-            pictureBox1 = new PictureBox();
+            employeeDetailsLabel = new Label();
+            userPictureBox = new PictureBox();
             textBoxEmail = new TextBox();
             textBoxSurname = new TextBox();
             textBoxName = new TextBox();
@@ -48,31 +48,31 @@
             pictureBoxSearch = new PictureBox();
             comboBoxDepartment = new ComboBox();
             textBoxSearch = new TextBox();
-            customButton1 = new CustomButton();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            addEmployeeBtn = new CustomButton();
+            ((System.ComponentModel.ISupportInitialize)userDataGridView).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)userPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
             SuspendLayout();
             // 
-            // dataGridView1
+            // userDataGridView
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(31, 152);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(918, 497);
-            dataGridView1.TabIndex = 22;
+            userDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            userDataGridView.Location = new Point(31, 152);
+            userDataGridView.Name = "userDataGridView";
+            userDataGridView.RowHeadersWidth = 51;
+            userDataGridView.Size = new Size(918, 497);
+            userDataGridView.TabIndex = 22;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.OrangeRed;
-            groupBox1.Controls.Add(btnRemoveEmployee);
-            groupBox1.Controls.Add(btnEditEmployee);
+            groupBox1.Controls.Add(removeEmployeeBtn);
+            groupBox1.Controls.Add(editEmployeeBtn);
             groupBox1.Controls.Add(pictureBox2);
-            groupBox1.Controls.Add(label2);
-            groupBox1.Controls.Add(pictureBox1);
+            groupBox1.Controls.Add(employeeDetailsLabel);
+            groupBox1.Controls.Add(userPictureBox);
             groupBox1.Controls.Add(textBoxEmail);
             groupBox1.Controls.Add(textBoxSurname);
             groupBox1.Controls.Add(textBoxName);
@@ -87,43 +87,43 @@
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             // 
-            // btnRemoveEmployee
+            // removeEmployeeBtn
             // 
-            btnRemoveEmployee.BackColor = Color.DarkOrange;
-            btnRemoveEmployee.BackgroundColor = Color.DarkOrange;
-            btnRemoveEmployee.BorderColor = Color.White;
-            btnRemoveEmployee.BorderRadius = 15;
-            btnRemoveEmployee.BorderSize = 2;
-            btnRemoveEmployee.Cursor = Cursors.Hand;
-            btnRemoveEmployee.FlatStyle = FlatStyle.Flat;
-            btnRemoveEmployee.ForeColor = Color.White;
-            btnRemoveEmployee.Location = new Point(53, 472);
-            btnRemoveEmployee.Margin = new Padding(3, 4, 3, 4);
-            btnRemoveEmployee.Name = "btnRemoveEmployee";
-            btnRemoveEmployee.Size = new Size(257, 53);
-            btnRemoveEmployee.TabIndex = 30;
-            btnRemoveEmployee.Text = "Remove Employee";
-            btnRemoveEmployee.TextColor = Color.White;
-            btnRemoveEmployee.UseVisualStyleBackColor = false;
+            removeEmployeeBtn.BackColor = Color.DarkOrange;
+            removeEmployeeBtn.BackgroundColor = Color.DarkOrange;
+            removeEmployeeBtn.BorderColor = Color.White;
+            removeEmployeeBtn.BorderRadius = 15;
+            removeEmployeeBtn.BorderSize = 2;
+            removeEmployeeBtn.Cursor = Cursors.Hand;
+            removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
+            removeEmployeeBtn.ForeColor = Color.White;
+            removeEmployeeBtn.Location = new Point(53, 472);
+            removeEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
+            removeEmployeeBtn.Name = "removeEmployeeBtn";
+            removeEmployeeBtn.Size = new Size(257, 53);
+            removeEmployeeBtn.TabIndex = 30;
+            removeEmployeeBtn.Text = "Remove Employee";
+            removeEmployeeBtn.TextColor = Color.White;
+            removeEmployeeBtn.UseVisualStyleBackColor = false;
             // 
-            // btnEditEmployee
+            // editEmployeeBtn
             // 
-            btnEditEmployee.BackColor = Color.DarkOrange;
-            btnEditEmployee.BackgroundColor = Color.DarkOrange;
-            btnEditEmployee.BorderColor = Color.White;
-            btnEditEmployee.BorderRadius = 15;
-            btnEditEmployee.BorderSize = 2;
-            btnEditEmployee.Cursor = Cursors.Hand;
-            btnEditEmployee.FlatStyle = FlatStyle.Flat;
-            btnEditEmployee.ForeColor = Color.White;
-            btnEditEmployee.Location = new Point(53, 397);
-            btnEditEmployee.Margin = new Padding(3, 4, 3, 4);
-            btnEditEmployee.Name = "btnEditEmployee";
-            btnEditEmployee.Size = new Size(257, 53);
-            btnEditEmployee.TabIndex = 29;
-            btnEditEmployee.Text = "Edit Employee";
-            btnEditEmployee.TextColor = Color.White;
-            btnEditEmployee.UseVisualStyleBackColor = false;
+            editEmployeeBtn.BackColor = Color.DarkOrange;
+            editEmployeeBtn.BackgroundColor = Color.DarkOrange;
+            editEmployeeBtn.BorderColor = Color.White;
+            editEmployeeBtn.BorderRadius = 15;
+            editEmployeeBtn.BorderSize = 2;
+            editEmployeeBtn.Cursor = Cursors.Hand;
+            editEmployeeBtn.FlatStyle = FlatStyle.Flat;
+            editEmployeeBtn.ForeColor = Color.White;
+            editEmployeeBtn.Location = new Point(53, 397);
+            editEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
+            editEmployeeBtn.Name = "editEmployeeBtn";
+            editEmployeeBtn.Size = new Size(257, 53);
+            editEmployeeBtn.TabIndex = 29;
+            editEmployeeBtn.Text = "Edit Employee";
+            editEmployeeBtn.TextColor = Color.White;
+            editEmployeeBtn.UseVisualStyleBackColor = false;
             // 
             // pictureBox2
             // 
@@ -134,28 +134,28 @@
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
-            // label2
+            // employeeDetailsLabel
             // 
-            label2.AutoSize = true;
-            label2.BackColor = Color.Transparent;
-            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.DimGray;
-            label2.Location = new Point(57, 48);
-            label2.Name = "label2";
-            label2.Size = new Size(124, 20);
-            label2.TabIndex = 26;
-            label2.Text = "Employee details";
+            employeeDetailsLabel.AutoSize = true;
+            employeeDetailsLabel.BackColor = Color.Transparent;
+            employeeDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            employeeDetailsLabel.ForeColor = Color.DimGray;
+            employeeDetailsLabel.Location = new Point(57, 48);
+            employeeDetailsLabel.Name = "employeeDetailsLabel";
+            employeeDetailsLabel.Size = new Size(124, 20);
+            employeeDetailsLabel.TabIndex = 26;
+            employeeDetailsLabel.Text = "Employee details";
             // 
-            // pictureBox1
+            // userPictureBox
             // 
-            pictureBox1.BackColor = Color.OrangeRed;
-            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(6, 29);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(61, 39);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 25;
-            pictureBox1.TabStop = false;
+            userPictureBox.BackColor = Color.OrangeRed;
+            userPictureBox.Image = (Image)resources.GetObject("userPictureBox.Image");
+            userPictureBox.Location = new Point(6, 29);
+            userPictureBox.Name = "userPictureBox";
+            userPictureBox.Size = new Size(61, 39);
+            userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            userPictureBox.TabIndex = 25;
+            userPictureBox.TabStop = false;
             // 
             // textBoxEmail
             // 
@@ -247,7 +247,7 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(359, 102);
+            pictureBoxSearch.Location = new Point(359, 101);
             pictureBoxSearch.Name = "pictureBoxSearch";
             pictureBoxSearch.Size = new Size(21, 21);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
@@ -262,12 +262,13 @@
             comboBoxDepartment.FormattingEnabled = true;
             comboBoxDepartment.IntegralHeight = false;
             comboBoxDepartment.ItemHeight = 20;
-            comboBoxDepartment.Items.AddRange(new object[] { "Human Resourses", "Customer Service", "Security", "Logistic Department" });
+            comboBoxDepartment.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support ", "Cashier", "Security Guard", "Depot Worker" });
             comboBoxDepartment.Location = new Point(394, 99);
             comboBoxDepartment.Name = "comboBoxDepartment";
             comboBoxDepartment.Size = new Size(306, 28);
             comboBoxDepartment.TabIndex = 18;
-            comboBoxDepartment.Text = "Department";
+            comboBoxDepartment.Text = "Role";
+            comboBoxDepartment.Click += comboBoxDepartment_Click;
             // 
             // textBoxSearch
             // 
@@ -276,34 +277,35 @@
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(357, 27);
             textBoxSearch.TabIndex = 17;
-            textBoxSearch.Text = "Search";
-            textBoxSearch.Click += textBoxSearch_Click;
+            textBoxSearch.Text = "Search...";
+            textBoxSearch.KeyDown += textBoxSearch_KeyDown;
+            textBoxSearch.KeyPress += textBoxSearch_KeyPress;
             // 
-            // customButton1
+            // addEmployeeBtn
             // 
-            customButton1.BackColor = Color.DarkOrange;
-            customButton1.BackgroundColor = Color.DarkOrange;
-            customButton1.BorderColor = Color.White;
-            customButton1.BorderRadius = 15;
-            customButton1.BorderSize = 2;
-            customButton1.Cursor = Cursors.Hand;
-            customButton1.FlatStyle = FlatStyle.Flat;
-            customButton1.ForeColor = Color.White;
-            customButton1.Location = new Point(706, 92);
-            customButton1.Margin = new Padding(3, 4, 3, 4);
-            customButton1.Name = "customButton1";
-            customButton1.Size = new Size(243, 40);
-            customButton1.TabIndex = 31;
-            customButton1.Text = "Add Employee";
-            customButton1.TextColor = Color.White;
-            customButton1.UseVisualStyleBackColor = false;
+            addEmployeeBtn.BackColor = Color.DarkOrange;
+            addEmployeeBtn.BackgroundColor = Color.DarkOrange;
+            addEmployeeBtn.BorderColor = Color.White;
+            addEmployeeBtn.BorderRadius = 15;
+            addEmployeeBtn.BorderSize = 2;
+            addEmployeeBtn.Cursor = Cursors.Hand;
+            addEmployeeBtn.FlatStyle = FlatStyle.Flat;
+            addEmployeeBtn.ForeColor = Color.White;
+            addEmployeeBtn.Location = new Point(706, 92);
+            addEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
+            addEmployeeBtn.Name = "addEmployeeBtn";
+            addEmployeeBtn.Size = new Size(243, 40);
+            addEmployeeBtn.TabIndex = 31;
+            addEmployeeBtn.Text = "Add Employee";
+            addEmployeeBtn.TextColor = Color.White;
+            addEmployeeBtn.UseVisualStyleBackColor = false;
             // 
             // UserControlDashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(customButton1);
-            Controls.Add(dataGridView1);
+            Controls.Add(addEmployeeBtn);
+            Controls.Add(userDataGridView);
             Controls.Add(groupBox1);
             Controls.Add(vScrollBar);
             Controls.Add(pictureBoxSearch);
@@ -312,11 +314,11 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "UserControlDashboard";
             Size = new Size(1360, 745);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)userDataGridView).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)userPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -324,11 +326,11 @@
 
         #endregion
 
-        private DataGridView dataGridView1;
+        private DataGridView userDataGridView;
         private GroupBox groupBox1;
         private PictureBox pictureBox2;
-        private Label label2;
-        private PictureBox pictureBox1;
+        private Label employeeDetailsLabel;
+        private PictureBox userPictureBox;
         private TextBox textBoxEmail;
         private TextBox textBoxSurname;
         private TextBox textBoxName;
@@ -341,8 +343,8 @@
         private PictureBox pictureBoxSearch;
         private ComboBox comboBoxDepartment;
         private TextBox textBoxSearch;
-        private CustomButton btnRemoveEmployee;
-        private CustomButton btnEditEmployee;
-        private CustomButton customButton1;
+        private CustomButton removeEmployeeBtn;
+        private CustomButton editEmployeeBtn;
+        private CustomButton addEmployeeBtn;
     }
 }

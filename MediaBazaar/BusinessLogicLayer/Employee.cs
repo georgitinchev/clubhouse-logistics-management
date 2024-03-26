@@ -7,8 +7,9 @@ namespace DTOLayer
 	public class Employee
 	{
 		private int Id { get; set; }
-		private string Name { get; set; }
-		private string Email { get; set; }
+		private string FirstName { get; set; }
+        private string LastName { get; set; }
+        private string Email { get; set; }
 		private string Password { get; set; }
 		private int BSN { get; set; }
 		private Date Birthday { get; set; }
@@ -16,28 +17,31 @@ namespace DTOLayer
 		public bool IsManager { get; private set; }
 		public bool IsActive { get; private set; } = true;
 
-		public Employee(int id, string name, string email, string password, Date birthday, EmployeeRoleEnum role, bool isManager)
-		{
-			Id = id;
-			Name = name;
-			Email = email;
-			Password = password;
-			Birthday = birthday;
-			Role = role;
-			IsManager = isManager;
-		}
+        public Employee(int id, string firstName, string lastName, string email, string password, int bSN, Date birthday, EmployeeRoleEnum role)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            BSN = bSN;
+            Birthday = birthday;
+            Role = role;
+        }
 
-		public void UpdateInformation(string newName, string newEmail, string newPassword, Date newBirthday, EmployeeRoleEnum newRole, bool newIsManager)
-		{
-			Name = newName;
-			Email = newEmail;
-			Password = newPassword;
-			Birthday = newBirthday;
-			Role = newRole;
-			IsManager = newIsManager;
-		}
+        public void UpdateInformation(int id, string firstName, string lastName, string email, string password, int bSN, Date birthday, EmployeeRoleEnum role)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            BSN = bSN;
+            Birthday = birthday;
+            Role = role;
+        }
 
-		public void Deactivate()
+        public void Deactivate()
 		{
 			IsActive = false;
 		}

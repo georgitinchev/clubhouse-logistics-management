@@ -19,6 +19,7 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
+            InitializeFocus();
         }
 
         private DataTable employeeData;
@@ -29,55 +30,36 @@ namespace MediaBazaar.Forms
             employeeData = new DataTable();
             employeeData.Columns.Add("Name", typeof(string));
             employeeData.Columns.Add("Email", typeof(string));
-            employeeData.Columns.Add("Department", typeof(string));
             employeeData.Columns.Add("Role", typeof(string));
             employeeData.Columns.Add("Worksheet", typeof(string));
 
-            employeeData.Rows.Add("John Doe", "john@example.com", "IT", "Developer", "A");
-            employeeData.Rows.Add("Jane Smith", "jane@example.com", "HR", "Manager", "B");
-            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Finance", "Accountant", "C");
-            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing", "Marketing Specialist", "D");
+            employeeData.Rows.Add("John Doe", "john@example.com", "Developer", "A");
+            employeeData.Rows.Add("Jane Smith", "jane@example.com", "Manager", "B");
+            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Accountant", "C");
+            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing Specialist", "D");
         }
 
         private void InitializeDataGridView()
         {
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = employeeData;
-            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            userDataGridView.AutoGenerateColumns = true;
+            userDataGridView.DataSource = employeeData;
+            userDataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            userDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            userDataGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
-            string searchTerm = textBoxSearch.Text.Trim();
-
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                var query = from row in employeeData.AsEnumerable()
-                            where row.Field<string>("Name").Contains(searchTerm)
-                            select row;
-
-                DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
-                dataGridView1.DataSource = searchResults;
-            }
-            else
-            {
-                dataGridView1.DataSource = employeeData;
-            }
+            Search();
         }
 
-        bool isFirstClick = true;
-        private void textBoxSearch_Click(object sender, EventArgs e)
+        private void InitializeFocus()
         {
-            if (isFirstClick)
-            {
-                textBoxSearch.Text = "";
-                isFirstClick = false;
-            }
+            textBoxSearch.GotFocus += new System.EventHandler(textBoxSearch_GotFocus);
+            textBoxSearch.LostFocus += new System.EventHandler(textBoxSearch_LostFocus);
         }
 
-        private string placeholder = "Enter search term...";
+        private string placeholder = "Search...";
 
         private void textBoxSearch_GotFocus(object sender, EventArgs e)
         {
@@ -93,6 +75,48 @@ namespace MediaBazaar.Forms
             {
                 textBoxSearch.Text = placeholder;
             }
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Search();
+            }
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Search()
+        {
+            string searchTerm = textBoxSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm) && searchTerm != placeholder)
+            {
+                var query = from row in employeeData.AsEnumerable()
+                            where row.Field<string>("Name").Contains(searchTerm)
+                            where row.Field<string>("Email").Contains(searchTerm)
+                            where row.Field<string>("Email").Contains(searchTerm)
+                            select row;
+
+                DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
+                userDataGridView.DataSource = searchResults;
+            }
+            else
+            {
+                userDataGridView.DataSource = employeeData;
+            }
+        }
+
+        private void comboBoxDepartment_Click(object sender, EventArgs e)
+        {
+            comboBoxDepartment.DroppedDown = true;
         }
     }
 }
