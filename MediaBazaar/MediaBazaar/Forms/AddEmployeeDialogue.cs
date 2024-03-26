@@ -16,5 +16,20 @@ namespace MediaBazaar.Forms
 		{
 			InitializeComponent();
 		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void emcEmailBox_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void personalBsn_Click(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
