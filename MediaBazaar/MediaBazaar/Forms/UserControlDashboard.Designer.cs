@@ -276,8 +276,9 @@
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(357, 27);
             textBoxSearch.TabIndex = 17;
-            textBoxSearch.Text = "Search";
-            textBoxSearch.Click += textBoxSearch_Click;
+            textBoxSearch.Text = "Search...";
+            textBoxSearch.KeyDown += textBoxSearch_KeyDown;
+            textBoxSearch.KeyPress += textBoxSearch_KeyPress;
             // 
             // customButton1
             // 

@@ -19,6 +19,7 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
+            InitializeFocus();
         }
 
         private DataTable employeeData;
@@ -50,34 +51,16 @@ namespace MediaBazaar.Forms
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
-            string searchTerm = textBoxSearch.Text.Trim();
-
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                var query = from row in employeeData.AsEnumerable()
-                            where row.Field<string>("Name").Contains(searchTerm)
-                            select row;
-
-                DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
-                dataGridView1.DataSource = searchResults;
-            }
-            else
-            {
-                dataGridView1.DataSource = employeeData;
-            }
+            Search();
         }
 
-        bool isFirstClick = true;
-        private void textBoxSearch_Click(object sender, EventArgs e)
+        private void InitializeFocus()
         {
-            if (isFirstClick)
-            {
-                textBoxSearch.Text = "";
-                isFirstClick = false;
-            }
+            textBoxSearch.GotFocus += new System.EventHandler(textBoxSearch_GotFocus);
+            textBoxSearch.LostFocus += new System.EventHandler(textBoxSearch_LostFocus);
         }
 
-        private string placeholder = "Enter search term...";
+        private string placeholder = "Search...";
 
         private void textBoxSearch_GotFocus(object sender, EventArgs e)
         {
@@ -92,6 +75,41 @@ namespace MediaBazaar.Forms
             if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
             {
                 textBoxSearch.Text = placeholder;
+            }
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Search();
+            }
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void Search()
+        {
+            string searchTerm = textBoxSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm) && searchTerm != placeholder)
+            {
+                var query = from row in employeeData.AsEnumerable()
+                            where row.Field<string>("Name").Contains(searchTerm)
+                            select row;
+
+                DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
+                dataGridView1.DataSource = searchResults;
+            }
+            else
+            {
+                dataGridView1.DataSource = employeeData;
             }
         }
     }
