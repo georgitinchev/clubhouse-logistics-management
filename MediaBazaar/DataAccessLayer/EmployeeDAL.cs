@@ -10,13 +10,28 @@ namespace DataAccessLayer
 {
     public class EmployeeDAL : Database
     {
-        public EmployeeDAL() : base() { }
 
-        public void AddEmployee(Employee employee)
+        public void CreateEmployee(EmployeeDTO employee)
         {
-            using (SqlConnection connection = OpenConnection())
+            using (var connection = OpenConnection())
             {
-                string sqlCmd = "INSERT INTO [";
+                var command = new SqlCommand(
+                    "INSERT INTO Employee (FirstName, LastName, Email, Password, Birthday, Address, PhoneNumber, Bsn, Role, ActiveContractId, EmergencyContactId) " +
+                    "VALUES (@FirstName, @LastName, @Email, @Password, @Birthday, @Address, @PhoneNumber, @Bsn, @Role, @ActiveContractId, @EmergencyContactId)", connection);
+
+                command.Parameters.AddWithValue("@FirstName", employee.FirstName);
+                command.Parameters.AddWithValue("@LastName", employee.LastName);
+                command.Parameters.AddWithValue("@Email", employee.Email);
+                command.Parameters.AddWithValue("@Password", employee.Password); // Consider hashing this value before storing
+                command.Parameters.AddWithValue("@Birthday", employee.Birthday);
+                command.Parameters.AddWithValue("@Address", employee.Address);
+                command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
+                command.Parameters.AddWithValue("@Bsn", employee.BSN); // Added Bsn here
+                command.Parameters.AddWithValue("@Role", employee.Role);
+                command.Parameters.AddWithValue("@ActiveContractId", (object)employee.ActiveContractId ?? DBNull.Value); // Use DBNull for nullable foreign keys
+                command.Parameters.AddWithValue("@EmergencyContactId", (object)employee.EmergencyContactId ?? DBNull.Value);
+
+                command.ExecuteNonQuery();
             }
         }
 
