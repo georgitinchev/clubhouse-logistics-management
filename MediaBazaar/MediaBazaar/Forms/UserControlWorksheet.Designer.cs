@@ -34,7 +34,7 @@
             dataGridViewWorksheet = new DataGridView();
             groupBox1 = new GroupBox();
             pictureBox2 = new PictureBox();
-            employeeDetailsLabel = new Label();
+            worksheetDetailsLabel = new Label();
             userPictureBox = new PictureBox();
             textBoxEmail = new TextBox();
             textBoxSurname = new TextBox();
@@ -42,11 +42,19 @@
             label1 = new Label();
             comboBoxRole = new ComboBox();
             lblRole = new Label();
-            lblSurname = new Label();
             lblName = new Label();
             textBoxSearch = new TextBox();
             comboBoxDepartment = new ComboBox();
             pictureBoxSearch = new PictureBox();
+            label2 = new Label();
+            label3 = new Label();
+            label5 = new Label();
+            label6 = new Label();
+            textBox1 = new TextBox();
+            textBox2 = new TextBox();
+            textBox3 = new TextBox();
+            textBox4 = new TextBox();
+            label4 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridViewWorksheet).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -101,9 +109,18 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.OrangeRed;
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(textBox4);
+            groupBox1.Controls.Add(textBox3);
+            groupBox1.Controls.Add(textBox2);
+            groupBox1.Controls.Add(textBox1);
+            groupBox1.Controls.Add(label6);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(pictureBox2);
             groupBox1.Controls.Add(btnRemoveWorksheet);
-            groupBox1.Controls.Add(employeeDetailsLabel);
+            groupBox1.Controls.Add(worksheetDetailsLabel);
             groupBox1.Controls.Add(btnAddWorksheet);
             groupBox1.Controls.Add(userPictureBox);
             groupBox1.Controls.Add(textBoxEmail);
@@ -112,7 +129,6 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(comboBoxRole);
             groupBox1.Controls.Add(lblRole);
-            groupBox1.Controls.Add(lblSurname);
             groupBox1.Controls.Add(lblName);
             groupBox1.Location = new Point(887, 51);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
@@ -132,17 +148,17 @@
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
-            // employeeDetailsLabel
+            // worksheetDetailsLabel
             // 
-            employeeDetailsLabel.AutoSize = true;
-            employeeDetailsLabel.BackColor = Color.Transparent;
-            employeeDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            employeeDetailsLabel.ForeColor = Color.Black;
-            employeeDetailsLabel.Location = new Point(47, 35);
-            employeeDetailsLabel.Name = "employeeDetailsLabel";
-            employeeDetailsLabel.Size = new Size(96, 15);
-            employeeDetailsLabel.TabIndex = 26;
-            employeeDetailsLabel.Text = "Employee details";
+            worksheetDetailsLabel.AutoSize = true;
+            worksheetDetailsLabel.BackColor = Color.Transparent;
+            worksheetDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            worksheetDetailsLabel.ForeColor = Color.Black;
+            worksheetDetailsLabel.Location = new Point(47, 35);
+            worksheetDetailsLabel.Name = "worksheetDetailsLabel";
+            worksheetDetailsLabel.Size = new Size(101, 15);
+            worksheetDetailsLabel.TabIndex = 26;
+            worksheetDetailsLabel.Text = "Worksheet details";
             // 
             // userPictureBox
             // 
@@ -159,7 +175,7 @@
             // textBoxEmail
             // 
             textBoxEmail.BackColor = SystemColors.ControlDark;
-            textBoxEmail.Location = new Point(102, 155);
+            textBoxEmail.Location = new Point(102, 157);
             textBoxEmail.Margin = new Padding(3, 2, 3, 2);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.ReadOnly = true;
@@ -169,7 +185,7 @@
             // textBoxSurname
             // 
             textBoxSurname.BackColor = SystemColors.ControlDark;
-            textBoxSurname.Location = new Point(102, 98);
+            textBoxSurname.Location = new Point(102, 130);
             textBoxSurname.Margin = new Padding(3, 2, 3, 2);
             textBoxSurname.Name = "textBoxSurname";
             textBoxSurname.ReadOnly = true;
@@ -189,11 +205,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(14, 153);
+            label1.Location = new Point(15, 104);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(73, 15);
             label1.TabIndex = 17;
-            label1.Text = "Email:";
+            label1.Text = "Department:";
             // 
             // comboBoxRole
             // 
@@ -204,7 +220,7 @@
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 15;
             comboBoxRole.Items.AddRange(new object[] { "Security Guard" });
-            comboBoxRole.Location = new Point(102, 127);
+            comboBoxRole.Location = new Point(102, 101);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(169, 23);
@@ -214,20 +230,11 @@
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(14, 126);
+            lblRole.Location = new Point(15, 133);
             lblRole.Name = "lblRole";
             lblRole.Size = new Size(33, 15);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
-            // 
-            // lblSurname
-            // 
-            lblSurname.AutoSize = true;
-            lblSurname.Location = new Point(14, 98);
-            lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(57, 15);
-            lblSurname.TabIndex = 1;
-            lblSurname.Text = "Surname:";
             // 
             // lblName
             // 
@@ -277,6 +284,91 @@
             pictureBoxSearch.TabIndex = 28;
             pictureBoxSearch.TabStop = false;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(15, 238);
+            label2.Name = "label2";
+            label2.Size = new Size(58, 15);
+            label2.TabIndex = 27;
+            label2.Text = "Due Date:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(15, 214);
+            label3.Name = "label3";
+            label3.Size = new Size(78, 15);
+            label3.TabIndex = 28;
+            label3.Text = "Date Created:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(15, 160);
+            label5.Name = "label5";
+            label5.Size = new Size(39, 15);
+            label5.TabIndex = 30;
+            label5.Text = "Email:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(15, 268);
+            label6.Name = "label6";
+            label6.Size = new Size(42, 15);
+            label6.TabIndex = 31;
+            label6.Text = "Status:";
+            // 
+            // textBox1
+            // 
+            textBox1.BackColor = SystemColors.ControlDark;
+            textBox1.Location = new Point(103, 184);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(169, 23);
+            textBox1.TabIndex = 32;
+            // 
+            // textBox2
+            // 
+            textBox2.BackColor = SystemColors.ControlDark;
+            textBox2.Location = new Point(103, 211);
+            textBox2.Margin = new Padding(3, 2, 3, 2);
+            textBox2.Name = "textBox2";
+            textBox2.ReadOnly = true;
+            textBox2.Size = new Size(169, 23);
+            textBox2.TabIndex = 33;
+            // 
+            // textBox3
+            // 
+            textBox3.BackColor = SystemColors.ControlDark;
+            textBox3.Location = new Point(103, 238);
+            textBox3.Margin = new Padding(3, 2, 3, 2);
+            textBox3.Name = "textBox3";
+            textBox3.ReadOnly = true;
+            textBox3.Size = new Size(169, 23);
+            textBox3.TabIndex = 34;
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.ControlDark;
+            textBox4.Location = new Point(103, 265);
+            textBox4.Margin = new Padding(3, 2, 3, 2);
+            textBox4.Name = "textBox4";
+            textBox4.ReadOnly = true;
+            textBox4.Size = new Size(169, 23);
+            textBox4.TabIndex = 35;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(15, 187);
+            label4.Name = "label4";
+            label4.Size = new Size(78, 15);
+            label4.TabIndex = 36;
+            label4.Text = "Date Created:";
+            // 
             // UserControlWorksheet
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -305,7 +397,7 @@
         private DataGridView dataGridViewWorksheet;
         private GroupBox groupBox1;
         private PictureBox pictureBox2;
-        private Label employeeDetailsLabel;
+        private Label worksheetDetailsLabel;
         private PictureBox userPictureBox;
         private TextBox textBoxEmail;
         private TextBox textBoxSurname;
@@ -313,10 +405,18 @@
         private Label label1;
         private ComboBox comboBoxRole;
         private Label lblRole;
-        private Label lblSurname;
         private Label lblName;
         private TextBox textBoxSearch;
         private ComboBox comboBoxDepartment;
         private PictureBox pictureBoxSearch;
+        private Label label5;
+        private Label label3;
+        private Label label2;
+        private Label label6;
+        private Label label4;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private TextBox textBox2;
+        private TextBox textBox1;
     }
 }
