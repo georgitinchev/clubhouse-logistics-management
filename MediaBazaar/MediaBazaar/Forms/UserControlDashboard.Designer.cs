@@ -140,11 +140,11 @@
 			// 
 			employeeDetailsLabel.AutoSize = true;
 			employeeDetailsLabel.BackColor = Color.Transparent;
-			employeeDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			employeeDetailsLabel.ForeColor = Color.DimGray;
-			employeeDetailsLabel.Location = new Point(50, 36);
+			employeeDetailsLabel.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			employeeDetailsLabel.ForeColor = Color.Black;
+			employeeDetailsLabel.Location = new Point(81, 22);
 			employeeDetailsLabel.Name = "employeeDetailsLabel";
-			employeeDetailsLabel.Size = new Size(96, 15);
+			employeeDetailsLabel.Size = new Size(154, 25);
 			employeeDetailsLabel.TabIndex = 26;
 			employeeDetailsLabel.Text = "Employee details";
 			// 
