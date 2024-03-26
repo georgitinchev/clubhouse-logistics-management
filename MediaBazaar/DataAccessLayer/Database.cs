@@ -7,7 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 
 
-namespace MediaBazaar.Classes
+namespace DataAccessLayer
 {
     public class Database
     {

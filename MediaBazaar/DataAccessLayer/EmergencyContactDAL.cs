@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediaBazaar.Classes
+namespace DataAccessLayer
 {
     public class EmergencyContactDAL : Database
     {

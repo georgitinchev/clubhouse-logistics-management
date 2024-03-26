@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace MediaBazaar.Classes
+namespace DTOLayer
 {
 	public class Employee
 	{
