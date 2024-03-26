@@ -96,7 +96,7 @@ namespace MediaBazaar.Forms
                 }
             };
 
-			userDataGridView.SelectionChanged += DataGridView1_SelectionChanged;
+            userDataGridView.SelectionChanged += DataGridView1_SelectionChanged;
             userDataGridView.ScrollBars = ScrollBars.Vertical;
         }
 
@@ -176,7 +176,10 @@ namespace MediaBazaar.Forms
 
             DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
             userDataGridView.DataSource = searchResults;
+
+            userDataGridView.ClearSelection();
         }
+
 
 
         private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)

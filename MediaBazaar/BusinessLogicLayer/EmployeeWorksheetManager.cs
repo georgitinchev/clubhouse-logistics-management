@@ -14,8 +14,8 @@ namespace MediaBazaar
 
 		public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
 		{
-			EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
-			assignedWorksheets.Add(worksheet);
+			//EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
+			//assignedWorksheets.Add(worksheet);
 		}
 
 		public void DeleteWorksheet(EmployeeWorksheet worksheet)
