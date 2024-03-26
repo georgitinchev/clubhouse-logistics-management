@@ -27,7 +27,6 @@ namespace MediaBazaar.Forms
 
         private void InitializeData()
         {
-            // Sample data - replace this with actual data source
             employeeData = new DataTable();
             employeeData.Columns.Add("Name", typeof(string));
             employeeData.Columns.Add("Email", typeof(string));
@@ -43,9 +42,7 @@ namespace MediaBazaar.Forms
         }
         private void YourFormName_Load(object sender, EventArgs e)
         {
-            // Clear the selection in the DataGridView when the form loads
             userDataGridView.ClearSelection();
-            // Optionally, hide the gbEmployeeDetails group box initially
             groupBox1.Visible = false;
         }
 
@@ -55,36 +52,33 @@ namespace MediaBazaar.Forms
             userDataGridView.DataSource = employeeData;
             userDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             userDataGridView.EnableHeadersVisualStyles = false;
-            userDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243); // Material blue
-            userDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; // White text
-            userDataGridView.DefaultCellStyle.BackColor = Color.White; // White background
-            userDataGridView.DefaultCellStyle.ForeColor = Color.FromArgb(33, 33, 33); // Dark text
-            userDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 200, 200); // Light gray
-            userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33); // Dark text
+            userDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243); 
+            userDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; 
+            userDataGridView.DefaultCellStyle.BackColor = Color.White; 
+            userDataGridView.DefaultCellStyle.ForeColor = Color.FromArgb(33, 33, 33); 
+            userDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 200, 200); 
+            userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             userDataGridView.RowHeadersVisible = false;
             userDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             userDataGridView.Font = new Font("Segoe UI", 10);
 
-            // Apply subtle animations
             userDataGridView.EnableHeadersVisualStyles = false;
             userDataGridView.BorderStyle = BorderStyle.None;
             userDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            userDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235); // Light gray
-            userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33); // Dark text
-            userDataGridView.BackgroundColor = Color.White; // White background
+            userDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235);
+            userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
+            userDataGridView.BackgroundColor = Color.White; 
 
-            // Add columns
             userDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Name", HeaderText = "Name" });
             userDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Email", HeaderText = "Email" });
             userDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Role" });
             userDataGridView.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Worksheet", HeaderText = "Worksheet" });
 
-            // Apply hover effect
             userDataGridView.CellMouseEnter += (sender, e) =>
             {
                 if (e.RowIndex >= 0)
                 {
-                    userDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240); // Light gray
+                    userDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
                 }
             };
 
@@ -92,7 +86,7 @@ namespace MediaBazaar.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    userDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; // Reset to white
+                    userDataGridView.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
                 }
             };
 
