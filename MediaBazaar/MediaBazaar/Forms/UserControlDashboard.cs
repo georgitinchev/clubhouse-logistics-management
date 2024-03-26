@@ -96,7 +96,8 @@ namespace MediaBazaar.Forms
 			};
 
 			userDataGridView.SelectionChanged += DataGridView1_SelectionChanged;
-		}
+            userDataGridView.ScrollBars = ScrollBars.Vertical;
+        }
 
 		private void DataGridView1_SelectionChanged(object sender, EventArgs e)
 		{
