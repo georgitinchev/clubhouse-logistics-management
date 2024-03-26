@@ -30,6 +30,7 @@
 		{
 			addEmployeeTabControl = new TabControl();
 			employeeContractTab = new TabPage();
+			label5 = new Label();
 			nextBtnP1 = new CustomButton();
 			label4 = new Label();
 			dateTimePicker1 = new DateTimePicker();
@@ -40,6 +41,7 @@
 			label1 = new Label();
 			comboBox1 = new ComboBox();
 			employeeEmergencyDetailsTab = new TabPage();
+			label6 = new Label();
 			previousBtnP2 = new CustomButton();
 			nextBtnP2 = new CustomButton();
 			emcLastNameBox = new TextBox();
@@ -51,6 +53,7 @@
 			emcLastName = new Label();
 			emcFirstName = new Label();
 			employeeDetailsTab = new TabPage();
+			label7 = new Label();
 			previousBtnP3 = new CustomButton();
 			completeFormBtn = new CustomButton();
 			textBox7 = new TextBox();
@@ -89,6 +92,7 @@
 			// employeeContractTab
 			// 
 			employeeContractTab.BackColor = Color.White;
+			employeeContractTab.Controls.Add(label5);
 			employeeContractTab.Controls.Add(nextBtnP1);
 			employeeContractTab.Controls.Add(label4);
 			employeeContractTab.Controls.Add(dateTimePicker1);
@@ -104,6 +108,16 @@
 			employeeContractTab.Size = new Size(485, 348);
 			employeeContractTab.TabIndex = 0;
 			employeeContractTab.Text = "📝 Contract Details";
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new Font("Segoe UI", 18F);
+			label5.Location = new Point(124, 14);
+			label5.Name = "label5";
+			label5.Size = new Size(223, 32);
+			label5.TabIndex = 9;
+			label5.Text = "Contract Details 📝";
 			// 
 			// nextBtnP1
 			// 
@@ -128,7 +142,7 @@
 			// 
 			label4.AutoSize = true;
 			label4.Font = new Font("Segoe UI", 14.25F);
-			label4.Location = new Point(69, 63);
+			label4.Location = new Point(69, 93);
 			label4.Name = "label4";
 			label4.Size = new Size(94, 25);
 			label4.TabIndex = 7;
@@ -137,7 +151,7 @@
 			// dateTimePicker1
 			// 
 			dateTimePicker1.CalendarFont = new Font("Segoe UI", 12F);
-			dateTimePicker1.Location = new Point(50, 100);
+			dateTimePicker1.Location = new Point(50, 130);
 			dateTimePicker1.Name = "dateTimePicker1";
 			dateTimePicker1.Size = new Size(148, 27);
 			dateTimePicker1.TabIndex = 6;
@@ -145,7 +159,7 @@
 			// textBox2
 			// 
 			textBox2.Font = new Font("Segoe UI", 12F);
-			textBox2.Location = new Point(50, 207);
+			textBox2.Location = new Point(50, 237);
 			textBox2.Name = "textBox2";
 			textBox2.Size = new Size(148, 29);
 			textBox2.TabIndex = 5;
@@ -154,7 +168,7 @@
 			// 
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI", 14.25F);
-			label3.Location = new Point(59, 167);
+			label3.Location = new Point(59, 197);
 			label3.Name = "label3";
 			label3.Size = new Size(127, 25);
 			label3.TabIndex = 4;
@@ -163,7 +177,7 @@
 			// textBox1
 			// 
 			textBox1.Font = new Font("Segoe UI", 12F);
-			textBox1.Location = new Point(257, 207);
+			textBox1.Location = new Point(257, 237);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(157, 29);
 			textBox1.TabIndex = 3;
@@ -172,7 +186,7 @@
 			// 
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 14.25F);
-			label2.Location = new Point(274, 167);
+			label2.Location = new Point(274, 197);
 			label2.Name = "label2";
 			label2.Size = new Size(121, 25);
 			label2.TabIndex = 2;
@@ -182,7 +196,7 @@
 			// 
 			label1.AutoSize = true;
 			label1.Font = new Font("Segoe UI", 14.25F);
-			label1.Location = new Point(274, 63);
+			label1.Location = new Point(274, 93);
 			label1.Name = "label1";
 			label1.Size = new Size(135, 25);
 			label1.TabIndex = 1;
@@ -192,13 +206,15 @@
 			// 
 			comboBox1.Font = new Font("Segoe UI", 12F);
 			comboBox1.FormattingEnabled = true;
-			comboBox1.Location = new Point(257, 100);
+			comboBox1.Location = new Point(257, 130);
 			comboBox1.Name = "comboBox1";
 			comboBox1.Size = new Size(157, 29);
 			comboBox1.TabIndex = 0;
 			// 
 			// employeeEmergencyDetailsTab
 			// 
+			employeeEmergencyDetailsTab.BackColor = Color.White;
+			employeeEmergencyDetailsTab.Controls.Add(label6);
 			employeeEmergencyDetailsTab.Controls.Add(previousBtnP2);
 			employeeEmergencyDetailsTab.Controls.Add(nextBtnP2);
 			employeeEmergencyDetailsTab.Controls.Add(emcLastNameBox);
@@ -216,7 +232,16 @@
 			employeeEmergencyDetailsTab.Size = new Size(485, 348);
 			employeeEmergencyDetailsTab.TabIndex = 1;
 			employeeEmergencyDetailsTab.Text = "🚑 Emergency Contact";
-			employeeEmergencyDetailsTab.UseVisualStyleBackColor = true;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label6.Location = new Point(114, 12);
+			label6.Name = "label6";
+			label6.Size = new Size(261, 32);
+			label6.TabIndex = 10;
+			label6.Text = "🚑 Emergency Contact";
 			// 
 			// previousBtnP2
 			// 
@@ -259,7 +284,7 @@
 			// emcLastNameBox
 			// 
 			emcLastNameBox.Font = new Font("Segoe UI", 15F);
-			emcLastNameBox.Location = new Point(274, 80);
+			emcLastNameBox.Location = new Point(274, 118);
 			emcLastNameBox.Name = "emcLastNameBox";
 			emcLastNameBox.Size = new Size(154, 34);
 			emcLastNameBox.TabIndex = 7;
@@ -267,7 +292,7 @@
 			// emcFirstNameBox
 			// 
 			emcFirstNameBox.Font = new Font("Segoe UI", 15F);
-			emcFirstNameBox.Location = new Point(46, 80);
+			emcFirstNameBox.Location = new Point(46, 118);
 			emcFirstNameBox.Name = "emcFirstNameBox";
 			emcFirstNameBox.Size = new Size(154, 34);
 			emcFirstNameBox.TabIndex = 6;
@@ -275,7 +300,7 @@
 			// emcEmailBox
 			// 
 			emcEmailBox.Font = new Font("Segoe UI", 15F);
-			emcEmailBox.Location = new Point(274, 194);
+			emcEmailBox.Location = new Point(274, 232);
 			emcEmailBox.Name = "emcEmailBox";
 			emcEmailBox.Size = new Size(154, 34);
 			emcEmailBox.TabIndex = 5;
@@ -283,7 +308,7 @@
 			// emcPhoneText
 			// 
 			emcPhoneText.Font = new Font("Segoe UI", 15F);
-			emcPhoneText.Location = new Point(46, 194);
+			emcPhoneText.Location = new Point(46, 232);
 			emcPhoneText.Name = "emcPhoneText";
 			emcPhoneText.Size = new Size(154, 34);
 			emcPhoneText.TabIndex = 4;
@@ -292,7 +317,7 @@
 			// 
 			emcEmail.AutoSize = true;
 			emcEmail.Font = new Font("Segoe UI", 15F);
-			emcEmail.Location = new Point(316, 149);
+			emcEmail.Location = new Point(316, 187);
 			emcEmail.Name = "emcEmail";
 			emcEmail.Size = new Size(59, 28);
 			emcEmail.TabIndex = 3;
@@ -302,7 +327,7 @@
 			// 
 			emcPhoneNum.AutoSize = true;
 			emcPhoneNum.Font = new Font("Segoe UI", 15F);
-			emcPhoneNum.Location = new Point(55, 149);
+			emcPhoneNum.Location = new Point(55, 187);
 			emcPhoneNum.Name = "emcPhoneNum";
 			emcPhoneNum.Size = new Size(144, 28);
 			emcPhoneNum.TabIndex = 2;
@@ -312,7 +337,7 @@
 			// 
 			emcLastName.AutoSize = true;
 			emcLastName.Font = new Font("Segoe UI", 15F);
-			emcLastName.Location = new Point(297, 37);
+			emcLastName.Location = new Point(297, 75);
 			emcLastName.Name = "emcLastName";
 			emcLastName.Size = new Size(103, 28);
 			emcLastName.TabIndex = 1;
@@ -322,7 +347,7 @@
 			// 
 			emcFirstName.AutoSize = true;
 			emcFirstName.Font = new Font("Segoe UI", 15F);
-			emcFirstName.Location = new Point(66, 37);
+			emcFirstName.Location = new Point(66, 75);
 			emcFirstName.Name = "emcFirstName";
 			emcFirstName.Size = new Size(106, 28);
 			emcFirstName.TabIndex = 0;
@@ -330,6 +355,8 @@
 			// 
 			// employeeDetailsTab
 			// 
+			employeeDetailsTab.BackColor = Color.White;
+			employeeDetailsTab.Controls.Add(label7);
 			employeeDetailsTab.Controls.Add(previousBtnP3);
 			employeeDetailsTab.Controls.Add(completeFormBtn);
 			employeeDetailsTab.Controls.Add(textBox7);
@@ -350,7 +377,16 @@
 			employeeDetailsTab.Size = new Size(485, 348);
 			employeeDetailsTab.TabIndex = 2;
 			employeeDetailsTab.Text = "👤 Personal Details";
-			employeeDetailsTab.UseVisualStyleBackColor = true;
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Font = new Font("Segoe UI", 18F);
+			label7.Location = new Point(135, 15);
+			label7.Name = "label7";
+			label7.Size = new Size(222, 32);
+			label7.TabIndex = 14;
+			label7.Text = "👤 Personal Details";
 			// 
 			// previousBtnP3
 			// 
@@ -392,7 +428,7 @@
 			// textBox7
 			// 
 			textBox7.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			textBox7.Location = new Point(279, 66);
+			textBox7.Location = new Point(277, 90);
 			textBox7.Name = "textBox7";
 			textBox7.Size = new Size(170, 33);
 			textBox7.TabIndex = 11;
@@ -400,7 +436,7 @@
 			// textBox6
 			// 
 			textBox6.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			textBox6.Location = new Point(38, 66);
+			textBox6.Location = new Point(36, 90);
 			textBox6.Name = "textBox6";
 			textBox6.Size = new Size(173, 33);
 			textBox6.TabIndex = 10;
@@ -408,7 +444,7 @@
 			// textBox5
 			// 
 			textBox5.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			textBox5.Location = new Point(38, 140);
+			textBox5.Location = new Point(36, 164);
 			textBox5.Name = "textBox5";
 			textBox5.Size = new Size(173, 33);
 			textBox5.TabIndex = 9;
@@ -416,7 +452,7 @@
 			// textBox4
 			// 
 			textBox4.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			textBox4.Location = new Point(272, 140);
+			textBox4.Location = new Point(270, 164);
 			textBox4.Name = "textBox4";
 			textBox4.Size = new Size(177, 33);
 			textBox4.TabIndex = 8;
@@ -424,7 +460,7 @@
 			// textBox3
 			// 
 			textBox3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			textBox3.Location = new Point(38, 221);
+			textBox3.Location = new Point(36, 245);
 			textBox3.Name = "textBox3";
 			textBox3.Size = new Size(173, 33);
 			textBox3.TabIndex = 7;
@@ -432,7 +468,7 @@
 			// dateTimePicker2
 			// 
 			dateTimePicker2.Font = new Font("Segoe UI", 12F);
-			dateTimePicker2.Location = new Point(272, 221);
+			dateTimePicker2.Location = new Point(270, 245);
 			dateTimePicker2.Name = "dateTimePicker2";
 			dateTimePicker2.Size = new Size(184, 29);
 			dateTimePicker2.TabIndex = 6;
@@ -441,7 +477,7 @@
 			// 
 			personalBirthday.AutoSize = true;
 			personalBirthday.Font = new Font("Microsoft Sans Serif", 12F);
-			personalBirthday.Location = new Point(313, 193);
+			personalBirthday.Location = new Point(311, 217);
 			personalBirthday.Name = "personalBirthday";
 			personalBirthday.Size = new Size(67, 20);
 			personalBirthday.TabIndex = 5;
@@ -451,7 +487,7 @@
 			// 
 			personalBsn.AutoSize = true;
 			personalBsn.Font = new Font("Microsoft Sans Serif", 12F);
-			personalBsn.Location = new Point(93, 193);
+			personalBsn.Location = new Point(91, 217);
 			personalBsn.Name = "personalBsn";
 			personalBsn.Size = new Size(42, 20);
 			personalBsn.TabIndex = 4;
@@ -461,7 +497,7 @@
 			// 
 			personalPassword.AutoSize = true;
 			personalPassword.Font = new Font("Microsoft Sans Serif", 12F);
-			personalPassword.Location = new Point(306, 112);
+			personalPassword.Location = new Point(304, 136);
 			personalPassword.Name = "personalPassword";
 			personalPassword.Size = new Size(78, 20);
 			personalPassword.TabIndex = 3;
@@ -471,7 +507,7 @@
 			// 
 			personalEmail.AutoSize = true;
 			personalEmail.Font = new Font("Microsoft Sans Serif", 12F);
-			personalEmail.Location = new Point(87, 112);
+			personalEmail.Location = new Point(85, 136);
 			personalEmail.Name = "personalEmail";
 			personalEmail.Size = new Size(48, 20);
 			personalEmail.TabIndex = 2;
@@ -481,7 +517,7 @@
 			// 
 			personalLastName.AutoSize = true;
 			personalLastName.Font = new Font("Microsoft Sans Serif", 12F);
-			personalLastName.Location = new Point(306, 38);
+			personalLastName.Location = new Point(304, 62);
 			personalLastName.Name = "personalLastName";
 			personalLastName.Size = new Size(86, 20);
 			personalLastName.TabIndex = 1;
@@ -491,7 +527,7 @@
 			// 
 			personalFirstName.AutoSize = true;
 			personalFirstName.Font = new Font("Microsoft Sans Serif", 12F);
-			personalFirstName.Location = new Point(64, 38);
+			personalFirstName.Location = new Point(62, 62);
 			personalFirstName.Name = "personalFirstName";
 			personalFirstName.Size = new Size(86, 20);
 			personalFirstName.TabIndex = 0;
@@ -555,5 +591,8 @@
 		private CustomButton completeFormBtn;
 		private CustomButton previousBtnP2;
 		private CustomButton previousBtnP3;
+		private Label label5;
+		private Label label6;
+		private Label label7;
 	}
 }
