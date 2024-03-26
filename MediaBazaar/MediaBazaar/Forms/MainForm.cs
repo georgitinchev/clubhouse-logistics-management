@@ -7,7 +7,6 @@ namespace MediaBazaar
     public partial class MainForm : Form
     {
         private EmployeeManager employeeManager;
-        private DatabaseOperations dbOperations;
         private List<Employee> employees;
         private UserControlDashboard userControlDashboard;
         private UserControlWorksheet userControlWorksheet;
@@ -16,7 +15,6 @@ namespace MediaBazaar
         {
             Application.EnableVisualStyles();
             InitializeComponent();
-            dbOperations = new DatabaseOperations();
             employeeManager = new EmployeeManager();
 
             userControlDashboard = new UserControlDashboard();
