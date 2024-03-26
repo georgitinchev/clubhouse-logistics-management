@@ -262,7 +262,7 @@
             comboBoxDepartment.FormattingEnabled = true;
             comboBoxDepartment.IntegralHeight = false;
             comboBoxDepartment.ItemHeight = 20;
-            comboBoxDepartment.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support ", "Cashier", "Security Guard", "Depot Worker" });
+            comboBoxDepartment.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
             comboBoxDepartment.Location = new Point(394, 99);
             comboBoxDepartment.Name = "comboBoxDepartment";
             comboBoxDepartment.Size = new Size(306, 28);

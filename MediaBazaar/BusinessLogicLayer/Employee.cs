@@ -56,14 +56,19 @@ namespace DTOLayer
 			return Id;
 		}
 
-		public string GetName()
+		public string GetFirstName()
 		{
-			return Name;
+			return FirstName;
 		}
 
-		public string GetUsername()
+        public string GetLastName()
+        {
+            return LastName;
+        }
+
+        public string GetUsername()
 		{
-			return Name.Replace(" ", "");
+			return FirstName + LastName.Replace(" ", "");
 		}
 
 		public bool ValidatePassword(string inputPassword)
