@@ -30,14 +30,13 @@ namespace MediaBazaar.Forms
             employeeData = new DataTable();
             employeeData.Columns.Add("Name", typeof(string));
             employeeData.Columns.Add("Email", typeof(string));
-            employeeData.Columns.Add("Department", typeof(string));
             employeeData.Columns.Add("Role", typeof(string));
             employeeData.Columns.Add("Worksheet", typeof(string));
 
-            employeeData.Rows.Add("John Doe", "john@example.com", "IT", "Developer", "A");
-            employeeData.Rows.Add("Jane Smith", "jane@example.com", "HR", "Manager", "B");
-            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Finance", "Accountant", "C");
-            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing", "Marketing Specialist", "D");
+            employeeData.Rows.Add("John Doe", "john@example.com", "Developer", "A");
+            employeeData.Rows.Add("Jane Smith", "jane@example.com", "Manager", "B");
+            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Accountant", "C");
+            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing Specialist", "D");
         }
 
         private void InitializeDataGridView()
@@ -46,7 +45,7 @@ namespace MediaBazaar.Forms
             userDataGridView.DataSource = employeeData;
             userDataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             userDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            userDataGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            userDataGridView.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)
@@ -102,6 +101,8 @@ namespace MediaBazaar.Forms
             {
                 var query = from row in employeeData.AsEnumerable()
                             where row.Field<string>("Name").Contains(searchTerm)
+                            where row.Field<string>("Email").Contains(searchTerm)
+                            where row.Field<string>("Email").Contains(searchTerm)
                             select row;
 
                 DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
@@ -111,6 +112,11 @@ namespace MediaBazaar.Forms
             {
                 userDataGridView.DataSource = employeeData;
             }
+        }
+
+        private void comboBoxDepartment_Click(object sender, EventArgs e)
+        {
+            comboBoxDepartment.DroppedDown = true;
         }
     }
 }

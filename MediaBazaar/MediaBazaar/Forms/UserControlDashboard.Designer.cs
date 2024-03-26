@@ -262,12 +262,13 @@
             comboBoxDepartment.FormattingEnabled = true;
             comboBoxDepartment.IntegralHeight = false;
             comboBoxDepartment.ItemHeight = 20;
-            comboBoxDepartment.Items.AddRange(new object[] { "Human Resourses", "Customer Service", "Security", "Logistic Department" });
+            comboBoxDepartment.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support ", "Cashier", "Security Guard", "Depot Worker" });
             comboBoxDepartment.Location = new Point(394, 99);
             comboBoxDepartment.Name = "comboBoxDepartment";
             comboBoxDepartment.Size = new Size(306, 28);
             comboBoxDepartment.TabIndex = 18;
-            comboBoxDepartment.Text = "Department";
+            comboBoxDepartment.Text = "Role";
+            comboBoxDepartment.Click += comboBoxDepartment_Click;
             // 
             // textBoxSearch
             // 
