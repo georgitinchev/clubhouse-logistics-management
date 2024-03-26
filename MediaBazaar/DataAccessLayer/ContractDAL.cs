@@ -102,6 +102,34 @@ namespace DataAccessLayer
             }
         }
 
+        public List<ContractDTO> GetAllContracts()
+        {
+            var contracts = new List<ContractDTO>();
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT * FROM Contract", connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        contracts.Add(new ContractDTO
+                        {
+                            Id = (int)reader["Id"],
+                            Role = (int)reader["Role"],
+                            HourlyWage = (decimal)reader["HourlyWage"],
+                            WeeklyHours = (int)reader["WeeklyHours"],
+                            StartDate = (DateTime)reader["StartDate"],
+                            EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
+                            IsActive = (bool)reader["IsActive"],
+                            TerminationReason = reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
+                            Availability = (DateTime)reader["Availability"],
+                           
+                        });
+                    }
+                }
+            }
+            return contracts;
+        }
 
     }
 }
