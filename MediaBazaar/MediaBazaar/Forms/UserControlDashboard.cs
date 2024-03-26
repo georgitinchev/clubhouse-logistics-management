@@ -11,8 +11,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MediaBazaar.Forms
 {
-    public partial class UserControlDashboard : UserControl
-    {
+	public partial class UserControlDashboard : UserControl
+	{
 
         public UserControlDashboard()
         {
@@ -22,32 +22,32 @@ namespace MediaBazaar.Forms
             InitializeFocus();
         }
 
-        private DataTable employeeData;
+		private DataTable employeeData;
 
-        private void InitializeData()
-        {
-            // Sample data - replace this with actual data source
-            employeeData = new DataTable();
-            employeeData.Columns.Add("Name", typeof(string));
-            employeeData.Columns.Add("Email", typeof(string));
-            employeeData.Columns.Add("Department", typeof(string));
-            employeeData.Columns.Add("Role", typeof(string));
-            employeeData.Columns.Add("Worksheet", typeof(string));
+		private void InitializeData()
+		{
+			// Sample data - replace this with actual data source
+			employeeData = new DataTable();
+			employeeData.Columns.Add("Name", typeof(string));
+			employeeData.Columns.Add("Email", typeof(string));
+			employeeData.Columns.Add("Department", typeof(string));
+			employeeData.Columns.Add("Role", typeof(string));
+			employeeData.Columns.Add("Worksheet", typeof(string));
 
-            employeeData.Rows.Add("John Doe", "john@example.com", "IT", "Developer", "A");
-            employeeData.Rows.Add("Jane Smith", "jane@example.com", "HR", "Manager", "B");
-            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Finance", "Accountant", "C");
-            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing", "Marketing Specialist", "D");
-        }
+			employeeData.Rows.Add("John Doe", "john@example.com", "IT", "Developer", "A");
+			employeeData.Rows.Add("Jane Smith", "jane@example.com", "HR", "Manager", "B");
+			employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Finance", "Accountant", "C");
+			employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing", "Marketing Specialist", "D");
+		}
 
-        private void InitializeDataGridView()
-        {
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = employeeData;
-            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        }
+		private void InitializeDataGridView()
+		{
+			userDataGridView.AutoGenerateColumns = true;
+			userDataGridView.DataSource = employeeData;
+			userDataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+			userDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			userDataGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+		}
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
@@ -62,13 +62,13 @@ namespace MediaBazaar.Forms
 
         private string placeholder = "Search...";
 
-        private void textBoxSearch_GotFocus(object sender, EventArgs e)
-        {
-            if (textBoxSearch.Text == placeholder)
-            {
-                textBoxSearch.Text = "";
-            }
-        }
+		private void textBoxSearch_GotFocus(object sender, EventArgs e)
+		{
+			if (textBoxSearch.Text == placeholder)
+			{
+				textBoxSearch.Text = "";
+			}
+		}
 
         private void textBoxSearch_LostFocus(object sender, EventArgs e)
         {
