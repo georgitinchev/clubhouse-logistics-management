@@ -30,7 +30,7 @@
 		{
 			addEmployeeTabControl = new TabControl();
 			employeeContractTab = new TabPage();
-			customButton1 = new CustomButton();
+			nextBtnP1 = new CustomButton();
 			label4 = new Label();
 			dateTimePicker1 = new DateTimePicker();
 			textBox2 = new TextBox();
@@ -40,7 +40,8 @@
 			label1 = new Label();
 			comboBox1 = new ComboBox();
 			employeeEmergencyDetailsTab = new TabPage();
-			customButton2 = new CustomButton();
+			previousBtnP2 = new CustomButton();
+			nextBtnP2 = new CustomButton();
 			emcLastNameBox = new TextBox();
 			emcFirstNameBox = new TextBox();
 			emcEmailBox = new TextBox();
@@ -50,6 +51,8 @@
 			emcLastName = new Label();
 			emcFirstName = new Label();
 			employeeDetailsTab = new TabPage();
+			previousBtnP3 = new CustomButton();
+			completeFormBtn = new CustomButton();
 			textBox7 = new TextBox();
 			textBox6 = new TextBox();
 			textBox5 = new TextBox();
@@ -62,7 +65,6 @@
 			personalEmail = new Label();
 			personalLastName = new Label();
 			personalFirstName = new Label();
-			customButton3 = new CustomButton();
 			addEmployeeTabControl.SuspendLayout();
 			employeeContractTab.SuspendLayout();
 			employeeEmergencyDetailsTab.SuspendLayout();
@@ -75,7 +77,7 @@
 			addEmployeeTabControl.Controls.Add(employeeContractTab);
 			addEmployeeTabControl.Controls.Add(employeeEmergencyDetailsTab);
 			addEmployeeTabControl.Controls.Add(employeeDetailsTab);
-			addEmployeeTabControl.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			addEmployeeTabControl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			addEmployeeTabControl.ItemSize = new Size(30, 30);
 			addEmployeeTabControl.Location = new Point(11, 12);
 			addEmployeeTabControl.Name = "addEmployeeTabControl";
@@ -87,7 +89,7 @@
 			// employeeContractTab
 			// 
 			employeeContractTab.BackColor = Color.White;
-			employeeContractTab.Controls.Add(customButton1);
+			employeeContractTab.Controls.Add(nextBtnP1);
 			employeeContractTab.Controls.Add(label4);
 			employeeContractTab.Controls.Add(dateTimePicker1);
 			employeeContractTab.Controls.Add(textBox2);
@@ -103,38 +105,39 @@
 			employeeContractTab.TabIndex = 0;
 			employeeContractTab.Text = "📝 Contract Details";
 			// 
-			// customButton1
+			// nextBtnP1
 			// 
-			customButton1.BackColor = Color.DarkOrange;
-			customButton1.BackgroundColor = Color.DarkOrange;
-			customButton1.BorderColor = Color.White;
-			customButton1.BorderRadius = 15;
-			customButton1.BorderSize = 1;
-			customButton1.FlatStyle = FlatStyle.Flat;
-			customButton1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
-			customButton1.ForeColor = Color.White;
-			customButton1.Location = new Point(145, 260);
-			customButton1.Name = "customButton1";
-			customButton1.Size = new Size(150, 40);
-			customButton1.TabIndex = 8;
-			customButton1.Text = "Next";
-			customButton1.TextColor = Color.White;
-			customButton1.UseVisualStyleBackColor = false;
+			nextBtnP1.BackColor = Color.DarkOrange;
+			nextBtnP1.BackgroundColor = Color.DarkOrange;
+			nextBtnP1.BorderColor = Color.White;
+			nextBtnP1.BorderRadius = 15;
+			nextBtnP1.BorderSize = 1;
+			nextBtnP1.FlatStyle = FlatStyle.Flat;
+			nextBtnP1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+			nextBtnP1.ForeColor = Color.White;
+			nextBtnP1.Location = new Point(373, 301);
+			nextBtnP1.Name = "nextBtnP1";
+			nextBtnP1.Size = new Size(106, 41);
+			nextBtnP1.TabIndex = 8;
+			nextBtnP1.Text = "Next ➜";
+			nextBtnP1.TextColor = Color.White;
+			nextBtnP1.UseVisualStyleBackColor = false;
+			nextBtnP1.Click += nextBtnP1_Click;
 			// 
 			// label4
 			// 
 			label4.AutoSize = true;
-			label4.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-			label4.Location = new Point(66, 36);
+			label4.Font = new Font("Segoe UI", 14.25F);
+			label4.Location = new Point(69, 63);
 			label4.Name = "label4";
-			label4.Size = new Size(110, 28);
+			label4.Size = new Size(94, 25);
 			label4.TabIndex = 7;
 			label4.Text = "Start Date";
 			// 
 			// dateTimePicker1
 			// 
 			dateTimePicker1.CalendarFont = new Font("Segoe UI", 12F);
-			dateTimePicker1.Location = new Point(47, 73);
+			dateTimePicker1.Location = new Point(50, 100);
 			dateTimePicker1.Name = "dateTimePicker1";
 			dateTimePicker1.Size = new Size(148, 27);
 			dateTimePicker1.TabIndex = 6;
@@ -142,7 +145,7 @@
 			// textBox2
 			// 
 			textBox2.Font = new Font("Segoe UI", 12F);
-			textBox2.Location = new Point(47, 180);
+			textBox2.Location = new Point(50, 207);
 			textBox2.Name = "textBox2";
 			textBox2.Size = new Size(148, 29);
 			textBox2.TabIndex = 5;
@@ -150,18 +153,17 @@
 			// label3
 			// 
 			label3.AutoSize = true;
-			label3.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-			label3.Location = new Point(47, 140);
+			label3.Font = new Font("Segoe UI", 14.25F);
+			label3.Location = new Point(59, 167);
 			label3.Name = "label3";
-			label3.Size = new Size(143, 28);
+			label3.Size = new Size(127, 25);
 			label3.TabIndex = 4;
 			label3.Text = "Weekly Hours";
-			label3.Click += label3_Click;
 			// 
 			// textBox1
 			// 
 			textBox1.Font = new Font("Segoe UI", 12F);
-			textBox1.Location = new Point(254, 180);
+			textBox1.Location = new Point(257, 207);
 			textBox1.Name = "textBox1";
 			textBox1.Size = new Size(157, 29);
 			textBox1.TabIndex = 3;
@@ -169,20 +171,20 @@
 			// label2
 			// 
 			label2.AutoSize = true;
-			label2.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-			label2.Location = new Point(271, 140);
+			label2.Font = new Font("Segoe UI", 14.25F);
+			label2.Location = new Point(274, 167);
 			label2.Name = "label2";
-			label2.Size = new Size(135, 28);
+			label2.Size = new Size(121, 25);
 			label2.TabIndex = 2;
 			label2.Text = "Hourly Wage";
 			// 
 			// label1
 			// 
 			label1.AutoSize = true;
-			label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
-			label1.Location = new Point(254, 36);
+			label1.Font = new Font("Segoe UI", 14.25F);
+			label1.Location = new Point(274, 63);
 			label1.Name = "label1";
-			label1.Size = new Size(152, 28);
+			label1.Size = new Size(135, 25);
 			label1.TabIndex = 1;
 			label1.Text = "Employee Role";
 			// 
@@ -190,14 +192,15 @@
 			// 
 			comboBox1.Font = new Font("Segoe UI", 12F);
 			comboBox1.FormattingEnabled = true;
-			comboBox1.Location = new Point(254, 73);
+			comboBox1.Location = new Point(257, 100);
 			comboBox1.Name = "comboBox1";
 			comboBox1.Size = new Size(157, 29);
 			comboBox1.TabIndex = 0;
 			// 
 			// employeeEmergencyDetailsTab
 			// 
-			employeeEmergencyDetailsTab.Controls.Add(customButton2);
+			employeeEmergencyDetailsTab.Controls.Add(previousBtnP2);
+			employeeEmergencyDetailsTab.Controls.Add(nextBtnP2);
 			employeeEmergencyDetailsTab.Controls.Add(emcLastNameBox);
 			employeeEmergencyDetailsTab.Controls.Add(emcFirstNameBox);
 			employeeEmergencyDetailsTab.Controls.Add(emcEmailBox);
@@ -215,22 +218,43 @@
 			employeeEmergencyDetailsTab.Text = "🚑 Emergency Contact";
 			employeeEmergencyDetailsTab.UseVisualStyleBackColor = true;
 			// 
-			// customButton2
+			// previousBtnP2
 			// 
-			customButton2.BackColor = Color.DarkOrange;
-			customButton2.BackgroundColor = Color.DarkOrange;
-			customButton2.BorderColor = Color.White;
-			customButton2.BorderRadius = 15;
-			customButton2.BorderSize = 1;
-			customButton2.FlatStyle = FlatStyle.Flat;
-			customButton2.ForeColor = Color.White;
-			customButton2.Location = new Point(164, 277);
-			customButton2.Name = "customButton2";
-			customButton2.Size = new Size(150, 40);
-			customButton2.TabIndex = 8;
-			customButton2.Text = "Next";
-			customButton2.TextColor = Color.White;
-			customButton2.UseVisualStyleBackColor = false;
+			previousBtnP2.BackColor = Color.DarkOrange;
+			previousBtnP2.BackgroundColor = Color.DarkOrange;
+			previousBtnP2.BorderColor = Color.White;
+			previousBtnP2.BorderRadius = 15;
+			previousBtnP2.BorderSize = 1;
+			previousBtnP2.FlatStyle = FlatStyle.Flat;
+			previousBtnP2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			previousBtnP2.ForeColor = Color.White;
+			previousBtnP2.Location = new Point(6, 302);
+			previousBtnP2.Name = "previousBtnP2";
+			previousBtnP2.Size = new Size(111, 40);
+			previousBtnP2.TabIndex = 9;
+			previousBtnP2.Text = "⬅️ Previous";
+			previousBtnP2.TextColor = Color.White;
+			previousBtnP2.UseVisualStyleBackColor = false;
+			previousBtnP2.Click += previousBtn_Click;
+			// 
+			// nextBtnP2
+			// 
+			nextBtnP2.BackColor = Color.DarkOrange;
+			nextBtnP2.BackgroundColor = Color.DarkOrange;
+			nextBtnP2.BorderColor = Color.White;
+			nextBtnP2.BorderRadius = 15;
+			nextBtnP2.BorderSize = 1;
+			nextBtnP2.FlatStyle = FlatStyle.Flat;
+			nextBtnP2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			nextBtnP2.ForeColor = Color.White;
+			nextBtnP2.Location = new Point(368, 302);
+			nextBtnP2.Name = "nextBtnP2";
+			nextBtnP2.Size = new Size(111, 40);
+			nextBtnP2.TabIndex = 8;
+			nextBtnP2.Text = "Next ➜";
+			nextBtnP2.TextColor = Color.White;
+			nextBtnP2.UseVisualStyleBackColor = false;
+			nextBtnP2.Click += nextBtnP2_Click;
 			// 
 			// emcLastNameBox
 			// 
@@ -255,7 +279,6 @@
 			emcEmailBox.Name = "emcEmailBox";
 			emcEmailBox.Size = new Size(154, 34);
 			emcEmailBox.TabIndex = 5;
-			emcEmailBox.TextChanged += emcEmailBox_TextChanged;
 			// 
 			// emcPhoneText
 			// 
@@ -268,46 +291,47 @@
 			// emcEmail
 			// 
 			emcEmail.AutoSize = true;
-			emcEmail.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			emcEmail.Font = new Font("Segoe UI", 15F);
 			emcEmail.Location = new Point(316, 149);
 			emcEmail.Name = "emcEmail";
-			emcEmail.Size = new Size(64, 28);
+			emcEmail.Size = new Size(59, 28);
 			emcEmail.TabIndex = 3;
 			emcEmail.Text = "Email";
 			// 
 			// emcPhoneNum
 			// 
 			emcPhoneNum.AutoSize = true;
-			emcPhoneNum.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			emcPhoneNum.Location = new Point(45, 149);
+			emcPhoneNum.Font = new Font("Segoe UI", 15F);
+			emcPhoneNum.Location = new Point(55, 149);
 			emcPhoneNum.Name = "emcPhoneNum";
-			emcPhoneNum.Size = new Size(154, 28);
+			emcPhoneNum.Size = new Size(144, 28);
 			emcPhoneNum.TabIndex = 2;
 			emcPhoneNum.Text = "Phone Number";
 			// 
 			// emcLastName
 			// 
 			emcLastName.AutoSize = true;
-			emcLastName.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			emcLastName.Location = new Point(290, 37);
+			emcLastName.Font = new Font("Segoe UI", 15F);
+			emcLastName.Location = new Point(297, 37);
 			emcLastName.Name = "emcLastName";
-			emcLastName.Size = new Size(112, 28);
+			emcLastName.Size = new Size(103, 28);
 			emcLastName.TabIndex = 1;
 			emcLastName.Text = "Last Name";
 			// 
 			// emcFirstName
 			// 
 			emcFirstName.AutoSize = true;
-			emcFirstName.Font = new Font("Segoe UI", 15F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			emcFirstName.Location = new Point(55, 37);
+			emcFirstName.Font = new Font("Segoe UI", 15F);
+			emcFirstName.Location = new Point(66, 37);
 			emcFirstName.Name = "emcFirstName";
-			emcFirstName.Size = new Size(115, 28);
+			emcFirstName.Size = new Size(106, 28);
 			emcFirstName.TabIndex = 0;
 			emcFirstName.Text = "First Name";
 			// 
 			// employeeDetailsTab
 			// 
-			employeeDetailsTab.Controls.Add(customButton3);
+			employeeDetailsTab.Controls.Add(previousBtnP3);
+			employeeDetailsTab.Controls.Add(completeFormBtn);
 			employeeDetailsTab.Controls.Add(textBox7);
 			employeeDetailsTab.Controls.Add(textBox6);
 			employeeDetailsTab.Controls.Add(textBox5);
@@ -327,6 +351,43 @@
 			employeeDetailsTab.TabIndex = 2;
 			employeeDetailsTab.Text = "👤 Personal Details";
 			employeeDetailsTab.UseVisualStyleBackColor = true;
+			// 
+			// previousBtnP3
+			// 
+			previousBtnP3.BackColor = Color.DarkOrange;
+			previousBtnP3.BackgroundColor = Color.DarkOrange;
+			previousBtnP3.BorderColor = Color.White;
+			previousBtnP3.BorderRadius = 15;
+			previousBtnP3.BorderSize = 1;
+			previousBtnP3.FlatStyle = FlatStyle.Flat;
+			previousBtnP3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+			previousBtnP3.ForeColor = Color.White;
+			previousBtnP3.Location = new Point(6, 308);
+			previousBtnP3.Name = "previousBtnP3";
+			previousBtnP3.Size = new Size(129, 34);
+			previousBtnP3.TabIndex = 13;
+			previousBtnP3.Text = "⬅️ Previous";
+			previousBtnP3.TextColor = Color.White;
+			previousBtnP3.UseVisualStyleBackColor = false;
+			// 
+			// completeFormBtn
+			// 
+			completeFormBtn.BackColor = Color.DarkOrange;
+			completeFormBtn.BackgroundColor = Color.DarkOrange;
+			completeFormBtn.BorderColor = Color.White;
+			completeFormBtn.BorderRadius = 15;
+			completeFormBtn.BorderSize = 1;
+			completeFormBtn.FlatStyle = FlatStyle.Flat;
+			completeFormBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+			completeFormBtn.ForeColor = Color.White;
+			completeFormBtn.Location = new Point(316, 308);
+			completeFormBtn.Name = "completeFormBtn";
+			completeFormBtn.Size = new Size(166, 37);
+			completeFormBtn.TabIndex = 12;
+			completeFormBtn.Text = "Complete Form";
+			completeFormBtn.TextColor = Color.White;
+			completeFormBtn.UseVisualStyleBackColor = false;
+			completeFormBtn.Click += completeFormBtn_Click;
 			// 
 			// textBox7
 			// 
@@ -379,81 +440,62 @@
 			// personalBirthday
 			// 
 			personalBirthday.AutoSize = true;
-			personalBirthday.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+			personalBirthday.Font = new Font("Microsoft Sans Serif", 12F);
 			personalBirthday.Location = new Point(313, 193);
 			personalBirthday.Name = "personalBirthday";
-			personalBirthday.Size = new Size(88, 25);
+			personalBirthday.Size = new Size(67, 20);
 			personalBirthday.TabIndex = 5;
 			personalBirthday.Text = "Birthday";
 			// 
 			// personalBsn
 			// 
 			personalBsn.AutoSize = true;
-			personalBsn.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			personalBsn.Location = new Point(87, 193);
+			personalBsn.Font = new Font("Microsoft Sans Serif", 12F);
+			personalBsn.Location = new Point(93, 193);
 			personalBsn.Name = "personalBsn";
-			personalBsn.Size = new Size(50, 25);
+			personalBsn.Size = new Size(42, 20);
 			personalBsn.TabIndex = 4;
 			personalBsn.Text = "BSN";
-			personalBsn.Click += personalBsn_Click;
 			// 
 			// personalPassword
 			// 
 			personalPassword.AutoSize = true;
-			personalPassword.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+			personalPassword.Font = new Font("Microsoft Sans Serif", 12F);
 			personalPassword.Location = new Point(306, 112);
 			personalPassword.Name = "personalPassword";
-			personalPassword.Size = new Size(97, 25);
+			personalPassword.Size = new Size(78, 20);
 			personalPassword.TabIndex = 3;
 			personalPassword.Text = "Password";
 			// 
 			// personalEmail
 			// 
 			personalEmail.AutoSize = true;
-			personalEmail.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+			personalEmail.Font = new Font("Microsoft Sans Serif", 12F);
 			personalEmail.Location = new Point(87, 112);
 			personalEmail.Name = "personalEmail";
-			personalEmail.Size = new Size(59, 25);
+			personalEmail.Size = new Size(48, 20);
 			personalEmail.TabIndex = 2;
 			personalEmail.Text = "Email";
 			// 
 			// personalLastName
 			// 
 			personalLastName.AutoSize = true;
-			personalLastName.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+			personalLastName.Font = new Font("Microsoft Sans Serif", 12F);
 			personalLastName.Location = new Point(306, 38);
 			personalLastName.Name = "personalLastName";
-			personalLastName.Size = new Size(104, 25);
+			personalLastName.Size = new Size(86, 20);
 			personalLastName.TabIndex = 1;
 			personalLastName.Text = "Last Name";
 			// 
 			// personalFirstName
 			// 
 			personalFirstName.AutoSize = true;
-			personalFirstName.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
+			personalFirstName.Font = new Font("Microsoft Sans Serif", 12F);
 			personalFirstName.Location = new Point(64, 38);
 			personalFirstName.Name = "personalFirstName";
-			personalFirstName.Size = new Size(107, 25);
+			personalFirstName.Size = new Size(86, 20);
 			personalFirstName.TabIndex = 0;
 			personalFirstName.Text = "First Name";
-			// 
-			// customButton3
-			// 
-			customButton3.BackColor = Color.DarkOrange;
-			customButton3.BackgroundColor = Color.DarkOrange;
-			customButton3.BorderColor = Color.White;
-			customButton3.BorderRadius = 15;
-			customButton3.BorderSize = 1;
-			customButton3.FlatStyle = FlatStyle.Flat;
-			customButton3.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold);
-			customButton3.ForeColor = Color.White;
-			customButton3.Location = new Point(139, 275);
-			customButton3.Name = "customButton3";
-			customButton3.Size = new Size(219, 54);
-			customButton3.TabIndex = 12;
-			customButton3.Text = "Complete Form";
-			customButton3.TextColor = Color.White;
-			customButton3.UseVisualStyleBackColor = false;
 			// 
 			// AddEmployeeForm
 			// 
@@ -488,7 +530,7 @@
 		private Label label2;
 		private Label label1;
 		private ComboBox comboBox1;
-		private CustomButton customButton1;
+		private CustomButton nextBtnP1;
 		private Label emcFirstName;
 		private Label emcEmail;
 		private Label emcPhoneNum;
@@ -509,7 +551,9 @@
 		private TextBox textBox5;
 		private TextBox textBox4;
 		private TextBox textBox3;
-		private CustomButton customButton2;
-		private CustomButton customButton3;
+		private CustomButton nextBtnP2;
+		private CustomButton completeFormBtn;
+		private CustomButton previousBtnP2;
+		private CustomButton previousBtnP3;
 	}
 }
