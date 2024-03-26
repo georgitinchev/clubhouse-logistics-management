@@ -10,7 +10,7 @@ namespace DTOLayer
     {
         public WorkingTime timeSlot;
         public WeekDayEnum weekDay;
-        public Employee employee;
+        public int employeeId;
         public int weekNr;
     }
 }
