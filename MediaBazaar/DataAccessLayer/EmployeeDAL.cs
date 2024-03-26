@@ -28,8 +28,8 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
                 command.Parameters.AddWithValue("@Bsn", employee.BSN); // Added Bsn here
                 command.Parameters.AddWithValue("@Role", employee.Role);
-                command.Parameters.AddWithValue("@ActiveContractId", (object)employee.ActiveContractId ?? DBNull.Value); // Use DBNull for nullable foreign keys
-                command.Parameters.AddWithValue("@EmergencyContactId", (object)employee.EmergencyContactId ?? DBNull.Value);
+                //command.Parameters.AddWithValue("@ActiveContractId", (object)employee.ActiveContractId ?? DBNull.Value); // Use DBNull for nullable foreign keys
+                //command.Parameters.AddWithValue("@EmergencyContactId", (object)employee.EmergencyContactId ?? DBNull.Value);
 
                 command.ExecuteNonQuery();
             }
