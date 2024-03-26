@@ -107,7 +107,6 @@
 			removeEmployeeBtn.Text = "Remove Employee";
 			removeEmployeeBtn.TextColor = Color.White;
 			removeEmployeeBtn.UseVisualStyleBackColor = false;
-			removeEmployeeBtn.Click += removeEmployeeBtn_Click;
 			// 
 			// editEmployeeBtn
 			// 
@@ -126,7 +125,6 @@
 			editEmployeeBtn.Text = "Edit Employee";
 			editEmployeeBtn.TextColor = Color.White;
 			editEmployeeBtn.UseVisualStyleBackColor = false;
-			editEmployeeBtn.Click += editEmployeeBtn_Click;
 			// 
 			// pictureBox2
 			// 
@@ -289,7 +287,6 @@
 			textBoxSearch.Size = new Size(313, 23);
 			textBoxSearch.TabIndex = 17;
 			textBoxSearch.Text = "Search";
-			textBoxSearch.Click += textBoxSearch_Click;
 			// 
 			// addEmployeeBtn
 			// 
@@ -308,7 +305,6 @@
 			addEmployeeBtn.Text = "Add Employee";
 			addEmployeeBtn.TextColor = Color.White;
 			addEmployeeBtn.UseVisualStyleBackColor = false;
-			addEmployeeBtn.Click += addEmployeeBtn_Click;
 			// 
 			// UserControlDashboard
 			// 
