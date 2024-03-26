@@ -8,9 +8,10 @@ namespace DTOLayer
 {
     public class WorksheetDTO
     {
-        public WorkingTime timeSlot;
-        public WeekDayEnum weekDay;
-        public int employeeId;
-        public int weekNr;
+        public int TimeSlot {  get; set; }
+        public int WeekDay {  get; set; }
+        public int Id { get; set; }
+        public int EmployeeId {  get; set; }
+        public int WeekNr {  get; set; }
     }
 }

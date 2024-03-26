@@ -9,9 +9,10 @@ namespace MediaBazaar.Classes
 {
     public class EmergencyContact
     {
-        private string firstName;
-        private string lastName;
-        private string phoneNumber;
-        private string email;
+        private string FirstName;
+        private string LastName;
+        private string PhoneNumber;
+        private string Email;
+        private int Id;
     }
 }

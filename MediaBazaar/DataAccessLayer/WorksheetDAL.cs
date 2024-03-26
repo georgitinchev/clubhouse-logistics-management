@@ -1,5 +1,7 @@
-﻿using System;
+﻿using DTOLayer;
+using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +10,101 @@ namespace DataAccessLayer
 {
     public class WorksheetDAL : Database
     {
-        public WorksheetDAL() : base() { }
+        public void CreateWorksheet(WorksheetDTO worksheet)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand(
+                    "INSERT INTO EmployeeWorksheet (TimeSlot, WeekDay, EmployeeId, WeekNr) " +
+                    "VALUES (@TimeSlot, @WeekDay, @EmployeeId, @WeekNr)", connection);
+
+                command.Parameters.AddWithValue("@TimeSlot", worksheet.TimeSlot);
+                command.Parameters.AddWithValue("@WeekDay", worksheet.WeekDay);
+                command.Parameters.AddWithValue("@EmployeeId", worksheet.EmployeeId);
+                command.Parameters.AddWithValue("@WeekNr", worksheet.WeekNr);
+
+                command.ExecuteNonQuery();
+            }
+        }
+        public WorksheetDTO ReadWorksheet(int id)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT * FROM EmployeeWorksheet WHERE Id = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        return new WorksheetDTO
+                        {
+                            Id = (int)reader["Id"],
+                            TimeSlot = (int)reader["TimeSlot"],
+                            WeekDay = (int)reader["WeekDay"],
+                            EmployeeId = (int)reader["EmployeeId"],
+                            WeekNr = (int)reader["WeekNr"]
+                        };
+                    }
+                    else
+                    {
+                        return null;
+                    }
+                }
+            }
+        }
+
+        public void UpdateWorksheet(WorksheetDTO worksheet)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand(
+                    "UPDATE EmployeeWorksheet SET TimeSlot = @TimeSlot, WeekDay = @WeekDay, " +
+                    "EmployeeId = @EmployeeId, WeekNr = @WeekNr WHERE Id = @Id", connection);
+
+                command.Parameters.AddWithValue("@Id", worksheet.Id);
+                command.Parameters.AddWithValue("@TimeSlot", worksheet.TimeSlot);
+                command.Parameters.AddWithValue("@WeekDay", worksheet.WeekDay);
+                command.Parameters.AddWithValue("@EmployeeId", worksheet.EmployeeId);
+                command.Parameters.AddWithValue("@WeekNr", worksheet.WeekNr);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void DeleteWorksheet(int id)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("DELETE FROM EmployeeWorksheet WHERE Id = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public List<WorksheetDTO> GetAllWorksheets()
+        {
+            var worksheets = new List<WorksheetDTO>();
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT * FROM EmployeeWorksheet", connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        worksheets.Add(new WorksheetDTO
+                        {
+                            Id = (int)reader["Id"],
+                            TimeSlot = (int)reader["TimeSlot"],
+                            WeekDay = (int)reader["WeekDay"],
+                            EmployeeId = (int)reader["EmployeeId"],
+                            WeekNr = (int)reader["WeekNr"]
+                        });
+                    }
+                }
+            }
+            return worksheets;
+        }
     }
 }

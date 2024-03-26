@@ -22,14 +22,14 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@FirstName", employee.FirstName);
                 command.Parameters.AddWithValue("@LastName", employee.LastName);
                 command.Parameters.AddWithValue("@Email", employee.Email);
-                command.Parameters.AddWithValue("@Password", employee.Password); // Consider hashing this value before storing
+                command.Parameters.AddWithValue("@Password", employee.Password); 
                 command.Parameters.AddWithValue("@Birthday", employee.Birthday);
                 command.Parameters.AddWithValue("@Address", employee.Address);
                 command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
-                command.Parameters.AddWithValue("@Bsn", employee.BSN); // Added Bsn here
+                command.Parameters.AddWithValue("@Bsn", employee.BSN); 
                 command.Parameters.AddWithValue("@Role", employee.Role);
-                //command.Parameters.AddWithValue("@ActiveContractId", (object)employee.ActiveContractId ?? DBNull.Value); // Use DBNull for nullable foreign keys
-                //command.Parameters.AddWithValue("@EmergencyContactId", (object)employee.EmergencyContactId ?? DBNull.Value);
+                command.Parameters.AddWithValue("@ActiveContractId", employee.ActiveContractId);
+                command.Parameters.AddWithValue("EmergencyContactId", employee.EmergencyContactId);
 
                 command.ExecuteNonQuery();
             }
@@ -104,7 +104,37 @@ namespace DataAccessLayer
             }
         }
 
-
+        public List<EmployeeDTO> GetAllEmployees()
+        {
+            var employees = new List<EmployeeDTO>();
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT * FROM Employee", connection);
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        employees.Add(new EmployeeDTO
+                        {
+                            Id = (int)reader["Id"],
+                            FirstName = reader["FirstName"].ToString(),
+                            LastName = reader["LastName"].ToString(),
+                            Email = reader["Email"].ToString(),
+                            Password = reader["Password"].ToString(), 
+                            Birthday = (DateTime)reader["Birthday"],
+                            Address = reader["Address"].ToString(),
+                            PhoneNumber = reader["PhoneNumber"].ToString(),
+                            BSN = reader["Bsn"].ToString(),
+                            Role = (int)reader["Role"],
+                            ActiveContractId = (int)reader["ActiveContractID"],
+                            EmergencyContactId = (int)reader["EmergencyContactId"],
+                            
+                        });
+                    }
+                }
+            }
+            return employees;
+        }
 
 
     }
