@@ -12,13 +12,13 @@ namespace DataAccessLayer
     {
         public EmployeeDAL() : base() { }
 
-        public void AddEmployee(Employee employee)
-        {
-            using (SqlConnection connection = OpenConnection())
-            {
-                string sqlCmd = "INSERT INTO [";
-            }
-        }
+        //public void AddEmployee(Employee employee)
+        //{
+        //    using (SqlConnection connection = OpenConnection())
+        //    {
+        //        string sqlCmd = "INSERT INTO [";
+        //    }
+        //}
 
 
     }

@@ -11,88 +11,103 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MediaBazaar.Forms
 {
-    public partial class UserControlDashboard : UserControl
-    {
+	public partial class UserControlDashboard : UserControl
+	{
 
-        public UserControlDashboard()
-        {
-            InitializeComponent();
-            InitializeData();
-            InitializeDataGridView();
-        }
+		public UserControlDashboard()
+		{
+			InitializeComponent();
+			InitializeData();
+			InitializeDataGridView();
+		}
 
-        private DataTable employeeData;
+		private DataTable employeeData;
 
-        private void InitializeData()
-        {
-            // Sample data - replace this with actual data source
-            employeeData = new DataTable();
-            employeeData.Columns.Add("Name", typeof(string));
-            employeeData.Columns.Add("Email", typeof(string));
-            employeeData.Columns.Add("Department", typeof(string));
-            employeeData.Columns.Add("Role", typeof(string));
-            employeeData.Columns.Add("Worksheet", typeof(string));
+		private void InitializeData()
+		{
+			// Sample data - replace this with actual data source
+			employeeData = new DataTable();
+			employeeData.Columns.Add("Name", typeof(string));
+			employeeData.Columns.Add("Email", typeof(string));
+			employeeData.Columns.Add("Department", typeof(string));
+			employeeData.Columns.Add("Role", typeof(string));
+			employeeData.Columns.Add("Worksheet", typeof(string));
 
-            employeeData.Rows.Add("John Doe", "john@example.com", "IT", "Developer", "A");
-            employeeData.Rows.Add("Jane Smith", "jane@example.com", "HR", "Manager", "B");
-            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Finance", "Accountant", "C");
-            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing", "Marketing Specialist", "D");
-        }
+			employeeData.Rows.Add("John Doe", "john@example.com", "IT", "Developer", "A");
+			employeeData.Rows.Add("Jane Smith", "jane@example.com", "HR", "Manager", "B");
+			employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Finance", "Accountant", "C");
+			employeeData.Rows.Add("Bob Brown", "bob@example.com", "Marketing", "Marketing Specialist", "D");
+		}
 
-        private void InitializeDataGridView()
-        {
-            dataGridView1.AutoGenerateColumns = true;
-            dataGridView1.DataSource = employeeData;
-            dataGridView1.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-        }
+		private void InitializeDataGridView()
+		{
+			userDataGridView.AutoGenerateColumns = true;
+			userDataGridView.DataSource = employeeData;
+			userDataGridView.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+			userDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+			userDataGridView.Columns[4].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+		}
 
-        private void pictureBoxSearch_Click(object sender, EventArgs e)
-        {
-            string searchTerm = textBoxSearch.Text.Trim();
+		private void pictureBoxSearch_Click(object sender, EventArgs e)
+		{
+			string searchTerm = textBoxSearch.Text.Trim();
 
-            if (!string.IsNullOrEmpty(searchTerm))
-            {
-                var query = from row in employeeData.AsEnumerable()
-                            where row.Field<string>("Name").Contains(searchTerm)
-                            select row;
+			if (!string.IsNullOrEmpty(searchTerm))
+			{
+				var query = from row in employeeData.AsEnumerable()
+							where row.Field<string>("Name").Contains(searchTerm)
+							select row;
 
-                DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
-                dataGridView1.DataSource = searchResults;
-            }
-            else
-            {
-                dataGridView1.DataSource = employeeData;
-            }
-        }
+				DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
+				userDataGridView.DataSource = searchResults;
+			}
+			else
+			{
+				userDataGridView.DataSource = employeeData;
+			}
+		}
 
-        bool isFirstClick = true;
-        private void textBoxSearch_Click(object sender, EventArgs e)
-        {
-            if (isFirstClick)
-            {
-                textBoxSearch.Text = "";
-                isFirstClick = false;
-            }
-        }
+		bool isFirstClick = true;
+		private void textBoxSearch_Click(object sender, EventArgs e)
+		{
+			if (isFirstClick)
+			{
+				textBoxSearch.Text = "";
+				isFirstClick = false;
+			}
+		}
 
-        private string placeholder = "Enter search term...";
+		private string placeholder = "Enter search term...";
 
-        private void textBoxSearch_GotFocus(object sender, EventArgs e)
-        {
-            if (textBoxSearch.Text == placeholder)
-            {
-                textBoxSearch.Text = "";
-            }
-        }
+		private void textBoxSearch_GotFocus(object sender, EventArgs e)
+		{
+			if (textBoxSearch.Text == placeholder)
+			{
+				textBoxSearch.Text = "";
+			}
+		}
 
-        private void textBoxSearch_LostFocus(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
-            {
-                textBoxSearch.Text = placeholder;
-            }
-        }
-    }
+		private void textBoxSearch_LostFocus(object sender, EventArgs e)
+		{
+			if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
+			{
+				textBoxSearch.Text = placeholder;
+			}
+		}
+
+		private void addEmployeeBtn_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void editEmployeeBtn_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void removeEmployeeBtn_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
