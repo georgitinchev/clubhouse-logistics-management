@@ -56,7 +56,7 @@ namespace MediaBazaar.Classes
 
 		public List<Employee> SearchEmployees(List<Employee> employees, string searchTerm)
 		{
-			return employees.Where(e => e.GetName().Contains(searchTerm)).ToList();
+			return employees.Where(e => e.GetFirstName().Contains(searchTerm)).ToList();
 		}
 
 		public List<Employee> FilterEmployees(List<Employee> employees, Func<Employee, bool> filter)
