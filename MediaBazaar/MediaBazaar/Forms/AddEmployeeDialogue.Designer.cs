@@ -30,6 +30,7 @@
 		{
 			addEmployeeTabControl = new TabControl();
 			employeeContractTab = new TabPage();
+			label5 = new Label();
 			nextBtnP1 = new CustomButton();
 			label4 = new Label();
 			dateTimePicker1 = new DateTimePicker();
@@ -40,6 +41,7 @@
 			label1 = new Label();
 			comboBox1 = new ComboBox();
 			employeeEmergencyDetailsTab = new TabPage();
+			label6 = new Label();
 			previousBtnP2 = new CustomButton();
 			nextBtnP2 = new CustomButton();
 			emcLastNameBox = new TextBox();
@@ -51,6 +53,7 @@
 			emcLastName = new Label();
 			emcFirstName = new Label();
 			employeeDetailsTab = new TabPage();
+			label7 = new Label();
 			previousBtnP3 = new CustomButton();
 			completeFormBtn = new CustomButton();
 			textBox7 = new TextBox();
@@ -65,9 +68,6 @@
 			personalEmail = new Label();
 			personalLastName = new Label();
 			personalFirstName = new Label();
-			label5 = new Label();
-			label6 = new Label();
-			label7 = new Label();
 			addEmployeeTabControl.SuspendLayout();
 			employeeContractTab.SuspendLayout();
 			employeeEmergencyDetailsTab.SuspendLayout();
@@ -108,6 +108,16 @@
 			employeeContractTab.Size = new Size(485, 348);
 			employeeContractTab.TabIndex = 0;
 			employeeContractTab.Text = "📝 Contract Details";
+			// 
+			// label5
+			// 
+			label5.AutoSize = true;
+			label5.Font = new Font("Segoe UI", 18F);
+			label5.Location = new Point(124, 14);
+			label5.Name = "label5";
+			label5.Size = new Size(223, 32);
+			label5.TabIndex = 9;
+			label5.Text = "Contract Details 📝";
 			// 
 			// nextBtnP1
 			// 
@@ -203,6 +213,7 @@
 			// 
 			// employeeEmergencyDetailsTab
 			// 
+			employeeEmergencyDetailsTab.BackColor = Color.White;
 			employeeEmergencyDetailsTab.Controls.Add(label6);
 			employeeEmergencyDetailsTab.Controls.Add(previousBtnP2);
 			employeeEmergencyDetailsTab.Controls.Add(nextBtnP2);
@@ -221,7 +232,16 @@
 			employeeEmergencyDetailsTab.Size = new Size(485, 348);
 			employeeEmergencyDetailsTab.TabIndex = 1;
 			employeeEmergencyDetailsTab.Text = "🚑 Emergency Contact";
-			employeeEmergencyDetailsTab.UseVisualStyleBackColor = true;
+			// 
+			// label6
+			// 
+			label6.AutoSize = true;
+			label6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			label6.Location = new Point(114, 12);
+			label6.Name = "label6";
+			label6.Size = new Size(261, 32);
+			label6.TabIndex = 10;
+			label6.Text = "🚑 Emergency Contact";
 			// 
 			// previousBtnP2
 			// 
@@ -335,6 +355,7 @@
 			// 
 			// employeeDetailsTab
 			// 
+			employeeDetailsTab.BackColor = Color.White;
 			employeeDetailsTab.Controls.Add(label7);
 			employeeDetailsTab.Controls.Add(previousBtnP3);
 			employeeDetailsTab.Controls.Add(completeFormBtn);
@@ -356,7 +377,16 @@
 			employeeDetailsTab.Size = new Size(485, 348);
 			employeeDetailsTab.TabIndex = 2;
 			employeeDetailsTab.Text = "👤 Personal Details";
-			employeeDetailsTab.UseVisualStyleBackColor = true;
+			// 
+			// label7
+			// 
+			label7.AutoSize = true;
+			label7.Font = new Font("Segoe UI", 18F);
+			label7.Location = new Point(135, 15);
+			label7.Name = "label7";
+			label7.Size = new Size(222, 32);
+			label7.TabIndex = 14;
+			label7.Text = "👤 Personal Details";
 			// 
 			// previousBtnP3
 			// 
@@ -502,36 +532,6 @@
 			personalFirstName.Size = new Size(86, 20);
 			personalFirstName.TabIndex = 0;
 			personalFirstName.Text = "First Name";
-			// 
-			// label5
-			// 
-			label5.AutoSize = true;
-			label5.Font = new Font("Segoe UI", 18F);
-			label5.Location = new Point(124, 14);
-			label5.Name = "label5";
-			label5.Size = new Size(223, 32);
-			label5.TabIndex = 9;
-			label5.Text = "Contract Details 📝";
-			// 
-			// label6
-			// 
-			label6.AutoSize = true;
-			label6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label6.Location = new Point(114, 12);
-			label6.Name = "label6";
-			label6.Size = new Size(261, 32);
-			label6.TabIndex = 10;
-			label6.Text = "🚑 Emergency Contact";
-			// 
-			// label7
-			// 
-			label7.AutoSize = true;
-			label7.Font = new Font("Segoe UI", 18F);
-			label7.Location = new Point(135, 15);
-			label7.Name = "label7";
-			label7.Size = new Size(222, 32);
-			label7.TabIndex = 14;
-			label7.Text = "👤 Personal Details";
 			// 
 			// AddEmployeeForm
 			// 
