@@ -20,6 +20,7 @@ namespace MediaBazaar.Classes
 			_contractManager = new ContractManager();
 			employees = new List<Employee>();
 			employeeDAL = new EmployeeDAL();
+			GetEmployeesFromDB();
         }
 
 		public void AddEmployee(Employee newEmployee)
@@ -94,6 +95,11 @@ namespace MediaBazaar.Classes
 		public List<Employee> FilterEmployees(Func<Employee, bool> filter)
 		{
 			return employees.Where(filter).ToList();
+		}
+
+		public Employee AuthenticateEmployee(string email, string password)
+		{
+			return employees.FirstOrDefault(e => e.Email == email && e.Password == password && e.IsManager);
 		}
 
 		public Employee TransformDTOToEmployee(EmployeeDTO employeeDTO)
