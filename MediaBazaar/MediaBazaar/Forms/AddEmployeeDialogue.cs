@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaar.Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,34 +13,23 @@ namespace MediaBazaar.Forms
 {
 	public partial class AddEmployeeForm : Form
 	{
-		public AddEmployeeForm()
+		private EmployeeManager _employeeManager;
+		public AddEmployeeForm(EmployeeManager employeeManager)
 		{
+			_employeeManager = employeeManager;
 			InitializeComponent();
 			HideTabControls();
 			InitializeTabNavigation();
 		}
-		private void nextBtnP1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void previousBtn_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void nextBtnP2_Click(object sender, EventArgs e)
-		{
-
-		}
 
 		private void completeFormBtn_Click(object sender, EventArgs e)
 		{
-
+			// logic to add employee
 		}
 
 		private void InitializeTabNavigation()
 		{
+			// nav indexing logic
 			nextBtnP1.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
 			previousBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 0; };
 			nextBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 2; };

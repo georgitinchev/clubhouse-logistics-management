@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+﻿using System.Data;
+using MediaBazaar.Classes;
 
 namespace MediaBazaar.Forms
 {
-    public partial class UserControlDashboard : UserControl
+	public partial class UserControlDashboard : UserControl
     {
-
+        private EmployeeManager employeeManager;
         public UserControlDashboard()
         {
+            employeeManager = new EmployeeManager();
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
@@ -24,7 +17,6 @@ namespace MediaBazaar.Forms
         }
 
         private DataTable employeeData;
-
         private void InitializeData()
         {
             employeeData = new DataTable();
