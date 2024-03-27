@@ -31,6 +31,7 @@ namespace MediaBazaar.Classes
 				throw new Exception("Employee already exists.");
 			}
 			employees.Add(newEmployee);
+			//employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
 		}
 
 		public void UpdateEmployee(Employee updatedEmployee)
