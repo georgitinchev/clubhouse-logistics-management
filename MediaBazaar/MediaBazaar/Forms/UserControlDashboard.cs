@@ -2,10 +2,10 @@
 using System.Drawing;
 using System.Windows.Forms;
 using BusinessLogicLayer;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using DataAccessLayer;
 using DTOLayer;
 using MediaBazaar.Classes;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace MediaBazaar.Forms
 {
@@ -16,10 +16,9 @@ namespace MediaBazaar.Forms
 		private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
 		private EmployeeDAL employeeDAL;
 
-		public UserControlDashboard()
+		public UserControlDashboard(EmployeeManager _employeeManager)
 		{
-			this.employeeDAL = employeeDAL;
-			employeeManager = new EmployeeManager();
+			employeeManager = _employeeManager;
 			InitializeComponent();
 			InitializeData();
 			InitializeDataGridView();
