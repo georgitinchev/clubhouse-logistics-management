@@ -9,12 +9,10 @@ namespace MediaBazaar.Forms
     public partial class UserControlDashboard : UserControl
     {
         private EmployeeManager employeeManager;
-        private ContractManager contractManager;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
         public UserControlDashboard()
         {
             employeeManager = new EmployeeManager();
-            contractManager = new ContractManager();
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
@@ -187,11 +185,9 @@ namespace MediaBazaar.Forms
         {
             Search();
         }
-
         private void addEmployeeBtn_Click(object sender, EventArgs e)
         {
-            AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager, contractManager);
-
+            AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager,employeeManager._contractManager);
             addEmployeeDialogue.ShowDialog();
         }
 

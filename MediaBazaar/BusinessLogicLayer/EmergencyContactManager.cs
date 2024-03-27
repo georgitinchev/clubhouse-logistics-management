@@ -45,16 +45,16 @@ namespace BusinessLogicLayer
 			}
 		}
 
-        
-
-        public void UpdateEmergencyContactInDB(EmergencyContact emergencyContact)
-        {
-            emergencyContactDAL.UpdateEmergencyContact(TransformEmergencyContactToDTO(emergencyContact));
         }
 
-        public void RemoveEmergencyContactFromDB(EmergencyContact emergencyContact)
-        {
-            emergencyContactDAL.DeleteEmergencyContact(emergencyContact.Id);
-        }
-    }
+		public void UpdateEmergencyContactInDB(EmergencyContact emergencyContact)
+		{
+			emergencyContactDAL.UpdateEmergencyContact(TransformEmergencyContactToDTO(emergencyContact));
+		}
+
+		public void RemoveEmergencyContactFromDB(EmergencyContact emergencyContact)
+		{
+			emergencyContactDAL.DeleteEmergencyContact(emergencyContact.Id);
+		}
+	}
 }
