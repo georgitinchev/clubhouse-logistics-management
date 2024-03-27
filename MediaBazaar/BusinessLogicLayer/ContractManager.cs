@@ -56,5 +56,34 @@ namespace BusinessLogicLayer
             
             return contractDTO;
         }
+
+        public void GetAllContractsFromDB()
+        {
+            foreach(ContractDTO dto in contractDAL.GetAllContracts())
+            {
+                contracts.Add(TransformDTOToContract(dto));
+            }
+        }
+
+        public void UpdateContractInDB(Contract Contract)
+        {
+            if (contractDAL != null) 
+            contractDAL.UpdateContract(TransformContractToDTO(Contract));
+        }
+
+        public void DeleteContractFromDB(Contract contract)
+        {
+            contractDAL.DeleteContract(contract.Id);
+
+        }
+
+        public void AddContractInDB(Contract contract)
+        {
+            if (contract != null)
+            {
+                contractDAL.CreateContract(TransformContractToDTO(contract));
+                contracts.Add(contract);
+            }
+        }
     }
 }

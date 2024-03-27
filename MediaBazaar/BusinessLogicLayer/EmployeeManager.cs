@@ -34,6 +34,18 @@ namespace MediaBazaar.Classes
 			//employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
 		}
 
+		public Employee SearchEmployee(int id)
+		{
+			foreach(Employee emp in employees)
+			{
+				if (emp.Id == id)
+				{
+					return emp;
+				}
+			}
+			return null;
+		}
+
 		public void UpdateEmployee(Employee updatedEmployee)
 		{
 			var employee = employees.FirstOrDefault(e => e.Id == updatedEmployee.Id);
