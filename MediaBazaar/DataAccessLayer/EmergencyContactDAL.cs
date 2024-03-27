@@ -39,13 +39,13 @@ namespace DataAccessLayer
                     if (reader.Read())
                     {
                         return new EmergencyContactDTO
-                        {
-                            Id = (int)reader["Id"],
-                            FirstName = reader["FirstName"].ToString(),
-                            LastName = reader["LastName"].ToString(),
-                            PhoneNumber = reader["PhoneNumber"].ToString(),
-                            Email = reader["Email"].ToString()
-                        };
+                        (
+                           (int)reader["Id"],
+                           reader["FirstName"].ToString(),
+                           reader["LastName"].ToString(),
+                           reader["PhoneNumber"].ToString(),
+                           reader["Email"].ToString()
+                        );
                     }
                     else
                     {
@@ -93,13 +93,13 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         contacts.Add(new EmergencyContactDTO
-                        {
-                            Id = (int)reader["Id"],
-                            FirstName = reader["FirstName"].ToString(),
-                            LastName = reader["LastName"].ToString(),
-                            PhoneNumber = reader["PhoneNumber"].ToString(),
-                            Email = reader["Email"].ToString()
-                        });
+                        (
+                             (int)reader["Id"],
+                           reader["FirstName"].ToString(),
+                           reader["LastName"].ToString(),
+                           reader["PhoneNumber"].ToString(),
+                           reader["Email"].ToString()
+                        ));
                     }
                 }
             }

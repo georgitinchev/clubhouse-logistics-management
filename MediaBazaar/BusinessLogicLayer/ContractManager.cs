@@ -48,5 +48,13 @@ namespace BusinessLogicLayer
             return null;
 
         }
+
+        public ContractDTO TransformContractToDTO(Contract contract)
+        {
+            ContractDTO contractDTO = new ContractDTO(contract.Id,(int)contract.role,contract.hourlyWage,contract.weeklyHours,
+                contract.startDate,contract.endDate,contract.isActive,contract.terminationReason,contract.availability);
+            
+            return contractDTO;
+        }
     }
 }

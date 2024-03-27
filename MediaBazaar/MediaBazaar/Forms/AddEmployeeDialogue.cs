@@ -32,13 +32,13 @@ namespace MediaBazaar.Forms
 			// logic to add employee
 			try
 			{
-				////create contract
-				//Contract(int(_contractManager.Count) + 1,comboBox1.SelectedValue, textBox2.Text,dateTimePicker1.Value,);
-				////create emergency contact
-				////create employee + append contract + emergency contact 
-				//// add to employee manager
-				//_employeeManager.AddEmployee();
-				//// send to db
+				//create contract
+				Contract(int(_contractManager.Count) + 1,comboBox1.SelectedValue,textBox1.Text,textBox2.Text,dateTimePicker1.Value,);
+				//create emergency contact
+				//create employee + append contract + emergency contact 
+				// add to employee manager
+				_employeeManager.AddEmployee();
+				// send to db
 			}
 			catch
 			{

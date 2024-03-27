@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Diagnostics.Contracts;
 
 namespace DataAccessLayer
 {
@@ -45,18 +46,21 @@ namespace DataAccessLayer
                 {
                     if (reader.Read())
                     {
-                        return new ContractDTO
-                        {
-                            Id = (int)reader["Id"],
-                            Role = (int)reader["Role"],
-                            HourlyWage = (decimal)reader["HourlyWage"],
-                            WeeklyHours = (int)reader["WeeklyHours"],
-                            StartDate = (DateTime)reader["StartDate"],
-                            EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
-                            IsActive = (bool)reader["IsActive"],
-                            TerminationReason = reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
-                            Availability = (DateTime)reader["Availability"]
-                        };
+                        ContractDTO contractDTO=new ContractDTO
+                        (
+                            (int)reader["Id"],
+                            (int)reader["Role"],
+                            (decimal)reader["HourlyWage"],
+                            (int)reader["WeeklyHours"],
+                            (DateTime)reader["StartDate"],
+                            reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
+                            (bool)reader["IsActive"],
+                            reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
+                            (DateTime)reader["Availability"]
+
+                        
+                        );
+                        return contractDTO;
                     }
                     else
                     {
@@ -113,18 +117,19 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         contracts.Add(new ContractDTO
-                        {
-                            Id = (int)reader["Id"],
-                            Role = (int)reader["Role"],
-                            HourlyWage = (decimal)reader["HourlyWage"],
-                            WeeklyHours = (int)reader["WeeklyHours"],
-                            StartDate = (DateTime)reader["StartDate"],
-                            EndDate = reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
-                            IsActive = (bool)reader["IsActive"],
-                            TerminationReason = reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
-                            Availability = (DateTime)reader["Availability"],
-                           
-                        });
+                        (
+                            (int)reader["Id"],
+                            (int)reader["Role"],
+                            (decimal)reader["HourlyWage"],
+                            (int)reader["WeeklyHours"],
+                            (DateTime)reader["StartDate"],
+                            reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
+                            (bool)reader["IsActive"],
+                            reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
+                            (DateTime)reader["Availability"]
+
+                        )
+                        );
                     }
                 }
             }
