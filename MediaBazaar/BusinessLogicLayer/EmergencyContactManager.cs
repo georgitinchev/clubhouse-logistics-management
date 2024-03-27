@@ -12,11 +12,16 @@ namespace BusinessLogicLayer
 {
 	public class EmergencyContactManager
 	{
-
+		private EmergencyContactDAL emergencyContactDAL;
 		public EmergencyContactManager()
 		{
-
+			emergencyContactDAL = new EmergencyContactDAL();
 		}
+		public void AddEmergencyContact(EmergencyContact newEmergencyContact)
+		{
+			emergencyContactDAL.CreateEmergencyContact(TransformEmergencyContactToDTO(newEmergencyContact));
+		}
+
 		public EmergencyContact TransformDTOToEmergencyContact(EmergencyContactDTO dto)
 		{
 			return new EmergencyContact(dto.Id, dto.FirstName, dto.LastName, dto.PhoneNumber, dto.Email);
@@ -29,7 +34,6 @@ namespace BusinessLogicLayer
 
 		public EmergencyContact ReadEmergencyContact(int employeeId)
 		{
-			EmergencyContactDAL emergencyContactDAL = new EmergencyContactDAL();
 			try
 			{
 				EmergencyContactDTO emergencyContactDTO = emergencyContactDAL.ReadEmergencyContact(employeeId);

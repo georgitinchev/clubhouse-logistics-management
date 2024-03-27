@@ -33,13 +33,13 @@ namespace DTOLayer
             Email = email;
             Password = password;
             PhoneNumber = phoneNumber;
-            Address = address;
             BSN = bSN;
             Birthday = birthday;
             Role = role;
             IsManager = isManager;
-            ActiveContractId = activeContractId;
             EmergencyContactId = emergencyContactId;
+            Address = address;
+            ActiveContractId = activeContractId;
         }
     }
 }

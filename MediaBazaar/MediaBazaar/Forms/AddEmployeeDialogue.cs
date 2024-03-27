@@ -57,9 +57,11 @@ namespace MediaBazaar.Forms
 
 				// Create Employee
 				var employee = new Employee(employeeId, textBox6.Text, textBox7.Text, textBox5.Text, textBox4.Text, textBox9.Text, textBox3.Text, dateTimePicker2.Value, (int)role, false, emergencyContact, textBox8.Text, contract);
+				_contractManager.AddContract(contract);
+				_employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
 				_employeeManager.AddEmployee(employee);
-				MessageBox.Show("Employee added successfully.");
 				this.Close();
+				MessageBox.Show("Employee added successfully.");
 			}
 			catch (Exception ex)
 			{
