@@ -16,13 +16,12 @@ namespace MediaBazaar.Forms
         private DataTable employeeData;
         private Employee selectedEmployee;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
-        private List<(Control control, Point originalLocation)> originalControlLocations = new List<(Control, Point)>();
-
         public UserControlDashboard()
         {
             employeeManager = new EmployeeManager();
             InitializeComponent();
             InitializeData();
+            PopulateGridView();
             InitializeDataGridView();
             InitializeControls();
             InitializeFocus();
@@ -51,7 +50,6 @@ namespace MediaBazaar.Forms
             originalControlLocations.Add((addEmployeeBtn, addEmployeeBtn.Location));
             originalControlLocations.Add((pictureBoxSearch, pictureBoxSearch.Location));
         }
-
 
 
         private void InitializeData()
@@ -136,7 +134,6 @@ namespace MediaBazaar.Forms
             userDataGridView.Columns["EmergencyContact"].Visible = false;
             userDataGridView.Columns["IsManager"].Visible = false;
         }
-
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {

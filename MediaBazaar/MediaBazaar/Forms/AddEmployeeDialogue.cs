@@ -60,8 +60,8 @@ namespace MediaBazaar.Forms
 				_contractManager.AddContract(contract);
 				_employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
 				_employeeManager.AddEmployee(employee);
-				this.Close();
 				MessageBox.Show("Employee added successfully.");
+				this.Close();
 			}
 			catch (Exception ex)
 			{
@@ -100,7 +100,6 @@ namespace MediaBazaar.Forms
 			previousBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 0; };
 			nextBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 2; };
 			previousBtnP3.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
-			completeFormBtn.Click += completeFormBtn_Click;
 
 			addEmployeeTabControl.SelectedIndexChanged += (sender, e) =>
 			{

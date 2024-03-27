@@ -143,6 +143,7 @@ namespace MediaBazaar.Classes
 
 		public void GetEmployeesFromDB()
 		{
+			employees.Clear();
 			List<EmployeeDTO> listOfEmployeeDTO = employeeDAL.GetAllEmployees();
 			foreach (EmployeeDTO dto in listOfEmployeeDTO)
 			{
