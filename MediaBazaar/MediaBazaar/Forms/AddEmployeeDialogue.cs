@@ -25,20 +25,20 @@ namespace MediaBazaar.Forms
 			InitializeComponent();
 			HideTabControls();
 			InitializeTabNavigation();
-			comboBox1.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
+			employeeRoleComboBox.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
 		}
 
 		private void completeFormBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				if (!Enum.TryParse(comboBox1.SelectedValue.ToString(), out EmployeeRoleEnum role))
+				if (!Enum.TryParse(employeeRoleComboBox.SelectedValue.ToString(), out EmployeeRoleEnum role))
 					throw new Exception("Invalid role selected.");
 
-				if (!decimal.TryParse(textBox1.Text, out decimal hourlyWage))
+				if (!decimal.TryParse(hourlyWageTextBox.Text, out decimal hourlyWage))
 					throw new Exception("Hourly wage must be a decimal number.");
 
-				if (!int.TryParse(textBox2.Text, out int weeklyHours))
+				if (!int.TryParse(weeklyHoursTextBox.Text, out int weeklyHours))
 					throw new Exception("Weekly hours must be an integer.");
 
 				ValidateFields();
@@ -46,7 +46,7 @@ namespace MediaBazaar.Forms
 				int contractId = idCheckerContract();
 
 				// Create Contract
-				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, dateTimePicker1.Value, null, true, null, null);
+				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, startDatePicker.Value, null, true, null, null);
 				_contractManager.AddContract(contract);
 
 				// Get Employee ID
@@ -56,7 +56,7 @@ namespace MediaBazaar.Forms
 				var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
 				// Create Employee
-				var employee = new Employee(employeeId, textBox6.Text, textBox7.Text, textBox5.Text, textBox4.Text, textBox9.Text, textBox3.Text, dateTimePicker2.Value, (int)role, false, emergencyContact, textBox8.Text, contract);
+				var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract);
 				_contractManager.AddContract(contract);
 				_employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
 				_employeeManager.AddEmployee(employee);
@@ -130,25 +130,25 @@ namespace MediaBazaar.Forms
 
 		private void ValidateFields()
 		{
-			if (string.IsNullOrWhiteSpace(textBox6.Text))
+			if (string.IsNullOrWhiteSpace(firstNameText.Text))
 				throw new Exception("First name is required.");
 
-			if (string.IsNullOrWhiteSpace(textBox7.Text))
+			if (string.IsNullOrWhiteSpace(lastNameText.Text))
 				throw new Exception("Last name is required.");
 
-			if (string.IsNullOrWhiteSpace(textBox5.Text))
+			if (string.IsNullOrWhiteSpace(emailText.Text))
 				throw new Exception("Email is required.");
 
-			if (string.IsNullOrWhiteSpace(textBox4.Text))
+			if (string.IsNullOrWhiteSpace(passwordText.Text))
 				throw new Exception("Password is required.");
 
-			if (string.IsNullOrWhiteSpace(textBox9.Text))
+			if (string.IsNullOrWhiteSpace(phoneText.Text))
 				throw new Exception("Phone number is required.");
 
-			if (string.IsNullOrWhiteSpace(textBox3.Text))
+			if (string.IsNullOrWhiteSpace(bsnText.Text))
 				throw new Exception("BSN is required.");
 
-			if (string.IsNullOrWhiteSpace(textBox8.Text))
+			if (string.IsNullOrWhiteSpace(addressText.Text))
 				throw new Exception("Address is required.");
 
 			if (string.IsNullOrWhiteSpace(emcFirstNameBox.Text))
@@ -166,7 +166,7 @@ namespace MediaBazaar.Forms
 			// email validation regex
 			var emailRegex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
 
-			if (!emailRegex.IsMatch(textBox5.Text))
+			if (!emailRegex.IsMatch(emailText.Text))
 				throw new Exception("Email is not in a valid format.");
 
 			if (!emailRegex.IsMatch(emcEmailBox.Text))
@@ -174,16 +174,16 @@ namespace MediaBazaar.Forms
 
 			// phone num validation regex
 			var phoneRegex = new Regex(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$");
-			if (!phoneRegex.IsMatch(textBox9.Text))
+			if (!phoneRegex.IsMatch(phoneText.Text))
 				throw new Exception("Phone number is not in a valid format.");
 
 			if (!phoneRegex.IsMatch(emcPhoneText.Text))
 				throw new Exception("Emergency contact phone number is required.");
 
-			if (dateTimePicker1.Value.Date > DateTime.Now.Date)
+			if (startDatePicker.Value.Date > DateTime.Now.Date)
 				throw new Exception("Contract start date cannot be in the future.");
 
-			if (dateTimePicker2.Value.Date > DateTime.Now.Date)
+			if (birthdayDatePicker.Value.Date > DateTime.Now.Date)
 				throw new Exception("Employee birthday cannot be in the future.");
 		}
 	}
