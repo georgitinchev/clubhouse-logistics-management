@@ -137,7 +137,7 @@ namespace MediaBazaar.Classes
 			return employeeDTO;
 		}
 
-		public void GetEmployeesFromDB(string email, string password)
+		public void GetEmployeesFromDB()
 		{
 			List<EmployeeDTO> listOfEmployeeDTO = employeeDAL.GetAllEmployees();
 			foreach ( EmployeeDTO dto in listOfEmployeeDTO)
@@ -145,6 +145,7 @@ namespace MediaBazaar.Classes
 				employees.Add(TransformDTOToEmployee(dto));
 			}
 		}
+
 
 		
 	}
