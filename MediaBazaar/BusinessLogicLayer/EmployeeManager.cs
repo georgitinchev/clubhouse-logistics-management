@@ -11,12 +11,9 @@ namespace MediaBazaar.Classes
 	{
 		private EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
-<<<<<<< Updated upstream
-		private List<Employee> employees;
+
 		private EmployeeDAL employeeDAL;
-=======
 		public List<Employee> employees { get; private set; }
->>>>>>> Stashed changes
 
 		public EmployeeManager()
 		{

@@ -49,81 +49,6 @@ namespace DTOLayer
 			Address = address;
 			Contract = contract;
 		}
-
-<<<<<<< Updated upstream
-        public void UpdateInformation(string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-            BSN = bSN;
-            Birthday = birthday;
-            Role = role;
-        }
-
-		public void ChangeRole(EmployeeRoleEnum newRole)
-		{
-			Role = newRole;
-		}
-
-		public int GetId()
-		{
-			return Id;
-		}
-
-		public string GetFirstName()
-		{
-			return FirstName;
-		}
-
-        public string GetLastName()
-        {
-            return LastName;
-        }
-        public string GetEmail()
-        {
-            return Email;
-        }
-
-		public bool ValidatePassword(string inputPassword)
-		{
-			return Password == inputPassword;
-		}
-
-		public string GetBSN()
-		{
-			return BSN;
-		}
-
-		public string GetEmail()
-		{ 
-			return Email; 
-		}
-
-		public string GetPassword()
-		{
-			return Password;
-		}
-
-		public DateTime GetBirthday()
-		{
-			return Birthday;
-		}
-
-		public string GetAddress()
-		{
-			return Address;
-		}
-
-		public int GetContractID()
-		{
-			return Contract.Id;
-		}
-		public int GetEmergencyContactID() 
-		{ 
-			return EmergencyContact.Id; 
-=======
 		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{
 			Id = id;
@@ -134,7 +59,6 @@ namespace DTOLayer
 			BSN = bSN;
 			Birthday = birthday;
 			Role = role;
->>>>>>> Stashed changes
 		}
 	}
 }

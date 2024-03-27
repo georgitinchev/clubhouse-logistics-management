@@ -230,7 +230,6 @@ namespace MediaBazaar.Forms
             }
         }
 
-
         private Employee GetSelectedEmployee()
         {
             if (userDataGridView.SelectedRows.Count > 0)
