@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using BusinessLogicLayer;
+using DataAccessLayer;
 using DTOLayer;
 using MediaBazaar.Classes;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -16,8 +17,11 @@ namespace MediaBazaar.Forms
 		private DataTable employeeData;
 		private Employee selectedEmployee;
 		private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
+		private EmployeeDAL employeeDAL;
+
 		public UserControlDashboard()
 		{
+			this.employeeDAL = employeeDAL;
 			employeeManager = new EmployeeManager();
 			InitializeComponent();
 			InitializeData();
@@ -50,9 +54,9 @@ namespace MediaBazaar.Forms
 			employeeManager.GetEmployeesFromDB();
 			foreach (Employee employee in employeeManager.employees)
 			{
-				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(),  employee.Contract.weeklyHours);
+				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Contract.weeklyHours);
 			}
-			
+
 		}
 
 		private void InitializeData()
@@ -69,7 +73,6 @@ namespace MediaBazaar.Forms
 			employeeData.Columns.Add("WeeklyHours", typeof(int));
 			//employeeData.Columns.Add("EmergencyContact", typeof(string));
 			//employeeData.Columns.Add("IsManager", typeof(bool));
-			PopulateGridView(employeeData);
 			userDataGridView.DataSource = employeeData;
 		}
 
@@ -290,14 +293,13 @@ namespace MediaBazaar.Forms
 			else if (editEmployeeBtn.Text == "Save")
 			{
 				UpdateEmployeeDetails();
-				UpdateRoleInDataGridView(newRole);
 				foreach (var (control, originalBackColor, originalReadOnly) in originalControlStates)
 				{
 					control.BackColor = originalBackColor;
 					if (control is TextBox textBox)
 					{
 						textBox.ReadOnly = originalReadOnly;
-						if (textBox == textBoxPassword || textBox == textBoxBSN)
+						if (textBox == textBoxPassword)
 						{
 							textBox.UseSystemPasswordChar = true;
 						}
@@ -315,26 +317,11 @@ namespace MediaBazaar.Forms
 			}
 		}
 
-		private void UpdateEmployeeDetails()
-		{
-			if (userDataGridView.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
-				selectedRow.Cells["Name"].Value = textBoxName.Text;
-				selectedRow.Cells["Role"].Value = comboBoxRoleDetails.SelectedItem.ToString();
-				selectedRow.Cells["Email"].Value = textBoxEmail.Text;
-				selectedRow.Cells["Password"].Value = textBoxPassword.Text;
-				selectedRow.Cells["BSN"].Value = textBoxBSN.Text;
-				selectedRow.Cells["PhoneNumber"].Value = textBoxPhone.Text;
-				selectedRow.Cells["Birthday"].Value = dateTimePickerBirthday.Value;
-			}
-		}
 
 		private void userDataGridView_SelectionChanged(object sender, EventArgs e)
 		{
 			if (userDataGridView.SelectedRows.Count > 0)
 			{
-				PopulateEmployeeDetails();
 				groupBox1.Visible = true;
 			}
 			else
@@ -343,39 +330,70 @@ namespace MediaBazaar.Forms
 			}
 		}
 
-		private void PopulateEmployeeDetails()
-		{
-			if (userDataGridView.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+        private void UpdateEmployeeDetails()
+        {
+            try
+            {
+                if (userDataGridView.SelectedRows.Count > 0)
+                {
+                    DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+                    int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
 
-				string name = selectedRow.Cells["Name"].Value.ToString();
-				string[] nameParts = name.Split(' ');
-				string firstName = nameParts[0];
-				//string lastName = string.Join(" ", nameParts.Skip(1));
+					string address = "";
 
-				string email = selectedRow.Cells["Email"].Value.ToString();
-				string role = selectedRow.Cells["Role"].Value.ToString();
-				//string password = selectedRow.Cells["Password"].Value.ToString();
-				//string bsn = selectedRow.Cells["BSN"].Value.ToString();
-				//string phoneNumber = selectedRow.Cells["PhoneNumber"].Value.ToString();
-				//DateTime birthday = (DateTime)selectedRow.Cells["Birthday"].Value;
+                    EmployeeRoleEnum role = MapRoleToEnum(comboBoxRole.Text);
 
-				textBoxName.Text = firstName;
-				comboBoxRoleDetails.SelectedItem = role;
-				textBoxEmail.Text = email;
+                    EmployeeDTO employee = new EmployeeDTO(
+                        employeeId,
+                        textBoxName.Text,
+                        textBoxName.Text,
+                        textBoxEmail.Text,
+                        textBoxPassword.Text,
+                        textBoxPhone.Text,
+                        address,
+                        textBoxBSN.Text,
+                        dateTimePickerBirthday.Value,
+                        (int)role,
+                        false,
+                        -1,
+                        -1
+                    );
 
-				textBoxPassword.UseSystemPasswordChar = true;
-				//textBoxPassword.Text = password;
-				textBoxBSN.UseSystemPasswordChar = true;
-				//textBoxBSN.Text = bsn;
+                    employeeDAL.UpdateEmployee(employee);
 
-				//textBoxPhone.Text = phoneNumber;
-				//dateTimePickerBirthday.Value = birthday;
-			}
-		}
+                    PopulateDataTable(employeeData);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-		private void userDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+        private EmployeeRoleEnum MapRoleToEnum(string roleName)
+        {
+            switch (roleName)
+            {
+                case "DepartmentManager":
+                    return EmployeeRoleEnum.DepartmentManager;
+                case "HRManager":
+                    return EmployeeRoleEnum.HRManager;
+                case "SalesRepresentative":
+                    return EmployeeRoleEnum.SalesRepresentative;
+                case "SupportEmployee":
+                    return EmployeeRoleEnum.SupportEmployee;
+                case "Cashier":
+                    return EmployeeRoleEnum.Cashier;
+				case "SecurityGuard":
+					return EmployeeRoleEnum.SecurityGuard;
+                case "DepotWorker":
+                    return EmployeeRoleEnum.DepotWorker;
+                default:
+                    throw new ArgumentException($"Invalid role name: {roleName}");
+            }
+        }
+
+        private void userDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex >= 0 && e.RowIndex < employeeData.Rows.Count)
 			{

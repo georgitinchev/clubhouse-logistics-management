@@ -113,7 +113,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(21, 337);
+            label5.Location = new Point(18, 332);
             label5.Name = "label5";
             label5.Size = new Size(67, 20);
             label5.TabIndex = 39;
@@ -200,7 +200,7 @@
             removeEmployeeBtn.Cursor = Cursors.Hand;
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(53, 484);
+            removeEmployeeBtn.Location = new Point(53, 510);
             removeEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(257, 53);
@@ -219,7 +219,7 @@
             editEmployeeBtn.Cursor = Cursors.Hand;
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(53, 405);
+            editEmployeeBtn.Location = new Point(53, 449);
             editEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(257, 53);
