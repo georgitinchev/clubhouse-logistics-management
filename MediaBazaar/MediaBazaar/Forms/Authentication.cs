@@ -14,7 +14,8 @@ namespace MediaBazaar.Forms
 {
 	public partial class Authentication : Form
 	{
-		private EmployeeManager employeeManager;
+		public EmployeeManager employeeManager { get; private set; }
+		public bool isAuthenticated { get; private set; } = false;
 		public Authentication()
 		{
 			employeeManager = new EmployeeManager();
@@ -31,11 +32,9 @@ namespace MediaBazaar.Forms
 
 				if (employee != null)
 				{
-					MainForm mainForm = new MainForm(employeeManager);
-					mainForm.Show();
-					this.Hide();
+					isAuthenticated = true;
+					this.Close();
 				}
-
 				else
 				{
 					throw (new Exception("⚠️ Invalid credentials or unauthorized access"));

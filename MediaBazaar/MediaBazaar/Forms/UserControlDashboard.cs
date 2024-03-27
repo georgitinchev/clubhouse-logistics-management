@@ -439,7 +439,7 @@ namespace MediaBazaar.Forms
 
 		private void removeEmployeeBtn_Click(object sender, EventArgs e)
 		{
-			if(userDataGridView.SelectedRows.Count > 0)
+			if (userDataGridView.SelectedRows.Count > 0)
 			{
 				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
 
@@ -449,7 +449,7 @@ namespace MediaBazaar.Forms
 
 				if (result == DialogResult.Yes)
 				{
-				 try
+					try
 					{
 						employeeManager.DeleteEmployee(employeeId);
 						userDataGridView.Rows.Remove(selectedRow);
@@ -460,7 +460,8 @@ namespace MediaBazaar.Forms
 						MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 					}
 				}
-			} else
+			}
+			else
 			{
 				MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
