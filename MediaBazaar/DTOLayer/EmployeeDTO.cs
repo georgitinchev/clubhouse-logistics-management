@@ -20,7 +20,7 @@ namespace DTOLayer
         public string BSN { get; set; }
         public DateTime Birthday { get; set; }
         public int Role { get;  set; }
-        public bool IsActive { get; set; } = true;
+        public bool IsManager { get; set; } 
         public int ActiveContractId {  get; set; }
         public int EmergencyContactId {  get; set; }
     }

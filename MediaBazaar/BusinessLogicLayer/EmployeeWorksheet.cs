@@ -25,6 +25,14 @@ namespace MediaBazaar
 			this.id = Id;
 		}
 
+		public EmployeeWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
+		{
+			this.timeSlot = timeSlot;
+			this.weekDay = weekDay;
+			this.employee = employee;
+			this.weekNr = weekNr;
+		}
+
 		
 	}
 }

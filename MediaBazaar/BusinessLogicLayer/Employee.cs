@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MediaBazaar.Classes;
+using System;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
@@ -11,13 +12,15 @@ namespace DTOLayer
         private string LastName { get; set; }
         private string Email { get; set; }
 		private string Password { get; set; }
-		private int BSN { get; set; }
-		private Date Birthday { get; set; }
+		private string BSN { get; set; }
+		private DateTime Birthday { get; set; }
 		public EmployeeRoleEnum Role { get; private set; }
 		public bool IsManager { get; private set; }
-		public bool IsActive { get; private set; } = true;
+		private EmergencyContact EmergencyContact { get; set; }
+		private string Address { get; set; }
+		private Contract Contract { get; set; }
 
-        public Employee(int id, string firstName, string lastName, string email, string password, int bSN, Date birthday, EmployeeRoleEnum role)
+        public Employee(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
         {
             Id = id;
             FirstName = firstName;
@@ -28,23 +31,36 @@ namespace DTOLayer
             Birthday = birthday;
             Role = role;
         }
-
-        public void UpdateInformation(int id, string firstName, string lastName, string email, string password, int bSN, Date birthday, EmployeeRoleEnum role)
-        {
-            Id = id;
-            FirstName = firstName;
-            LastName = lastName;
-            Email = email;
-            Password = password;
-            BSN = bSN;
-            Birthday = birthday;
-            Role = role;
-        }
-
-        public void Deactivate()
-		{
-			IsActive = false;
+		public Employee(int id, string firstName, string lastName, string email, string password, string bsn, DateTime birthday, int role, bool isManager,string address,
+				EmergencyContact emergencyContact,Contract contract)
+		{  
+			Id = id;
+			FirstName = firstName;
+			LastName = lastName;
+			Email = email;
+			Password = password;
+			BSN = bsn;
+			Birthday = birthday;
+			Role = (EmployeeRoleEnum)role;
+			IsManager = isManager;
+			Address = address;
+			Contract = contract;
+			EmergencyContact = emergencyContact;
 		}
+
+        public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            BSN = bSN;
+            Birthday = birthday;
+            Role = role;
+        }
+
+      
 
 		public void ChangeRole(EmployeeRoleEnum newRole)
 		{
@@ -76,7 +92,7 @@ namespace DTOLayer
 			return Password == inputPassword;
 		}
 
-		public int GetBSN()
+		public string GetBSN()
 		{
 			return BSN;
 		}

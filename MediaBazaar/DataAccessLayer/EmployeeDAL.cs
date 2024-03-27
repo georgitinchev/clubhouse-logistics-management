@@ -125,6 +125,7 @@ namespace DataAccessLayer
                             Address = reader["Address"].ToString(),
                             PhoneNumber = reader["PhoneNumber"].ToString(),
                             BSN = reader["Bsn"].ToString(),
+                            IsManager = (bool)reader["IsManager"],
                             Role = (int)reader["Role"],
                             ActiveContractId = (int)reader["ActiveContractID"],
                             EmergencyContactId = (int)reader["EmergencyContactId"],

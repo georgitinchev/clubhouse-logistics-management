@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccessLayer
 {
-    public class ContractDAL :Database
+    public  class ContractDAL :Database
     {
         public void CreateContract(ContractDTO contract)
         {
