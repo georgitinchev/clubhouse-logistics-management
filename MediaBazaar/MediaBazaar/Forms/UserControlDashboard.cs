@@ -11,11 +11,8 @@ namespace MediaBazaar.Forms
 {
 	public partial class UserControlDashboard : UserControl
 	{
-		private EmployeeManager employeeManager;
-		private ContractManager contractManager;
-		private List<Employee> employees;
 		private DataTable employeeData;
-		private Employee selectedEmployee;
+		private EmployeeManager employeeManager;
 		private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
 		private EmployeeDAL employeeDAL;
 

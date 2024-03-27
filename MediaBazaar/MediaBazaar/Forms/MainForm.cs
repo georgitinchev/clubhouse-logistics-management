@@ -8,23 +8,19 @@ namespace MediaBazaar
     public partial class MainForm : Form
     {
         private EmployeeManager employeeManager;
-        private List<Employee> employees;
         private UserControlDashboard userControlDashboard;
         private UserControlWorksheet userControlWorksheet;
         
 
-        public MainForm()
+        public MainForm(EmployeeManager _employeeManager)
         {
+            employeeManager = _employeeManager;
             Application.EnableVisualStyles();
             InitializeComponent();
-            employeeManager = new EmployeeManager();
-
-            userControlDashboard = new UserControlDashboard();
+            userControlDashboard = new UserControlDashboard(employeeManager);
             userControlWorksheet = new UserControlWorksheet();
-
             Controls.Add(userControlDashboard);
             Controls.Add(userControlWorksheet);
-
             userControlDashboard.Show();
             userControlWorksheet.Hide();
         }
