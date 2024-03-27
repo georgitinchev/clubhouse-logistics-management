@@ -14,7 +14,14 @@ namespace BusinessLogicLayer
     public class ContractManager
     {
         private ContractDAL contractDAL;
+        private List<Contract> contracts;
       
+        // constructor
+        public ContractManager()
+        {
+			contractDAL = new ContractDAL();
+            List<Contract> contracts = new List<Contract>();
+		}
 
         public Contract GetContractFromDB(int employeeID)
         {
