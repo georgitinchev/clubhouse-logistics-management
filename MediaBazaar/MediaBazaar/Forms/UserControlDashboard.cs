@@ -45,14 +45,13 @@ namespace MediaBazaar.Forms
 			originalControlStates.Add((dateTimePickerBirthday, dateTimePickerBirthday.BackColor, dateTimePickerBirthday.Enabled));
 		}
 
-		private void PopulateGridView(DataTable employeeData)
+		private void PopulateDataTable(DataTable employeeData)
 		{
 			employeeManager.GetEmployeesFromDB();
 			foreach (Employee employee in employeeManager.employees)
 			{
 				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Password, employee.BSN, employee.PhoneNumber, employee.Birthday, employee.Contract.weeklyHours, employee.EmergencyContact.PhoneNumber, employee.IsManager);
 			}
-			userDataGridView.DataSource = employees;
 		}
 
 		private void InitializeData()
@@ -69,7 +68,8 @@ namespace MediaBazaar.Forms
 			employeeData.Columns.Add("WeeklyHours", typeof(int));
 			employeeData.Columns.Add("EmergencyContact", typeof(string));
 			employeeData.Columns.Add("IsManager", typeof(bool));
-			PopulateGridView(employeeData);
+			PopulateDataTable(employeeData);
+			userDataGridView.DataSource = employeeData;
 		}
 
 
