@@ -118,6 +118,7 @@ namespace DataAccessLayer
                 {
                     while (reader.Read())
                     {
+                        int activeContractId = Convert.ToInt32(reader["ActiveContractId"]);
                         employees.Add(new EmployeeDTO
                         (
                             (int)reader["Id"],
@@ -131,10 +132,10 @@ namespace DataAccessLayer
                             (DateTime)reader["Birthday"],
                             (int)reader["Role"],
                             (bool)reader["IsManager"],
-                            (int)reader["ActiveContractId"],
-                            (int)reader["EmergencyContactId"]
+                            activeContractId,
+                        reader.IsDBNull(reader.GetOrdinal("EmergencyContactId")) ? -1 : reader.GetInt32(reader.GetOrdinal("EmergencyContactId"))
 
-                        ));
+                        )) ;
                     }
                 }
             }

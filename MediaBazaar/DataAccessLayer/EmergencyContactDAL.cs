@@ -39,7 +39,7 @@ namespace DataAccessLayer
                 {
                     if (reader.Read())
                     {
-                        return new EmergencyContactDTO
+                        EmergencyContactDTO emergencyContactDTO= new EmergencyContactDTO
                         (
                            (int)reader["Id"],
                            reader["FirstName"].ToString(),
@@ -47,6 +47,7 @@ namespace DataAccessLayer
                            reader["PhoneNumber"].ToString(),
                            reader["Email"].ToString()
                         );
+                        return emergencyContactDTO;
                     }
                     else
                     {

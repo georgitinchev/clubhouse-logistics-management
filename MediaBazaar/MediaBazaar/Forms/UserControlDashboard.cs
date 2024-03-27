@@ -50,9 +50,9 @@ namespace MediaBazaar.Forms
 			employeeManager.GetEmployeesFromDB();
 			foreach (Employee employee in employeeManager.employees)
 			{
-				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Password, employee.BSN, employee.PhoneNumber, employee.Birthday, employee.Contract.weeklyHours, employee.EmergencyContact.PhoneNumber, employee.IsManager);
+				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(),  employee.Contract.weeklyHours);
 			}
-			userDataGridView.DataSource = employees;
+			
 		}
 
 		private void InitializeData()
@@ -62,14 +62,15 @@ namespace MediaBazaar.Forms
 			employeeData.Columns.Add("Name", typeof(string));
 			employeeData.Columns.Add("Email", typeof(string));
 			employeeData.Columns.Add("Role", typeof(string));
-			employeeData.Columns.Add("Password", typeof(string));
-			employeeData.Columns.Add("BSN", typeof(string));
-			employeeData.Columns.Add("PhoneNumber", typeof(string));
-			employeeData.Columns.Add("Birthday", typeof(DateTime));
+			//employeeData.Columns.Add("Password", typeof(string));
+			//employeeData.Columns.Add("BSN", typeof(string));
+			//employeeData.Columns.Add("EmergencyPhoneNumber", typeof(string));
+			//employeeData.Columns.Add("Birthday", typeof(DateTime));
 			employeeData.Columns.Add("WeeklyHours", typeof(int));
-			employeeData.Columns.Add("EmergencyContact", typeof(string));
-			employeeData.Columns.Add("IsManager", typeof(bool));
+			//employeeData.Columns.Add("EmergencyContact", typeof(string));
+			//employeeData.Columns.Add("IsManager", typeof(bool));
 			PopulateGridView(employeeData);
+			userDataGridView.DataSource = employeeData;
 		}
 
 
@@ -129,13 +130,13 @@ namespace MediaBazaar.Forms
 
 			userDataGridView.SelectionChanged += DataGridView1_SelectionChanged;
 			userDataGridView.ScrollBars = ScrollBars.Vertical;
-			userDataGridView.Columns["Password"].Visible = false;
+			/*userDataGridView.Columns["Password"].Visible = false;
 			userDataGridView.Columns["BSN"].Visible = false;
 			userDataGridView.Columns["PhoneNumber"].Visible = false;
 			userDataGridView.Columns["Birthday"].Visible = false;
 			userDataGridView.Columns["ActiveContract"].Visible = false;
 			userDataGridView.Columns["EmergencyContact"].Visible = false;
-			userDataGridView.Columns["IsManager"].Visible = false;
+			userDataGridView.Columns["IsManager"].Visible = false;*/
 		}
 
 		private void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -351,26 +352,26 @@ namespace MediaBazaar.Forms
 				string name = selectedRow.Cells["Name"].Value.ToString();
 				string[] nameParts = name.Split(' ');
 				string firstName = nameParts[0];
-				string lastName = string.Join(" ", nameParts.Skip(1));
+				//string lastName = string.Join(" ", nameParts.Skip(1));
 
 				string email = selectedRow.Cells["Email"].Value.ToString();
 				string role = selectedRow.Cells["Role"].Value.ToString();
-				string password = selectedRow.Cells["Password"].Value.ToString();
-				string bsn = selectedRow.Cells["BSN"].Value.ToString();
-				string phoneNumber = selectedRow.Cells["PhoneNumber"].Value.ToString();
-				DateTime birthday = (DateTime)selectedRow.Cells["Birthday"].Value;
+				//string password = selectedRow.Cells["Password"].Value.ToString();
+				//string bsn = selectedRow.Cells["BSN"].Value.ToString();
+				//string phoneNumber = selectedRow.Cells["PhoneNumber"].Value.ToString();
+				//DateTime birthday = (DateTime)selectedRow.Cells["Birthday"].Value;
 
 				textBoxName.Text = firstName;
 				comboBoxRoleDetails.SelectedItem = role;
 				textBoxEmail.Text = email;
 
 				textBoxPassword.UseSystemPasswordChar = true;
-				textBoxPassword.Text = password;
+				//textBoxPassword.Text = password;
 				textBoxBSN.UseSystemPasswordChar = true;
-				textBoxBSN.Text = bsn;
+				//textBoxBSN.Text = bsn;
 
-				textBoxPhone.Text = phoneNumber;
-				dateTimePickerBirthday.Value = birthday;
+				//textBoxPhone.Text = phoneNumber;
+				//dateTimePickerBirthday.Value = birthday;
 			}
 		}
 
@@ -380,19 +381,22 @@ namespace MediaBazaar.Forms
 			{
 				DataGridViewRow selectedRow = userDataGridView.Rows[e.RowIndex];
 
+
 				textBoxName.ReadOnly = false;
 				comboBoxRoleDetails.Enabled = true;
 				textBoxEmail.ReadOnly = false;
 				textBoxPassword.ReadOnly = false;
 				textBoxBSN.ReadOnly = false;
 				textBoxPhone.ReadOnly = false;
+				Employee selectedEmployee = employeeManager.GetEmployeeById(Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value));
 
-				textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
+
+                textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
 				comboBoxRoleDetails.Text = selectedRow.Cells["Role"].Value.ToString();
 				textBoxEmail.Text = selectedRow.Cells["Email"].Value.ToString();
-				textBoxPassword.Text = selectedRow.Cells["Password"].Value.ToString();
-				textBoxBSN.Text = selectedRow.Cells["BSN"].Value.ToString();
-				textBoxPhone.Text = selectedRow.Cells["PhoneNumber"].Value.ToString();
+				textBoxPassword.Text = selectedEmployee.Password;
+				textBoxBSN.Text = selectedEmployee.BSN;
+				textBoxPhone.Text = selectedEmployee.PhoneNumber;
 
 				textBoxName.ReadOnly = true;
 				comboBoxRoleDetails.Enabled = false;
@@ -401,7 +405,7 @@ namespace MediaBazaar.Forms
 				textBoxBSN.ReadOnly = true;
 				textBoxPhone.ReadOnly = true;
 
-				dateTimePickerBirthday.Value = (DateTime)selectedRow.Cells["Birthday"].Value;
+				dateTimePickerBirthday.Value = (DateTime)selectedEmployee.Birthday;
 			}
 		}
 

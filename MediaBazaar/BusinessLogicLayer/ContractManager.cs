@@ -35,7 +35,8 @@ namespace BusinessLogicLayer
 		public Contract GetContractFromDB(int employeeID)
 		{
 			ContractDTO foundContract = contractDAL.ReadContract(employeeID);
-			if (foundContract == null)
+			
+			if (foundContract != null)
 			{
 				Contract contract = TransformDTOToContract(foundContract);
 				return contract;
