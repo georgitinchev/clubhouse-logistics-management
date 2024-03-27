@@ -52,7 +52,7 @@ namespace MediaBazaar.Forms
 			{
 				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Contract.weeklyHours);
 			}
-			
+
 		}
 
 		private void InitializeData()
@@ -62,13 +62,14 @@ namespace MediaBazaar.Forms
 			employeeData.Columns.Add("Name", typeof(string));
 			employeeData.Columns.Add("Email", typeof(string));
 			employeeData.Columns.Add("Role", typeof(string));
+			employeeData.Columns.Add("WeeklyHours", typeof(int));
 			//employeeData.Columns.Add("Password", typeof(string));
 			//employeeData.Columns.Add("BSN", typeof(string));
 			//employeeData.Columns.Add("EmergencyPhoneNumber", typeof(string));
 			//employeeData.Columns.Add("Birthday", typeof(DateTime));
-			employeeData.Columns.Add("WeeklyHours", typeof(int));
 			//employeeData.Columns.Add("EmergencyContact", typeof(string));
 			//employeeData.Columns.Add("IsManager", typeof(bool));
+			PopulateDataTable(employeeData);
 			userDataGridView.DataSource = employeeData;
 		}
 
@@ -328,70 +329,67 @@ namespace MediaBazaar.Forms
 			}
 		}
 
-        private void UpdateEmployeeDetails()
-        {
-            try
-            {
-                if (userDataGridView.SelectedRows.Count > 0)
-                {
-                    DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
-                    int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
-
+		private void UpdateEmployeeDetails()
+		{
+			try
+			{
+				if (userDataGridView.SelectedRows.Count > 0)
+				{
+					DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+					int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
 					string address = "";
 
-                    EmployeeRoleEnum role = MapRoleToEnum(comboBoxRole.Text);
+					EmployeeRoleEnum role = MapRoleToEnum(comboBoxRole.Text);
+					EmployeeDTO employee = new EmployeeDTO(
+						employeeId,
+						textBoxName.Text,
+						textBoxName.Text,
+						textBoxEmail.Text,
+						textBoxPassword.Text,
+						textBoxPhone.Text,
+						address,
+						textBoxBSN.Text,
+						dateTimePickerBirthday.Value,
+						(int)role,
+						false,
+						-1,
+						-1
+					);
 
-                    EmployeeDTO employee = new EmployeeDTO(
-                        employeeId,
-                        textBoxName.Text,
-                        textBoxName.Text,
-                        textBoxEmail.Text,
-                        textBoxPassword.Text,
-                        textBoxPhone.Text,
-                        address,
-                        textBoxBSN.Text,
-                        dateTimePickerBirthday.Value,
-                        (int)role,
-                        false,
-                        -1,
-                        -1
-                    );
+					employeeDAL.UpdateEmployee(employee);
+					PopulateDataTable(employeeData);
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
 
-                    employeeDAL.UpdateEmployee(employee);
-
-                    PopulateDataTable(employeeData);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private EmployeeRoleEnum MapRoleToEnum(string roleName)
-        {
-            switch (roleName)
-            {
-                case "DepartmentManager":
-                    return EmployeeRoleEnum.DepartmentManager;
-                case "HRManager":
-                    return EmployeeRoleEnum.HRManager;
-                case "SalesRepresentative":
-                    return EmployeeRoleEnum.SalesRepresentative;
-                case "SupportEmployee":
-                    return EmployeeRoleEnum.SupportEmployee;
-                case "Cashier":
-                    return EmployeeRoleEnum.Cashier;
+		private EmployeeRoleEnum MapRoleToEnum(string roleName)
+		{
+			switch (roleName)
+			{
+				case "DepartmentManager":
+					return EmployeeRoleEnum.DepartmentManager;
+				case "HRManager":
+					return EmployeeRoleEnum.HRManager;
+				case "SalesRepresentative":
+					return EmployeeRoleEnum.SalesRepresentative;
+				case "SupportEmployee":
+					return EmployeeRoleEnum.SupportEmployee;
+				case "Cashier":
+					return EmployeeRoleEnum.Cashier;
 				case "SecurityGuard":
 					return EmployeeRoleEnum.SecurityGuard;
-                case "DepotWorker":
-                    return EmployeeRoleEnum.DepotWorker;
-                default:
-                    throw new ArgumentException($"Invalid role name: {roleName}");
-            }
-        }
+				case "DepotWorker":
+					return EmployeeRoleEnum.DepotWorker;
+				default:
+					throw new ArgumentException($"Invalid role name: {roleName}");
+			}
+		}
 
-        private void userDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
+		private void userDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
 		{
 			if (e.RowIndex >= 0 && e.RowIndex < employeeData.Rows.Count)
 			{
@@ -407,7 +405,7 @@ namespace MediaBazaar.Forms
 				Employee selectedEmployee = employeeManager.GetEmployeeById(Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value));
 
 
-                textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
+				textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
 				comboBoxRoleDetails.Text = selectedRow.Cells["Role"].Value.ToString();
 				textBoxEmail.Text = selectedRow.Cells["Email"].Value.ToString();
 				textBoxPassword.Text = selectedEmployee.Password;
@@ -436,6 +434,35 @@ namespace MediaBazaar.Forms
 			{
 				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
 				selectedRow.Cells["Role"].Value = newRole;
+			}
+		}
+
+		private void removeEmployeeBtn_Click(object sender, EventArgs e)
+		{
+			if(userDataGridView.SelectedRows.Count > 0)
+			{
+				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+
+				int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
+
+				DialogResult result = MessageBox.Show("Are you sure you want to remove this employee?", "Remove Employee", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+				if (result == DialogResult.Yes)
+				{
+				 try
+					{
+						employeeManager.DeleteEmployee(employeeId);
+						userDataGridView.Rows.Remove(selectedRow);
+						MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			} else
+			{
+				MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 	}
