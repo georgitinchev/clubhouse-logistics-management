@@ -20,6 +20,7 @@ namespace BusinessLogicLayer
 		{
 			contractDAL = new ContractDAL();
 			contracts = new List<Contract>();
+			GetAllContractsFromDB();
 		}
 
 		public void AddContract(Contract newContract)

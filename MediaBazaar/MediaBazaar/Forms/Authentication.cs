@@ -1,5 +1,4 @@
 ﻿using System;
-using DTOLayer;
 using BusinessLogicLayer;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DTOLayer;
 using MediaBazaar.Classes;
 
 namespace MediaBazaar.Forms

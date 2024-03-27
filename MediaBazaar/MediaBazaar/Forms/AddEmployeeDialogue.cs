@@ -42,7 +42,6 @@ namespace MediaBazaar.Forms
 					throw new Exception("Weekly hours must be an integer.");
 
 				ValidateFields();
-
 				int contractId = idCheckerContract();
 
 				// Create Contract
@@ -83,7 +82,7 @@ namespace MediaBazaar.Forms
 
 		private int idCheckerEmployee()
 		{
-			if (_contractManager.contracts == null || _employeeManager.employees.Count == 0)
+			if (_employeeManager.employees == null || _employeeManager.employees.Count == 0)
 			{
 				return 1;
 			}

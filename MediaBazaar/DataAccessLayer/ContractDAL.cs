@@ -19,7 +19,6 @@ namespace DataAccessLayer
                 var command = new SqlCommand(
                     "INSERT INTO Contract (Id,Role, HourlyWage, WeeklyHours, StartDate, EndDate, IsActive, TerminationReason, Availability) " +
                     "VALUES (@Id,@Role, @HourlyWage, @WeeklyHours, @StartDate, @EndDate, @IsActive, @TerminationReason, @Availability)", connection);
-
                 command.Parameters.AddWithValue("@Id",contract.Id);
                 command.Parameters.AddWithValue("@Role", contract.Role);
                 command.Parameters.Add("@HourlyWage", SqlDbType.Decimal).Value = contract.HourlyWage;
@@ -31,7 +30,6 @@ namespace DataAccessLayer
                 command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = contract.IsActive;
                 command.Parameters.AddWithValue("@TerminationReason", (object)contract.TerminationReason ?? DBNull.Value);
                 command.Parameters.AddWithValue("@Availability", contract.Availability);
-                
                 command.ExecuteNonQuery();
             }
         }

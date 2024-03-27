@@ -53,7 +53,7 @@ namespace MediaBazaar.Forms
 			{
 				employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Contract.weeklyHours);
 			}
-
+			
 		}
 
 		private void InitializeData()
@@ -78,10 +78,8 @@ namespace MediaBazaar.Forms
 		{
 			userDataGridView.ClearSelection();
 			groupBox1.Visible = false;
-
 			UpdateLayout();
 		}
-
 
 		private void YourFormName_Load(object sender, EventArgs e)
 		{
@@ -259,6 +257,10 @@ namespace MediaBazaar.Forms
 		{
 			AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager, employeeManager._contractManager);
 			addEmployeeDialogue.ShowDialog();
+			employeeData.Clear();
+			PopulateDataTable(employeeData);
+			userDataGridView.DataSource = employeeData;
+			userDataGridView.ClearSelection();
 		}
 
 		private void editEmployeeBtn_Click(object sender, EventArgs e)
