@@ -273,7 +273,7 @@ namespace MediaBazaar.Forms
                     if (control is TextBox textBox)
                     {
                         textBox.ReadOnly = false;
-                        if (textBox == textBoxPassword || textBox == textBoxBSN)
+                        if (textBox == textBoxPassword || textBox == textBoxBSN || textBox == textBoxAddress) // Enable textBoxAddress
                         {
                             textBox.UseSystemPasswordChar = false;
                         }
@@ -363,23 +363,14 @@ namespace MediaBazaar.Forms
             }
         }
 
-        
+
 
         private void userDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < employeeData.Rows.Count)
             {
                 DataGridViewRow selectedRow = userDataGridView.Rows[e.RowIndex];
-
-
-                textBoxName.ReadOnly = false;
-                comboBoxRoleDetails.Enabled = true;
-                textBoxEmail.ReadOnly = false;
-                textBoxPassword.ReadOnly = false;
-                textBoxBSN.ReadOnly = false;
-                textBoxPhone.ReadOnly = false;
                 Employee selectedEmployee = employeeManager.GetEmployeeById(Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value));
-
 
                 textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
                 comboBoxRoleDetails.Text = selectedRow.Cells["Role"].Value.ToString();
@@ -388,16 +379,19 @@ namespace MediaBazaar.Forms
                 textBoxBSN.Text = selectedEmployee.BSN;
                 textBoxPhone.Text = selectedEmployee.PhoneNumber;
 
+                dateTimePickerBirthday.Value = (DateTime)selectedEmployee.Birthday;
+                dateTimePickerBirthday.Enabled = false;
+
                 textBoxName.ReadOnly = true;
                 comboBoxRoleDetails.Enabled = false;
                 textBoxEmail.ReadOnly = true;
                 textBoxPassword.ReadOnly = true;
                 textBoxBSN.ReadOnly = true;
                 textBoxPhone.ReadOnly = true;
-
-                dateTimePickerBirthday.Value = (DateTime)selectedEmployee.Birthday;
+                textBoxAddress.ReadOnly = true;
             }
         }
+
 
         private string newRole;
         private void comboBoxRoleDetails_SelectedIndexChanged(object sender, EventArgs e)
