@@ -18,7 +18,6 @@ namespace MediaBazaar.Forms
         public UserControlDashboard()
         {
             employeeManager = new EmployeeManager();
-            contractManager = new ContractManager();
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
@@ -235,11 +234,9 @@ namespace MediaBazaar.Forms
         {
             Search();
         }
-
         private void addEmployeeBtn_Click(object sender, EventArgs e)
         {
-            AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager, contractManager);
-
+            AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager,employeeManager._contractManager);
             addEmployeeDialogue.ShowDialog();
         }
 

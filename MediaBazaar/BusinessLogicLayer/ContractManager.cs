@@ -29,6 +29,7 @@ namespace BusinessLogicLayer
 				throw new Exception("Contract already exists.");
 			}
 			contracts.Add(newContract);
+			AddContractInDB(newContract);
 		}
 
 		public Contract GetContractFromDB(int employeeID)
