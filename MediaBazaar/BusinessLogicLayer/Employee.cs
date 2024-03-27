@@ -7,7 +7,7 @@ namespace DTOLayer
 {
 	public class Employee
 	{
-		public int Id { get; private set; }
+		public int EmployeeID { get; private set; }
 		public string FirstName { get; private set; }
 		public string LastName { get; private set; }
 		public string Email { get; private set; }
@@ -23,7 +23,7 @@ namespace DTOLayer
 
 		public Employee(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{
-			Id = id;
+            EmployeeID = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
@@ -35,7 +35,7 @@ namespace DTOLayer
 		public Employee(int id, string firstName, string lastName, string email, string password, string phoneNumber, string bsn, DateTime birthday, int role, bool isManager, EmergencyContact emergencyContact, string address
 				, Contract contract)
 		{
-			Id = id;
+            EmployeeID = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
@@ -51,7 +51,7 @@ namespace DTOLayer
 		}
 		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{
-			Id = id;
+            EmployeeID = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;

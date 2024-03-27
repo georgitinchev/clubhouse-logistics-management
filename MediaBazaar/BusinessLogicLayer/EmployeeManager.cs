@@ -11,9 +11,8 @@ namespace MediaBazaar.Classes
 	{
 		private EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
-
 		private EmployeeDAL employeeDAL;
-		public List<Employee> employees { get; private set; }
+        public List<Employee> employees { get; private set; }
 
 		public EmployeeManager()
 		{
@@ -21,12 +20,11 @@ namespace MediaBazaar.Classes
 			_contractManager = new ContractManager();
 			employees = new List<Employee>();
 			employeeDAL = new EmployeeDAL();
-
-		}
+        }
 
 		public void AddEmployee(Employee newEmployee)
 		{
-			if (employees.Any(e => e.Id == newEmployee.Id))
+			if (employees.Any(e => e.EmployeeID == newEmployee.EmployeeID))
 			{
 				throw new Exception("Employee already exists.");
 			}
@@ -38,7 +36,7 @@ namespace MediaBazaar.Classes
 		{
 			foreach(Employee emp in employees)
 			{
-				if (emp.Id == id)
+				if (emp.EmployeeID == id)
 				{
 					return emp;
 				}
@@ -48,7 +46,7 @@ namespace MediaBazaar.Classes
 
 		public void UpdateEmployee(Employee updatedEmployee)
 		{
-			var employee = employees.FirstOrDefault(e => e.Id == updatedEmployee.Id);
+			var employee = employees.FirstOrDefault(e => e.EmployeeID == updatedEmployee.EmployeeID);
 			if (employee == null)
 			{
 				throw new Exception("Employee not found.");
@@ -58,7 +56,7 @@ namespace MediaBazaar.Classes
 
 		public void DeleteEmployee(int employeeId)
 		{
-			var employee = employees.FirstOrDefault(e => e.Id == employeeId);
+			var employee = employees.FirstOrDefault(e => e.EmployeeID == employeeId);
 			if (employee == null)
 			{
 				throw new Exception("Employee not found.");
@@ -67,7 +65,13 @@ namespace MediaBazaar.Classes
 			employees.Remove(employee);
 		}
 
-		public List<Employee> GetAllRegularEmployees()
+        public Employee GetEmployeeById(int employeeID)
+        {
+            return employees.FirstOrDefault(e => e.EmployeeID == employeeID);
+        }
+
+
+        public List<Employee> GetAllRegularEmployees()
 		{
 			return employees.Where(e => !e.IsManager).ToList();
 		}
@@ -120,7 +124,7 @@ namespace MediaBazaar.Classes
 		public EmployeeDTO TransformEmployeeToDTO(Employee employee)
 		{
 			EmployeeDTO employeeDTO = new EmployeeDTO(
-				employee.Id,
+				employee.EmployeeID,
 				employee.FirstName,
 				employee.LastName,
 				employee.Email,
@@ -144,8 +148,6 @@ namespace MediaBazaar.Classes
 			{
 				employees.Add(TransformDTOToEmployee(dto));
 			}
-		}
-
-		
+		}	
 	}
 }

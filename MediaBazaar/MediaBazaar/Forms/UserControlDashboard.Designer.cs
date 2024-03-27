@@ -31,6 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlDashboard));
             userDataGridView = new DataGridView();
             groupBox1 = new GroupBox();
+            dateTimePickerBirthday = new DateTimePicker();
+            label5 = new Label();
+            textBoxPhone = new TextBox();
+            label4 = new Label();
+            textBoxBSN = new TextBox();
+            label3 = new Label();
+            textBoxPassword = new TextBox();
+            label2 = new Label();
             comboBoxRoleDetails = new ComboBox();
             removeEmployeeBtn = new CustomButton();
             editEmployeeBtn = new CustomButton();
@@ -38,13 +46,10 @@
             employeeDetailsLabel = new Label();
             userPictureBox = new PictureBox();
             textBoxEmail = new TextBox();
-            textBoxSurname = new TextBox();
             textBoxName = new TextBox();
             label1 = new Label();
             lblRole = new Label();
-            lblSurname = new Label();
             lblName = new Label();
-            vScrollBar = new VScrollBar();
             pictureBoxSearch = new PictureBox();
             comboBoxRole = new ComboBox();
             textBoxSearch = new TextBox();
@@ -64,10 +69,20 @@
             userDataGridView.RowHeadersWidth = 51;
             userDataGridView.Size = new Size(918, 497);
             userDataGridView.TabIndex = 22;
+            userDataGridView.CellClick += userDataGridView_CellClick;
+            userDataGridView.SelectionChanged += userDataGridView_SelectionChanged;
             // 
             // groupBox1
             // 
             groupBox1.BackColor = Color.OrangeRed;
+            groupBox1.Controls.Add(dateTimePickerBirthday);
+            groupBox1.Controls.Add(label5);
+            groupBox1.Controls.Add(textBoxPhone);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(textBoxBSN);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(textBoxPassword);
+            groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(comboBoxRoleDetails);
             groupBox1.Controls.Add(removeEmployeeBtn);
             groupBox1.Controls.Add(editEmployeeBtn);
@@ -75,11 +90,9 @@
             groupBox1.Controls.Add(employeeDetailsLabel);
             groupBox1.Controls.Add(userPictureBox);
             groupBox1.Controls.Add(textBoxEmail);
-            groupBox1.Controls.Add(textBoxSurname);
             groupBox1.Controls.Add(textBoxName);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(lblRole);
-            groupBox1.Controls.Add(lblSurname);
             groupBox1.Controls.Add(lblName);
             groupBox1.Location = new Point(1014, 68);
             groupBox1.Name = "groupBox1";
@@ -87,19 +100,91 @@
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             // 
+            // dateTimePickerBirthday
+            // 
+            dateTimePickerBirthday.Enabled = false;
+            dateTimePickerBirthday.Format = DateTimePickerFormat.Short;
+            dateTimePickerBirthday.Location = new Point(135, 312);
+            dateTimePickerBirthday.Name = "dateTimePickerBirthday";
+            dateTimePickerBirthday.Size = new Size(192, 27);
+            dateTimePickerBirthday.TabIndex = 41;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(16, 312);
+            label5.Name = "label5";
+            label5.Size = new Size(67, 20);
+            label5.TabIndex = 39;
+            label5.Text = "Birthday:";
+            // 
+            // textBoxPhone
+            // 
+            textBoxPhone.BackColor = SystemColors.ControlDark;
+            textBoxPhone.Location = new Point(135, 273);
+            textBoxPhone.Name = "textBoxPhone";
+            textBoxPhone.ReadOnly = true;
+            textBoxPhone.Size = new Size(193, 27);
+            textBoxPhone.TabIndex = 38;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(16, 276);
+            label4.Name = "label4";
+            label4.Size = new Size(111, 20);
+            label4.TabIndex = 37;
+            label4.Text = "Phone Number:";
+            // 
+            // textBoxBSN
+            // 
+            textBoxBSN.BackColor = SystemColors.ControlDark;
+            textBoxBSN.Location = new Point(135, 237);
+            textBoxBSN.Name = "textBoxBSN";
+            textBoxBSN.ReadOnly = true;
+            textBoxBSN.Size = new Size(193, 27);
+            textBoxBSN.TabIndex = 36;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(16, 240);
+            label3.Name = "label3";
+            label3.Size = new Size(40, 20);
+            label3.TabIndex = 35;
+            label3.Text = "BSN:";
+            // 
+            // textBoxPassword
+            // 
+            textBoxPassword.BackColor = SystemColors.ControlDark;
+            textBoxPassword.Location = new Point(135, 200);
+            textBoxPassword.Name = "textBoxPassword";
+            textBoxPassword.ReadOnly = true;
+            textBoxPassword.Size = new Size(193, 27);
+            textBoxPassword.TabIndex = 34;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(16, 203);
+            label2.Name = "label2";
+            label2.Size = new Size(73, 20);
+            label2.TabIndex = 33;
+            label2.Text = "Password:";
+            // 
             // comboBoxRoleDetails
             // 
             comboBoxRoleDetails.Cursor = Cursors.Hand;
             comboBoxRoleDetails.DropDownHeight = 108;
-            comboBoxRoleDetails.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRoleDetails.FormattingEnabled = true;
             comboBoxRoleDetails.IntegralHeight = false;
             comboBoxRoleDetails.ItemHeight = 20;
             comboBoxRoleDetails.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
-            comboBoxRoleDetails.Location = new Point(117, 169);
+            comboBoxRoleDetails.Location = new Point(134, 127);
             comboBoxRoleDetails.Name = "comboBoxRoleDetails";
             comboBoxRoleDetails.Size = new Size(194, 28);
             comboBoxRoleDetails.TabIndex = 32;
+            comboBoxRoleDetails.SelectedIndexChanged += comboBoxRoleDetails_SelectedIndexChanged;
             // 
             // removeEmployeeBtn
             // 
@@ -111,7 +196,7 @@
             removeEmployeeBtn.Cursor = Cursors.Hand;
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(53, 472);
+            removeEmployeeBtn.Location = new Point(54, 508);
             removeEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(257, 53);
@@ -130,7 +215,7 @@
             editEmployeeBtn.Cursor = Cursors.Hand;
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(53, 397);
+            editEmployeeBtn.Location = new Point(54, 442);
             editEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(257, 53);
@@ -145,7 +230,7 @@
             pictureBox2.BackColor = Color.DimGray;
             pictureBox2.Location = new Point(21, 69);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(290, 3);
+            pictureBox2.Size = new Size(305, 4);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
@@ -175,25 +260,16 @@
             // textBoxEmail
             // 
             textBoxEmail.BackColor = SystemColors.ControlDark;
-            textBoxEmail.Location = new Point(117, 207);
+            textBoxEmail.Location = new Point(135, 167);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.ReadOnly = true;
             textBoxEmail.Size = new Size(193, 27);
             textBoxEmail.TabIndex = 20;
             // 
-            // textBoxSurname
-            // 
-            textBoxSurname.BackColor = SystemColors.ControlDark;
-            textBoxSurname.Location = new Point(117, 131);
-            textBoxSurname.Name = "textBoxSurname";
-            textBoxSurname.ReadOnly = true;
-            textBoxSurname.Size = new Size(193, 27);
-            textBoxSurname.TabIndex = 19;
-            // 
             // textBoxName
             // 
             textBoxName.BackColor = SystemColors.ControlDark;
-            textBoxName.Location = new Point(117, 95);
+            textBoxName.Location = new Point(135, 93);
             textBoxName.Name = "textBoxName";
             textBoxName.ReadOnly = true;
             textBoxName.Size = new Size(193, 27);
@@ -202,7 +278,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 205);
+            label1.Location = new Point(16, 163);
             label1.Name = "label1";
             label1.Size = new Size(49, 20);
             label1.TabIndex = 17;
@@ -211,20 +287,11 @@
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(16, 169);
+            lblRole.Location = new Point(16, 127);
             lblRole.Name = "lblRole";
             lblRole.Size = new Size(42, 20);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
-            // 
-            // lblSurname
-            // 
-            lblSurname.AutoSize = true;
-            lblSurname.Location = new Point(16, 132);
-            lblSurname.Name = "lblSurname";
-            lblSurname.Size = new Size(70, 20);
-            lblSurname.TabIndex = 1;
-            lblSurname.Text = "Surname:";
             // 
             // lblName
             // 
@@ -234,13 +301,6 @@
             lblName.Size = new Size(52, 20);
             lblName.TabIndex = 0;
             lblName.Text = "Name:";
-            // 
-            // vScrollBar
-            // 
-            vScrollBar.Location = new Point(950, 152);
-            vScrollBar.Name = "vScrollBar";
-            vScrollBar.Size = new Size(26, 497);
-            vScrollBar.TabIndex = 20;
             // 
             // pictureBoxSearch
             // 
@@ -307,7 +367,6 @@
             Controls.Add(addEmployeeBtn);
             Controls.Add(userDataGridView);
             Controls.Add(groupBox1);
-            Controls.Add(vScrollBar);
             Controls.Add(pictureBoxSearch);
             Controls.Add(comboBoxRole);
             Controls.Add(textBoxSearch);
@@ -315,6 +374,7 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "UserControlDashboard";
             Size = new Size(1360, 745);
+            Load += UserControlDashboard_Load;
             ((System.ComponentModel.ISupportInitialize)userDataGridView).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -333,13 +393,10 @@
         private Label employeeDetailsLabel;
         private PictureBox userPictureBox;
         private TextBox textBoxEmail;
-        private TextBox textBoxSurname;
         private TextBox textBoxName;
         private Label label1;
         private Label lblRole;
-        private Label lblSurname;
         private Label lblName;
-        private VScrollBar vScrollBar;
         private PictureBox pictureBoxSearch;
         private ComboBox comboBoxRole;
         private TextBox textBoxSearch;
@@ -347,5 +404,13 @@
         private CustomButton editEmployeeBtn;
         private CustomButton addEmployeeBtn;
         private ComboBox comboBoxRoleDetails;
+        private TextBox textBoxBSN;
+        private Label label3;
+        private TextBox textBoxPassword;
+        private Label label2;
+        private TextBox textBoxPhone;
+        private Label label4;
+        private Label label5;
+        private DateTimePicker dateTimePickerBirthday;
     }
 }
