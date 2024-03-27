@@ -9,7 +9,7 @@ namespace MediaBazaar.Classes
 {
 	public class EmployeeManager
 	{
-		private EmergencyContactManager _emergencyContactManager;
+		public EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
 		private EmployeeDAL employeeDAL;
 		public List<Employee> employees { get; private set; }
@@ -30,7 +30,7 @@ namespace MediaBazaar.Classes
 				throw new Exception("Employee already exists.");
 			}
 			employees.Add(newEmployee);
-			//employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
+			employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
 		}
 
 		public Employee SearchEmployee(int id)

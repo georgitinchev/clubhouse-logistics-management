@@ -10,35 +10,40 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-    public class EmergencyContactManager
-    {
-        EmergencyContactDAL emergencyContactDAL;
+	public class EmergencyContactManager
+	{
+		private EmergencyContactDAL emergencyContactDAL;
+		public EmergencyContactManager()
+		{
+			emergencyContactDAL = new EmergencyContactDAL();
+		}
+		public void AddEmergencyContact(EmergencyContact newEmergencyContact)
+		{
+			emergencyContactDAL.CreateEmergencyContact(TransformEmergencyContactToDTO(newEmergencyContact));
+		}
 
-        public EmergencyContactManager()
-        {
-            emergencyContactDAL = new EmergencyContactDAL();
-        }
-        public EmergencyContact TransformDTOToEmergencyContact(EmergencyContactDTO dto)
-        {
-            return new EmergencyContact(dto.Id, dto.FirstName, dto.LastName, dto.PhoneNumber, dto.Email);
-        }
+		public EmergencyContact TransformDTOToEmergencyContact(EmergencyContactDTO dto)
+		{
+			return new EmergencyContact(dto.Id, dto.FirstName, dto.LastName, dto.PhoneNumber, dto.Email);
+		}
 
 		public EmergencyContactDTO TransformEmergencyContactToDTO(EmergencyContact emergencyContact)
 		{
 			return new EmergencyContactDTO(emergencyContact.Id, emergencyContact.FirstName, emergencyContact.LastName, emergencyContact.PhoneNumber, emergencyContact.Email);
 		}
 
-        public EmergencyContact ReadEmergencyContact(int employeeId)
-        {
-            try
-            {
-                EmergencyContactDTO emergencyContactDTO = emergencyContactDAL.ReadEmergencyContact(employeeId);
-                return TransformDTOToEmergencyContact(emergencyContactDTO);
-            }
-            catch (Exception ex)
-            {
-                return null;
-            }
+		public EmergencyContact ReadEmergencyContact(int employeeId)
+		{
+			try
+			{
+				EmergencyContactDTO emergencyContactDTO = emergencyContactDAL.ReadEmergencyContact(employeeId);
+				return TransformDTOToEmergencyContact(emergencyContactDTO);
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+			}
 
         }
 
