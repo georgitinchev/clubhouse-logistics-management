@@ -16,13 +16,12 @@ namespace MediaBazaar.Forms
         private DataTable employeeData;
         private Employee selectedEmployee;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
-        private List<(Control control, Point originalLocation)> originalControlLocations = new List<(Control, Point)>();
-
         public UserControlDashboard()
         {
             employeeManager = new EmployeeManager();
             InitializeComponent();
             InitializeData();
+            PopulateGridView();
             InitializeDataGridView();
             InitializeControls();
             InitializeFocus();
@@ -53,7 +52,6 @@ namespace MediaBazaar.Forms
         }
 
 
-
         private void InitializeData()
         {
             employeeData = new DataTable();
@@ -61,24 +59,14 @@ namespace MediaBazaar.Forms
             employeeData.Columns.Add("Name", typeof(string));
             employeeData.Columns.Add("Email", typeof(string));
             employeeData.Columns.Add("Role", typeof(string));
-            employeeData.Columns.Add("Password", typeof(string));
-            employeeData.Columns.Add("BSN", typeof(int));
-            employeeData.Columns.Add("PhoneNumber", typeof(string));
-            employeeData.Columns.Add("Birthday", typeof(DateTime));
-            userDataGridView.DataSource = employeeData;
+            employeeData.Columns.Add("Worksheet", typeof(string));
+            employeeData.Rows.Add("John Doe", "john@example.com", "HR Manager", "A");
+            employeeData.Rows.Add("Jane Smith", "jane@example.com", "Sales Representative", "B");
+            employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Support", "C");
+            employeeData.Rows.Add("Bob Brown", "bob@example.com", "Cashier", "D");
+            employeeData.Rows.Add("Charlie Chen", "charlie@example.com", "Security Guard", "E");
+            employeeData.Rows.Add("David Davis", "david@example.com", "Depot Worker", "F");
         }
-
-
-        private void UserControlDashboard_Load(object sender, EventArgs e)
-        {
-            GenerateMockData(10);
-            userDataGridView.ClearSelection();
-            groupBox1.Visible = false;
-
-            UpdateLayout();
-        }
-
-
         private void YourFormName_Load(object sender, EventArgs e)
         {
             userDataGridView.ClearSelection();
@@ -131,7 +119,6 @@ namespace MediaBazaar.Forms
             userDataGridView.Columns["PhoneNumber"].Visible = false;
             userDataGridView.Columns["Birthday"].Visible = false;
         }
-
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
