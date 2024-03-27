@@ -17,9 +17,9 @@ namespace DTOLayer
         public DateTime? EndDate {  get; set; }
         public bool IsActive {  get; set; }
         public string? TerminationReason {  get; set; }
-        public DateTime Availability {  get; set; }
+        public DateTime? Availability {  get; set; }
 
-        public ContractDTO(int id, int role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime availability)
+        public ContractDTO(int id, int role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime? availability)
         {
             Id = id;
             Role = role;

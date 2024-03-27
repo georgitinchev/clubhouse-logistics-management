@@ -151,6 +151,7 @@
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Media Bazaar Managment";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();

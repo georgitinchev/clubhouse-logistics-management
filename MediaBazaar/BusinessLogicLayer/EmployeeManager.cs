@@ -11,7 +11,6 @@ namespace MediaBazaar.Classes
 	{
 		private EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
-
 		private EmployeeDAL employeeDAL;
 		public List<Employee> employees { get; private set; }
 

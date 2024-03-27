@@ -191,6 +191,7 @@ namespace MediaBazaar.Forms
         private void addEmployeeBtn_Click(object sender, EventArgs e)
         {
             AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager, contractManager);
+
             addEmployeeDialogue.ShowDialog();
         }
 

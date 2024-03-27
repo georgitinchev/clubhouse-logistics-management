@@ -11,79 +11,86 @@ using MediaBazaar.Classes;
 
 namespace BusinessLogicLayer
 {
-    public class ContractManager
-    {
-        private ContractDAL contractDAL;
-        public List<Contract> contracts { get; private set; }
-      
-        // constructor
-        public ContractManager()
-        {
+	public class ContractManager
+	{
+		public ContractDAL contractDAL { get; private set; }
+		public List<Contract> contracts { get; private set; }
+
+		public ContractManager()
+		{
 			contractDAL = new ContractDAL();
-            List<Contract> contracts = new List<Contract>();
+			contracts = new List<Contract>();
 		}
 
-        public Contract GetContractFromDB(int employeeID)
-        {
-            ContractDTO foundContract= contractDAL.ReadContract(employeeID);
-            if (foundContract == null)
-            {
-                Contract contract = TransformDTOToContract (foundContract);
-                return contract;
-            }
-            throw new Exception("Contract not found");
-        }  
-        public Contract TransformDTOToContract(ContractDTO contractDTO)
-        {
-            try
-            {
-                Contract contract = new Contract
-                (
-                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason, contractDTO.Availability
+		public void AddContract(Contract newContract)
+		{
+			if (contracts.Any(c => c.Id == newContract.Id))
+			{
+				throw new Exception("Contract already exists.");
+			}
+			contracts.Add(newContract);
+		}
 
-                );
-                return contract;
-            }
-            catch { }
-            return null;
+		public Contract GetContractFromDB(int employeeID)
+		{
+			ContractDTO foundContract = contractDAL.ReadContract(employeeID);
+			if (foundContract == null)
+			{
+				Contract contract = TransformDTOToContract(foundContract);
+				return contract;
+			}
+			throw new Exception("Contract not found");
+		}
+		public Contract TransformDTOToContract(ContractDTO contractDTO)
+		{
+			try
+			{
+				Contract contract = new Contract
+				(
+					contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason, contractDTO.Availability
 
-        }
+				);
+				return contract;
+			}
+			catch { }
+			return null;
 
-        public ContractDTO TransformContractToDTO(Contract contract)
-        {
-            ContractDTO contractDTO = new ContractDTO(contract.Id,(int)contract.role,contract.hourlyWage,contract.weeklyHours,
-                contract.startDate,contract.endDate,contract.isActive,contract.terminationReason,contract.availability);
-            
-            return contractDTO;
-        }
+		}
+		public ContractDTO TransformContractToDTO(Contract contract)
+		{
+			ContractDTO contractDTO = new ContractDTO(contract.Id, (int)contract.role, contract.hourlyWage, contract.weeklyHours,
+				contract.startDate, contract.endDate, contract.isActive, contract.terminationReason, contract.availability);
 
-        public void GetAllContractsFromDB()
-        {
-            foreach(ContractDTO dto in contractDAL.GetAllContracts())
-            {
-                contracts.Add(TransformDTOToContract(dto));
-            }
-        }
+			return contractDTO;
+		}
 
-        public void UpdateContractInDB(Contract Contract)
-        {
-            if (contractDAL != null) 
-            contractDAL.UpdateContract(TransformContractToDTO(Contract));
-        }
+		public void GetAllContractsFromDB()
+		{
+			foreach (ContractDTO dto in contractDAL.GetAllContracts())
+			{
+				contracts.Add(TransformDTOToContract(dto));
+			}
+		}
 
-        public void DeleteContractFromDB(Contract contract)
-        {
-            contractDAL.DeleteContract(contract.Id);
+		public void UpdateContractInDB(Contract Contract)
+		{
+			if (contractDAL != null)
+				contractDAL.UpdateContract(TransformContractToDTO(Contract));
+		}
 
-        }
+		public void DeleteContractFromDB(Contract contract)
+		{
+			contractDAL.DeleteContract(contract.Id);
 
-        public void AddContractInDB(Contract contract)
-        {
-            if (contract != null)
-            {
-                contractDAL.CreateContract(TransformContractToDTO(contract));
-                contracts.Add(contract);
-            }
-        }
-    }
+		}
+
+		public void AddContractInDB(Contract contract)
+		{
+			if (contract != null)
+			{
+				contractDAL.CreateContract(TransformContractToDTO(contract));
+				contracts.Add(contract);
+			}
+		}
+	}
 }
