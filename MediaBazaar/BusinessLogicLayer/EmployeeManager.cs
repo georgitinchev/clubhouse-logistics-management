@@ -156,5 +156,14 @@ namespace MediaBazaar.Classes
 				employees.Add(TransformDTOToEmployee(dto));
 			}
 		}
+
+		public bool CheckManager(EmployeeRoleEnum role)
+		{
+			if ((int)role < 3)
+			{
+				return true;
+			}
+			return false;
+		}
 	}
 }

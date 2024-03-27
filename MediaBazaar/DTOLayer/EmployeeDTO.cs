@@ -41,5 +41,19 @@ namespace DTOLayer
             Address = address;
             ActiveContractId = activeContractId;
         }
+
+        public EmployeeDTO(int id,string firstName, string lastName, string email,string password, string phoneNumber, string address,int role,bool isManager)
+        {
+            Id=id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            PhoneNumber = phoneNumber;
+            Address=address;
+            Role = role;
+            IsManager = isManager;
+            
+        }
     }
 }
