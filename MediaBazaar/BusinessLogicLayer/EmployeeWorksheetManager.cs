@@ -51,7 +51,7 @@ namespace MediaBazaar
 
 		public WorksheetDTO TransformWorksheetToDTO( EmployeeWorksheet worksheet)
 		{
-			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee.Id, worksheet.weekNr);
+			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee.EmployeeID, worksheet.weekNr);
 			return worksheetDTO;
 		}
 

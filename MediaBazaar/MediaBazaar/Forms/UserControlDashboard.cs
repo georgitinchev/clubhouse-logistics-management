@@ -13,6 +13,7 @@ namespace MediaBazaar.Forms
         private EmployeeManager employeeManager;
         private ContractManager contractManager;
         private List<Employee> employees;
+        private DataTable employeeData;
         private Employee selectedEmployee;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
         private List<(Control control, Point originalLocation)> originalControlLocations = new List<(Control, Point)>();
@@ -25,9 +26,14 @@ namespace MediaBazaar.Forms
             InitializeDataGridView();
             InitializeControls();
             InitializeFocus();
+            SubscribeToLoadEvent();
+            userDataGridView.SelectionChanged += DataGridView_SelectionChanged;
+        }
+
+        private void SubscribeToLoadEvent()
+        {
             Load += UserControlDashboard_Load;
             Load += YourFormName_Load;
-            userDataGridView.SelectionChanged += DataGridView_SelectionChanged;
         }
 
         private void InitializeControls()
@@ -68,6 +74,8 @@ namespace MediaBazaar.Forms
             GenerateMockData(10);
             userDataGridView.ClearSelection();
             groupBox1.Visible = false;
+
+            UpdateLayout();
         }
 
 
@@ -135,11 +143,6 @@ namespace MediaBazaar.Forms
             {
                 groupBox1.Visible = false;
             }
-        }
-
-        private void UserControlDashboard_Load(object sender, EventArgs e)
-        {
-            UpdateLayout();
         }
 
         private void DataGridView_SelectionChanged(object sender, EventArgs e)
