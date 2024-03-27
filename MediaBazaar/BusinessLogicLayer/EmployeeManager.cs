@@ -12,12 +12,15 @@ namespace MediaBazaar.Classes
 		private EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
 		private List<Employee> employees;
+		private EmployeeDAL employeeDAL;
 
 		public EmployeeManager()
 		{
 			_emergencyContactManager = new EmergencyContactManager();
 			_contractManager = new ContractManager();
 			employees = new List<Employee>();
+			employeeDAL = new EmployeeDAL();
+
 		}
 
 		public void AddEmployee(Employee newEmployee)
@@ -36,7 +39,8 @@ namespace MediaBazaar.Classes
 			{
 				throw new Exception("Employee not found.");
 			}
-		}
+            employeeDAL.UpdateEmployee(TransformEmployeeToDTO(updatedEmployee));
+        }
 
 		public void DeleteEmployee(int employeeId)
 		{
@@ -45,7 +49,6 @@ namespace MediaBazaar.Classes
 			{
 				throw new Exception("Employee not found.");
 			}
-			EmployeeDAL employeeDAL = new EmployeeDAL();
 			employeeDAL.DeleteEmployee(employeeId);
 			employees.Remove(employee);
 		}
@@ -119,9 +122,15 @@ namespace MediaBazaar.Classes
 			return employeeDTO;
         }
 
-		public Employee GetEmployeeFromDB(string email, string password)
+		public void GetEmployeesFromDB(string email, string password)
 		{
-			return null;
+			List<EmployeeDTO> listOfEmployeeDTO = employeeDAL.GetAllEmployees();
+			foreach ( EmployeeDTO dto in listOfEmployeeDTO)
+			{
+				employees.Add(TransformDTOToEmployee(dto));
+			}
 		}
+
+		
 	}
 }
