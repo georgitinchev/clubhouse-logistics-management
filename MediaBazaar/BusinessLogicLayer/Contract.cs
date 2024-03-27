@@ -9,15 +9,15 @@ namespace MediaBazaar.Classes
 {
 	public class Contract
 	{
-		private int Id;
-		private EmployeeRoleEnum role;
-		private decimal hourlyWage;
-		private int weeklyHours;
-		private DateTime startDate;
-		private DateTime? endDate;
-		private bool isActive;
-		private string? terminationReason;
-		private DateTime availability;
+		public int Id { get; private set; }
+		public EmployeeRoleEnum role {  get; private set; }
+		public decimal hourlyWage { get; private set; }
+		public int weeklyHours { get; private set; }
+		public DateTime startDate { get; private set; }
+		public DateTime? endDate { get; private set; }
+		public bool isActive { get; private set; }
+		public string? terminationReason { get; private set; }
+		public DateTime availability {  get; private set; }
 
         public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime availability)
         {

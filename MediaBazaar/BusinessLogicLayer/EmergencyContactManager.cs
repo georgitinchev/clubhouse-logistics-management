@@ -17,13 +17,17 @@ namespace BusinessLogicLayer
             return new EmergencyContact(dto.Id, dto.FirstName, dto.LastName, dto.PhoneNumber, dto.Email);
         }
 
+        public EmergencyContactDTO TransformEmergencyContactToDTO(EmergencyContact emergencyContact)
+        {
+            return new EmergencyContactDTO(emergencyContact.Id,emergencyContact.FirstName,emergencyContact.LastName,emergencyContact.PhoneNumber,emergencyContact.Email);
+        }
+
         public EmergencyContact ReadEmergencyContact(int employeeId)
         {
             EmergencyContactDAL emergencyContactDAL = new EmergencyContactDAL();
-            EmergencyContactDTO emergencyContactDTO = new EmergencyContactDTO();
             try
             {
-                emergencyContactDTO = emergencyContactDAL.ReadEmergencyContact(employeeId);
+                EmergencyContactDTO emergencyContactDTO = emergencyContactDAL.ReadEmergencyContact(employeeId);
                 return TransformDTOToEmergencyContact(emergencyContactDTO);
             }
             catch (Exception ex)

@@ -23,5 +23,23 @@ namespace DTOLayer
         public bool IsManager { get; set; } 
         public int ActiveContractId {  get; set; }
         public int EmergencyContactId {  get; set; }
+
+        public EmployeeDTO(int id, string firstName, string lastName, string email, string password, string phoneNumber, string address, string bSN, DateTime birthday,
+                             int role, bool isManager, int activeContractId, int emergencyContactId)
+        {
+            Id = id;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Password = password;
+            PhoneNumber = phoneNumber;
+            Address = address;
+            BSN = bSN;
+            Birthday = birthday;
+            Role = role;
+            IsManager = isManager;
+            ActiveContractId = activeContractId;
+            EmergencyContactId = emergencyContactId;
+        }
     }
 }

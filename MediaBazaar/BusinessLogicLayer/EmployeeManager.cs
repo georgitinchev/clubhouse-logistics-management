@@ -88,6 +88,7 @@ namespace MediaBazaar.Classes
 									  employeeDTO.LastName,
 									  employeeDTO.Email,
 									  employeeDTO.Password,
+									  employeeDTO.PhoneNumber,
 									  employeeDTO.BSN,
 									  employeeDTO.Birthday,
 									  employeeDTO.Role,
@@ -99,6 +100,26 @@ namespace MediaBazaar.Classes
 			}
 			return null;
 
+        }
+
+		public EmployeeDTO TransformEmployeeToDTO(Employee employee)
+		{
+			EmployeeDTO employeeDTO = new EmployeeDTO(
+				employee.GetId(),
+				employee.GetFirstName(),
+				employee.GetLastName(),
+				employee.GetEmail(),
+				employee.GetPassword(),
+				employee.GetAddress(),
+				employee.PhoneNumber,
+				employee.GetBSN(), 
+				employee.GetBirthday(), 
+				(int)employee.Role, 
+				employee.IsManager, 
+				employee.GetContractID(),
+				employee.GetEmergencyContactID() 
+				);	
+			return employeeDTO;
         }
 
 		public Employee GetEmployeeFromDB(string email, string password)

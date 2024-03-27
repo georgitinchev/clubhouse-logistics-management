@@ -47,20 +47,21 @@ namespace DataAccessLayer
                     if (reader.Read())
                     {
                         return new EmployeeDTO
-                        {
-                            Id = (int)reader["Id"],
-                            FirstName = reader["FirstName"].ToString(),
-                            LastName = reader["LastName"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            Password = reader["Password"].ToString(),
-                            Birthday = (DateTime)reader["Birthday"],
-                            Address = reader["Address"].ToString(),
-                            PhoneNumber = reader["PhoneNumber"].ToString(),
-                            BSN = reader["Bsn"].ToString(),
-                            Role = (int)reader["Role"],
-                            ActiveContractId = (int)reader["ActiveContractId"],
-                            EmergencyContactId = (int)reader["EmergencyContactId"]
-                        };
+                        (
+                            (int)reader["Id"],
+                            reader["FirstName"].ToString(),
+                            reader["LastName"].ToString(),
+                            reader["Email"].ToString(),
+                            reader["Password"].ToString(),
+                            reader["PhoneNumber"].ToString(),
+                            reader["Address"].ToString(),
+                            reader["Bsn"].ToString(),
+                            (DateTime)reader["Birthday"],
+                            (int)reader["Role"],
+                            (bool)reader["IsManager"],
+                            (int)reader["ActiveContractId"],
+                            (int)reader["EmergencyContactId"]
+                        );
                         
                     }
                 }
@@ -115,22 +116,22 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         employees.Add(new EmployeeDTO
-                        {
-                            Id = (int)reader["Id"],
-                            FirstName = reader["FirstName"].ToString(),
-                            LastName = reader["LastName"].ToString(),
-                            Email = reader["Email"].ToString(),
-                            Password = reader["Password"].ToString(), 
-                            Birthday = (DateTime)reader["Birthday"],
-                            Address = reader["Address"].ToString(),
-                            PhoneNumber = reader["PhoneNumber"].ToString(),
-                            BSN = reader["Bsn"].ToString(),
-                            IsManager = (bool)reader["IsManager"],
-                            Role = (int)reader["Role"],
-                            ActiveContractId = (int)reader["ActiveContractID"],
-                            EmergencyContactId = (int)reader["EmergencyContactId"],
-                            
-                        });
+                        (
+                            (int)reader["Id"],
+                            reader["FirstName"].ToString(),
+                            reader["LastName"].ToString(),
+                            reader["Email"].ToString(),
+                            reader["Password"].ToString(),
+                            reader["PhoneNumber"].ToString(),
+                            reader["Address"].ToString(),
+                            reader["Bsn"].ToString(),
+                            (DateTime)reader["Birthday"],
+                            (int)reader["Role"],
+                            (bool)reader["IsManager"],
+                            (int)reader["ActiveContractId"],
+                            (int)reader["EmergencyContactId"]
+
+                        ));
                     }
                 }
             }
