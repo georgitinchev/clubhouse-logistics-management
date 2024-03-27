@@ -45,7 +45,7 @@ namespace MediaBazaar.Forms
 			originalControlStates.Add((dateTimePickerBirthday, dateTimePickerBirthday.BackColor, dateTimePickerBirthday.Enabled));
 		}
 
-		private void PopulateGridView(DataTable employeeData)
+		private void PopulateDataTable(DataTable employeeData)
 		{
 			employeeManager.GetEmployeesFromDB();
 			foreach (Employee employee in employeeManager.employees)
