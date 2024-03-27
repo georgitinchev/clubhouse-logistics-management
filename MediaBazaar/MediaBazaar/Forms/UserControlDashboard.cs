@@ -65,13 +65,15 @@ namespace MediaBazaar.Forms
             employeeData.Columns.Add("BSN", typeof(int));
             employeeData.Columns.Add("PhoneNumber", typeof(string));
             employeeData.Columns.Add("Birthday", typeof(DateTime));
+            employeeData.Columns.Add("ActiveContract", typeof(int));
+            employeeData.Columns.Add("EmergencyContact", typeof(string));
+            employeeData.Columns.Add("IsManager", typeof(bool));
             userDataGridView.DataSource = employeeData;
         }
 
 
         private void UserControlDashboard_Load(object sender, EventArgs e)
         {
-            GenerateMockData(10);
             userDataGridView.ClearSelection();
             groupBox1.Visible = false;
 
@@ -130,6 +132,9 @@ namespace MediaBazaar.Forms
             userDataGridView.Columns["BSN"].Visible = false;
             userDataGridView.Columns["PhoneNumber"].Visible = false;
             userDataGridView.Columns["Birthday"].Visible = false;
+            userDataGridView.Columns["ActiveContract"].Visible = false;
+            userDataGridView.Columns["EmergencyContact"].Visible = false;
+            userDataGridView.Columns["IsManager"].Visible = false;
         }
 
 
@@ -398,68 +403,6 @@ namespace MediaBazaar.Forms
 
                 dateTimePickerBirthday.Value = (DateTime)selectedRow.Cells["Birthday"].Value;
             }
-        }
-
-        private void GenerateMockData(int count)
-        {
-            Random random = new Random();
-
-            for (int i = 0; i < count; i++)
-            {
-                string[] firstNames = { "John", "Jane", "Alice", "Bob", "Charlie", "David" };
-                string[] lastNames = { "Doe", "Smith", "Johnson", "Brown", "Chen", "Davis" };
-                string[] roles = { "Manager", "Cashier", "Sales Representative", "HR Manager", "Support", "Security Guard", "Depot Worker" };
-
-                string firstName = firstNames[random.Next(firstNames.Length)];
-                string lastName = lastNames[random.Next(lastNames.Length)];
-                string email = $"{firstName.ToLower()}.{lastName.ToLower()}@example.com";
-                string role = roles[random.Next(roles.Length)];
-                string password = GenerateRandomPassword();
-                string bsn = GenerateRandomBSN();
-                string phoneNumber = GenerateRandomPhoneNumber();
-                DateTime birthday = GenerateRandomBirthday();
-                int employeeID = GenerateEmployeeID();
-
-                DataRow newRow = employeeData.NewRow();
-                newRow["EmployeeID"] = employeeID;
-                newRow["Name"] = $"{firstName} {lastName}";
-                newRow["Email"] = email;
-                newRow["Role"] = role;
-                newRow["Password"] = password;
-                newRow["BSN"] = bsn;
-                newRow["PhoneNumber"] = phoneNumber;
-                newRow["Birthday"] = birthday;
-
-                employeeData.Rows.Add(newRow);
-            }
-        }
-
-        private int GenerateEmployeeID()
-        {
-            return new Random().Next(1000, 9999);
-        }
-
-        private string GenerateRandomPassword()
-        {
-            return "randompassword";
-        }
-
-        private string GenerateRandomBSN()
-        {
-            return new Random().Next(100000000, 999999999).ToString();
-        }
-
-        private string GenerateRandomPhoneNumber()
-        {
-            return $"06{new Random().Next(10000000, 99999999)}";
-        }
-
-        private DateTime GenerateRandomBirthday()
-        {
-            DateTime startDate = DateTime.Today.AddYears(-65);
-            DateTime endDate = DateTime.Today.AddYears(-18);
-            int range = (endDate - startDate).Days;
-            return startDate.AddDays(new Random().Next(range));
         }
 
         private string newRole;
