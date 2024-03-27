@@ -21,7 +21,6 @@ namespace MediaBazaar.Forms
             employeeManager = new EmployeeManager();
             InitializeComponent();
             InitializeData();
-            PopulateGridView();
             InitializeDataGridView();
             InitializeControls();
             InitializeFocus();
@@ -44,11 +43,6 @@ namespace MediaBazaar.Forms
             originalControlStates.Add((textBoxBSN, textBoxBSN.BackColor, textBoxBSN.ReadOnly));
             originalControlStates.Add((textBoxPhone, textBoxPhone.BackColor, textBoxPhone.ReadOnly));
             originalControlStates.Add((dateTimePickerBirthday, dateTimePickerBirthday.BackColor, dateTimePickerBirthday.Enabled));
-
-            originalControlLocations.Add((textBoxSearch, textBoxSearch.Location));
-            originalControlLocations.Add((comboBoxRole, comboBoxRole.Location));
-            originalControlLocations.Add((addEmployeeBtn, addEmployeeBtn.Location));
-            originalControlLocations.Add((pictureBoxSearch, pictureBoxSearch.Location));
         }
 
 
