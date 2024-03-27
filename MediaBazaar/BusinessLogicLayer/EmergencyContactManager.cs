@@ -12,7 +12,7 @@ namespace BusinessLogicLayer
 {
 	public class EmergencyContactManager
 	{
-		private EmergencyContactDAL emergencyContactDAL;
+		private EmergencyContactDAL emergencyContactDAL= new EmergencyContactDAL();
 		public EmergencyContactManager()
 		{
 			emergencyContactDAL = new EmergencyContactDAL();
@@ -45,7 +45,7 @@ namespace BusinessLogicLayer
 			}
 		}
 
-
+        }
 
 		public void UpdateEmergencyContactInDB(EmergencyContact emergencyContact)
 		{
