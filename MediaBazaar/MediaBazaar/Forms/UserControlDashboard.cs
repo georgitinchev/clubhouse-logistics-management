@@ -66,7 +66,7 @@ namespace MediaBazaar.Forms
 			employeeData.Columns.Add("WeeklyHours", typeof(int));
 			//employeeData.Columns.Add("EmergencyContact", typeof(string));
 			//employeeData.Columns.Add("IsManager", typeof(bool));
-			PopulateGridView(employeeData);
+			PopulateDataTable(employeeData);
 			userDataGridView.DataSource = employeeData;
 		}
 

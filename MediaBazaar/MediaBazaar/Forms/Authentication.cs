@@ -34,7 +34,7 @@ namespace MediaBazaar.Forms
 				{
 					MainForm mainForm = new MainForm(employeeManager);
 					mainForm.Show();
-					this.Close();
+					this.Hide();
 				}
 
 				else
