@@ -32,5 +32,15 @@ namespace MediaBazaar
 		{
 			assignedWorksheets.AddRange(worksheets);
 		}
+
+		//public EmployeeWorksheet TransformWorksheet(WorksheetDTO worksheetDTO)
+		//{
+		//	//EmployeeWorksheet worksheet = new EmployeeWorksheet();
+		//	//worksheet.WorkingTime = worksheetDTO.WorkingTime;
+		//	//worksheet.WeekDay = worksheetDTO.WeekDay;
+		//	//worksheet.Employee = worksheetDTO.Employee;
+		//	//worksheet.WeekNr = worksheetDTO.WeekNr;
+		//	//return worksheet;
+		//}
 	}
 }

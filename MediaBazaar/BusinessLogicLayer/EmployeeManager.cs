@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using DTOLayer;
 using DataAccessLayer;
 using BusinessLogicLayer;
@@ -14,14 +11,16 @@ namespace MediaBazaar.Classes
 	{
 		private EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
+		private List<Employee> employees;
 
-        public EmployeeManager()
-        {
-            _emergencyContactManager =new EmergencyContactManager();
-            _contractManager =new ContractManager();
-        }
+		public EmployeeManager()
+		{
+			_emergencyContactManager = new EmergencyContactManager();
+			_contractManager = new ContractManager();
+			employees = new List<Employee>();
+		}
 
-        public void AddEmployee(List<Employee> employees, Employee newEmployee)
+		public void AddEmployee(Employee newEmployee)
 		{
 			if (employees.Any(e => e.GetId() == newEmployee.GetId()))
 			{
@@ -30,17 +29,16 @@ namespace MediaBazaar.Classes
 			employees.Add(newEmployee);
 		}
 
-		public void UpdateEmployee(List<Employee> employees, Employee updatedEmployee)
+		public void UpdateEmployee(Employee updatedEmployee)
 		{
 			var employee = employees.FirstOrDefault(e => e.GetId() == updatedEmployee.GetId());
 			if (employee == null)
 			{
 				throw new Exception("Employee not found.");
 			}
-			
 		}
 
-		public void DeleteEmployee(List<Employee> employees, int employeeId)
+		public void DeleteEmployee(int employeeId)
 		{
 			var employee = employees.FirstOrDefault(e => e.GetId() == employeeId);
 			if (employee == null)
@@ -52,38 +50,38 @@ namespace MediaBazaar.Classes
 			employees.Remove(employee);
 		}
 
-		public List<Employee> GetAllRegularEmployees(List<Employee> employees)
+		public List<Employee> GetAllRegularEmployees()
 		{
 			return employees.Where(e => !e.IsManager).ToList();
 		}
 
-		public List<Employee> GetAllManagerEmployees(List<Employee> employees)
+		public List<Employee> GetAllManagerEmployees()
 		{
 			return employees.Where(e => e.IsManager).ToList();
 		}
 
-		public List<Employee> GetAllEmployees(List<Employee> employees)
+		public List<Employee> GetAllEmployees()
 		{
 			return employees;
 		}
 
-		public List<Employee> SearchEmployees(List<Employee> employees, string searchTerm)
+		public List<Employee> SearchEmployees(string searchTerm)
 		{
 			return employees.Where(e => e.GetFirstName().Contains(searchTerm)).ToList();
 		}
 
-		public List<Employee> FilterEmployees(List<Employee> employees, Func<Employee, bool> filter)
+		public List<Employee> FilterEmployees(Func<Employee, bool> filter)
 		{
 			return employees.Where(filter).ToList();
 		}
 
 		public Employee TransformDTOToEmployee(EmployeeDTO employeeDTO)
 		{
-            EmergencyContact emergencyContact = _emergencyContactManager.ReadEmergencyContact(employeeDTO.EmergencyContactId);
+			EmergencyContact emergencyContact = _emergencyContactManager.ReadEmergencyContact(employeeDTO.EmergencyContactId);
 			Contract contract = _contractManager.GetContractFromDB(employeeDTO.ActiveContractId);
 			if (emergencyContact != null && contract != null)
-
-			{ Employee employee = new Employee(employeeDTO.Id,
+			{
+				Employee employee = new Employee(employeeDTO.Id,
 									  employeeDTO.FirstName,
 									  employeeDTO.LastName,
 									  employeeDTO.Email,
@@ -99,8 +97,7 @@ namespace MediaBazaar.Classes
 				return employee;
 			}
 			return null;
-
-        }
+		}
 
 		public EmployeeDTO TransformEmployeeToDTO(Employee employee)
 		{

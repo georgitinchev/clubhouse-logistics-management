@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using BusinessLogicLayer;
 using MediaBazaar.Classes;
 
 namespace MediaBazaar.Forms
@@ -6,16 +7,17 @@ namespace MediaBazaar.Forms
 	public partial class UserControlDashboard : UserControl
     {
         private EmployeeManager employeeManager;
+        private ContractManager contractManager;
         public UserControlDashboard()
         {
             employeeManager = new EmployeeManager();
+            contractManager = new ContractManager();
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
             InitializeFocus();
             Load += YourFormName_Load;
         }
-
         private DataTable employeeData;
         private void InitializeData()
         {
@@ -24,7 +26,6 @@ namespace MediaBazaar.Forms
             employeeData.Columns.Add("Email", typeof(string));
             employeeData.Columns.Add("Role", typeof(string));
             employeeData.Columns.Add("Worksheet", typeof(string));
-
             employeeData.Rows.Add("John Doe", "john@example.com", "HR Manager", "A");
             employeeData.Rows.Add("Jane Smith", "jane@example.com", "Sales Representative", "B");
             employeeData.Rows.Add("Alice Johnson", "alice@example.com", "Support", "C");
@@ -175,7 +176,7 @@ namespace MediaBazaar.Forms
 
         private void addEmployeeBtn_Click(object sender, EventArgs e)
         {
-            AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm();
+            AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager,contractManager);
             addEmployeeDialogue.ShowDialog();
         }
     }

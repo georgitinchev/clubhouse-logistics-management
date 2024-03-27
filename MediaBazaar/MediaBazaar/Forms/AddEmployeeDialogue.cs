@@ -1,4 +1,6 @@
-﻿using MediaBazaar.Classes;
+﻿using BusinessLogicLayer;
+using DTOLayer;
+using MediaBazaar.Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,17 +16,35 @@ namespace MediaBazaar.Forms
 	public partial class AddEmployeeForm : Form
 	{
 		private EmployeeManager _employeeManager;
-		public AddEmployeeForm(EmployeeManager employeeManager)
+		private ContractManager _contractManager;
+		public AddEmployeeForm(EmployeeManager employeeManager, ContractManager contractManager)
 		{
 			_employeeManager = employeeManager;
+			_contractManager = contractManager;
 			InitializeComponent();
 			HideTabControls();
 			InitializeTabNavigation();
+			comboBox1.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
 		}
 
 		private void completeFormBtn_Click(object sender, EventArgs e)
 		{
 			// logic to add employee
+			try
+			{
+				//create contract
+				Contract(int(_contractManager.Count) + 1,comboBox1.SelectedValue,textBox1.Text,textBox2.Text,dateTimePicker1.Value,);
+				//create emergency contact
+				//create employee + append contract + emergency contact 
+				// add to employee manager
+				_employeeManager.AddEmployee();
+				// send to db
+			}
+			catch
+			{
+
+			}
+			
 		}
 
 		private void InitializeTabNavigation()
