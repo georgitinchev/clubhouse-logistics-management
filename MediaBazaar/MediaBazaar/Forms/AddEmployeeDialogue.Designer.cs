@@ -136,7 +136,6 @@
 			nextBtnP1.Text = "Next ➜";
 			nextBtnP1.TextColor = Color.White;
 			nextBtnP1.UseVisualStyleBackColor = false;
-			nextBtnP1.Click += nextBtnP1_Click;
 			// 
 			// label4
 			// 
@@ -260,7 +259,6 @@
 			previousBtnP2.Text = "⬅️ Previous";
 			previousBtnP2.TextColor = Color.White;
 			previousBtnP2.UseVisualStyleBackColor = false;
-			previousBtnP2.Click += previousBtn_Click;
 			// 
 			// nextBtnP2
 			// 
@@ -279,7 +277,6 @@
 			nextBtnP2.Text = "Next ➜";
 			nextBtnP2.TextColor = Color.White;
 			nextBtnP2.UseVisualStyleBackColor = false;
-			nextBtnP2.Click += nextBtnP2_Click;
 			// 
 			// emcLastNameBox
 			// 
