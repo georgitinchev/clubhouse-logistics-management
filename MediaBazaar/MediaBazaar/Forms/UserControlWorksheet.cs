@@ -19,7 +19,9 @@ namespace MediaBazaar.Forms
 			employeeWorksheetManager = new EmployeeWorksheetManager();
 			InitializeComponent();
 			InitializeGridViewWorksheet();
-		}
+            Load += YourFormName_Load;
+
+        }
 
 		private void InitializeGridViewWorksheet()
 		{
@@ -70,6 +72,27 @@ namespace MediaBazaar.Forms
 					dataGridViewWorksheet.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; // Reset to white
 				}
 			};
-		}
-	}
+
+            dataGridViewWorksheet.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
+            dataGridViewWorksheet.ScrollBars = ScrollBars.Vertical;
+        }
+
+        private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
+        {
+            if (dataGridViewWorksheet.SelectedRows.Count > 0)
+            {
+                groupBox1.Visible = true;
+            }
+            else
+            {
+                groupBox1.Visible = false;
+            }
+        }
+
+        private void YourFormName_Load(object sender, EventArgs e)
+        {
+            dataGridViewWorksheet.ClearSelection();
+            groupBox1.Visible = false;
+        }
+    }
 }
