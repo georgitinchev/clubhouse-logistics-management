@@ -45,9 +45,9 @@ namespace DTOLayer
 			Birthday = birthday;
 			Role = (EmployeeRoleEnum)role;
 			IsManager = isManager;
-			EmergencyContact = emergencyContact;
+			EmergencyContact = emergencyContact ?? throw new ArgumentNullException(nameof(emergencyContact), "EmergencyContact cannot be null.");
 			Address = address;
-			Contract = contract;
+			Contract = contract ?? throw new ArgumentNullException(nameof(contract), "Contract cannot be null.");
 		}
 		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{

@@ -9,10 +9,10 @@ namespace MediaBazaar.Classes
 {
 	public class EmployeeManager
 	{
-		private EmergencyContactManager _emergencyContactManager;
-		private ContractManager _contractManager;
-		private EmployeeDAL employeeDAL;
-        public List<Employee> employees { get; private set; }
+		public EmergencyContactManager _emergencyContactManager { get; private set; }
+		public ContractManager _contractManager { get; private set; }
+		public EmployeeDAL employeeDAL { get; private set; }
+		public List<Employee> employees { get; private set; }
 
 		public EmployeeManager()
 		{
@@ -29,12 +29,12 @@ namespace MediaBazaar.Classes
 				throw new Exception("Employee already exists.");
 			}
 			employees.Add(newEmployee);
-			//employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
+			employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
 		}
 
 		public Employee SearchEmployee(int id)
 		{
-			foreach(Employee emp in employees)
+			foreach (Employee emp in employees)
 			{
 				if (emp.EmployeeID == id)
 				{
@@ -51,8 +51,8 @@ namespace MediaBazaar.Classes
 			{
 				throw new Exception("Employee not found.");
 			}
-            employeeDAL.UpdateEmployee(TransformEmployeeToDTO(updatedEmployee));
-        }
+			employeeDAL.UpdateEmployee(TransformEmployeeToDTO(updatedEmployee));
+		}
 
 		public void DeleteEmployee(int employeeId)
 		{
@@ -129,8 +129,8 @@ namespace MediaBazaar.Classes
 				employee.LastName,
 				employee.Email,
 				employee.Password,
-				employee.Address,
 				employee.PhoneNumber,
+				employee.Address,
 				employee.BSN,
 				employee.Birthday,
 				(int)employee.Role,
@@ -141,13 +141,13 @@ namespace MediaBazaar.Classes
 			return employeeDTO;
 		}
 
-		public void GetEmployeesFromDB(string email, string password)
+		public void GetEmployeesFromDB()
 		{
 			List<EmployeeDTO> listOfEmployeeDTO = employeeDAL.GetAllEmployees();
-			foreach ( EmployeeDTO dto in listOfEmployeeDTO)
+			foreach (EmployeeDTO dto in listOfEmployeeDTO)
 			{
 				employees.Add(TransformDTOToEmployee(dto));
 			}
-		}	
+		}
 	}
 }

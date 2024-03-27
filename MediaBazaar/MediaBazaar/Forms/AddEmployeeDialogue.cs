@@ -2,12 +2,12 @@
 using DTOLayer;
 using MediaBazaar.Classes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -17,6 +17,7 @@ namespace MediaBazaar.Forms
 	{
 		private EmployeeManager _employeeManager;
 		private ContractManager _contractManager;
+
 		public AddEmployeeForm(EmployeeManager employeeManager, ContractManager contractManager)
 		{
 			_employeeManager = employeeManager;
@@ -24,56 +25,73 @@ namespace MediaBazaar.Forms
 			InitializeComponent();
 			HideTabControls();
 			InitializeTabNavigation();
-			comboBox1.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
+			employeeRoleComboBox.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
 		}
 
 		private void completeFormBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				// Create Contract
-				if (!Enum.TryParse(comboBox1.SelectedValue.ToString(), out EmployeeRoleEnum role))
+				if (!Enum.TryParse(employeeRoleComboBox.SelectedValue.ToString(), out EmployeeRoleEnum role))
 					throw new Exception("Invalid role selected.");
 
-				if (!decimal.TryParse(textBox1.Text, out decimal hourlyWage))
+				if (!decimal.TryParse(hourlyWageTextBox.Text, out decimal hourlyWage))
 					throw new Exception("Hourly wage must be a decimal number.");
 
-				if (!int.TryParse(textBox2.Text, out int weeklyHours))
+				if (!int.TryParse(weeklyHoursTextBox.Text, out int weeklyHours))
 					throw new Exception("Weekly hours must be an integer.");
 
-				var startDate = dateTimePicker1.Value;
-				var contract = new Contract(_contractManager.contracts.Count + 1, role, hourlyWage, weeklyHours, startDate, null, true, null, DateTime.Now);
+				ValidateFields();
+
+				int contractId = idCheckerContract();
+
+				// Create Contract
+				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, startDatePicker.Value, null, true, null, DateTime.Now);
+				
+
+				// Get Employee ID
+				int employeeId = idCheckerEmployee();
 
 				// Create EmergencyContact
-				var emcFirstName = emcFirstNameBox.Text;
-				var emcLastName = emcLastNameBox.Text;
-				var emcPhone = emcPhoneText.Text;
-				var emcEmail = emcEmailBox.Text;
-				var emergencyContact = new EmergencyContact(_employeeManager.employees.Count + 1, emcFirstName, emcLastName, emcPhone, emcEmail);
+				var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
 				// Create Employee
-				var firstName = textBox6.Text;
-				var lastName = textBox7.Text;
-				var email = textBox5.Text;
-				var password = textBox4.Text;
-				var bsn = textBox3.Text;
-				var phoneNumber = textBox9.Text;
-				var address = textBox8.Text;
-
-				if (!DateTime.TryParse(dateTimePicker2.Text, out DateTime birthday))
-					throw new Exception("Invalid date format for birthday.");
-
-				var employee = new Employee(_employeeManager.employees.Count + 1, firstName, lastName, email, password, phoneNumber, bsn, birthday, (int)role, false, emergencyContact, address, contract);
-				// Add to EmployeeManager
-				//_employeeManager.AddEmployee(employee);
+				var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract);
+				_contractManager.AddContract(contract);
+				_employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
+				_employeeManager.AddEmployee(employee);
+				this.Close();
+				MessageBox.Show("Employee added successfully.");
 			}
 			catch (Exception ex)
 			{
-				// Show error message
 				MessageBox.Show(ex.Message);
 			}
 		}
 
+		private int idCheckerContract()
+		{
+			if (_contractManager.contracts == null || _contractManager.contracts.Count == 0)
+			{
+				return 1;
+			}
+			else
+			{
+				return _contractManager.contracts.Count + 1;
+			}
+		}
+
+		private int idCheckerEmployee()
+		{
+			if (_contractManager.contracts == null || _employeeManager.employees.Count == 0)
+			{
+				return 1;
+			}
+			else
+			{
+				return _employeeManager.employees.Count + 1;
+			}
+		}
 
 		private void InitializeTabNavigation()
 		{
@@ -82,7 +100,7 @@ namespace MediaBazaar.Forms
 			previousBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 0; };
 			nextBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 2; };
 			previousBtnP3.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
-			completeFormBtn.Click += (sender, e) => { };
+			completeFormBtn.Click += completeFormBtn_Click;
 
 			addEmployeeTabControl.SelectedIndexChanged += (sender, e) =>
 			{
@@ -108,6 +126,65 @@ namespace MediaBazaar.Forms
 			addEmployeeTabControl.Appearance = TabAppearance.FlatButtons;
 			addEmployeeTabControl.SizeMode = TabSizeMode.Fixed;
 			addEmployeeTabControl.ItemSize = new Size(0, 1);
+		}
+
+		private void ValidateFields()
+		{
+			if (string.IsNullOrWhiteSpace(firstNameText.Text))
+				throw new Exception("First name is required.");
+
+			if (string.IsNullOrWhiteSpace(lastNameText.Text))
+				throw new Exception("Last name is required.");
+
+			if (string.IsNullOrWhiteSpace(emailText.Text))
+				throw new Exception("Email is required.");
+
+			if (string.IsNullOrWhiteSpace(passwordText.Text))
+				throw new Exception("Password is required.");
+
+			if (string.IsNullOrWhiteSpace(phoneText.Text))
+				throw new Exception("Phone number is required.");
+
+			if (string.IsNullOrWhiteSpace(bsnText.Text))
+				throw new Exception("BSN is required.");
+
+			if (string.IsNullOrWhiteSpace(addressText.Text))
+				throw new Exception("Address is required.");
+
+			if (string.IsNullOrWhiteSpace(emcFirstNameBox.Text))
+				throw new Exception("Emergency contact first name is required.");
+
+			if (string.IsNullOrWhiteSpace(emcLastNameBox.Text))
+				throw new Exception("Emergency contact last name is required.");
+
+			if (string.IsNullOrWhiteSpace(emcPhoneText.Text))
+				throw new Exception("Emergency contact phone number is required.");
+
+			if (string.IsNullOrWhiteSpace(emcEmailBox.Text))
+				throw new Exception("Emergency contact email is required.");
+
+			// email validation regex
+			var emailRegex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
+
+			if (!emailRegex.IsMatch(emailText.Text))
+				throw new Exception("Email is not in a valid format.");
+
+			if (!emailRegex.IsMatch(emcEmailBox.Text))
+				throw new Exception("Emergency contact email is not in a valid format.");
+
+			// phone num validation regex
+			var phoneRegex = new Regex(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$");
+			if (!phoneRegex.IsMatch(phoneText.Text))
+				throw new Exception("Phone number is not in a valid format.");
+
+			if (!phoneRegex.IsMatch(emcPhoneText.Text))
+				throw new Exception("Emergency contact phone number is required.");
+
+			if (startDatePicker.Value.Date > DateTime.Now.Date)
+				throw new Exception("Contract start date cannot be in the future.");
+
+			if (birthdayDatePicker.Value.Date > DateTime.Now.Date)
+				throw new Exception("Employee birthday cannot be in the future.");
 		}
 	}
 }

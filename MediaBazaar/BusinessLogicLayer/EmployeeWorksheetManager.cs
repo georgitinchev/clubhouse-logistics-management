@@ -5,14 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DTOLayer;
+using DataAccessLayer;
 
 namespace MediaBazaar
 {
 	public class EmployeeWorksheetManager
 	{
 		private List<EmployeeWorksheet> assignedWorksheets = new List<EmployeeWorksheet>();
+        private WorksheetDAL worksheetDAL = new WorksheetDAL();
 
-		public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
+
+        public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
 		{
 			//EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
 			//assignedWorksheets.Add(worksheet);
@@ -33,14 +36,53 @@ namespace MediaBazaar
 			assignedWorksheets.AddRange(worksheets);
 		}
 
-		/*public EmployeeWorksheet TransformWorksheet(WorksheetDTO worksheetDTO)
+		public EmployeeWorksheet TransformDTOToWorksheet(WorksheetDTO worksheetDTO)
 		{
-			EmployeeWorksheet worksheet = new EmployeeWorksheet();
-			worksheet.WorkingTime = worksheetDTO.WorkingTime;
-			worksheet.WeekDay = worksheetDTO.WeekDay;
-			Employee = worksheetDTO.Employee;
-			worksheet.WeekNr = worksheetDTO.WeekNr;
-			return worksheet;
-		}*/
+			
+			if (worksheetDTO != null)
+			{
+                EmployeeManager employeeManager = new EmployeeManager();
+                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)worksheetDTO.TimeSlot, (WeekDayEnum)worksheetDTO.WeekDay, employeeManager.SearchEmployee(worksheetDTO.EmployeeId), worksheetDTO.WeekNr);
+
+				return worksheet;
+			}
+			return null;
+		}
+
+		public WorksheetDTO TransformWorksheetToDTO( EmployeeWorksheet worksheet)
+		{
+			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee.Id, worksheet.weekNr);
+			return worksheetDTO;
+		}
+
+		public void GetAllWorksheetsInDB()
+		{
+			List<WorksheetDTO>worksheets = worksheetDAL.GetAllWorksheets();
+			foreach (WorksheetDTO worksheet in worksheets)
+			{
+				assignedWorksheets.Add(TransformDTOToWorksheet(worksheet));
+			}
+		}
+
+		public void UpdateWorksheetInDB(EmployeeWorksheet worksheet)
+		{
+			if(worksheet != null) 
+			worksheetDAL.UpdateWorksheet(TransformWorksheetToDTO(worksheet));
+			throw new Exception("Worksheet was null");
+		}
+
+		public void DeleteWorksheetInDB(EmployeeWorksheet worksheet)
+		{
+			if (worksheet != null)
+				worksheetDAL.DeleteWorksheet(worksheet.id);
+		}
+
+		public void AddWorksheetToDB(EmployeeWorksheet worksheet)
+		{
+			if(worksheet != null)
+				worksheetDAL.CreateWorksheet(TransformWorksheetToDTO(worksheet));
+			throw new Exception("Worksheet was null");
+		}
+
 	}
 }

@@ -38,13 +38,13 @@ namespace DataAccessLayer
                     if (reader.Read())
                     {
                         return new WorksheetDTO
-                        {
-                            Id = (int)reader["Id"],
-                            TimeSlot = (int)reader["TimeSlot"],
-                            WeekDay = (int)reader["WeekDay"],
-                            EmployeeId = (int)reader["EmployeeId"],
-                            WeekNr = (int)reader["WeekNr"]
-                        };
+                        (
+                            (int)reader["Id"],
+                            (int)reader["TimeSlot"],
+                            (int)reader["WeekDay"],
+                           (int)reader["EmployeeId"],
+                            (int)reader["WeekNr"]
+                        );
                     }
                     else
                     {
@@ -94,13 +94,13 @@ namespace DataAccessLayer
                     while (reader.Read())
                     {
                         worksheets.Add(new WorksheetDTO
-                        {
-                            Id = (int)reader["Id"],
-                            TimeSlot = (int)reader["TimeSlot"],
-                            WeekDay = (int)reader["WeekDay"],
-                            EmployeeId = (int)reader["EmployeeId"],
-                            WeekNr = (int)reader["WeekNr"]
-                        });
+                        (
+                            (int)reader["Id"],
+                            (int)reader["TimeSlot"],
+                            (int)reader["WeekDay"],
+                            (int)reader["EmployeeId"],
+                            (int) reader["WeekNr"]
+                        ));
                     }
                 }
             }

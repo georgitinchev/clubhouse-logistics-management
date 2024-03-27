@@ -17,9 +17,9 @@ namespace MediaBazaar.Classes
 		public DateTime? endDate { get; private set; }
 		public bool isActive { get; private set; }
 		public string? terminationReason { get; private set; }
-		public DateTime availability {  get; private set; }
+		public DateTime? availability {  get; private set; }
 
-        public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime availability)
+        public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime? availability)
         {
             Id = id;
             this.role = role;

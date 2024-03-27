@@ -15,9 +15,10 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO EmergencyContact (FirstName, LastName, PhoneNumber, Email) " +
-                    "VALUES (@FirstName, @LastName, @PhoneNumber, @Email)", connection);
+                    "INSERT INTO EmergencyContact (Id,FirstName, LastName, PhoneNumber, Email) " +
+                    "VALUES (@Id,@FirstName, @LastName, @PhoneNumber, @Email)", connection);
 
+                command.Parameters.AddWithValue("@Id", contact.Id);
                 command.Parameters.AddWithValue("@FirstName", contact.FirstName);
                 command.Parameters.AddWithValue("@LastName", contact.LastName);
                 command.Parameters.AddWithValue("@PhoneNumber", contact.PhoneNumber);

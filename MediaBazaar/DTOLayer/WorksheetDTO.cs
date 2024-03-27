@@ -8,10 +8,19 @@ namespace DTOLayer
 {
     public class WorksheetDTO
     {
-        public int TimeSlot {  get; set; }
-        public int WeekDay {  get; set; }
-        public int Id { get; set; }
-        public int EmployeeId {  get; set; }
-        public int WeekNr {  get; set; }
+        public int Id { get; private set; }
+        public int TimeSlot {  get;private set; }
+        public int WeekDay { get;private set; }
+        public int EmployeeId {  get; private set; }
+        public int WeekNr {  get; private set; }
+
+        public WorksheetDTO(int id, int timeSlot, int weekDay, int employeeId, int weekNr)
+        {
+            Id = id;
+            TimeSlot = timeSlot;
+            WeekDay = weekDay;
+            EmployeeId = employeeId;
+            WeekNr = weekNr;
+        }
     }
 }

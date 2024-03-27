@@ -64,10 +64,11 @@
             // userDataGridView
             // 
             userDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            userDataGridView.Location = new Point(31, 152);
+            userDataGridView.Location = new Point(41, 114);
+            userDataGridView.Margin = new Padding(3, 2, 3, 2);
             userDataGridView.Name = "userDataGridView";
             userDataGridView.RowHeadersWidth = 51;
-            userDataGridView.Size = new Size(918, 497);
+            userDataGridView.Size = new Size(803, 373);
             userDataGridView.TabIndex = 22;
             userDataGridView.CellClick += userDataGridView_CellClick;
             userDataGridView.SelectionChanged += userDataGridView_SelectionChanged;
@@ -94,9 +95,11 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(lblRole);
             groupBox1.Controls.Add(lblName);
-            groupBox1.Location = new Point(1014, 68);
+            groupBox1.Location = new Point(887, 51);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(343, 581);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(300, 436);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             // 
@@ -178,11 +181,12 @@
             comboBoxRoleDetails.DropDownHeight = 108;
             comboBoxRoleDetails.FormattingEnabled = true;
             comboBoxRoleDetails.IntegralHeight = false;
-            comboBoxRoleDetails.ItemHeight = 20;
+            comboBoxRoleDetails.ItemHeight = 15;
             comboBoxRoleDetails.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
-            comboBoxRoleDetails.Location = new Point(134, 127);
+            comboBoxRoleDetails.Location = new Point(102, 131);
+            comboBoxRoleDetails.Margin = new Padding(3, 2, 3, 2);
             comboBoxRoleDetails.Name = "comboBoxRoleDetails";
-            comboBoxRoleDetails.Size = new Size(194, 28);
+            comboBoxRoleDetails.Size = new Size(170, 23);
             comboBoxRoleDetails.TabIndex = 32;
             comboBoxRoleDetails.SelectedIndexChanged += comboBoxRoleDetails_SelectedIndexChanged;
             // 
@@ -196,10 +200,9 @@
             removeEmployeeBtn.Cursor = Cursors.Hand;
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(54, 508);
-            removeEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
+            removeEmployeeBtn.Location = new Point(46, 354);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
-            removeEmployeeBtn.Size = new Size(257, 53);
+            removeEmployeeBtn.Size = new Size(225, 40);
             removeEmployeeBtn.TabIndex = 30;
             removeEmployeeBtn.Text = "Remove Employee";
             removeEmployeeBtn.TextColor = Color.White;
@@ -215,10 +218,9 @@
             editEmployeeBtn.Cursor = Cursors.Hand;
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(54, 442);
-            editEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
+            editEmployeeBtn.Location = new Point(46, 298);
             editEmployeeBtn.Name = "editEmployeeBtn";
-            editEmployeeBtn.Size = new Size(257, 53);
+            editEmployeeBtn.Size = new Size(225, 40);
             editEmployeeBtn.TabIndex = 29;
             editEmployeeBtn.Text = "Edit Employee";
             editEmployeeBtn.TextColor = Color.White;
@@ -228,9 +230,10 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.DimGray;
-            pictureBox2.Location = new Point(21, 69);
+            pictureBox2.Location = new Point(18, 52);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(305, 4);
+            pictureBox2.Size = new Size(254, 2);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
@@ -240,9 +243,9 @@
             employeeDetailsLabel.BackColor = Color.Transparent;
             employeeDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             employeeDetailsLabel.ForeColor = Color.DimGray;
-            employeeDetailsLabel.Location = new Point(57, 48);
+            employeeDetailsLabel.Location = new Point(50, 36);
             employeeDetailsLabel.Name = "employeeDetailsLabel";
-            employeeDetailsLabel.Size = new Size(124, 20);
+            employeeDetailsLabel.Size = new Size(96, 15);
             employeeDetailsLabel.TabIndex = 26;
             employeeDetailsLabel.Text = "Employee details";
             // 
@@ -250,9 +253,10 @@
             // 
             userPictureBox.BackColor = Color.OrangeRed;
             userPictureBox.Image = (Image)resources.GetObject("userPictureBox.Image");
-            userPictureBox.Location = new Point(6, 29);
+            userPictureBox.Location = new Point(5, 22);
+            userPictureBox.Margin = new Padding(3, 2, 3, 2);
             userPictureBox.Name = "userPictureBox";
-            userPictureBox.Size = new Size(61, 39);
+            userPictureBox.Size = new Size(53, 29);
             userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             userPictureBox.TabIndex = 25;
             userPictureBox.TabStop = false;
@@ -260,45 +264,47 @@
             // textBoxEmail
             // 
             textBoxEmail.BackColor = SystemColors.ControlDark;
-            textBoxEmail.Location = new Point(135, 167);
+            textBoxEmail.Location = new Point(102, 160);
+            textBoxEmail.Margin = new Padding(3, 2, 3, 2);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.ReadOnly = true;
-            textBoxEmail.Size = new Size(193, 27);
+            textBoxEmail.Size = new Size(169, 23);
             textBoxEmail.TabIndex = 20;
             // 
             // textBoxName
             // 
             textBoxName.BackColor = SystemColors.ControlDark;
-            textBoxName.Location = new Point(135, 93);
+            textBoxName.Location = new Point(102, 71);
+            textBoxName.Margin = new Padding(3, 2, 3, 2);
             textBoxName.Name = "textBoxName";
             textBoxName.ReadOnly = true;
-            textBoxName.Size = new Size(193, 27);
+            textBoxName.Size = new Size(169, 23);
             textBoxName.TabIndex = 18;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 163);
+            label1.Location = new Point(19, 163);
             label1.Name = "label1";
-            label1.Size = new Size(49, 20);
+            label1.Size = new Size(39, 15);
             label1.TabIndex = 17;
             label1.Text = "Email:";
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(16, 127);
+            lblRole.Location = new Point(19, 134);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(42, 20);
+            lblRole.Size = new Size(33, 15);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(17, 93);
+            lblName.Location = new Point(16, 74);
             lblName.Name = "lblName";
-            lblName.Size = new Size(52, 20);
+            lblName.Size = new Size(42, 15);
             lblName.TabIndex = 0;
             lblName.Text = "Name:";
             // 
@@ -307,9 +313,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(359, 106);
+            pictureBoxSearch.Location = new Point(333, 74);
+            pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(21, 21);
+            pictureBoxSearch.Size = new Size(21, 23);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 19;
             pictureBoxSearch.TabStop = false;
@@ -322,20 +329,22 @@
             comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.ItemHeight = 20;
+            comboBoxRole.ItemHeight = 15;
             comboBoxRole.Items.AddRange(new object[] { "Any Role", "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
-            comboBoxRole.Location = new Point(394, 104);
+            comboBoxRole.Location = new Point(377, 74);
+            comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(306, 28);
+            comboBoxRole.Size = new Size(268, 23);
             comboBoxRole.TabIndex = 18;
             comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
             // 
             // textBoxSearch
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
-            textBoxSearch.Location = new Point(31, 104);
+            textBoxSearch.Location = new Point(41, 74);
+            textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(357, 27);
+            textBoxSearch.Size = new Size(313, 23);
             textBoxSearch.TabIndex = 17;
             textBoxSearch.KeyDown += textBoxSearch_KeyDown;
             textBoxSearch.KeyPress += textBoxSearch_KeyPress;
@@ -350,10 +359,9 @@
             addEmployeeBtn.Cursor = Cursors.Hand;
             addEmployeeBtn.FlatStyle = FlatStyle.Flat;
             addEmployeeBtn.ForeColor = Color.White;
-            addEmployeeBtn.Location = new Point(706, 97);
-            addEmployeeBtn.Margin = new Padding(3, 4, 3, 4);
+            addEmployeeBtn.Location = new Point(651, 69);
             addEmployeeBtn.Name = "addEmployeeBtn";
-            addEmployeeBtn.Size = new Size(243, 40);
+            addEmployeeBtn.Size = new Size(193, 30);
             addEmployeeBtn.TabIndex = 31;
             addEmployeeBtn.Text = "Add Employee";
             addEmployeeBtn.TextColor = Color.White;
@@ -362,7 +370,7 @@
             // 
             // UserControlDashboard
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(addEmployeeBtn);
             Controls.Add(userDataGridView);
@@ -371,10 +379,9 @@
             Controls.Add(comboBoxRole);
             Controls.Add(textBoxSearch);
             Cursor = Cursors.Hand;
-            Margin = new Padding(3, 4, 3, 4);
             Name = "UserControlDashboard";
-            Size = new Size(1360, 745);
             Load += UserControlDashboard_Load;
+            Size = new Size(1190, 559);
             ((System.ComponentModel.ISupportInitialize)userDataGridView).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

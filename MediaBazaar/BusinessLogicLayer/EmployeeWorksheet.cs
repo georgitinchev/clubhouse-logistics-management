@@ -10,19 +10,21 @@ namespace MediaBazaar
 {
 	public class EmployeeWorksheet
 	{
-		private WorkingTime timeSlot;
-		private WeekDayEnum weekDay;
-		private Employee employee;
-		private int weekNr;
-		private int id;
+		public int id { get;private set; }
+		public WorkingTime timeSlot { get; private set; }
+		public WeekDayEnum weekDay { get; private set; }
+		public Employee employee { get; private set; }
+		public int weekNr { get; private set; }
+		
 
-		public EmployeeWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr,int Id)
+		public EmployeeWorksheet(int Id,WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
 		{
+			this.id = Id;
 			this.timeSlot = timeSlot;
 			this.weekDay = weekDay;
 			this.employee = employee;
 			this.weekNr = weekNr;
-			this.id = Id;
+			
 		}
 
 		public EmployeeWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
