@@ -46,8 +46,8 @@ namespace MediaBazaar.Forms
 				int contractId = idCheckerContract();
 
 				// Create Contract
-				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, startDatePicker.Value, null, true, null, null);
-				_contractManager.AddContract(contract);
+				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, startDatePicker.Value, null, true, null, DateTime.Now);
+				
 
 				// Get Employee ID
 				int employeeId = idCheckerEmployee();

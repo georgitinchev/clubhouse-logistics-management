@@ -45,7 +45,7 @@ namespace BusinessLogicLayer
 			}
 		}
 
-        }
+        
 
 		public void UpdateEmergencyContactInDB(EmergencyContact emergencyContact)
 		{
