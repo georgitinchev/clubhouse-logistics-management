@@ -138,6 +138,7 @@
             editEmployeeBtn.Text = "Edit Employee";
             editEmployeeBtn.TextColor = Color.White;
             editEmployeeBtn.UseVisualStyleBackColor = false;
+            editEmployeeBtn.Click += editEmployeeBtn_Click;
             // 
             // pictureBox2
             // 

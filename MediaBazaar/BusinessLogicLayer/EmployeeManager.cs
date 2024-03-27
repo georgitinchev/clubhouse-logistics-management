@@ -30,17 +30,30 @@ namespace MediaBazaar.Classes
 			employees.Add(newEmployee);
 		}
 
-		public void UpdateEmployee(List<Employee> employees, Employee updatedEmployee)
-		{
-			var employee = employees.FirstOrDefault(e => e.GetId() == updatedEmployee.GetId());
-			if (employee == null)
-			{
-				throw new Exception("Employee not found.");
-			}
-			
-		}
+        public void UpdateEmployee(List<Employee> employees, Employee updatedEmployee)
+        {
+            Employee employeeToUpdate = employees.FirstOrDefault(e => e.GetId() == updatedEmployee.GetId());
 
-		public void DeleteEmployee(List<Employee> employees, int employeeId)
+            if (employeeToUpdate == null)
+            {
+                throw new Exception("Employee not found.");
+            }
+            else
+            {
+                /*employeeToUpdate.UpdateInformation(
+                    updatedEmployee.FirstName,
+                    updatedEmployee.Lastname,
+                    updatedEmployee.Email,
+                    updatedEmployee.Password,
+                    updatedEmployee.BSN,
+                    updatedEmployee.Birthday,
+                    updatedEmployee.Role
+                );*/
+
+            }
+        }
+
+        public void DeleteEmployee(List<Employee> employees, int employeeId)
 		{
 			var employee = employees.FirstOrDefault(e => e.GetId() == employeeId);
 			if (employee == null)
@@ -52,7 +65,7 @@ namespace MediaBazaar.Classes
 			employees.Remove(employee);
 		}
 
-		public List<Employee> GetAllRegularEmployees(List<Employee> employees)
+        public List<Employee> GetAllRegularEmployees(List<Employee> employees)
 		{
 			return employees.Where(e => !e.IsManager).ToList();
 		}

@@ -48,9 +48,8 @@ namespace DTOLayer
 			EmergencyContact = emergencyContact;
 		}
 
-        public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
+        public void UpdateInformation(string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
         {
-            Id = id;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
@@ -59,8 +58,6 @@ namespace DTOLayer
             Birthday = birthday;
             Role = role;
         }
-
-      
 
 		public void ChangeRole(EmployeeRoleEnum newRole)
 		{
@@ -81,11 +78,10 @@ namespace DTOLayer
         {
             return LastName;
         }
-
-        public string GetUsername()
-		{
-			return FirstName + LastName.Replace(" ", "");
-		}
+        public string GetEmail()
+        {
+            return Email;
+        }
 
 		public bool ValidatePassword(string inputPassword)
 		{
