@@ -11,8 +11,12 @@ namespace MediaBazaar.Classes
 	{
 		private EmergencyContactManager _emergencyContactManager;
 		private ContractManager _contractManager;
+<<<<<<< Updated upstream
 		private List<Employee> employees;
 		private EmployeeDAL employeeDAL;
+=======
+		public List<Employee> employees { get; private set; }
+>>>>>>> Stashed changes
 
 		public EmployeeManager()
 		{
@@ -25,16 +29,16 @@ namespace MediaBazaar.Classes
 
 		public void AddEmployee(Employee newEmployee)
 		{
-			if (employees.Any(e => e.GetId() == newEmployee.GetId()))
+			if (employees.Any(e => e.Id == newEmployee.Id))
 			{
-				throw new Exception("Employee with the same ID already exists.");
+				throw new Exception("Employee already exists.");
 			}
 			employees.Add(newEmployee);
 		}
 
 		public void UpdateEmployee(Employee updatedEmployee)
 		{
-			var employee = employees.FirstOrDefault(e => e.GetId() == updatedEmployee.GetId());
+			var employee = employees.FirstOrDefault(e => e.Id == updatedEmployee.Id);
 			if (employee == null)
 			{
 				throw new Exception("Employee not found.");
@@ -44,7 +48,7 @@ namespace MediaBazaar.Classes
 
 		public void DeleteEmployee(int employeeId)
 		{
-			var employee = employees.FirstOrDefault(e => e.GetId() == employeeId);
+			var employee = employees.FirstOrDefault(e => e.Id == employeeId);
 			if (employee == null)
 			{
 				throw new Exception("Employee not found.");
@@ -70,7 +74,7 @@ namespace MediaBazaar.Classes
 
 		public List<Employee> SearchEmployees(string searchTerm)
 		{
-			return employees.Where(e => e.GetFirstName().Contains(searchTerm)).ToList();
+			return employees.Where(e => e.FirstName.Contains(searchTerm)).ToList();
 		}
 
 		public List<Employee> FilterEmployees(Func<Employee, bool> filter)
@@ -94,33 +98,34 @@ namespace MediaBazaar.Classes
 									  employeeDTO.Birthday,
 									  employeeDTO.Role,
 									  employeeDTO.IsManager,
-									  employeeDTO.Address,
 									  emergencyContact,
+									  employeeDTO.Address,
 									  contract);
 				return employee;
 			}
-			return null;
+			throw new InvalidOperationException("Emergency contact or contract is null.");
 		}
+
 
 		public EmployeeDTO TransformEmployeeToDTO(Employee employee)
 		{
 			EmployeeDTO employeeDTO = new EmployeeDTO(
-				employee.GetId(),
-				employee.GetFirstName(),
-				employee.GetLastName(),
-				employee.GetEmail(),
-				employee.GetPassword(),
-				employee.GetAddress(),
+				employee.Id,
+				employee.FirstName,
+				employee.LastName,
+				employee.Email,
+				employee.Password,
+				employee.Address,
 				employee.PhoneNumber,
-				employee.GetBSN(), 
-				employee.GetBirthday(), 
-				(int)employee.Role, 
-				employee.IsManager, 
-				employee.GetContractID(),
-				employee.GetEmergencyContactID() 
-				);	
+				employee.BSN,
+				employee.Birthday,
+				(int)employee.Role,
+				employee.IsManager,
+				employee.Contract.Id,
+				employee.EmergencyContact.Id
+				); ;
 			return employeeDTO;
-        }
+		}
 
 		public void GetEmployeesFromDB(string email, string password)
 		{

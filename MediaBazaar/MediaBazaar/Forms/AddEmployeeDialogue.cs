@@ -29,23 +29,51 @@ namespace MediaBazaar.Forms
 
 		private void completeFormBtn_Click(object sender, EventArgs e)
 		{
-			// logic to add employee
 			try
 			{
-				//create contract
-				Contract(int(_contractManager.Count) + 1,comboBox1.SelectedValue,textBox1.Text,textBox2.Text,dateTimePicker1.Value,);
-				//create emergency contact
-				//create employee + append contract + emergency contact 
-				// add to employee manager
-				_employeeManager.AddEmployee();
-				// send to db
-			}
-			catch
-			{
+				// Create Contract
+				if (!Enum.TryParse(comboBox1.SelectedValue.ToString(), out EmployeeRoleEnum role))
+					throw new Exception("Invalid role selected.");
 
+				if (!decimal.TryParse(textBox1.Text, out decimal hourlyWage))
+					throw new Exception("Hourly wage must be a decimal number.");
+
+				if (!int.TryParse(textBox2.Text, out int weeklyHours))
+					throw new Exception("Weekly hours must be an integer.");
+
+				var startDate = dateTimePicker1.Value;
+				var contract = new Contract(_contractManager.contracts.Count + 1, role, hourlyWage, weeklyHours, startDate, null, true, null, DateTime.Now);
+
+				// Create EmergencyContact
+				var emcFirstName = emcFirstNameBox.Text;
+				var emcLastName = emcLastNameBox.Text;
+				var emcPhone = emcPhoneText.Text;
+				var emcEmail = emcEmailBox.Text;
+				var emergencyContact = new EmergencyContact(_employeeManager.employees.Count + 1, emcFirstName, emcLastName, emcPhone, emcEmail);
+
+				// Create Employee
+				var firstName = textBox6.Text;
+				var lastName = textBox7.Text;
+				var email = textBox5.Text;
+				var password = textBox4.Text;
+				var bsn = textBox3.Text;
+				var phoneNumber = textBox9.Text;
+				var address = textBox8.Text;
+
+				if (!DateTime.TryParse(dateTimePicker2.Text, out DateTime birthday))
+					throw new Exception("Invalid date format for birthday.");
+
+				var employee = new Employee(_employeeManager.employees.Count + 1, firstName, lastName, email, password, phoneNumber, bsn, birthday, (int)role, false, emergencyContact, address, contract);
+				// Add to EmployeeManager
+				//_employeeManager.AddEmployee(employee);
 			}
-			
+			catch (Exception ex)
+			{
+				// Show error message
+				MessageBox.Show(ex.Message);
+			}
 		}
+
 
 		private void InitializeTabNavigation()
 		{

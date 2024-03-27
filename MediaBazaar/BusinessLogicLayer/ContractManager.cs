@@ -14,7 +14,7 @@ namespace BusinessLogicLayer
     public class ContractManager
     {
         private ContractDAL contractDAL;
-        private List<Contract> contracts;
+        public List<Contract> contracts { get; private set; }
       
         // constructor
         public ContractManager()
