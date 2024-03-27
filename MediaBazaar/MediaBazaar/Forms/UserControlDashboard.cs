@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using BusinessLogicLayer;
 using DTOLayer;
@@ -10,7 +11,10 @@ namespace MediaBazaar.Forms
     {
         private EmployeeManager employeeManager;
         private ContractManager contractManager;
+        private DataTable employeeData;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
+        private List<(Control control, Point originalLocation)> originalControlLocations = new List<(Control, Point)>();
+
         public UserControlDashboard()
         {
             employeeManager = new EmployeeManager();
@@ -20,9 +24,10 @@ namespace MediaBazaar.Forms
             InitializeDataGridView();
             InitializeControls();
             InitializeFocus();
+            Load += UserControlDashboard_Load;
             Load += YourFormName_Load;
+            userDataGridView.SelectionChanged += DataGridView_SelectionChanged;
         }
-        private DataTable employeeData;
 
         private void InitializeControls()
         {
@@ -30,6 +35,11 @@ namespace MediaBazaar.Forms
             originalControlStates.Add((textBoxSurname, textBoxSurname.BackColor, textBoxSurname.ReadOnly));
             originalControlStates.Add((comboBoxRole, comboBoxRole.BackColor, comboBoxRole.Enabled));
             originalControlStates.Add((textBoxEmail, textBoxEmail.BackColor, textBoxEmail.ReadOnly));
+
+            originalControlLocations.Add((textBoxSearch, textBoxSearch.Location));
+            originalControlLocations.Add((comboBoxRole, comboBoxRole.Location));
+            originalControlLocations.Add((addEmployeeBtn, addEmployeeBtn.Location));
+            originalControlLocations.Add((pictureBoxSearch, pictureBoxSearch.Location));
         }
 
 
@@ -47,6 +57,7 @@ namespace MediaBazaar.Forms
             employeeData.Rows.Add("Charlie Chen", "charlie@example.com", "Security Guard", "E");
             employeeData.Rows.Add("David Davis", "david@example.com", "Depot Worker", "F");
         }
+
         private void YourFormName_Load(object sender, EventArgs e)
         {
             userDataGridView.ClearSelection();
@@ -101,6 +112,7 @@ namespace MediaBazaar.Forms
             userDataGridView.ScrollBars = ScrollBars.Vertical;
         }
 
+
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
         {
             if (userDataGridView.SelectedRows.Count > 0)
@@ -111,6 +123,42 @@ namespace MediaBazaar.Forms
             {
                 groupBox1.Visible = false;
             }
+        }
+
+        private void UserControlDashboard_Load(object sender, EventArgs e)
+        {
+            UpdateLayout();
+        }
+
+        private void DataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            UpdateLayout();
+        }
+
+        private void UpdateLayout()
+        {
+            bool isEmployeeSelected = userDataGridView.SelectedRows.Count > 0;
+
+            if (isEmployeeSelected)
+            {
+                MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
+                MoveControlsToLocation(comboBoxRole, new Point(377, 74), new Size(268, 23));
+                MoveControlsToLocation(addEmployeeBtn, new Point(651, 69), new Size(193, 30));
+                MoveControlsToLocation(pictureBoxSearch, new Point(333, 74), new Size(21, 23));
+            }
+            else
+            {
+                MoveControlsToLocation(textBoxSearch, new Point(855, 114), new Size(313, 23));
+                MoveControlsToLocation(comboBoxRole, new Point(855, 152), new Size(313, 23));
+                MoveControlsToLocation(addEmployeeBtn, new Point(855, 189), new Size(313, 30));
+                MoveControlsToLocation(pictureBoxSearch, new Point(1147, 114), new Size(21, 23));
+            }
+        }
+
+        private void MoveControlsToLocation(Control control, Point location, Size size)
+        {
+            control.Location = location;
+            control.Size = size;
         }
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)

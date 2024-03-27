@@ -89,7 +89,6 @@
             btnAddWorksheet.Text = "Add Worksheet";
             btnAddWorksheet.TextColor = Color.White;
             btnAddWorksheet.UseVisualStyleBackColor = false;
-            //btnAddWorksheet.Click += this.btnAddWorksheet_Click;
             // 
             // dataGridViewWorksheet
             // 

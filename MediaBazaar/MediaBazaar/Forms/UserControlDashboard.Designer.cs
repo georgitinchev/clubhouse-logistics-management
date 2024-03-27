@@ -58,7 +58,7 @@
             // userDataGridView
             // 
             userDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            userDataGridView.Location = new Point(27, 114);
+            userDataGridView.Location = new Point(41, 114);
             userDataGridView.Margin = new Padding(3, 2, 3, 2);
             userDataGridView.Name = "userDataGridView";
             userDataGridView.RowHeadersWidth = 51;
@@ -246,10 +246,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(314, 80);
+            pictureBoxSearch.Location = new Point(333, 74);
             pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(18, 16);
+            pictureBoxSearch.Size = new Size(21, 23);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 19;
             pictureBoxSearch.TabStop = false;
@@ -264,7 +264,7 @@
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 15;
             comboBoxRole.Items.AddRange(new object[] { "Any Role", "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
-            comboBoxRole.Location = new Point(345, 78);
+            comboBoxRole.Location = new Point(377, 74);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(268, 23);
@@ -274,7 +274,7 @@
             // textBoxSearch
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
-            textBoxSearch.Location = new Point(27, 78);
+            textBoxSearch.Location = new Point(41, 74);
             textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
             textBoxSearch.Size = new Size(313, 23);
@@ -292,9 +292,9 @@
             addEmployeeBtn.Cursor = Cursors.Hand;
             addEmployeeBtn.FlatStyle = FlatStyle.Flat;
             addEmployeeBtn.ForeColor = Color.White;
-            addEmployeeBtn.Location = new Point(618, 73);
+            addEmployeeBtn.Location = new Point(651, 69);
             addEmployeeBtn.Name = "addEmployeeBtn";
-            addEmployeeBtn.Size = new Size(213, 30);
+            addEmployeeBtn.Size = new Size(193, 30);
             addEmployeeBtn.TabIndex = 31;
             addEmployeeBtn.Text = "Add Employee";
             addEmployeeBtn.TextColor = Color.White;
