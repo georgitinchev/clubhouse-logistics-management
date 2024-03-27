@@ -2,7 +2,6 @@
 using DTOLayer;
 using MediaBazaar.Classes;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
@@ -17,6 +16,7 @@ namespace MediaBazaar.Forms
 	{
 		private EmployeeManager _employeeManager;
 		private ContractManager _contractManager;
+
 		public AddEmployeeForm(EmployeeManager employeeManager, ContractManager contractManager)
 		{
 			_employeeManager = employeeManager;
@@ -31,7 +31,6 @@ namespace MediaBazaar.Forms
 		{
 			try
 			{
-				// Create Contract
 				if (!Enum.TryParse(comboBox1.SelectedValue.ToString(), out EmployeeRoleEnum role))
 					throw new Exception("Invalid role selected.");
 
@@ -41,39 +40,56 @@ namespace MediaBazaar.Forms
 				if (!int.TryParse(textBox2.Text, out int weeklyHours))
 					throw new Exception("Weekly hours must be an integer.");
 
-				var startDate = dateTimePicker1.Value;
-				var contract = new Contract(_contractManager.contracts.Count + 1, role, hourlyWage, weeklyHours, startDate, null, true, null, DateTime.Now);
+				// Get Contract ID
+				int contractId = idCheckerContract();
+
+				// Create Contract
+				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, dateTimePicker1.Value, null, true, null, null);
+				_contractManager.AddContract(contract);
+
+				// Get Employee ID
+				int employeeId = idCheckerEmployee();
 
 				// Create EmergencyContact
-				var emcFirstName = emcFirstNameBox.Text;
-				var emcLastName = emcLastNameBox.Text;
-				var emcPhone = emcPhoneText.Text;
-				var emcEmail = emcEmailBox.Text;
-				var emergencyContact = new EmergencyContact(_employeeManager.employees.Count + 1, emcFirstName, emcLastName, emcPhone, emcEmail);
+				var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
 				// Create Employee
-				var firstName = textBox6.Text;
-				var lastName = textBox7.Text;
-				var email = textBox5.Text;
-				var password = textBox4.Text;
-				var bsn = textBox3.Text;
-				var phoneNumber = textBox9.Text;
-				var address = textBox8.Text;
+				var employee = new Employee(employeeId, textBox6.Text, textBox7.Text, textBox5.Text, textBox4.Text, textBox9.Text, textBox3.Text, dateTimePicker2.Value, (int)role, false, emergencyContact, textBox8.Text, contract);
+				_employeeManager.AddEmployee(employee);
 
-				if (!DateTime.TryParse(dateTimePicker2.Text, out DateTime birthday))
-					throw new Exception("Invalid date format for birthday.");
+				MessageBox.Show("Employee added successfully.");
 
-				var employee = new Employee(_employeeManager.employees.Count + 1, firstName, lastName, email, password, phoneNumber, bsn, birthday, (int)role, false, emergencyContact, address, contract);
-				// Add to EmployeeManager
-				//_employeeManager.AddEmployee(employee);
+				this.Close(); // Close the form after successfully adding an employee
 			}
 			catch (Exception ex)
 			{
-				// Show error message
 				MessageBox.Show(ex.Message);
 			}
 		}
 
+		private int idCheckerContract()
+		{
+			if (_contractManager.contracts.Count == 0)
+			{
+				return 1;
+			}
+			else
+			{
+				return _contractManager.contracts.Count + 1;
+			}
+		}
+
+		private int idCheckerEmployee()
+		{
+			if (_employeeManager.employees.Count == 0)
+			{
+				return 1;
+			}
+			else
+			{
+				return _employeeManager.employees.Count + 1;
+			}
+		}
 
 		private void InitializeTabNavigation()
 		{
@@ -82,7 +98,7 @@ namespace MediaBazaar.Forms
 			previousBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 0; };
 			nextBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 2; };
 			previousBtnP3.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
-			completeFormBtn.Click += (sender, e) => { };
+			completeFormBtn.Click += completeFormBtn_Click; // Wire up the button click event handler
 
 			addEmployeeTabControl.SelectedIndexChanged += (sender, e) =>
 			{

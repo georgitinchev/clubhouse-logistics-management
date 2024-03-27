@@ -16,11 +16,19 @@ namespace BusinessLogicLayer
         private ContractDAL contractDAL;
         public List<Contract> contracts { get; private set; }
       
-        // constructor
         public ContractManager()
         {
 			contractDAL = new ContractDAL();
             List<Contract> contracts = new List<Contract>();
+		}
+
+        public void AddContract(Contract newContract)
+        {
+			if (contracts.Any(c => c.Id == newContract.Id))
+            {
+				throw new Exception("Contract already exists.");
+			}
+			contracts.Add(newContract);
 		}
 
         public Contract GetContractFromDB(int employeeID)
@@ -49,6 +57,7 @@ namespace BusinessLogicLayer
 
         }
 
+<<<<<<< Updated upstream
         public ContractDTO TransformContractToDTO(Contract contract)
         {
             ContractDTO contractDTO = new ContractDTO(contract.Id,(int)contract.role,contract.hourlyWage,contract.weeklyHours,
@@ -86,4 +95,23 @@ namespace BusinessLogicLayer
             }
         }
     }
+=======
+		//public ContractDTO TransformContractToDTO(Contract contract)
+		//{
+		//	ContractDTO contractDTO = new ContractDTO(
+		//		contract.Id,
+		//		(int)contract.role,
+		//		contract.hourlyWage,
+		//		contract.weeklyHours,
+		//		contract.startDate,
+		//		contract.endDate,
+		//		contract.isActive,
+		//		contract.terminationReason
+		//		//contract.availability
+		//	);
+
+		//	return contractDTO;
+		//}
+	}   
+>>>>>>> Stashed changes
 }
