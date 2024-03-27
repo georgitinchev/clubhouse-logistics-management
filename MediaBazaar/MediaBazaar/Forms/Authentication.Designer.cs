@@ -151,7 +151,7 @@
 			// loginStatusLabel
 			// 
 			loginStatusLabel.BackColor = Color.Gainsboro;
-			loginStatusLabel.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
+			loginStatusLabel.Font = new Font("Segoe UI", 16F);
 			loginStatusLabel.Location = new Point(353, 410);
 			loginStatusLabel.Name = "loginStatusLabel";
 			loginStatusLabel.Size = new Size(467, 37);

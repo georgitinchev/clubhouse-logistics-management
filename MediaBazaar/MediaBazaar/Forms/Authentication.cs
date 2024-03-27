@@ -8,7 +8,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using MediaBazaar.Classes;
 
 namespace MediaBazaar.Forms
@@ -39,10 +38,10 @@ namespace MediaBazaar.Forms
 
 				else
 				{
-					throw (new Exception("Invalid credentials or unauthorized access"));
+					throw (new Exception("⚠️ Invalid credentials or unauthorized access"));
 				}
 			}
-			catch(Exception ex)
+			catch (Exception ex)
 			{
 				loginStatusLabel.Text = ex.Message;
 			}
