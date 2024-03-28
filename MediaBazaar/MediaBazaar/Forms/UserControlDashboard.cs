@@ -14,7 +14,6 @@ namespace MediaBazaar.Forms
         private DataTable employeeData;
         private EmployeeManager employeeManager;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
-        private EmployeeDAL employeeDAL;
 
         public UserControlDashboard(EmployeeManager _employeeManager)
         {

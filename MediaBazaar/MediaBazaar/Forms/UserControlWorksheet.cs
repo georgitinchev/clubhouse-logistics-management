@@ -100,26 +100,57 @@ namespace MediaBazaar.Forms
 				}
 			};
 
-			employeeWorksheetGrid.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
-			employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
-		}
+            employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
+            employeeWorksheetGrid.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
+        }
+
+        private void UserControlWorksheet_Load(object sender, EventArgs e)
+        {
+            employeeWorksheetGrid.ClearSelection();
+            groupBox1.Visible = false;
+            UpdateLayout();
+        }
 
 		private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
 		{
-			if (employeeWorksheetGrid.SelectedRows.Count > 0)
-			{
-				groupBox1.Visible = true;
-			}
-			else
-			{
-				groupBox1.Visible = false;
-			}
-		}
+            if (employeeWorksheetGrid.SelectedRows.Count > 0)
+            {
+                groupBox1.Visible = true;
+            }
+            else
+            {
+                groupBox1.Visible = false;
+            }
+        }
 
-		private void YourFormName_Load(object sender, EventArgs e)
-		{
-			employeeWorksheetGrid.ClearSelection();
-			groupBox1.Visible = false;
-		}
+        private void DataGridViewWorksheet_SelectionChanged (object sender, EventArgs e)
+        {
+            UpdateLayout();
+        }
+
+
+        private void UpdateLayout()
+        {
+            bool isEmployeeSelected = employeeWorksheetGrid.SelectedRows.Count > 0;
+
+            if (isEmployeeSelected)
+            {
+                MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
+                MoveControlsToLocation(comboBoxDepartment, new Point(377, 74), new Size(268, 23));
+                MoveControlsToLocation(pictureBoxSearch, new Point(333, 74), new Size(21, 23));
+            }
+            else
+            {
+                MoveControlsToLocation(textBoxSearch, new Point(855, 114), new Size(313, 23));
+                MoveControlsToLocation(comboBoxDepartment, new Point(855, 152), new Size(313, 23));
+                MoveControlsToLocation(pictureBoxSearch, new Point(1147, 114), new Size(21, 23));
+            }
+        }
+
+        private void MoveControlsToLocation(Control control, Point location, Size size)
+        {
+            control.Location = location;
+            control.Size = size;
+        }
 	}
 }
