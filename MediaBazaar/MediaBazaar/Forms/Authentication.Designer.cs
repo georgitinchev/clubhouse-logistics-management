@@ -47,26 +47,29 @@
 			// userNameLoginTxt
 			// 
 			userNameLoginTxt.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			userNameLoginTxt.Location = new Point(83, 54);
+			userNameLoginTxt.Location = new Point(119, 90);
+			userNameLoginTxt.Margin = new Padding(4, 5, 4, 5);
 			userNameLoginTxt.Name = "userNameLoginTxt";
-			userNameLoginTxt.Size = new Size(288, 39);
+			userNameLoginTxt.Size = new Size(410, 55);
 			userNameLoginTxt.TabIndex = 0;
 			// 
 			// passwordLoginTxt
 			// 
 			passwordLoginTxt.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			passwordLoginTxt.Location = new Point(83, 166);
+			passwordLoginTxt.Location = new Point(119, 277);
+			passwordLoginTxt.Margin = new Padding(4, 5, 4, 5);
 			passwordLoginTxt.Name = "passwordLoginTxt";
-			passwordLoginTxt.Size = new Size(288, 39);
+			passwordLoginTxt.Size = new Size(410, 55);
 			passwordLoginTxt.TabIndex = 1;
 			// 
 			// userNameLabel
 			// 
 			userNameLabel.AutoSize = true;
 			userNameLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			userNameLabel.Location = new Point(159, 19);
+			userNameLabel.Location = new Point(227, 32);
+			userNameLabel.Margin = new Padding(4, 0, 4, 0);
 			userNameLabel.Name = "userNameLabel";
-			userNameLabel.Size = new Size(135, 32);
+			userNameLabel.Size = new Size(198, 48);
 			userNameLabel.TabIndex = 2;
 			userNameLabel.Text = "Username:";
 			// 
@@ -74,9 +77,10 @@
 			// 
 			passwordLabel.AutoSize = true;
 			passwordLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-			passwordLabel.Location = new Point(165, 131);
+			passwordLabel.Location = new Point(236, 218);
+			passwordLabel.Margin = new Padding(4, 0, 4, 0);
 			passwordLabel.Name = "passwordLabel";
-			passwordLabel.Size = new Size(129, 32);
+			passwordLabel.Size = new Size(189, 48);
 			passwordLabel.TabIndex = 3;
 			passwordLabel.Text = "Password:";
 			// 
@@ -85,10 +89,10 @@
 			pictureBoxJupiter.BackColor = Color.OrangeRed;
 			pictureBoxJupiter.BackgroundImage = (Image)resources.GetObject("pictureBoxJupiter.BackgroundImage");
 			pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
-			pictureBoxJupiter.Location = new Point(440, 11);
-			pictureBoxJupiter.Margin = new Padding(3, 2, 3, 2);
+			pictureBoxJupiter.Location = new Point(623, 12);
+			pictureBoxJupiter.Margin = new Padding(4, 3, 4, 3);
 			pictureBoxJupiter.Name = "pictureBoxJupiter";
-			pictureBoxJupiter.Size = new Size(288, 100);
+			pictureBoxJupiter.Size = new Size(411, 167);
 			pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
 			pictureBoxJupiter.TabIndex = 20;
 			pictureBoxJupiter.TabStop = false;
@@ -100,9 +104,11 @@
 			loginFormGroup.Controls.Add(userNameLoginTxt);
 			loginFormGroup.Controls.Add(passwordLabel);
 			loginFormGroup.Controls.Add(passwordLoginTxt);
-			loginFormGroup.Location = new Point(353, 189);
+			loginFormGroup.Location = new Point(504, 315);
+			loginFormGroup.Margin = new Padding(4, 5, 4, 5);
 			loginFormGroup.Name = "loginFormGroup";
-			loginFormGroup.Size = new Size(467, 228);
+			loginFormGroup.Padding = new Padding(4, 5, 4, 5);
+			loginFormGroup.Size = new Size(667, 380);
 			loginFormGroup.TabIndex = 21;
 			loginFormGroup.TabStop = false;
 			// 
@@ -111,9 +117,10 @@
 			label1.AutoSize = true;
 			label1.BackColor = Color.White;
 			label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label1.Location = new Point(425, 139);
+			label1.Location = new Point(607, 232);
+			label1.Margin = new Padding(4, 0, 4, 0);
 			label1.Name = "label1";
-			label1.Size = new Size(373, 30);
+			label1.Size = new Size(572, 45);
 			label1.TabIndex = 22;
 			label1.Text = "Please enter administrative credentials:";
 			// 
@@ -121,10 +128,10 @@
 			// 
 			userPictureBox.BackColor = Color.OrangeRed;
 			userPictureBox.Image = (Image)resources.GetObject("userPictureBox.Image");
-			userPictureBox.Location = new Point(377, 139);
-			userPictureBox.Margin = new Padding(3, 2, 3, 2);
+			userPictureBox.Location = new Point(539, 232);
+			userPictureBox.Margin = new Padding(4, 3, 4, 3);
 			userPictureBox.Name = "userPictureBox";
-			userPictureBox.Size = new Size(39, 30);
+			userPictureBox.Size = new Size(56, 50);
 			userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 			userPictureBox.TabIndex = 26;
 			userPictureBox.TabStop = false;
@@ -139,9 +146,10 @@
 			loginBtn.FlatStyle = FlatStyle.Flat;
 			loginBtn.Font = new Font("Segoe UI", 20F);
 			loginBtn.ForeColor = Color.White;
-			loginBtn.Location = new Point(436, 474);
+			loginBtn.Location = new Point(623, 790);
+			loginBtn.Margin = new Padding(4, 5, 4, 5);
 			loginBtn.Name = "loginBtn";
-			loginBtn.Size = new Size(288, 58);
+			loginBtn.Size = new Size(411, 97);
 			loginBtn.TabIndex = 27;
 			loginBtn.Text = "Login ";
 			loginBtn.TextColor = Color.White;
@@ -152,20 +160,21 @@
 			// 
 			loginStatusLabel.BackColor = Color.Gainsboro;
 			loginStatusLabel.Font = new Font("Segoe UI", 16F);
-			loginStatusLabel.Location = new Point(353, 410);
+			loginStatusLabel.Location = new Point(504, 683);
+			loginStatusLabel.Margin = new Padding(4, 0, 4, 0);
 			loginStatusLabel.Name = "loginStatusLabel";
-			loginStatusLabel.Size = new Size(467, 37);
+			loginStatusLabel.Size = new Size(667, 62);
 			loginStatusLabel.TabIndex = 28;
 			loginStatusLabel.TextAlign = ContentAlignment.MiddleCenter;
 			// 
 			// Authentication
 			// 
-			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.White;
 			BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
 			BackgroundImageLayout = ImageLayout.Stretch;
-			ClientSize = new Size(1174, 568);
+			ClientSize = new Size(1677, 947);
 			Controls.Add(loginStatusLabel);
 			Controls.Add(loginBtn);
 			Controls.Add(userPictureBox);
@@ -173,6 +182,7 @@
 			Controls.Add(loginFormGroup);
 			Controls.Add(pictureBoxJupiter);
 			DoubleBuffered = true;
+			Margin = new Padding(4, 5, 4, 5);
 			Name = "Authentication";
 			Text = "Authentication";
 			((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).EndInit();

@@ -391,7 +391,6 @@
             textBoxAddress.ReadOnly = true;
             textBoxAddress.Size = new Size(169, 23);
             textBoxAddress.TabIndex = 38;
-            textBoxAddress.TextChanged += textBox1_TextChanged;
             // 
             // UserControlDashboard
             // 

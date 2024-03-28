@@ -20,6 +20,7 @@ namespace MediaBazaar.Forms
 		{
 			employeeManager = new EmployeeManager();
 			InitializeComponent();
+			passwordLoginTxt.PasswordChar = '*';
 		}
 
 		private void loginBtn_Click(object sender, EventArgs e)
