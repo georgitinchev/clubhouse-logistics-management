@@ -14,7 +14,6 @@ namespace MediaBazaar.Forms
         private DataTable employeeData;
         private EmployeeManager employeeManager;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
-        private EmployeeDAL employeeDAL;
 
         public UserControlDashboard(EmployeeManager _employeeManager)
         {
@@ -43,6 +42,7 @@ namespace MediaBazaar.Forms
             originalControlStates.Add((textBoxBSN, textBoxBSN.BackColor, textBoxBSN.ReadOnly));
             originalControlStates.Add((textBoxPhone, textBoxPhone.BackColor, textBoxPhone.ReadOnly));
             originalControlStates.Add((dateTimePickerBirthday, dateTimePickerBirthday.BackColor, dateTimePickerBirthday.Enabled));
+            originalControlStates.Add((textBoxAddress, textBoxAddress.BackColor, textBoxAddress.ReadOnly));
         }
 
         private void PopulateDataTable(DataTable employeeData)
@@ -192,7 +192,7 @@ namespace MediaBazaar.Forms
             textBoxSearch.LostFocus += new System.EventHandler(textBoxSearch_LostFocus);
         }
 
-        private string placeholder = "";
+        private string placeholder = "Search...";
 
         private void textBoxSearch_GotFocus(object sender, EventArgs e)
         {
@@ -275,10 +275,10 @@ namespace MediaBazaar.Forms
                     if (control is TextBox textBox)
                     {
                         textBox.ReadOnly = false;
-                       
-                        if ( textBox == textBoxPassword)
+
+                        if (textBox == textBoxPassword)
                         {
-                            textBox.UseSystemPasswordChar = true;
+                            textBox.UseSystemPasswordChar = false;
                         }
                     }
                     else if (control is ComboBox comboBox)
@@ -304,7 +304,7 @@ namespace MediaBazaar.Forms
                         textBox.ReadOnly = originalReadOnly;
                         if (textBox == textBoxPassword)
                         {
-                            textBox.UseSystemPasswordChar = false;
+                            textBox.UseSystemPasswordChar = true;
                         }
                     }
                     else if (control is ComboBox comboBox)
@@ -379,7 +379,6 @@ namespace MediaBazaar.Forms
         }
 
 
-
         private void userDataGridView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < employeeData.Rows.Count)
@@ -423,35 +422,35 @@ namespace MediaBazaar.Forms
             }
         }
 
-		private void removeEmployeeBtn_Click(object sender, EventArgs e)
-		{
-			if (userDataGridView.SelectedRows.Count > 0)
-			{
-				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+        private void removeEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            if (userDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
 
                 int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
 
                 DialogResult result = MessageBox.Show("Are you sure you want to remove this employee?", "Remove Employee", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-				if (result == DialogResult.Yes)
-				{
-					try
-					{
-						employeeManager.DeleteEmployee(employeeId);
-						userDataGridView.Rows.Remove(selectedRow);
-						MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					}
-					catch (Exception ex)
-					{
-						MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					}
-				}
-			}
-			else
-			{
-				MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-			}
-		}
-	}
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        employeeManager.DeleteEmployee(employeeId);
+                        userDataGridView.Rows.Remove(selectedRow);
+                        MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+    }
 }
 
