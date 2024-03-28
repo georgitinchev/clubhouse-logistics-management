@@ -8,12 +8,12 @@ namespace DTOLayer
 {
     public enum EmployeeRoleEnum
     {
-		DepartmentManager,
-		HRManager,
-		SalesRepresentative,
-        SupportEmployee,
-        Cashier,
-        SecurityGuard,
-        DepotWorker
+		DepartmentManager = 1,
+		HRManager = 2,
+		SalesRepresentative=3,
+        SupportEmployee=4,
+        Cashier=5,
+        SecurityGuard=6,
+        DepotWorker=7
     }
 }

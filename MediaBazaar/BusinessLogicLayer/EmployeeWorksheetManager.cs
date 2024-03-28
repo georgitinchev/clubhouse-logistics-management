@@ -11,11 +11,16 @@ namespace MediaBazaar
 {
 	public class EmployeeWorksheetManager
 	{
-		public List<EmployeeWorksheet> assignedWorksheets = new List<EmployeeWorksheet>();
-        private WorksheetDAL worksheetDAL = new WorksheetDAL();
+		public List<EmployeeWorksheet> assignedWorksheets { get; private set; }
+        public WorksheetDAL worksheetDAL { get; private set; }
 
+		public EmployeeWorksheetManager()
+		{
+			assignedWorksheets = new List<EmployeeWorksheet>();
+			worksheetDAL = new WorksheetDAL();
+		}
 
-        public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
+        public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, int employee, int weekNr)
 		{
 			EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
 			assignedWorksheets.Add(worksheet);
@@ -41,8 +46,8 @@ namespace MediaBazaar
 			
 			if (worksheetDTO != null)
 			{
-                EmployeeManager employeeManager = new EmployeeManager();
-                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)worksheetDTO.TimeSlot, (WeekDayEnum)worksheetDTO.WeekDay, employeeManager.SearchEmployee(worksheetDTO.EmployeeId), worksheetDTO.WeekNr);
+                
+                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)worksheetDTO.TimeSlot, (WeekDayEnum)worksheetDTO.WeekDay, worksheetDTO.EmployeeId, worksheetDTO.WeekNr);
 
 				return worksheet;
 			}
@@ -51,12 +56,13 @@ namespace MediaBazaar
 
 		public WorksheetDTO TransformWorksheetToDTO( EmployeeWorksheet worksheet)
 		{
-			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee.EmployeeID, worksheet.weekNr);
+			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee, worksheet.weekNr);
 			return worksheetDTO;
 		}
 
 		public void GetAllWorksheetsInDB()
 		{
+			assignedWorksheets.Clear();
 			List<WorksheetDTO>worksheets = worksheetDAL.GetAllWorksheets();
 			foreach (WorksheetDTO worksheet in worksheets)
 			{

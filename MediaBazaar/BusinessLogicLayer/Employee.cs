@@ -60,5 +60,10 @@ namespace DTOLayer
 			Birthday = birthday;
 			Role = role;
 		}
+
+		public string GetFullName()
+		{
+			return ($"{FirstName} {LastName}");
+		}
 	}
 }
