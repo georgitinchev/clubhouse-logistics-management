@@ -342,24 +342,35 @@ namespace MediaBazaar.Forms
                     {
                         DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
                         int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
+                        string fullName = textBoxName.Text;
+                        if (!string.IsNullOrEmpty(fullName))
+                        {
+                            string[] nameParts = fullName.Split(' ');
 
+                            if (nameParts.Length == 2)
+                            {
+                                string firstName = nameParts[0];
+                                string lastName = nameParts[1];
 
-                        EmployeeDTO employee = new EmployeeDTO(
-                            employeeId,
-                            textBoxName.Text,
-                            textBoxName.Text,
-                            textBoxEmail.Text,
-                            textBoxPassword.Text,
-                            textBoxPhone.Text,
-                            textBoxAddress.Text,
-                            comboBoxRoleDetails.SelectedIndex + 1,
-                            employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex + 1))
-                        );
+                                EmployeeDTO employee = new EmployeeDTO(
+                                employeeId,
+                                firstName,
+                                lastName,
+                                textBoxEmail.Text,
+                                textBoxPassword.Text,
+                                textBoxPhone.Text,
+                                textBoxAddress.Text,
+                                comboBoxRoleDetails.SelectedIndex + 1,
+                                employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex + 1))
+                            );
 
-                        employeeManager.employeeDAL.UpdateEmployee(employee);
-                        PopulateDataTable(employeeData);
+                                employeeManager.employeeDAL.UpdateEmployee(employee);
+                                PopulateDataTable(employeeData);
+                            }
+                            else MessageBox.Show("Only input First and Last name");
+                        }
+                        else MessageBox.Show("You must select a role");
                     }
-                    else MessageBox.Show("You must select a role");
             }
             catch (Exception ex)
             {

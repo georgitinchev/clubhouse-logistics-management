@@ -88,6 +88,7 @@
 			// 
 			pictureBoxJupiter.BackColor = Color.OrangeRed;
 			pictureBoxJupiter.BackgroundImage = (Image)resources.GetObject("pictureBoxJupiter.BackgroundImage");
+			pictureBoxJupiter.BackgroundImageLayout = ImageLayout.Stretch;
 			pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
 			pictureBoxJupiter.Location = new Point(623, 12);
 			pictureBoxJupiter.Margin = new Padding(4, 3, 4, 3);
