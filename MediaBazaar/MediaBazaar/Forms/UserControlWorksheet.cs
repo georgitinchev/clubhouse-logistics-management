@@ -28,8 +28,9 @@ namespace MediaBazaar.Forms
 			InitializeComponent();
 			InitializeGridViewWorksheet();
             Load += UserControlWorksheet_Load;
-            dataGridViewWorksheet.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
-        }
+            employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+            PopulateWorksheetData();
+		}
 
 		public void PopulateWorksheetData()
 		{
@@ -99,38 +100,38 @@ namespace MediaBazaar.Forms
 				}
 			};
 
-            dataGridViewWorksheet.ScrollBars = ScrollBars.Vertical;
-            dataGridViewWorksheet.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
+            employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
+            employeeWorksheetGrid.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
         }
 
         private void UserControlWorksheet_Load(object sender, EventArgs e)
         {
-            dataGridViewWorksheet.ClearSelection();
+            employeeWorksheetGrid.ClearSelection();
             groupBox1.Visible = false;
             UpdateLayout();
         }
+
+		private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
+		{
+			if (employeeWorksheetGrid.SelectedRows.Count > 0)
+			{
+				groupBox1.Visible = true;
+			}
+			else
+			{
+				groupBox1.Visible = false;
+			}
+		}
 
         private void DataGridViewWorksheet_SelectionChanged (object sender, EventArgs e)
         {
             UpdateLayout();
         }
 
-        private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
-		{
-            if (dataGridViewWorksheet.SelectedRows.Count > 0)
-            {
-                groupBox1.Visible = true;
-            }
-            else
-            {
-                groupBox1.Visible = false;
-            }
-        }
-
 
         private void UpdateLayout()
         {
-            bool isEmployeeSelected = dataGridViewWorksheet.SelectedRows.Count > 0;
+            bool isEmployeeSelected = employeeWorksheetGrid.SelectedRows.Count > 0;
 
             if (isEmployeeSelected)
             {
