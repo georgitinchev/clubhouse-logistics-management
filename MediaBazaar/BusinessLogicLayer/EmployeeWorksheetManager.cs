@@ -11,14 +11,14 @@ namespace MediaBazaar
 {
 	public class EmployeeWorksheetManager
 	{
-		private List<EmployeeWorksheet> assignedWorksheets = new List<EmployeeWorksheet>();
+		public List<EmployeeWorksheet> assignedWorksheets = new List<EmployeeWorksheet>();
         private WorksheetDAL worksheetDAL = new WorksheetDAL();
 
 
         public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
 		{
-			//EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
-			//assignedWorksheets.Add(worksheet);
+			EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
+			assignedWorksheets.Add(worksheet);
 		}
 
 		public void DeleteWorksheet(EmployeeWorksheet worksheet)
