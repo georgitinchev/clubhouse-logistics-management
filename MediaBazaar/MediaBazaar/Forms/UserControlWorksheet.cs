@@ -27,7 +27,9 @@ namespace MediaBazaar.Forms
 			
 			InitializeComponent();
 			InitializeGridViewWorksheet();
-			Load += YourFormName_Load;
+			Load += UserControlWorksheet_Load;
+            employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+        
 			PopulateWorksheetData();
 		}
 
@@ -36,7 +38,7 @@ namespace MediaBazaar.Forms
 			
 			worksheetData = new DataTable();
 			worksheetData.Columns.Add("ID", typeof(int));
-			worksheetData.Columns.Add("Department", typeof(string));
+			worksheetData.Columns.Add("Role", typeof(string));
 			worksheetData.Columns.Add("TimeSlot", typeof(string));
 			worksheetData.Columns.Add("Weekday", typeof(string));
 			worksheetData.Columns.Add("Employee", typeof(string));
@@ -45,7 +47,7 @@ namespace MediaBazaar.Forms
 			foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
 			{
 				Employee employee = employeeManager.GetEmployeeById(worksheet.employee);
-				MessageBox.Show(worksheet.timeSlot.ToString());
+				
 				worksheetData.Rows.Add(worksheet.id,employee.Role.ToString(), worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(),employee.GetFullName(), worksheet.weekNr);
 			}
 			employeeWorksheetGrid.DataSource = worksheetData;
@@ -77,7 +79,7 @@ namespace MediaBazaar.Forms
 
 			// Add columns
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Department", HeaderText = "Department" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
