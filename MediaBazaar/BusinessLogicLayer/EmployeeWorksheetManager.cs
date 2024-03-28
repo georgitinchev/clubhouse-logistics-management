@@ -20,7 +20,7 @@ namespace MediaBazaar
 			worksheetDAL = new WorksheetDAL();
 		}
 
-        public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, Employee employee, int weekNr)
+        public void CreateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, int employee, int weekNr)
 		{
 			EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
 			assignedWorksheets.Add(worksheet);
@@ -46,8 +46,8 @@ namespace MediaBazaar
 			
 			if (worksheetDTO != null)
 			{
-                EmployeeManager employeeManager = new EmployeeManager();
-                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)worksheetDTO.TimeSlot, (WeekDayEnum)worksheetDTO.WeekDay, employeeManager.SearchEmployee(worksheetDTO.EmployeeId), worksheetDTO.WeekNr);
+                
+                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)(worksheetDTO.TimeSlot), (WeekDayEnum)(worksheetDTO.WeekDay), worksheetDTO.EmployeeId, worksheetDTO.WeekNr);
 
 				return worksheet;
 			}
@@ -56,7 +56,7 @@ namespace MediaBazaar
 
 		public WorksheetDTO TransformWorksheetToDTO( EmployeeWorksheet worksheet)
 		{
-			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee.EmployeeID, worksheet.weekNr);
+			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee, worksheet.weekNr);
 			return worksheetDTO;
 		}
 

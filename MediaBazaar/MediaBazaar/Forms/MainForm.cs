@@ -18,7 +18,7 @@ namespace MediaBazaar
 			Application.EnableVisualStyles();
 			InitializeComponent();
 			userControlDashboard = new UserControlDashboard(employeeManager);
-			userControlWorksheet = new UserControlWorksheet();
+			userControlWorksheet = new UserControlWorksheet(employeeManager);
 			Controls.Add(userControlDashboard);
 			Controls.Add(userControlWorksheet);
 			userControlDashboard.Show();

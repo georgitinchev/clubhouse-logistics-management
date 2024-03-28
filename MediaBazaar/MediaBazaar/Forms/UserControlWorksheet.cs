@@ -8,15 +8,23 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaBazaar;
+using MediaBazaar.Classes;
+using BusinessLogicLayer;
+using DTOLayer;
+
 
 namespace MediaBazaar.Forms
 {
 	public partial class UserControlWorksheet : UserControl
 	{
 		private EmployeeWorksheetManager employeeWorksheetManager;
-		public UserControlWorksheet()
+		private EmployeeManager employeeManager;
+		private DataTable worksheetData;
+		public UserControlWorksheet(EmployeeManager _employeeManager)
 		{
 			employeeWorksheetManager = new EmployeeWorksheetManager();
+			employeeManager = _employeeManager;
+			
 			InitializeComponent();
 			InitializeGridViewWorksheet();
 			PopulateWorksheetData();
@@ -26,7 +34,8 @@ namespace MediaBazaar.Forms
 
 		public void PopulateWorksheetData()
 		{
-			DataTable worksheetData = new DataTable();
+			
+			worksheetData = new DataTable();
 			worksheetData.Columns.Add("ID", typeof(int));
 			worksheetData.Columns.Add("Time Slot", typeof(string));
 			worksheetData.Columns.Add("Weekday", typeof(string));
@@ -35,7 +44,8 @@ namespace MediaBazaar.Forms
 			employeeWorksheetManager.GetAllWorksheetsInDB();
 			foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
 			{
-				worksheetData.Rows.Add(worksheet.id, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(), worksheet.employee.FirstName, worksheet.weekNr);
+				Employee employee = employeeManager.GetEmployeeById(worksheet.employee);
+				worksheetData.Rows.Add(worksheet.id, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(),employee.GetFullName, worksheet.weekNr);
 			}
 			employeeWorksheetGrid.DataSource = worksheetData;
 		}
