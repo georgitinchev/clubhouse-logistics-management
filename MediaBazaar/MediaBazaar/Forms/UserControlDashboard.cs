@@ -412,40 +412,35 @@ namespace MediaBazaar.Forms
             }
         }
 
-        private void removeEmployeeBtn_Click(object sender, EventArgs e)
-        {
-            if (userDataGridView.SelectedRows.Count > 0)
-            {
-                DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+		private void removeEmployeeBtn_Click(object sender, EventArgs e)
+		{
+			if (userDataGridView.SelectedRows.Count > 0)
+			{
+				DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
 
                 int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
 
                 DialogResult result = MessageBox.Show("Are you sure you want to remove this employee?", "Remove Employee", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                if (result == DialogResult.Yes)
-                {
-                    try
-                    {
-                        employeeManager.DeleteEmployee(employeeId);
-                        userDataGridView.Rows.Remove(selectedRow);
-                        MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            }
-            else
-            {
-                MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-    }
+				if (result == DialogResult.Yes)
+				{
+					try
+					{
+						employeeManager.DeleteEmployee(employeeId);
+						userDataGridView.Rows.Remove(selectedRow);
+						MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					}
+					catch (Exception ex)
+					{
+						MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					}
+				}
+			}
+			else
+			{
+				MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+	}
 }
 
