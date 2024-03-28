@@ -155,6 +155,7 @@
 			// startDatePicker
 			// 
 			startDatePicker.CalendarFont = new Font("Segoe UI", 12F);
+			startDatePicker.Format = DateTimePickerFormat.Short;
 			startDatePicker.Location = new Point(73, 257);
 			startDatePicker.Margin = new Padding(4, 5, 4, 5);
 			startDatePicker.Name = "startDatePicker";
@@ -543,6 +544,7 @@
 			// birthdayDatePicker
 			// 
 			birthdayDatePicker.Font = new Font("Segoe UI", 12F);
+			birthdayDatePicker.Format = DateTimePickerFormat.Short;
 			birthdayDatePicker.Location = new Point(386, 408);
 			birthdayDatePicker.Margin = new Padding(4, 5, 4, 5);
 			birthdayDatePicker.Name = "birthdayDatePicker";
