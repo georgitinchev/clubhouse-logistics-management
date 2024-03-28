@@ -28,7 +28,7 @@ namespace MediaBazaar.Forms
 			InitializeComponent();
 			InitializeGridViewWorksheet();
             Load += UserControlWorksheet_Load;
-            dataGridViewWorksheet.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+			employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
         }
 
 		public void PopulateWorksheetData()
@@ -99,13 +99,13 @@ namespace MediaBazaar.Forms
 				}
 			};
 
-            dataGridViewWorksheet.ScrollBars = ScrollBars.Vertical;
-            dataGridViewWorksheet.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
+            employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
+            employeeWorksheetGrid.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
         }
 
         private void UserControlWorksheet_Load(object sender, EventArgs e)
         {
-            dataGridViewWorksheet.ClearSelection();
+            employeeWorksheetGrid.ClearSelection();
             groupBox1.Visible = false;
             UpdateLayout();
         }
@@ -117,7 +117,7 @@ namespace MediaBazaar.Forms
 
         private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
 		{
-            if (dataGridViewWorksheet.SelectedRows.Count > 0)
+            if (employeeWorksheetGrid.SelectedRows.Count > 0)
             {
                 groupBox1.Visible = true;
             }
@@ -130,7 +130,7 @@ namespace MediaBazaar.Forms
 
         private void UpdateLayout()
         {
-            bool isEmployeeSelected = dataGridViewWorksheet.SelectedRows.Count > 0;
+            bool isEmployeeSelected = employeeWorksheetGrid.SelectedRows.Count > 0;
 
             if (isEmployeeSelected)
             {
