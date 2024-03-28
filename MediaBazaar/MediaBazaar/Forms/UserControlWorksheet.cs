@@ -19,9 +19,9 @@ namespace MediaBazaar.Forms
 			employeeWorksheetManager = new EmployeeWorksheetManager();
 			InitializeComponent();
 			InitializeGridViewWorksheet();
-			Load += YourFormName_Load;
-
-		}
+            Load += UserControlWorksheet_Load;
+            dataGridViewWorksheet.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+        }
 
 		private void InitializeGridViewWorksheet()
 		{
@@ -73,26 +73,57 @@ namespace MediaBazaar.Forms
 				}
 			};
 
-			dataGridViewWorksheet.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
-			dataGridViewWorksheet.ScrollBars = ScrollBars.Vertical;
-		}
+            dataGridViewWorksheet.ScrollBars = ScrollBars.Vertical;
+            dataGridViewWorksheet.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
+        }
 
-		private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
-		{
-			if (dataGridViewWorksheet.SelectedRows.Count > 0)
-			{
-				groupBox1.Visible = true;
-			}
-			else
-			{
-				groupBox1.Visible = false;
-			}
-		}
+        private void UserControlWorksheet_Load(object sender, EventArgs e)
+        {
+            dataGridViewWorksheet.ClearSelection();
+            groupBox1.Visible = false;
+            UpdateLayout();
+        }
 
-		private void YourFormName_Load(object sender, EventArgs e)
+        private void DataGridViewWorksheet_SelectionChanged (object sender, EventArgs e)
+        {
+            UpdateLayout();
+        }
+
+        private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
 		{
-			dataGridViewWorksheet.ClearSelection();
-			groupBox1.Visible = false;
-		}
+            if (dataGridViewWorksheet.SelectedRows.Count > 0)
+            {
+                groupBox1.Visible = true;
+            }
+            else
+            {
+                groupBox1.Visible = false;
+            }
+        }
+
+
+        private void UpdateLayout()
+        {
+            bool isEmployeeSelected = dataGridViewWorksheet.SelectedRows.Count > 0;
+
+            if (isEmployeeSelected)
+            {
+                MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
+                MoveControlsToLocation(comboBoxDepartment, new Point(377, 74), new Size(268, 23));
+                MoveControlsToLocation(pictureBoxSearch, new Point(333, 74), new Size(21, 23));
+            }
+            else
+            {
+                MoveControlsToLocation(textBoxSearch, new Point(855, 114), new Size(313, 23));
+                MoveControlsToLocation(comboBoxDepartment, new Point(855, 152), new Size(313, 23));
+                MoveControlsToLocation(pictureBoxSearch, new Point(1147, 114), new Size(21, 23));
+            }
+        }
+
+        private void MoveControlsToLocation(Control control, Point location, Size size)
+        {
+            control.Location = location;
+            control.Size = size;
+        }
 	}
 }
