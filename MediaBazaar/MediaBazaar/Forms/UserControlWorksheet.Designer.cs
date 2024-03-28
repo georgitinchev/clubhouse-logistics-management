@@ -20,7 +20,7 @@
             base.Dispose(disposing);
         }
 
-		#region Component Designer generated code
+        #region Component Designer generated code
 
 		/// <summary> 
 		/// Required method for Designer support - do not modify 
@@ -312,9 +312,9 @@
 			PerformLayout();
 		}
 
-		#endregion
+        #endregion
 
-		private CustomButton btnRemoveWorksheet;
+        private CustomButton btnRemoveWorksheet;
         private CustomButton btnAddWorksheet;
         private DataGridView employeeWorksheetGrid;
         private GroupBox groupBox1;
@@ -334,5 +334,6 @@
         private Label lbDate;
         private Label lbShift;
         private ComboBox cbStatus;
+        private ComboBox comboBox1;
     }
 }

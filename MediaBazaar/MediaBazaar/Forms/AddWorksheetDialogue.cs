@@ -35,14 +35,14 @@ namespace MediaBazaar.Forms
                 int weekNr = Convert.ToInt32(textBoxWeekNumber.Text);
                 WorkingTime timeSlot = (WorkingTime)comboBoxTimeSlot.SelectedItem;
 
-                Employee employee = GetEmployeeByName(employeeName);
-                if (employee == null)
+                int employeeId = GetEmployeeIdByName(employeeName);
+                if (employeeId == -1)
                 {
                     MessageBox.Show("Employee not found.");
                     return;
                 }
 
-                EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employee, weekNr);
+                EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employeeId, weekNr);
 
                 employeeWorksheetManager.AddWorksheetToDB(worksheet);
 
@@ -53,6 +53,7 @@ namespace MediaBazaar.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
 
         private void ValidateFields()
         {
@@ -77,12 +78,17 @@ namespace MediaBazaar.Forms
             }
         }
 
-
-
         private Employee GetEmployeeByName(string name)
         {
             return employeeManager.GetAllEmployees().FirstOrDefault(emp => $"{emp.FirstName} {emp.LastName}" == name);
         }
+
+        private int GetEmployeeIdByName(string name)
+        {
+            Employee employee = GetEmployeeByName(name);
+            return employee != null ? employee.EmployeeID : -1;
+        }
+
 
     }
 
