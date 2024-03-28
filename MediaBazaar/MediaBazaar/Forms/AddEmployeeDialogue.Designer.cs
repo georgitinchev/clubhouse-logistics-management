@@ -82,10 +82,11 @@
 			addEmployeeTabControl.Controls.Add(employeeDetailsTab);
 			addEmployeeTabControl.Font = new Font("Segoe UI", 11.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
 			addEmployeeTabControl.ItemSize = new Size(30, 30);
-			addEmployeeTabControl.Location = new Point(18, 12);
+			addEmployeeTabControl.Location = new Point(26, 20);
+			addEmployeeTabControl.Margin = new Padding(4, 5, 4, 5);
 			addEmployeeTabControl.Name = "addEmployeeTabControl";
 			addEmployeeTabControl.SelectedIndex = 0;
-			addEmployeeTabControl.Size = new Size(493, 455);
+			addEmployeeTabControl.Size = new Size(704, 758);
 			addEmployeeTabControl.TabIndex = 0;
 			addEmployeeTabControl.Tag = "";
 			// 
@@ -103,9 +104,10 @@
 			employeeContractTab.Controls.Add(label1);
 			employeeContractTab.Controls.Add(employeeRoleComboBox);
 			employeeContractTab.Location = new Point(4, 34);
+			employeeContractTab.Margin = new Padding(4, 5, 4, 5);
 			employeeContractTab.Name = "employeeContractTab";
-			employeeContractTab.Padding = new Padding(3, 3, 3, 3);
-			employeeContractTab.Size = new Size(485, 417);
+			employeeContractTab.Padding = new Padding(4, 5, 4, 5);
+			employeeContractTab.Size = new Size(696, 720);
 			employeeContractTab.TabIndex = 0;
 			employeeContractTab.Text = "📝 Contract Details";
 			// 
@@ -113,9 +115,10 @@
 			// 
 			label5.AutoSize = true;
 			label5.Font = new Font("Segoe UI", 18F);
-			label5.Location = new Point(124, 14);
+			label5.Location = new Point(177, 23);
+			label5.Margin = new Padding(4, 0, 4, 0);
 			label5.Name = "label5";
-			label5.Size = new Size(223, 32);
+			label5.Size = new Size(331, 48);
 			label5.TabIndex = 9;
 			label5.Text = "Contract Details 📝";
 			// 
@@ -129,9 +132,10 @@
 			nextBtnP1.FlatStyle = FlatStyle.Flat;
 			nextBtnP1.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
 			nextBtnP1.ForeColor = Color.White;
-			nextBtnP1.Location = new Point(376, 386);
+			nextBtnP1.Location = new Point(537, 643);
+			nextBtnP1.Margin = new Padding(4, 5, 4, 5);
 			nextBtnP1.Name = "nextBtnP1";
-			nextBtnP1.Size = new Size(106, 41);
+			nextBtnP1.Size = new Size(151, 68);
 			nextBtnP1.TabIndex = 8;
 			nextBtnP1.Text = "Next ➜";
 			nextBtnP1.TextColor = Color.White;
@@ -141,53 +145,60 @@
 			// 
 			label4.AutoSize = true;
 			label4.Font = new Font("Segoe UI", 14.25F);
-			label4.Location = new Point(71, 116);
+			label4.Location = new Point(101, 193);
+			label4.Margin = new Padding(4, 0, 4, 0);
 			label4.Name = "label4";
-			label4.Size = new Size(94, 25);
+			label4.Size = new Size(144, 40);
 			label4.TabIndex = 7;
 			label4.Text = "Start Date";
 			// 
 			// startDatePicker
 			// 
 			startDatePicker.CalendarFont = new Font("Segoe UI", 12F);
-			startDatePicker.Location = new Point(51, 154);
+			startDatePicker.Format = DateTimePickerFormat.Short;
+			startDatePicker.Location = new Point(73, 257);
+			startDatePicker.Margin = new Padding(4, 5, 4, 5);
 			startDatePicker.Name = "startDatePicker";
-			startDatePicker.Size = new Size(148, 27);
+			startDatePicker.Size = new Size(210, 37);
 			startDatePicker.TabIndex = 6;
 			// 
 			// weeklyHoursTextBox
 			// 
 			weeklyHoursTextBox.Font = new Font("Segoe UI", 12F);
-			weeklyHoursTextBox.Location = new Point(51, 260);
+			weeklyHoursTextBox.Location = new Point(73, 433);
+			weeklyHoursTextBox.Margin = new Padding(4, 5, 4, 5);
 			weeklyHoursTextBox.Name = "weeklyHoursTextBox";
-			weeklyHoursTextBox.Size = new Size(148, 29);
+			weeklyHoursTextBox.Size = new Size(210, 39);
 			weeklyHoursTextBox.TabIndex = 5;
 			// 
 			// label3
 			// 
 			label3.AutoSize = true;
 			label3.Font = new Font("Segoe UI", 14.25F);
-			label3.Location = new Point(60, 220);
+			label3.Location = new Point(86, 367);
+			label3.Margin = new Padding(4, 0, 4, 0);
 			label3.Name = "label3";
-			label3.Size = new Size(127, 25);
+			label3.Size = new Size(192, 40);
 			label3.TabIndex = 4;
 			label3.Text = "Weekly Hours";
 			// 
 			// hourlyWageTextBox
 			// 
 			hourlyWageTextBox.Font = new Font("Segoe UI", 12F);
-			hourlyWageTextBox.Location = new Point(258, 260);
+			hourlyWageTextBox.Location = new Point(369, 433);
+			hourlyWageTextBox.Margin = new Padding(4, 5, 4, 5);
 			hourlyWageTextBox.Name = "hourlyWageTextBox";
-			hourlyWageTextBox.Size = new Size(177, 29);
+			hourlyWageTextBox.Size = new Size(251, 39);
 			hourlyWageTextBox.TabIndex = 3;
 			// 
 			// label2
 			// 
 			label2.AutoSize = true;
 			label2.Font = new Font("Segoe UI", 14.25F);
-			label2.Location = new Point(275, 220);
+			label2.Location = new Point(393, 367);
+			label2.Margin = new Padding(4, 0, 4, 0);
 			label2.Name = "label2";
-			label2.Size = new Size(121, 25);
+			label2.Size = new Size(183, 40);
 			label2.TabIndex = 2;
 			label2.Text = "Hourly Wage";
 			// 
@@ -195,9 +206,10 @@
 			// 
 			label1.AutoSize = true;
 			label1.Font = new Font("Segoe UI", 14.25F);
-			label1.Location = new Point(275, 116);
+			label1.Location = new Point(393, 193);
+			label1.Margin = new Padding(4, 0, 4, 0);
 			label1.Name = "label1";
-			label1.Size = new Size(135, 25);
+			label1.Size = new Size(205, 40);
 			label1.TabIndex = 1;
 			label1.Text = "Employee Role";
 			// 
@@ -205,9 +217,10 @@
 			// 
 			employeeRoleComboBox.Font = new Font("Segoe UI", 12F);
 			employeeRoleComboBox.FormattingEnabled = true;
-			employeeRoleComboBox.Location = new Point(258, 154);
+			employeeRoleComboBox.Location = new Point(369, 257);
+			employeeRoleComboBox.Margin = new Padding(4, 5, 4, 5);
 			employeeRoleComboBox.Name = "employeeRoleComboBox";
-			employeeRoleComboBox.Size = new Size(177, 29);
+			employeeRoleComboBox.Size = new Size(251, 40);
 			employeeRoleComboBox.TabIndex = 0;
 			// 
 			// employeeEmergencyDetailsTab
@@ -226,9 +239,10 @@
 			employeeEmergencyDetailsTab.Controls.Add(emcFirstName);
 			employeeEmergencyDetailsTab.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			employeeEmergencyDetailsTab.Location = new Point(4, 34);
+			employeeEmergencyDetailsTab.Margin = new Padding(4, 5, 4, 5);
 			employeeEmergencyDetailsTab.Name = "employeeEmergencyDetailsTab";
-			employeeEmergencyDetailsTab.Padding = new Padding(3, 3, 3, 3);
-			employeeEmergencyDetailsTab.Size = new Size(485, 417);
+			employeeEmergencyDetailsTab.Padding = new Padding(4, 5, 4, 5);
+			employeeEmergencyDetailsTab.Size = new Size(696, 720);
 			employeeEmergencyDetailsTab.TabIndex = 1;
 			employeeEmergencyDetailsTab.Text = "🚑 Emergency Contact";
 			// 
@@ -236,9 +250,10 @@
 			// 
 			label6.AutoSize = true;
 			label6.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-			label6.Location = new Point(114, 12);
+			label6.Location = new Point(163, 20);
+			label6.Margin = new Padding(4, 0, 4, 0);
 			label6.Name = "label6";
-			label6.Size = new Size(261, 32);
+			label6.Size = new Size(386, 48);
 			label6.TabIndex = 10;
 			label6.Text = "🚑 Emergency Contact";
 			// 
@@ -252,9 +267,10 @@
 			previousBtnP2.FlatStyle = FlatStyle.Flat;
 			previousBtnP2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			previousBtnP2.ForeColor = Color.White;
-			previousBtnP2.Location = new Point(6, 386);
+			previousBtnP2.Location = new Point(9, 643);
+			previousBtnP2.Margin = new Padding(4, 5, 4, 5);
 			previousBtnP2.Name = "previousBtnP2";
-			previousBtnP2.Size = new Size(111, 40);
+			previousBtnP2.Size = new Size(159, 67);
 			previousBtnP2.TabIndex = 9;
 			previousBtnP2.Text = "⬅️ Previous";
 			previousBtnP2.TextColor = Color.White;
@@ -270,9 +286,10 @@
 			nextBtnP2.FlatStyle = FlatStyle.Flat;
 			nextBtnP2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
 			nextBtnP2.ForeColor = Color.White;
-			nextBtnP2.Location = new Point(370, 386);
+			nextBtnP2.Location = new Point(529, 643);
+			nextBtnP2.Margin = new Padding(4, 5, 4, 5);
 			nextBtnP2.Name = "nextBtnP2";
-			nextBtnP2.Size = new Size(111, 40);
+			nextBtnP2.Size = new Size(159, 67);
 			nextBtnP2.TabIndex = 8;
 			nextBtnP2.Text = "Next ➜";
 			nextBtnP2.TextColor = Color.White;
@@ -281,42 +298,47 @@
 			// emcLastNameBox
 			// 
 			emcLastNameBox.Font = new Font("Segoe UI", 15F);
-			emcLastNameBox.Location = new Point(270, 151);
+			emcLastNameBox.Location = new Point(386, 252);
+			emcLastNameBox.Margin = new Padding(4, 5, 4, 5);
 			emcLastNameBox.Name = "emcLastNameBox";
-			emcLastNameBox.Size = new Size(154, 34);
+			emcLastNameBox.Size = new Size(218, 47);
 			emcLastNameBox.TabIndex = 7;
 			// 
 			// emcFirstNameBox
 			// 
 			emcFirstNameBox.Font = new Font("Segoe UI", 15F);
-			emcFirstNameBox.Location = new Point(42, 151);
+			emcFirstNameBox.Location = new Point(60, 252);
+			emcFirstNameBox.Margin = new Padding(4, 5, 4, 5);
 			emcFirstNameBox.Name = "emcFirstNameBox";
-			emcFirstNameBox.Size = new Size(154, 34);
+			emcFirstNameBox.Size = new Size(218, 47);
 			emcFirstNameBox.TabIndex = 6;
 			// 
 			// emcEmailBox
 			// 
 			emcEmailBox.Font = new Font("Segoe UI", 15F);
-			emcEmailBox.Location = new Point(270, 265);
+			emcEmailBox.Location = new Point(386, 442);
+			emcEmailBox.Margin = new Padding(4, 5, 4, 5);
 			emcEmailBox.Name = "emcEmailBox";
-			emcEmailBox.Size = new Size(154, 34);
+			emcEmailBox.Size = new Size(218, 47);
 			emcEmailBox.TabIndex = 5;
 			// 
 			// emcPhoneText
 			// 
 			emcPhoneText.Font = new Font("Segoe UI", 15F);
-			emcPhoneText.Location = new Point(42, 265);
+			emcPhoneText.Location = new Point(60, 442);
+			emcPhoneText.Margin = new Padding(4, 5, 4, 5);
 			emcPhoneText.Name = "emcPhoneText";
-			emcPhoneText.Size = new Size(154, 34);
+			emcPhoneText.Size = new Size(218, 47);
 			emcPhoneText.TabIndex = 4;
 			// 
 			// emcEmail
 			// 
 			emcEmail.AutoSize = true;
 			emcEmail.Font = new Font("Segoe UI", 15F);
-			emcEmail.Location = new Point(312, 220);
+			emcEmail.Location = new Point(446, 367);
+			emcEmail.Margin = new Padding(4, 0, 4, 0);
 			emcEmail.Name = "emcEmail";
-			emcEmail.Size = new Size(59, 28);
+			emcEmail.Size = new Size(88, 41);
 			emcEmail.TabIndex = 3;
 			emcEmail.Text = "Email";
 			// 
@@ -324,9 +346,10 @@
 			// 
 			emcPhoneNum.AutoSize = true;
 			emcPhoneNum.Font = new Font("Segoe UI", 15F);
-			emcPhoneNum.Location = new Point(51, 220);
+			emcPhoneNum.Location = new Point(73, 367);
+			emcPhoneNum.Margin = new Padding(4, 0, 4, 0);
 			emcPhoneNum.Name = "emcPhoneNum";
-			emcPhoneNum.Size = new Size(144, 28);
+			emcPhoneNum.Size = new Size(220, 41);
 			emcPhoneNum.TabIndex = 2;
 			emcPhoneNum.Text = "Phone Number";
 			// 
@@ -334,9 +357,10 @@
 			// 
 			emcLastName.AutoSize = true;
 			emcLastName.Font = new Font("Segoe UI", 15F);
-			emcLastName.Location = new Point(293, 108);
+			emcLastName.Location = new Point(419, 180);
+			emcLastName.Margin = new Padding(4, 0, 4, 0);
 			emcLastName.Name = "emcLastName";
-			emcLastName.Size = new Size(103, 28);
+			emcLastName.Size = new Size(157, 41);
 			emcLastName.TabIndex = 1;
 			emcLastName.Text = "Last Name";
 			// 
@@ -344,9 +368,10 @@
 			// 
 			emcFirstName.AutoSize = true;
 			emcFirstName.Font = new Font("Segoe UI", 15F);
-			emcFirstName.Location = new Point(62, 108);
+			emcFirstName.Location = new Point(89, 180);
+			emcFirstName.Margin = new Padding(4, 0, 4, 0);
 			emcFirstName.Name = "emcFirstName";
-			emcFirstName.Size = new Size(106, 28);
+			emcFirstName.Size = new Size(160, 41);
 			emcFirstName.TabIndex = 0;
 			emcFirstName.Text = "First Name";
 			// 
@@ -373,27 +398,30 @@
 			employeeDetailsTab.Controls.Add(personalLastName);
 			employeeDetailsTab.Controls.Add(personalFirstName);
 			employeeDetailsTab.Location = new Point(4, 34);
+			employeeDetailsTab.Margin = new Padding(4, 5, 4, 5);
 			employeeDetailsTab.Name = "employeeDetailsTab";
-			employeeDetailsTab.Padding = new Padding(3, 3, 3, 3);
-			employeeDetailsTab.Size = new Size(485, 417);
+			employeeDetailsTab.Padding = new Padding(4, 5, 4, 5);
+			employeeDetailsTab.Size = new Size(696, 720);
 			employeeDetailsTab.TabIndex = 2;
 			employeeDetailsTab.Text = "👤 Personal Details";
 			// 
 			// phoneText
 			// 
 			phoneText.Font = new Font("Segoe UI", 15F);
-			phoneText.Location = new Point(270, 311);
+			phoneText.Location = new Point(386, 518);
+			phoneText.Margin = new Padding(4, 5, 4, 5);
 			phoneText.Name = "phoneText";
-			phoneText.Size = new Size(184, 34);
+			phoneText.Size = new Size(261, 47);
 			phoneText.TabIndex = 18;
 			// 
 			// phoneNumLabel
 			// 
 			phoneNumLabel.AutoSize = true;
 			phoneNumLabel.Font = new Font("Microsoft Sans Serif", 12F);
-			phoneNumLabel.Location = new Point(296, 285);
+			phoneNumLabel.Location = new Point(423, 475);
+			phoneNumLabel.Margin = new Padding(4, 0, 4, 0);
 			phoneNumLabel.Name = "phoneNumLabel";
-			phoneNumLabel.Size = new Size(55, 20);
+			phoneNumLabel.Size = new Size(83, 29);
 			phoneNumLabel.TabIndex = 17;
 			phoneNumLabel.Text = "Phone";
 			// 
@@ -401,27 +429,30 @@
 			// 
 			addressLabel.AutoSize = true;
 			addressLabel.Font = new Font("Microsoft Sans Serif", 12F);
-			addressLabel.Location = new Point(62, 285);
+			addressLabel.Location = new Point(89, 475);
+			addressLabel.Margin = new Padding(4, 0, 4, 0);
 			addressLabel.Name = "addressLabel";
-			addressLabel.Size = new Size(68, 20);
+			addressLabel.Size = new Size(102, 29);
 			addressLabel.TabIndex = 16;
 			addressLabel.Text = "Address";
 			// 
 			// addressText
 			// 
 			addressText.Font = new Font("Segoe UI", 15F);
-			addressText.Location = new Point(36, 311);
+			addressText.Location = new Point(51, 518);
+			addressText.Margin = new Padding(4, 5, 4, 5);
 			addressText.Name = "addressText";
-			addressText.Size = new Size(173, 34);
+			addressText.Size = new Size(245, 47);
 			addressText.TabIndex = 15;
 			// 
 			// label7
 			// 
 			label7.AutoSize = true;
 			label7.Font = new Font("Segoe UI", 18F);
-			label7.Location = new Point(135, 15);
+			label7.Location = new Point(193, 25);
+			label7.Margin = new Padding(4, 0, 4, 0);
 			label7.Name = "label7";
-			label7.Size = new Size(222, 32);
+			label7.Size = new Size(330, 48);
 			label7.TabIndex = 14;
 			label7.Text = "👤 Personal Details";
 			// 
@@ -435,9 +466,10 @@
 			previousBtnP3.FlatStyle = FlatStyle.Flat;
 			previousBtnP3.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
 			previousBtnP3.ForeColor = Color.White;
-			previousBtnP3.Location = new Point(6, 392);
+			previousBtnP3.Location = new Point(9, 653);
+			previousBtnP3.Margin = new Padding(4, 5, 4, 5);
 			previousBtnP3.Name = "previousBtnP3";
-			previousBtnP3.Size = new Size(129, 34);
+			previousBtnP3.Size = new Size(184, 57);
 			previousBtnP3.TabIndex = 13;
 			previousBtnP3.Text = "⬅️ Previous";
 			previousBtnP3.TextColor = Color.White;
@@ -453,9 +485,10 @@
 			completeFormBtn.FlatStyle = FlatStyle.Flat;
 			completeFormBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
 			completeFormBtn.ForeColor = Color.White;
-			completeFormBtn.Location = new Point(316, 389);
+			completeFormBtn.Location = new Point(451, 648);
+			completeFormBtn.Margin = new Padding(4, 5, 4, 5);
 			completeFormBtn.Name = "completeFormBtn";
-			completeFormBtn.Size = new Size(166, 37);
+			completeFormBtn.Size = new Size(237, 62);
 			completeFormBtn.TabIndex = 12;
 			completeFormBtn.Text = "Complete Form";
 			completeFormBtn.TextColor = Color.White;
@@ -465,58 +498,67 @@
 			// lastNameText
 			// 
 			lastNameText.Font = new Font("Segoe UI", 15F);
-			lastNameText.Location = new Point(277, 90);
+			lastNameText.Location = new Point(396, 150);
+			lastNameText.Margin = new Padding(4, 5, 4, 5);
 			lastNameText.Name = "lastNameText";
-			lastNameText.Size = new Size(170, 34);
+			lastNameText.Size = new Size(241, 47);
 			lastNameText.TabIndex = 11;
 			// 
 			// firstNameText
 			// 
 			firstNameText.Font = new Font("Segoe UI", 15F);
-			firstNameText.Location = new Point(36, 90);
+			firstNameText.Location = new Point(51, 150);
+			firstNameText.Margin = new Padding(4, 5, 4, 5);
 			firstNameText.Name = "firstNameText";
-			firstNameText.Size = new Size(173, 34);
+			firstNameText.Size = new Size(245, 47);
 			firstNameText.TabIndex = 10;
 			// 
 			// emailText
 			// 
 			emailText.Font = new Font("Segoe UI", 15F);
-			emailText.Location = new Point(36, 164);
+			emailText.Location = new Point(51, 273);
+			emailText.Margin = new Padding(4, 5, 4, 5);
 			emailText.Name = "emailText";
-			emailText.Size = new Size(173, 34);
+			emailText.Size = new Size(245, 47);
 			emailText.TabIndex = 9;
 			// 
 			// passwordText
 			// 
 			passwordText.Font = new Font("Segoe UI", 15F);
-			passwordText.Location = new Point(270, 164);
+			passwordText.Location = new Point(386, 273);
+			passwordText.Margin = new Padding(4, 5, 4, 5);
 			passwordText.Name = "passwordText";
-			passwordText.Size = new Size(177, 34);
+			passwordText.PasswordChar = '*';
+			passwordText.Size = new Size(251, 47);
 			passwordText.TabIndex = 8;
 			// 
 			// bsnText
 			// 
 			bsnText.Font = new Font("Segoe UI", 15F);
-			bsnText.Location = new Point(36, 245);
+			bsnText.Location = new Point(51, 408);
+			bsnText.Margin = new Padding(4, 5, 4, 5);
 			bsnText.Name = "bsnText";
-			bsnText.Size = new Size(173, 34);
+			bsnText.Size = new Size(245, 47);
 			bsnText.TabIndex = 7;
 			// 
 			// birthdayDatePicker
 			// 
 			birthdayDatePicker.Font = new Font("Segoe UI", 12F);
-			birthdayDatePicker.Location = new Point(270, 245);
+			birthdayDatePicker.Format = DateTimePickerFormat.Short;
+			birthdayDatePicker.Location = new Point(386, 408);
+			birthdayDatePicker.Margin = new Padding(4, 5, 4, 5);
 			birthdayDatePicker.Name = "birthdayDatePicker";
-			birthdayDatePicker.Size = new Size(184, 29);
+			birthdayDatePicker.Size = new Size(261, 39);
 			birthdayDatePicker.TabIndex = 6;
 			// 
 			// personalBirthday
 			// 
 			personalBirthday.AutoSize = true;
 			personalBirthday.Font = new Font("Microsoft Sans Serif", 12F);
-			personalBirthday.Location = new Point(296, 217);
+			personalBirthday.Location = new Point(423, 362);
+			personalBirthday.Margin = new Padding(4, 0, 4, 0);
 			personalBirthday.Name = "personalBirthday";
-			personalBirthday.Size = new Size(67, 20);
+			personalBirthday.Size = new Size(100, 29);
 			personalBirthday.TabIndex = 5;
 			personalBirthday.Text = "Birthday";
 			// 
@@ -524,9 +566,10 @@
 			// 
 			personalBsn.AutoSize = true;
 			personalBsn.Font = new Font("Microsoft Sans Serif", 12F);
-			personalBsn.Location = new Point(62, 217);
+			personalBsn.Location = new Point(89, 362);
+			personalBsn.Margin = new Padding(4, 0, 4, 0);
 			personalBsn.Name = "personalBsn";
-			personalBsn.Size = new Size(42, 20);
+			personalBsn.Size = new Size(63, 29);
 			personalBsn.TabIndex = 4;
 			personalBsn.Text = "BSN";
 			// 
@@ -534,9 +577,10 @@
 			// 
 			personalPassword.AutoSize = true;
 			personalPassword.Font = new Font("Microsoft Sans Serif", 12F);
-			personalPassword.Location = new Point(296, 136);
+			personalPassword.Location = new Point(423, 227);
+			personalPassword.Margin = new Padding(4, 0, 4, 0);
 			personalPassword.Name = "personalPassword";
-			personalPassword.Size = new Size(78, 20);
+			personalPassword.Size = new Size(120, 29);
 			personalPassword.TabIndex = 3;
 			personalPassword.Text = "Password";
 			// 
@@ -544,9 +588,10 @@
 			// 
 			personalEmail.AutoSize = true;
 			personalEmail.Font = new Font("Microsoft Sans Serif", 12F);
-			personalEmail.Location = new Point(62, 136);
+			personalEmail.Location = new Point(89, 227);
+			personalEmail.Margin = new Padding(4, 0, 4, 0);
 			personalEmail.Name = "personalEmail";
-			personalEmail.Size = new Size(48, 20);
+			personalEmail.Size = new Size(74, 29);
 			personalEmail.TabIndex = 2;
 			personalEmail.Text = "Email";
 			// 
@@ -554,9 +599,10 @@
 			// 
 			personalLastName.AutoSize = true;
 			personalLastName.Font = new Font("Microsoft Sans Serif", 12F);
-			personalLastName.Location = new Point(290, 62);
+			personalLastName.Location = new Point(414, 103);
+			personalLastName.Margin = new Padding(4, 0, 4, 0);
 			personalLastName.Name = "personalLastName";
-			personalLastName.Size = new Size(86, 20);
+			personalLastName.Size = new Size(128, 29);
 			personalLastName.TabIndex = 1;
 			personalLastName.Text = "Last Name";
 			// 
@@ -564,19 +610,21 @@
 			// 
 			personalFirstName.AutoSize = true;
 			personalFirstName.Font = new Font("Microsoft Sans Serif", 12F);
-			personalFirstName.Location = new Point(62, 62);
+			personalFirstName.Location = new Point(89, 103);
+			personalFirstName.Margin = new Padding(4, 0, 4, 0);
 			personalFirstName.Name = "personalFirstName";
-			personalFirstName.Size = new Size(86, 20);
+			personalFirstName.Size = new Size(131, 29);
 			personalFirstName.TabIndex = 0;
 			personalFirstName.Text = "First Name";
 			// 
 			// AddEmployeeForm
 			// 
-			AutoScaleDimensions = new SizeF(7F, 15F);
+			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
 			BackColor = Color.OrangeRed;
-			ClientSize = new Size(531, 481);
+			ClientSize = new Size(759, 802);
 			Controls.Add(addEmployeeTabControl);
+			Margin = new Padding(4, 5, 4, 5);
 			Name = "AddEmployeeForm";
 			StartPosition = FormStartPosition.CenterParent;
 			Text = "Add Employee Dialogue";

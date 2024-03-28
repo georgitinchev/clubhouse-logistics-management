@@ -70,26 +70,22 @@ namespace MediaBazaar.Forms
 
 		private int idCheckerContract()
 		{
-			if (_contractManager.contracts == null || _contractManager.contracts.Count == 0)
+			int potentialId = 1;
+			while (_contractManager.contracts.Any(c => c.Id == potentialId))
 			{
-				return 1;
+				potentialId++;
 			}
-			else
-			{
-				return _contractManager.contracts.Count + 1;
-			}
+			return potentialId;
 		}
 
 		private int idCheckerEmployee()
 		{
-			if (_employeeManager.employees == null || _employeeManager.employees.Count == 0)
+			int potentialId = 1;
+			while (_employeeManager.employees.Any(e => e.EmployeeID == potentialId))
 			{
-				return 1;
+				potentialId++;
 			}
-			else
-			{
-				return _employeeManager.employees.Count + 1;
-			}
+			return potentialId;
 		}
 
 		private void InitializeTabNavigation()
