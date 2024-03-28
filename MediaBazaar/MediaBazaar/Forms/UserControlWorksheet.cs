@@ -28,7 +28,7 @@ namespace MediaBazaar.Forms
 			InitializeComponent();
 			InitializeGridViewWorksheet();
             Load += UserControlWorksheet_Load;
-            dataGridViewWorksheet.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+            employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
         }
 
 		public void PopulateWorksheetData()
@@ -112,7 +112,7 @@ namespace MediaBazaar.Forms
 
 		private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
 		{
-            if (dataGridViewWorksheet.SelectedRows.Count > 0)
+            if (employeeWorksheetGrid.SelectedRows.Count > 0)
             {
                 groupBox1.Visible = true;
             }
