@@ -47,7 +47,6 @@
 			lblRole = new Label();
 			lblName = new Label();
 			textBoxSearch = new TextBox();
-			comboBoxDepartment = new ComboBox();
 			pictureBoxSearch = new PictureBox();
 			((System.ComponentModel.ISupportInitialize)employeeWorksheetGrid).BeginInit();
 			groupBox1.SuspendLayout();
@@ -277,18 +276,6 @@
 			// 
 			// comboBoxDepartment
 			// 
-			comboBoxDepartment.Cursor = Cursors.Hand;
-			comboBoxDepartment.DropDownHeight = 108;
-			comboBoxDepartment.FormattingEnabled = true;
-			comboBoxDepartment.IntegralHeight = false;
-			comboBoxDepartment.ItemHeight = 25;
-			comboBoxDepartment.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
-			comboBoxDepartment.Location = new Point(539, 123);
-			comboBoxDepartment.Margin = new Padding(4, 3, 4, 3);
-			comboBoxDepartment.Name = "comboBoxDepartment";
-			comboBoxDepartment.Size = new Size(381, 33);
-			comboBoxDepartment.TabIndex = 27;
-			comboBoxDepartment.Text = "Role";
 			// 
 			// pictureBoxSearch
 			// 
@@ -309,7 +296,6 @@
 			AutoScaleDimensions = new SizeF(10F, 25F);
 			AutoScaleMode = AutoScaleMode.Font;
 			Controls.Add(pictureBoxSearch);
-			Controls.Add(comboBoxDepartment);
 			Controls.Add(textBoxSearch);
 			Controls.Add(groupBox1);
 			Controls.Add(employeeWorksheetGrid);

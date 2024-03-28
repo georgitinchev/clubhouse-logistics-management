@@ -81,7 +81,7 @@ namespace MediaBazaar.Forms
 
 			// Add columns
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Role" });
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
 			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
@@ -140,13 +140,13 @@ namespace MediaBazaar.Forms
             if (isEmployeeSelected)
             {
                 MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
-                MoveControlsToLocation(comboBoxDepartment, new Point(377, 74), new Size(268, 23));
+                //MoveControlsToLocation(comboBoxDepartment, new Point(377, 74), new Size(268, 23));
                 MoveControlsToLocation(pictureBoxSearch, new Point(333, 74), new Size(21, 23));
             }
             else
             {
                 MoveControlsToLocation(textBoxSearch, new Point(855, 114), new Size(313, 23));
-                MoveControlsToLocation(comboBoxDepartment, new Point(855, 152), new Size(313, 23));
+                //MoveControlsToLocation(comboBoxDepartment, new Point(855, 152), new Size(313, 23));
                 MoveControlsToLocation(pictureBoxSearch, new Point(1147, 114), new Size(21, 23));
             }
         }
