@@ -340,7 +340,7 @@
         private Label lblRole;
         private Label lblName;
         private TextBox textBoxSearch;
-        private ComboBox comboBoxDepartment;
+        private ComboBox comboBoxRoleWorksheet;
         private PictureBox pictureBoxSearch;
         private Label label6;
         private DateTimePicker dateTimePicker1;

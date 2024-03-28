@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DataAccessLayer;
+using DTOLayer;
 using MediaBazaar;
 using MediaBazaar.Classes;
 using BusinessLogicLayer;
@@ -27,24 +29,28 @@ namespace MediaBazaar.Forms
 			
 			InitializeComponent();
 			InitializeGridViewWorksheet();
-            Load += UserControlWorksheet_Load;
+			Load += UserControlWorksheet_Load;
             employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
-        }
+        
+			PopulateWorksheetData();
+		}
 
 		public void PopulateWorksheetData()
 		{
 			
 			worksheetData = new DataTable();
 			worksheetData.Columns.Add("ID", typeof(int));
-			worksheetData.Columns.Add("Time Slot", typeof(string));
+			worksheetData.Columns.Add("Role", typeof(string));
+			worksheetData.Columns.Add("TimeSlot", typeof(string));
 			worksheetData.Columns.Add("Weekday", typeof(string));
 			worksheetData.Columns.Add("Employee", typeof(string));
-			worksheetData.Columns.Add("Week Number", typeof(int));
+			worksheetData.Columns.Add("Week", typeof(int));
 			employeeWorksheetManager.GetAllWorksheetsInDB();
 			foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
 			{
 				Employee employee = employeeManager.GetEmployeeById(worksheet.employee);
-				worksheetData.Rows.Add(worksheet.id, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(),employee.GetFullName, worksheet.weekNr);
+				
+				worksheetData.Rows.Add(worksheet.id,employee.Role.ToString(), worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(),employee.GetFullName(), worksheet.weekNr);
 			}
 			employeeWorksheetGrid.DataSource = worksheetData;
 		}
@@ -74,13 +80,12 @@ namespace MediaBazaar.Forms
 			employeeWorksheetGrid.BackgroundColor = Color.White; // White background
 
 			// Add columns
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Name", HeaderText = "Name" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Department", HeaderText = "Department" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Role" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Worksheet", HeaderText = "Worksheet" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Date Created", HeaderText = "Date Created" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Due Date", HeaderText = "Due Date" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Status", HeaderText = "Status" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
+			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Week", HeaderText = "Week" });
 
 			// Apply hover effect
 			employeeWorksheetGrid.CellMouseEnter += (sender, e) =>

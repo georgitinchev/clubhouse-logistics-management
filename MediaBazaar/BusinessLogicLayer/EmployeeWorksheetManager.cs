@@ -47,7 +47,7 @@ namespace MediaBazaar
 			if (worksheetDTO != null)
 			{
                 
-                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)(worksheetDTO.TimeSlot), (WeekDayEnum)(worksheetDTO.WeekDay), worksheetDTO.EmployeeId, worksheetDTO.WeekNr);
+                EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)worksheetDTO.TimeSlot, (WeekDayEnum)worksheetDTO.WeekDay, worksheetDTO.EmployeeId, worksheetDTO.WeekNr);
 
 				return worksheet;
 			}
