@@ -77,21 +77,20 @@ namespace DataAccessLayer
             {
                 var command = new SqlCommand(
                     "UPDATE Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, Password = @Password, " +
-                    "Birthday = @Birthday, Address = @Address, PhoneNumber = @PhoneNumber, Bsn = @Bsn, Role = @Role, " +
-                    "ActiveContractId = @ActiveContractId, EmergencyContactId = @EmergencyContactId WHERE Id = @Id", connection);
+                    " Address = @Address, PhoneNumber = @PhoneNumber, Role = @Role " +
+                    "WHERE Id = @Id", connection);
 
                 command.Parameters.AddWithValue("@Id", employee.Id);
                 command.Parameters.AddWithValue("@FirstName", employee.FirstName);
                 command.Parameters.AddWithValue("@LastName", employee.LastName);
                 command.Parameters.AddWithValue("@Email", employee.Email);
                 command.Parameters.AddWithValue("@Password", employee.Password); 
-                command.Parameters.AddWithValue("@Birthday", employee.Birthday);
+               
                 command.Parameters.AddWithValue("@Address", employee.Address);
                 command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
-                command.Parameters.AddWithValue("@Bsn", employee.BSN); 
+                
                 command.Parameters.AddWithValue("@Role", employee.Role);
-                command.Parameters.AddWithValue("@ActiveContractId", (object)employee.ActiveContractId ?? DBNull.Value);
-                command.Parameters.AddWithValue("@EmergencyContactId", (object)employee.EmergencyContactId ?? DBNull.Value);
+                
 
                 command.ExecuteNonQuery();
             }

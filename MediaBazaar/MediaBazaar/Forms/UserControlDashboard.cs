@@ -47,6 +47,7 @@ namespace MediaBazaar.Forms
 
         private void PopulateDataTable(DataTable employeeData)
         {
+            employeeData.Clear();
             employeeManager.GetEmployeesFromDB();
             foreach (Employee employee in employeeManager.employees)
             {
@@ -267,15 +268,17 @@ namespace MediaBazaar.Forms
         {
             if (editEmployeeBtn.Text == "Edit Employee")
             {
+                textBoxAddress.ReadOnly = false;
                 foreach (var (control, _, _) in originalControlStates)
                 {
                     control.BackColor = Color.White;
                     if (control is TextBox textBox)
                     {
                         textBox.ReadOnly = false;
-                        if (textBox == textBoxPassword || textBox == textBoxBSN || textBox == textBoxAddress) // Enable textBoxAddress
+                       
+                        if ( textBox == textBoxPassword)
                         {
-                            textBox.UseSystemPasswordChar = false;
+                            textBox.UseSystemPasswordChar = true;
                         }
                     }
                     else if (control is ComboBox comboBox)
@@ -292,6 +295,7 @@ namespace MediaBazaar.Forms
             else if (editEmployeeBtn.Text == "Save")
             {
                 UpdateEmployeeDetails();
+                textBoxAddress.ReadOnly = false;
                 foreach (var (control, originalBackColor, originalReadOnly) in originalControlStates)
                 {
                     control.BackColor = originalBackColor;
@@ -300,7 +304,7 @@ namespace MediaBazaar.Forms
                         textBox.ReadOnly = originalReadOnly;
                         if (textBox == textBoxPassword)
                         {
-                            textBox.UseSystemPasswordChar = true;
+                            textBox.UseSystemPasswordChar = false;
                         }
                     }
                     else if (control is ComboBox comboBox)
@@ -334,28 +338,28 @@ namespace MediaBazaar.Forms
             try
             {
                 if (userDataGridView.SelectedRows.Count > 0)
-                {
-                    DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
-                    int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
-                    
-
-                    EmployeeDTO employee = new EmployeeDTO(
-                        employeeId,
-                        textBoxName.Text,
-                        textBoxName.Text,
-                        textBoxEmail.Text,
-                        textBoxPassword.Text,
-                        textBoxPhone.Text,
-                        textBoxAddress.Text,
-                        comboBoxRoleDetails.SelectedIndex,
-                        employeeManager.CheckManager((EmployeeRoleEnum)comboBoxRoleDetails.SelectedIndex)
+                    if (comboBoxRoleDetails.SelectedIndex + 1 > 0)
+                    {
+                        DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+                        int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
 
 
-                    );
+                        EmployeeDTO employee = new EmployeeDTO(
+                            employeeId,
+                            textBoxName.Text,
+                            textBoxName.Text,
+                            textBoxEmail.Text,
+                            textBoxPassword.Text,
+                            textBoxPhone.Text,
+                            textBoxAddress.Text,
+                            comboBoxRoleDetails.SelectedIndex + 1,
+                            employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex + 1))
+                        );
 
-                    employeeDAL.UpdateEmployee(employee);
-                    PopulateDataTable(employeeData);
-                }
+                        employeeManager.employeeDAL.UpdateEmployee(employee);
+                        PopulateDataTable(employeeData);
+                    }
+                    else MessageBox.Show("You must select a role");
             }
             catch (Exception ex)
             {
@@ -378,6 +382,7 @@ namespace MediaBazaar.Forms
                 textBoxPassword.Text = selectedEmployee.Password;
                 textBoxBSN.Text = selectedEmployee.BSN;
                 textBoxPhone.Text = selectedEmployee.PhoneNumber;
+                textBoxAddress.Text = selectedEmployee.Address;
 
                 dateTimePickerBirthday.Value = (DateTime)selectedEmployee.Birthday;
                 dateTimePickerBirthday.Enabled = false;
