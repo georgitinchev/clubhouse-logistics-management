@@ -64,6 +64,7 @@ namespace MediaBazaar.Classes
 			}
 			employeeDAL.DeleteEmployee(employeeId);
 			employees.Remove(employee);
+			_emergencyContactManager.RemoveEmergencyContactFromDB(employee.EmergencyContact.Id);
 		}
 
         public Employee GetEmployeeById(int employeeID)
