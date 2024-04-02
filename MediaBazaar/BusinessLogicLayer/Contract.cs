@@ -31,5 +31,18 @@ namespace MediaBazaar.Classes
             this.terminationReason = terminationReason;
             this.availability = availability;
         }
+
+        public void UpdateTerminationReason(string terminationReason)
+        {
+            this.terminationReason = terminationReason;
+        }
+        public void UpdateEndDate(DateTime endDate)
+        {
+            this.endDate = endDate;
+        }
+        public void UpdateIsActive(bool isActive)
+        {
+            this.isActive = isActive;
+        }
     }
 }
