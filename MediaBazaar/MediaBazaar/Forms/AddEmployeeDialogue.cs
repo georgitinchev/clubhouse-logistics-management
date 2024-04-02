@@ -13,172 +13,168 @@ using System.Windows.Forms;
 
 namespace MediaBazaar.Forms
 {
-	public partial class AddEmployeeForm : Form
-	{
-		private EmployeeManager _employeeManager;
-		private ContractManager _contractManager;
+    public partial class AddEmployeeForm : Form
+    {
+        private EmployeeManager _employeeManager;
+        private ContractManager _contractManager;
 
-		public AddEmployeeForm(EmployeeManager employeeManager, ContractManager contractManager)
-		{
-			_employeeManager = employeeManager;
-			_contractManager = contractManager;
-			InitializeComponent();
-			HideTabControls();
-			InitializeTabNavigation();
-			employeeRoleComboBox.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
-		}
+        public AddEmployeeForm(EmployeeManager employeeManager, ContractManager contractManager)
+        {
+            _employeeManager = employeeManager;
+            _contractManager = contractManager;
+            InitializeComponent();
+            HideTabControls();
+            InitializeTabNavigation();
+            contractEmpRoleComboBox.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
+        }
 
-		private void completeFormBtn_Click(object sender, EventArgs e)
-		{
-			try
-			{
-				if (!Enum.TryParse(employeeRoleComboBox.SelectedValue.ToString(), out EmployeeRoleEnum role))
-					throw new Exception("Invalid role selected.");
+        private void completeFormBtn_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                EmployeeRoleEnum role;
+                decimal hourlyWage;
+                int weeklyHours;
 
-				if (!decimal.TryParse(hourlyWageTextBox.Text, out decimal hourlyWage))
-					throw new Exception("Hourly wage must be a decimal number.");
+                ValidateFields();
 
-				if (!int.TryParse(weeklyHoursTextBox.Text, out int weeklyHours))
-					throw new Exception("Weekly hours must be an integer.");
+                // Retrieve values for role, hourly wage, and weekly hours after validation
+                role = (EmployeeRoleEnum)contractEmpRoleComboBox.SelectedValue;
+                hourlyWage = decimal.Parse(contractHourlyWageTextBox.Text);
+                weeklyHours = int.Parse(contractWeeklyHoursTextBox.Text);
 
-				ValidateFields();
-				int contractId = idCheckerContract();
+                int contractId = _contractManager.GetNextContractId();
+                var contract = new Contract(contractId, role, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null, DateTime.Now);
 
-				// Create Contract
-				var contract = new Contract(contractId, role, hourlyWage, weeklyHours, startDatePicker.Value, null, true, null, DateTime.Now);
-				
+                int employeeId = _employeeManager.GetNextEmployeeId();
+                var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
-				// Get Employee ID
-				int employeeId = idCheckerEmployee();
+                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract);
 
-				// Create EmergencyContact
-				var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
+                _contractManager.AddContract(contract);
+                _employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
+                _employeeManager.AddEmployee(employee);
 
-				// Create Employee
-				var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract);
-				_contractManager.AddContract(contract);
-				_employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
-				_employeeManager.AddEmployee(employee);
-				MessageBox.Show("Employee added successfully.");
-				this.Close();
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show(ex.Message);
-			}
-		}
+                MessageBox.Show("Employee added successfully.");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
-		private int idCheckerContract()
-		{
-			int potentialId = 1;
-			while (_contractManager.contracts.Any(c => c.Id == potentialId))
-			{
-				potentialId++;
-			}
-			return potentialId;
-		}
+        private void InitializeTabNavigation()
+        {
+            // nav indexing logic
+            nextBtnP1.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
+            previousBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 0; };
+            nextBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 2; };
+            previousBtnP3.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
 
-		private int idCheckerEmployee()
-		{
-			int potentialId = 1;
-			while (_employeeManager.employees.Any(e => e.EmployeeID == potentialId))
-			{
-				potentialId++;
-			}
-			return potentialId;
-		}
+            addEmployeeTabControl.SelectedIndexChanged += (sender, e) =>
+            {
+                if (addEmployeeTabControl.SelectedIndex == 0)
+                {
+                    previousBtnP2.Enabled = false;
+                }
+                else if (addEmployeeTabControl.SelectedIndex == 1)
+                {
+                    previousBtnP2.Enabled = true;
+                    nextBtnP1.Enabled = true;
+                    nextBtnP2.Enabled = true;
+                }
+                else if (addEmployeeTabControl.SelectedIndex == 2)
+                {
+                    nextBtnP2.Enabled = false;
+                }
+            };
+        }
 
-		private void InitializeTabNavigation()
-		{
-			// nav indexing logic
-			nextBtnP1.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
-			previousBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 0; };
-			nextBtnP2.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 2; };
-			previousBtnP3.Click += (sender, e) => { addEmployeeTabControl.SelectedIndex = 1; };
+        private void HideTabControls()
+        {
+            addEmployeeTabControl.Appearance = TabAppearance.FlatButtons;
+            addEmployeeTabControl.SizeMode = TabSizeMode.Fixed;
+            addEmployeeTabControl.ItemSize = new Size(0, 1);
+        }
 
-			addEmployeeTabControl.SelectedIndexChanged += (sender, e) =>
-			{
-				if (addEmployeeTabControl.SelectedIndex == 0)
-				{
-					previousBtnP2.Enabled = false;
-				}
-				else if (addEmployeeTabControl.SelectedIndex == 1)
-				{
-					previousBtnP2.Enabled = true;
-					nextBtnP1.Enabled = true;
-					nextBtnP2.Enabled = true;
-				}
-				else if (addEmployeeTabControl.SelectedIndex == 2)
-				{
-					nextBtnP2.Enabled = false;
-				}
-			};
-		}
+        private void ValidateFields()
+        {
+            StringBuilder validationErrors = new StringBuilder(); 
 
-		private void HideTabControls()
-		{
-			addEmployeeTabControl.Appearance = TabAppearance.FlatButtons;
-			addEmployeeTabControl.SizeMode = TabSizeMode.Fixed;
-			addEmployeeTabControl.ItemSize = new Size(0, 1);
-		}
+            if (!Enum.TryParse(contractEmpRoleComboBox.SelectedValue.ToString(), out EmployeeRoleEnum role))
+                validationErrors.AppendLine("Invalid role selected.");
 
-		private void ValidateFields()
-		{
-			if (string.IsNullOrWhiteSpace(firstNameText.Text))
-				throw new Exception("First name is required.");
+            decimal hourlyWage;
+            if (!decimal.TryParse(contractHourlyWageTextBox.Text, out hourlyWage))
+                validationErrors.AppendLine("Hourly wage must be a decimal number.");
 
-			if (string.IsNullOrWhiteSpace(lastNameText.Text))
-				throw new Exception("Last name is required.");
+            int weeklyHours;
+            if (!int.TryParse(contractWeeklyHoursTextBox.Text, out weeklyHours))
+                validationErrors.AppendLine("Weekly hours must be an integer.");
 
-			if (string.IsNullOrWhiteSpace(emailText.Text))
-				throw new Exception("Email is required.");
+            if (string.IsNullOrWhiteSpace(firstNameText.Text))
+                validationErrors.AppendLine("First name is required.");
 
-			if (string.IsNullOrWhiteSpace(passwordText.Text))
-				throw new Exception("Password is required.");
+            if (string.IsNullOrWhiteSpace(lastNameText.Text))
+                validationErrors.AppendLine("Last name is required.");
 
-			if (string.IsNullOrWhiteSpace(phoneText.Text))
-				throw new Exception("Phone number is required.");
+            if (string.IsNullOrWhiteSpace(emailText.Text))
+                validationErrors.AppendLine("Email is required.");
 
-			if (string.IsNullOrWhiteSpace(bsnText.Text))
-				throw new Exception("BSN is required.");
+            if (string.IsNullOrWhiteSpace(passwordText.Text))
+                validationErrors.AppendLine("Password is required.");
 
-			if (string.IsNullOrWhiteSpace(addressText.Text))
-				throw new Exception("Address is required.");
+            if (string.IsNullOrWhiteSpace(phoneText.Text))
+                validationErrors.AppendLine("Phone number is required.");
 
-			if (string.IsNullOrWhiteSpace(emcFirstNameBox.Text))
-				throw new Exception("Emergency contact first name is required.");
+            if (string.IsNullOrWhiteSpace(bsnText.Text))
+                validationErrors.AppendLine("BSN is required.");
 
-			if (string.IsNullOrWhiteSpace(emcLastNameBox.Text))
-				throw new Exception("Emergency contact last name is required.");
+            // bsn regex validation
+            else if (!Regex.IsMatch(bsnText.Text, @"^\d{8,9}$"))
+                validationErrors.AppendLine("BSN must be 8 or 9 digits.");
 
-			if (string.IsNullOrWhiteSpace(emcPhoneText.Text))
-				throw new Exception("Emergency contact phone number is required.");
+            if (string.IsNullOrWhiteSpace(addressText.Text))
+                validationErrors.AppendLine("Address is required.");
 
-			if (string.IsNullOrWhiteSpace(emcEmailBox.Text))
-				throw new Exception("Emergency contact email is required.");
+            if (string.IsNullOrWhiteSpace(emcFirstNameBox.Text))
+                validationErrors.AppendLine("Emergency contact first name is required.");
 
-			// email validation regex
-			var emailRegex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
+            if (string.IsNullOrWhiteSpace(emcLastNameBox.Text))
+                validationErrors.AppendLine("Emergency contact last name is required.");
 
-			if (!emailRegex.IsMatch(emailText.Text))
-				throw new Exception("Email is not in a valid format.");
+            if (string.IsNullOrWhiteSpace(emcPhoneText.Text))
+                validationErrors.AppendLine("Emergency contact phone number is required.");
 
-			if (!emailRegex.IsMatch(emcEmailBox.Text))
-				throw new Exception("Emergency contact email is not in a valid format.");
+            if (string.IsNullOrWhiteSpace(emcEmailBox.Text))
+                validationErrors.AppendLine("Emergency contact email is required.");
 
-			// phone num validation regex
-			var phoneRegex = new Regex(@"^\+?(\d[\d-. ]+)?(\([\d-. ]+\))?[\d-. ]+\d$");
-			if (!phoneRegex.IsMatch(phoneText.Text))
-				throw new Exception("Phone number is not in a valid format.");
+            // email validation regex
+            var emailRegex = new Regex(@"^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$");
 
-			if (!phoneRegex.IsMatch(emcPhoneText.Text))
-				throw new Exception("Emergency contact phone number is required.");
+            if (!emailRegex.IsMatch(emailText.Text))
+                validationErrors.AppendLine("Email is not in a valid format.");
 
-			if (startDatePicker.Value.Date > DateTime.Now.Date)
-				throw new Exception("Contract start date cannot be in the future.");
+            if (!emailRegex.IsMatch(emcEmailBox.Text))
+                validationErrors.AppendLine("Emergency contact email is not in a valid format.");
 
-			if (birthdayDatePicker.Value.Date > DateTime.Now.Date)
-				throw new Exception("Employee birthday cannot be in the future.");
-		}
-	}
+            // phone num validation regex
+            var phoneRegex = new Regex(@"^\d{9}$");
+            if (!phoneRegex.IsMatch(phoneText.Text))
+                validationErrors.AppendLine("Phone number is not in a valid format. It should be exactly 9 digits.");
+
+            if (!phoneRegex.IsMatch(emcPhoneText.Text))
+                validationErrors.AppendLine("Emergency contact phone number is required.");
+
+            if (contractStartDatePicker.Value.Date > DateTime.Now.Date)
+                validationErrors.AppendLine("Contract start date cannot be in the future.");
+
+            if (birthdayDatePicker.Value.Date > DateTime.Now.Date)
+                validationErrors.AppendLine("Employee birthday cannot be in the future.");
+
+            if (validationErrors.Length > 0)
+                throw new Exception(validationErrors.ToString());
+        }
+    }
 }

@@ -10,8 +10,9 @@ using System.Diagnostics.Contracts;
 
 namespace DataAccessLayer
 {
-    public  class ContractDAL :Database
+    public class ContractDAL : Database
     {
+        private int _nextId = 1;
         public void CreateContract(ContractDTO contract)
         {
             using (var connection = OpenConnection())
@@ -19,7 +20,7 @@ namespace DataAccessLayer
                 var command = new SqlCommand(
                     "INSERT INTO Contract (Id,Role, HourlyWage, WeeklyHours, StartDate, EndDate, IsActive, TerminationReason, Availability) " +
                     "VALUES (@Id,@Role, @HourlyWage, @WeeklyHours, @StartDate, @EndDate, @IsActive, @TerminationReason, @Availability)", connection);
-                command.Parameters.AddWithValue("@Id",contract.Id);
+                command.Parameters.AddWithValue("@Id", contract.Id);
                 command.Parameters.AddWithValue("@Role", contract.Role);
                 command.Parameters.Add("@HourlyWage", SqlDbType.Decimal).Value = contract.HourlyWage;
                 command.Parameters["@HourlyWage"].Precision = 5;
@@ -45,7 +46,7 @@ namespace DataAccessLayer
                 {
                     if (reader.Read())
                     {
-                        ContractDTO contractDTO=new ContractDTO
+                        ContractDTO contractDTO = new ContractDTO
                         (
                             (int)reader["Id"],
                             (int)reader["Role"],
@@ -57,7 +58,7 @@ namespace DataAccessLayer
                             reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
                             (DateTime)reader["Availability"]
 
-                        
+
                         );
                         return contractDTO;
                     }
@@ -135,5 +136,15 @@ namespace DataAccessLayer
             return contracts;
         }
 
+        public int GetNextId()
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT MAX(Id) FROM Contract", connection);
+                object result = command.ExecuteScalar();
+                _nextId = (result is DBNull) ? 1 : (int)result + 1;
+            }
+            return _nextId;
+        }
     }
 }

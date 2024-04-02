@@ -95,5 +95,10 @@ namespace BusinessLogicLayer
 				contracts.Add(contract);
 			}
 		}
+
+		public int GetNextContractId()
+		{
+			return contractDAL.GetNextId(); 
+		}
 	}
 }

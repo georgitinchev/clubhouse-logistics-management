@@ -10,6 +10,7 @@ namespace DataAccessLayer
 {
     public class EmployeeDAL : Database
     {
+        private int _nextId = 1;
 
         public void CreateEmployee(EmployeeDTO employee)
         {
@@ -140,6 +141,20 @@ namespace DataAccessLayer
                 }
             }
             return employees;
+        }
+
+        public int GetNextId()
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT MAX(Id) FROM Employee", connection);
+                var result = command.ExecuteScalar();
+                if (result is DBNull)
+                {
+                    return _nextId;
+                }
+                return (int)result + 1;
+            }
         }
     }
 }

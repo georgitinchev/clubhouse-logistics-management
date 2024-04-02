@@ -157,6 +157,11 @@ namespace MediaBazaar.Classes
 			}
 		}
 
+		public int GetNextEmployeeId()
+		{
+			return employeeDAL.GetNextId();
+		}
+
 		public bool CheckManager(EmployeeRoleEnum role)
 		{
 			if ((int)role < 3)
