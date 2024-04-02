@@ -91,6 +91,7 @@ namespace MediaBazaar.Forms
         private void InitializeDataGridView()
         {
             userDataGridView.AutoGenerateColumns = false;
+            userDataGridView.AllowUserToAddRows = false;
             userDataGridView.DataSource = employeeData;
             userDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             userDataGridView.EnableHeadersVisualStyles = false;
@@ -437,7 +438,7 @@ namespace MediaBazaar.Forms
                     try
                     {
                         employeeManager.DeleteEmployee(employeeId);
-                        userDataGridView.Rows.Remove(selectedRow);
+                        InitializeData();
                         MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
