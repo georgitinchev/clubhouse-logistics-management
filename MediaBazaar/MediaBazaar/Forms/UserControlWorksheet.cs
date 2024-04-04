@@ -55,15 +55,6 @@ namespace MediaBazaar.Forms
             }
             employeeWorksheetGrid.DataSource = worksheetData;
         }
-        private void btnAddWorksheet_Click(object sender, EventArgs e)
-        {
-            AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue();
-            addWorksheetDialogue.ShowDialog();
-            PopulateWorksheetData();
-            employeeWorksheetGrid.DataSource = worksheetData;
-            employeeWorksheetGrid.ClearSelection();
-        }
-
         private void InitializeFocus()
         {
             textBoxSearch.GotFocus += new System.EventHandler(textBoxSearch_GotFocus);
@@ -95,12 +86,12 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33); // Dark text
             employeeWorksheetGrid.BackgroundColor = Color.White; // White background
 
-			// Add columns
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
+            // Add columns
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
             employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Week", HeaderText = "Week" });
 
             // Apply hover effect
@@ -229,6 +220,16 @@ namespace MediaBazaar.Forms
             DataTable searchResults = query.Any() ? query.CopyToDataTable() : worksheetData.Clone();
             employeeWorksheetGrid.DataSource = searchResults;
 
+            employeeWorksheetGrid.ClearSelection();
+        }
+
+        private void btnAddWorksheet_Click_1(object sender, EventArgs e)
+        {
+            // make a constructor for the add worksheet dialogue and pass to it the employeemanager and the employeeworksheet manager 
+            AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue(employeeManager, employeeWorksheetManager);
+            addWorksheetDialogue.ShowDialog();
+            PopulateWorksheetData();
+            employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.ClearSelection();
         }
     }
