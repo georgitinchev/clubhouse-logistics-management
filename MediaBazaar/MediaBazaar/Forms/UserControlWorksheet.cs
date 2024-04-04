@@ -75,6 +75,7 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.AutoGenerateColumns = false;
             //dataGridViewWorksheet.DataSource = worksheetData;
             employeeWorksheetGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            employeeWorksheetGrid.AllowUserToAddRows = false;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243); // Material blue
             employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; // White text
