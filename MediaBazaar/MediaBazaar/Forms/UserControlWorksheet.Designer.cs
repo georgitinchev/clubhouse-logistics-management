@@ -132,10 +132,10 @@
             // textBoxName
             // 
             textBoxName.BackColor = SystemColors.Control;
-            textBoxName.Location = new Point(117, 92);
+            textBoxName.Location = new Point(102, 73);
             textBoxName.Name = "textBoxName";
             textBoxName.ReadOnly = true;
-            textBoxName.Size = new Size(194, 27);
+            textBoxName.Size = new Size(170, 23);
             textBoxName.TabIndex = 42;
             // 
             // cbStatus
@@ -231,8 +231,8 @@
             comboBoxRole.Enabled = false;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.Items.AddRange(new object[] { "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
             comboBoxRole.ItemHeight = 15;
+            comboBoxRole.Items.AddRange(new object[] { "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
             comboBoxRole.Location = new Point(102, 101);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
@@ -242,7 +242,7 @@
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(15, 104);
+            lblRole.Location = new Point(14, 109);
             lblRole.Name = "lblRole";
             lblRole.Size = new Size(33, 15);
             lblRole.TabIndex = 2;
@@ -251,11 +251,10 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(16, 95);
+            lblName.Location = new Point(14, 81);
             lblName.Margin = new Padding(2, 0, 2, 0);
-            lblName.Location = new Point(17, 98);
             lblName.Name = "lblName";
-            lblName.Size = new Size(78, 20);
+            lblName.Size = new Size(62, 15);
             lblName.TabIndex = 0;
             lblName.Text = "Employee:";
             // 
@@ -291,11 +290,11 @@
             cbFilter.DropDownHeight = 108;
             cbFilter.FormattingEnabled = true;
             cbFilter.IntegralHeight = false;
-            cbFilter.ItemHeight = 20;
+            cbFilter.ItemHeight = 15;
             cbFilter.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
-            cbFilter.Location = new Point(429, 97);
+            cbFilter.Location = new Point(451, 73);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(306, 28);
+            cbFilter.Size = new Size(306, 23);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
