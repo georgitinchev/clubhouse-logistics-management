@@ -143,7 +143,7 @@ namespace DataAccessLayer
             return employees;
         }
 
-        public int GetNextId()
+        public int GetNextEmpId()
         {
             using (var connection = OpenConnection())
             {

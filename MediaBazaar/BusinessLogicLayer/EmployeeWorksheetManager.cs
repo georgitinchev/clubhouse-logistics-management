@@ -26,7 +26,13 @@ namespace MediaBazaar
 			assignedWorksheets.Add(worksheet);
 		}
 
-		public void DeleteWorksheet(EmployeeWorksheet worksheet)
+        public void CreateWorksheet(int Id, WorkingTime timeSlot, WeekDayEnum weekDay, int employee, int weekNr)
+        {
+            EmployeeWorksheet worksheet = new EmployeeWorksheet(Id, timeSlot, weekDay, employee, weekNr);
+            assignedWorksheets.Add(worksheet);
+        }
+
+        public void DeleteWorksheet(EmployeeWorksheet worksheet)
 		{
 			assignedWorksheets.Remove(worksheet);
 		}
@@ -46,15 +52,13 @@ namespace MediaBazaar
 			
 			if (worksheetDTO != null)
 			{
-                
                 EmployeeWorksheet worksheet = new EmployeeWorksheet(worksheetDTO.Id, (WorkingTime)worksheetDTO.TimeSlot, (WeekDayEnum)worksheetDTO.WeekDay, worksheetDTO.EmployeeId, worksheetDTO.WeekNr);
-
 				return worksheet;
 			}
-			return null;
-		}
+            throw new ArgumentNullException(nameof(worksheetDTO));
+        }
 
-		public WorksheetDTO TransformWorksheetToDTO( EmployeeWorksheet worksheet)
+		public WorksheetDTO TransformWorksheetToDTO(EmployeeWorksheet worksheet)
 		{
 			WorksheetDTO worksheetDTO = new WorksheetDTO(worksheet.id, (int)worksheet.timeSlot, (int)worksheet.weekDay, worksheet.employee, worksheet.weekNr);
 			return worksheetDTO;
@@ -77,7 +81,20 @@ namespace MediaBazaar
 			throw new Exception("Worksheet was null");
 		}
 
-		public void DeleteWorksheetInDB(EmployeeWorksheet worksheet)
+        public void UnassignWorksheet(EmployeeWorksheet worksheet)
+        {
+            if (worksheet != null)
+            {
+				worksheet.nullifyEmployee();
+                worksheetDAL.UpdateWorksheet(TransformWorksheetToDTO(worksheet));
+            }
+            else
+            {
+                throw new Exception("Worksheet was null");
+            }
+        }
+
+        public void DeleteWorksheetInDB(EmployeeWorksheet worksheet)
 		{
 			if (worksheet != null)
 				worksheetDAL.DeleteWorksheet(worksheet.id);
@@ -92,9 +109,16 @@ namespace MediaBazaar
         public void AddWorksheetToDB(EmployeeWorksheet worksheet)
 		{
 			if(worksheet != null)
-				worksheetDAL.CreateWorksheet(TransformWorksheetToDTO(worksheet));
+			{
+                worksheetDAL.CreateWorksheet(TransformWorksheetToDTO(worksheet));
+				return;
+            }
 			throw new Exception("Worksheet was null");
 		}
 
+		public int GetNextId()
+		{
+			return worksheetDAL.GetNextWorksheetId();
+		}
 	}
 }

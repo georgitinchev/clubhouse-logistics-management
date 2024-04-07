@@ -168,7 +168,7 @@ namespace MediaBazaar.Classes
 
         public int GetNextEmployeeId()
         {
-            return employeeDAL.GetNextId();
+            return employeeDAL.GetNextEmpId();
         }
 
         public bool CheckManager(EmployeeRoleEnum role)

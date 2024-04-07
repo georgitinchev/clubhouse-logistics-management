@@ -55,11 +55,21 @@ namespace MediaBazaar.Forms
             employeeWorksheetManager.GetAllWorksheetsInDB();
             foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
             {
-                Employee employee = employeeManager.GetEmployeeById(worksheet.employee);
-
-                worksheetData.Rows.Add(worksheet.id, employee.Role.ToString(), worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(), employee.GetFullName(), worksheet.weekNr);
+                string employeeName = "Unassigned";
+                string employeeRole = "Unassigned";
+                if (worksheet.employee != 0)
+                {
+                    Employee employee = employeeManager.GetEmployeeById(worksheet.employee);
+                    if (employee != null)
+                    {
+                        employeeName = employee.GetFullName();
+                        employeeRole = employee.Role.ToString();
+                    }
+                }
+                worksheetData.Rows.Add(worksheet.id, employeeRole, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(), employeeName, worksheet.weekNr);
             }
             employeeWorksheetGrid.DataSource = worksheetData;
+            employeeWorksheetGrid.ClearSelection();
         }
 
 
@@ -311,6 +321,10 @@ namespace MediaBazaar.Forms
             PopulateWorksheetData();
             employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.ClearSelection();
+        }
+
+        private void btnRemoveWorksheet_Click(object sender, EventArgs e)
+        {
         }
     }
 }

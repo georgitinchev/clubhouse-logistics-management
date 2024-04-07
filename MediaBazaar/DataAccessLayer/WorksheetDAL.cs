@@ -10,14 +10,16 @@ namespace DataAccessLayer
 {
     public class WorksheetDAL : Database
     {
+        private int _nextId = 1;
         public void CreateWorksheet(WorksheetDTO worksheet)
         {
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO EmployeeWorksheet (TimeSlot, WeekDay, EmployeeId, WeekNr) " +
-                    "VALUES (@TimeSlot, @WeekDay, @EmployeeId, @WeekNr)", connection);
+                    "INSERT INTO EmployeeWorksheet (Id,TimeSlot, WeekDay, EmployeeId, WeekNr) " +
+                    "VALUES (@Id, @TimeSlot, @WeekDay, @EmployeeId, @WeekNr)", connection);
 
+                command.Parameters.AddWithValue("@Id", worksheet.Id);
                 command.Parameters.AddWithValue("@TimeSlot", worksheet.TimeSlot);
                 command.Parameters.AddWithValue("@WeekDay", worksheet.WeekDay);
                 command.Parameters.AddWithValue("@EmployeeId", worksheet.EmployeeId);
@@ -105,6 +107,20 @@ namespace DataAccessLayer
                 }
             }
             return worksheets;
+        }
+
+        public int GetNextWorksheetId()
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("SELECT MAX(Id) FROM EmployeeWorksheet", connection);
+                var result = command.ExecuteScalar();
+                if (result is DBNull)
+                {
+                    return _nextId;
+                }
+                return (int)result + 1;
+            }
         }
     }
 }
