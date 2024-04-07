@@ -22,18 +22,43 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             _employeeWorksheetManager = worksheetManager;
             _employeeManager = employeeManager;
+            ReloadEmployees();
         }
 
+
+        private void ReloadEmployees()
+        {
+            _employeeManager.GetEmployeesFromDB();
+            foreach (var employee in _employeeManager.GetAllEmployees())
+            {
+                comboBoxEmployee.Items.Add($"{employee.FirstName} {employee.LastName}");
+            }
+        }
         private void btnSubmit_Click(object sender, EventArgs e)
         {
             try
             {
                 ValidateFields();
 
+<<<<<<< Updated upstream
                 string employeeName = textBoxEmployeeWorksheet.Text;
                 WeekDayEnum weekDay = (WeekDayEnum)comboBoxWeekDay.SelectedIndex + 1;
                 int weekNr = Convert.ToInt32(textBoxWeekNumber.Text);
                 WorkingTime timeSlot = (WorkingTime)comboBoxTimeSlot.SelectedIndex + 1;
+=======
+                string employeeName = comboBoxEmployee.SelectedItem.ToString();
+                if (!Enum.TryParse(comboBoxWeekDay.SelectedItem?.ToString(), out WeekDayEnum weekDay))
+                {
+                    MessageBox.Show("Invalid week day selected.");
+                    return;
+                }
+                int weekNr = Convert.ToInt32(textBoxWeekNumber.Text);
+                if (!Enum.TryParse(comboBoxTimeSlot.SelectedItem.ToString(), out WorkingTime timeSlot))
+                {
+                    MessageBox.Show("Invalid time slot selected.");
+                    return;
+                }
+>>>>>>> Stashed changes
 
                 int employeeId = GetEmployeeIdByName(employeeName);
                 if (employeeId == -1)
@@ -42,11 +67,10 @@ namespace MediaBazaar.Forms
                     return;
                 }
 
-                EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employeeId, weekNr);
-
-                _employeeWorksheetManager.AddWorksheetToDB(worksheet);
-
+                _employeeWorksheetManager.CreateWorksheet(_employeeWorksheetManager.GetNextId(), timeSlot, weekDay, employeeId, weekNr);
+                _employeeWorksheetManager.AddWorksheetToDB(_employeeWorksheetManager.ViewEmployeeWorksheets().Last());
                 MessageBox.Show("Worksheet created and added to the database successfully.");
+                this.Close();
             }
             catch (Exception ex)
             {
@@ -66,7 +90,7 @@ namespace MediaBazaar.Forms
                 throw new Exception("Please select a time slot.");
             }
 
-            if (string.IsNullOrEmpty(textBoxEmployeeWorksheet.Text))
+            if (string.IsNullOrEmpty(comboBoxEmployee.SelectedItem?.ToString()))
             {
                 throw new Exception("Please enter the employee's name.");
             }
