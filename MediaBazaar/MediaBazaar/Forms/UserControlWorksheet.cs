@@ -220,7 +220,6 @@ namespace MediaBazaar.Forms
                 DataGridViewRow selectedRow = employeeWorksheetGrid.Rows[e.RowIndex];
 
                 textBoxName.Text = selectedRow.Cells["Employee"].Value.ToString();
-
                 comboBoxRole.SelectedItem = selectedRow.Cells["Role"].Value.ToString();
 
                 int weekNumber = Convert.ToInt32(selectedRow.Cells["Week"].Value);
