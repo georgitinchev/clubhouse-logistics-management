@@ -76,9 +76,12 @@ namespace MediaBazaar
 
 		public void UpdateWorksheetInDB(EmployeeWorksheet worksheet)
 		{
-			if(worksheet != null) 
-			worksheetDAL.UpdateWorksheet(TransformWorksheetToDTO(worksheet));
-			throw new Exception("Worksheet was null");
+			if(worksheet != null)
+			{
+                worksheetDAL.UpdateWorksheet(TransformWorksheetToDTO(worksheet));
+				return;
+            }
+            throw new Exception("Worksheet was null");
 		}
 
         public void UnassignWorksheet(EmployeeWorksheet worksheet)

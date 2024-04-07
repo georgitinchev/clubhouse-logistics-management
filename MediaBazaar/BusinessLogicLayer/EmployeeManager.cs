@@ -80,7 +80,6 @@ namespace MediaBazaar.Classes
             return employees.FirstOrDefault(e => e.EmployeeID == employeeID);
         }
 
-
         public List<Employee> GetAllRegularEmployees()
         {
             return employees.Where(e => !e.IsManager).ToList();
@@ -178,11 +177,6 @@ namespace MediaBazaar.Classes
                 return true;
             }
             return false;
-        }
-
-        public Employee GetEmployeeById(object employeeID)
-        {
-            throw new NotImplementedException();
         }
     }
 }
