@@ -39,13 +39,6 @@ namespace MediaBazaar.Forms
             try
             {
                 ValidateFields();
-
-<<<<<<< Updated upstream
-                string employeeName = textBoxEmployeeWorksheet.Text;
-                WeekDayEnum weekDay = (WeekDayEnum)comboBoxWeekDay.SelectedIndex + 1;
-                int weekNr = Convert.ToInt32(textBoxWeekNumber.Text);
-                WorkingTime timeSlot = (WorkingTime)comboBoxTimeSlot.SelectedIndex + 1;
-=======
                 string employeeName = comboBoxEmployee.SelectedItem.ToString();
                 if (!Enum.TryParse(comboBoxWeekDay.SelectedItem?.ToString(), out WeekDayEnum weekDay))
                 {
@@ -58,8 +51,6 @@ namespace MediaBazaar.Forms
                     MessageBox.Show("Invalid time slot selected.");
                     return;
                 }
->>>>>>> Stashed changes
-
                 int employeeId = GetEmployeeIdByName(employeeName);
                 if (employeeId == -1)
                 {
