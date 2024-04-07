@@ -205,14 +205,6 @@ namespace MediaBazaar.Forms
             }
         }
 
-        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (char)Keys.Enter)
-            {
-                e.Handled = true;
-            }
-        }
-
         private void employeeWorksheetGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.RowIndex < worksheetData.Rows.Count)
@@ -259,7 +251,7 @@ namespace MediaBazaar.Forms
 
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
-                    query = query.Where(row => row.Field<string>("Role").StartsWith(searchTerm));
+                    query = query.Where(row => row.Field<string>("Employee").Contains(searchTerm));
                 }
 
                 DataTable searchResults = query.Any() ? query.CopyToDataTable() : worksheetData.Clone();
@@ -277,19 +269,29 @@ namespace MediaBazaar.Forms
 
         private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxRole.SelectedItem?.ToString() == "All Roles")
-            {
-                employeeWorksheetGrid.DataSource = worksheetData;
-            }
-            else
-            {
-                Search();
-            }
+            Search();
         }
+
 
         private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
             Search();
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Search();
+            e.Handled = true;
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                Search();
+            }
         }
 
         private void btnAddWorksheet_Click_1(object sender, EventArgs e)
@@ -307,3 +309,4 @@ namespace MediaBazaar.Forms
         }
     }
 }
+

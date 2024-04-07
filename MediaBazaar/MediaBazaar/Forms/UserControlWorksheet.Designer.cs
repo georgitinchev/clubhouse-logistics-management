@@ -245,6 +245,7 @@
             textBoxSearch.Size = new Size(357, 27);
             textBoxSearch.TabIndex = 26;
             textBoxSearch.Text = "Search...";
+            textBoxSearch.KeyDown += textBoxSearch_KeyDown;
             textBoxSearch.KeyPress += textBoxSearch_KeyPress;
             // 
             // pictureBoxSearch
@@ -268,11 +269,11 @@
             cbFilter.FormattingEnabled = true;
             cbFilter.IntegralHeight = false;
             cbFilter.ItemHeight = 20;
-            cbFilter.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
-            cbFilter.Location = new Point(515, 97);
+            cbFilter.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
+            cbFilter.Location = new Point(426, 100);
             cbFilter.Margin = new Padding(3, 4, 3, 4);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(349, 28);
+            cbFilter.Size = new Size(328, 28);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
