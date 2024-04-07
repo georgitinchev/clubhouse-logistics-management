@@ -42,7 +42,7 @@ namespace DataAccessLayer
                             (int)reader["Id"],
                             (int)reader["TimeSlot"],
                             (int)reader["WeekDay"],
-                           (int)reader["EmployeeId"],
+                            (int)reader["EmployeeId"],
                             (int)reader["WeekNr"]
                         );
                     }

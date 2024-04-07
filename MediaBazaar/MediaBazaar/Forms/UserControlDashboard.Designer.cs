@@ -352,7 +352,7 @@
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 20;
-            comboBoxRole.Items.AddRange(new object[] { "Any Role", "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
+            comboBoxRole.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
             comboBoxRole.Location = new Point(431, 99);
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(306, 28);

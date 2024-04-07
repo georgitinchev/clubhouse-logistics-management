@@ -31,9 +31,9 @@ namespace MediaBazaar.Forms
                 ValidateFields();
 
                 string employeeName = textBoxEmployeeWorksheet.Text;
-                WeekDayEnum weekDay = (WeekDayEnum)comboBoxWeekDay.SelectedItem;
+                WeekDayEnum weekDay = (WeekDayEnum)comboBoxWeekDay.SelectedIndex + 1;
                 int weekNr = Convert.ToInt32(textBoxWeekNumber.Text);
-                WorkingTime timeSlot = (WorkingTime)comboBoxTimeSlot.SelectedItem;
+                WorkingTime timeSlot = (WorkingTime)comboBoxTimeSlot.SelectedIndex + 1;
 
                 int employeeId = GetEmployeeIdByName(employeeName);
                 if (employeeId == -1)
@@ -53,7 +53,6 @@ namespace MediaBazaar.Forms
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
-
 
         private void ValidateFields()
         {

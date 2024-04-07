@@ -83,7 +83,13 @@ namespace MediaBazaar
 				worksheetDAL.DeleteWorksheet(worksheet.id);
 		}
 
-		public void AddWorksheetToDB(EmployeeWorksheet worksheet)
+        public EmployeeWorksheet GetWorksheetById(int worksheetId)
+        {
+            return assignedWorksheets.FirstOrDefault(worksheet => worksheet.id == worksheetId);
+        }
+
+
+        public void AddWorksheetToDB(EmployeeWorksheet worksheet)
 		{
 			if(worksheet != null)
 				worksheetDAL.CreateWorksheet(TransformWorksheetToDTO(worksheet));

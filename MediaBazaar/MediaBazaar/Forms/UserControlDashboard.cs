@@ -6,6 +6,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using DataAccessLayer;
 using DTOLayer;
 using MediaBazaar.Classes;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MediaBazaar.Forms
 {
@@ -36,7 +37,7 @@ namespace MediaBazaar.Forms
         private void InitializeControls()
         {
             originalControlStates.Add((textBoxName, textBoxName.BackColor, textBoxName.ReadOnly));
-            originalControlStates.Add((comboBoxRoleDetails, comboBoxRoleDetails.BackColor, comboBoxRoleDetails.Enabled)); // Ensure ComboBox is enabled
+            originalControlStates.Add((comboBoxRoleDetails, comboBoxRoleDetails.BackColor, comboBoxRoleDetails.Enabled));
             originalControlStates.Add((textBoxEmail, textBoxEmail.BackColor, textBoxEmail.ReadOnly));
             originalControlStates.Add((textBoxPassword, textBoxPassword.BackColor, textBoxPassword.ReadOnly));
             originalControlStates.Add((textBoxBSN, textBoxBSN.BackColor, textBoxBSN.ReadOnly));
@@ -48,13 +49,14 @@ namespace MediaBazaar.Forms
         private void PopulateDataTable(DataTable employeeData)
         {
             employeeData.Clear();
+
             employeeManager.GetEmployeesFromDB();
             foreach (Employee employee in employeeManager.employees)
             {
                 employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Contract.weeklyHours);
             }
-
         }
+
 
         private void InitializeData()
         {
@@ -234,27 +236,36 @@ namespace MediaBazaar.Forms
 
             var query = employeeData.AsEnumerable();
 
-            if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")
+            try
             {
-                query = query.Where(row => row.Field<string>("Role") == selectedRole);
-            }
+                if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")
+                {
+                    query = query.Where(row => row.Field<string>("Role") == selectedRole);
+                }
 
-            if (!string.IsNullOrEmpty(searchTerm))
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    query = query.Where(row => row.Field<string>("Name").Contains(searchTerm) || row.Field<string>("Email").Contains(searchTerm));
+                }
+
+                DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
+                userDataGridView.DataSource = searchResults;
+            }
+            catch (Exception ex)
             {
-                query = query.Where(row => row.Field<string>("Name").Contains(searchTerm) || row.Field<string>("Email").Contains(searchTerm));
+                MessageBox.Show("An error occurred while filtering: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
-            userDataGridView.DataSource = searchResults;
-
-            userDataGridView.ClearSelection();
+            finally
+            {
+                userDataGridView.ClearSelection();
+            }
         }
-
 
         private void comboBoxRole_SelectedIndexChanged(object sender, EventArgs e)
         {
             Search();
         }
+
         private void addEmployeeBtn_Click(object sender, EventArgs e)
         {
             AddEmployeeForm addEmployeeDialogue = new AddEmployeeForm(employeeManager, employeeManager._contractManager);
@@ -273,7 +284,7 @@ namespace MediaBazaar.Forms
                 foreach (var (control, _, _) in originalControlStates)
                 {
                     control.BackColor = Color.White;
-                    if (control is TextBox textBox)
+                    if (control is System.Windows.Forms.TextBox textBox)
                     {
                         textBox.ReadOnly = false;
 
@@ -282,7 +293,7 @@ namespace MediaBazaar.Forms
                             textBox.UseSystemPasswordChar = false;
                         }
                     }
-                    else if (control is ComboBox comboBox)
+                    else if (control is System.Windows.Forms.ComboBox comboBox)
                     {
                         comboBox.Enabled = true;
                     }
@@ -300,7 +311,7 @@ namespace MediaBazaar.Forms
                 foreach (var (control, originalBackColor, originalReadOnly) in originalControlStates)
                 {
                     control.BackColor = originalBackColor;
-                    if (control is TextBox textBox)
+                    if (control is System.Windows.Forms.TextBox textBox)
                     {
                         textBox.ReadOnly = originalReadOnly;
                         if (textBox == textBoxPassword)
@@ -308,7 +319,7 @@ namespace MediaBazaar.Forms
                             textBox.UseSystemPasswordChar = true;
                         }
                     }
-                    else if (control is ComboBox comboBox)
+                    else if (control is System.Windows.Forms.ComboBox comboBox)
                     {
                         comboBox.Enabled = false;
                     }

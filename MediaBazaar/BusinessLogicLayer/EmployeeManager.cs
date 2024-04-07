@@ -179,5 +179,10 @@ namespace MediaBazaar.Classes
             }
             return false;
         }
+
+        public Employee GetEmployeeById(object employeeID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

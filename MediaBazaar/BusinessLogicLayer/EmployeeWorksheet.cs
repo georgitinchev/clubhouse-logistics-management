@@ -11,7 +11,7 @@ namespace MediaBazaar
 	public class EmployeeWorksheet
 	{
 		public int id { get;private set; }
-		public WorkingTime timeSlot { get; private set; }
+        public WorkingTime timeSlot { get; private set; }
 		public WeekDayEnum weekDay { get; private set; }
 		public int employee { get; private set; }
 		public int weekNr { get; private set; }
@@ -33,8 +33,6 @@ namespace MediaBazaar
 			this.weekDay = weekDay;
 			this.employee = employee;
 			this.weekNr = weekNr;
-		}
-
-		
+		}		
 	}
 }

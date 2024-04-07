@@ -28,17 +28,21 @@ namespace MediaBazaar.Forms
             employeeManager = _employeeManager;
 
             InitializeComponent();
-            InitializeGridViewWorksheet();
             InitializeFocus();
             Load += UserControlWorksheet_Load;
             employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+            employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
 
             PopulateWorksheetData();
         }
 
+        private void UserControlWorksheet_Load_1(object sender, EventArgs e)
+        {
+            InitializeGridViewWorksheet();
+        }
+
         public void PopulateWorksheetData()
         {
-
             worksheetData = new DataTable();
             worksheetData.Columns.Add("ID", typeof(int));
             worksheetData.Columns.Add("Role", typeof(string));
@@ -46,6 +50,8 @@ namespace MediaBazaar.Forms
             worksheetData.Columns.Add("Weekday", typeof(string));
             worksheetData.Columns.Add("Employee", typeof(string));
             worksheetData.Columns.Add("Week", typeof(int));
+
+            worksheetData.Clear();
             employeeWorksheetManager.GetAllWorksheetsInDB();
             foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
             {
@@ -55,6 +61,8 @@ namespace MediaBazaar.Forms
             }
             employeeWorksheetGrid.DataSource = worksheetData;
         }
+
+
         private void btnAddWorksheet_Click(object sender, EventArgs e)
         {
             AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue();
@@ -73,15 +81,15 @@ namespace MediaBazaar.Forms
         private void InitializeGridViewWorksheet()
         {
             employeeWorksheetGrid.AutoGenerateColumns = false;
-            //dataGridViewWorksheet.DataSource = worksheetData;
+            //employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
-            employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243); // Material blue
-            employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White; // White text
-            employeeWorksheetGrid.DefaultCellStyle.BackColor = Color.White; // White background
-            employeeWorksheetGrid.DefaultCellStyle.ForeColor = Color.FromArgb(33, 33, 33); // Dark text
-            employeeWorksheetGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 200, 200); // Light gray
-            employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33); // Dark text
+            employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243);
+            employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            employeeWorksheetGrid.DefaultCellStyle.BackColor = Color.White;
+            employeeWorksheetGrid.DefaultCellStyle.ForeColor = Color.FromArgb(33, 33, 33);
+            employeeWorksheetGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(200, 200, 200);
+            employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             employeeWorksheetGrid.RowHeadersVisible = false;
             employeeWorksheetGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeWorksheetGrid.Font = new Font("Segoe UI", 10);
@@ -90,17 +98,17 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.BorderStyle = BorderStyle.None;
             employeeWorksheetGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            employeeWorksheetGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235); // Light gray
-            employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33); // Dark text
-            employeeWorksheetGrid.BackgroundColor = Color.White; // White background
+            employeeWorksheetGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235);
+            employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
+            employeeWorksheetGrid.BackgroundColor = Color.White;
 
-			// Add columns
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
-			employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
-            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Week", HeaderText = "Week" });
+            // Add columns
+            /*employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
+            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Week", HeaderText = "Week" });*/
 
             // Apply hover effect
             employeeWorksheetGrid.CellMouseEnter += (sender, e) =>
@@ -206,29 +214,92 @@ namespace MediaBazaar.Forms
             }
         }
 
+        private void employeeWorksheetGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.RowIndex < worksheetData.Rows.Count)
+            {
+                DataGridViewRow selectedRow = employeeWorksheetGrid.Rows[e.RowIndex];
+
+                textBoxEmployee.Text = selectedRow.Cells["Employee"].Value.ToString();
+
+                comboBoxRole.SelectedItem = selectedRow.Cells["Role"].Value.ToString();
+
+                int weekNumber = Convert.ToInt32(selectedRow.Cells["Week"].Value);
+                DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedRow.Cells["WeekDay"].Value.ToString());
+
+                DateTime jan1 = new DateTime(DateTime.Now.Year, 1, 1);
+                while (jan1.DayOfWeek != dayOfWeek)
+                {
+                    jan1 = jan1.AddDays(1);
+                }
+                DateTime result = jan1.AddDays((weekNumber - 1) * 7);
+                dateTimePicker1.Value = result;
+
+                string timeSlot = selectedRow.Cells["TimeSlot"].Value.ToString();
+                if (timeSlot == "Morning")
+                    cbShift.SelectedItem = "Morning";
+                else if (timeSlot == "Afternoon")
+                    cbShift.SelectedItem = "Afternoon";
+                else if (timeSlot == "Evening")
+                    cbShift.SelectedItem = "Evening";
+            }
+        }
+
         private void Search()
         {
             string searchTerm = textBoxSearch.Text.Trim();
-            string selectedRole = comboBoxRoleWorksheet.SelectedItem?.ToString();
+            string selectedRole = comboBoxRole.SelectedItem?.ToString();
 
             var query = worksheetData.AsEnumerable();
 
-            if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")
+            try
             {
-                query = query.Where(row => row.Field<string>("Role") == selectedRole);
-            }
+                if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")
+                {
+                    query = query.Where(row => row.Field<string>("Role") == selectedRole);
+                }
 
-            if (!string.IsNullOrEmpty(searchTerm))
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    query = query.Where(row => row.Field<string>("Role").StartsWith(searchTerm));
+                }
+
+                DataTable searchResults = query.Any() ? query.CopyToDataTable() : worksheetData.Clone();
+                employeeWorksheetGrid.DataSource = searchResults;
+            }
+            catch (Exception ex)
             {
-                query = query.Where(row =>
-                    row.Field<string>("Employee").Contains(searchTerm) ||
-                    row.Field<string>("Weekday").Contains(searchTerm));
+                MessageBox.Show("An error occurred while filtering: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            finally
+            {
+                employeeWorksheetGrid.ClearSelection();
+            }
+        }
 
-            DataTable searchResults = query.Any() ? query.CopyToDataTable() : worksheetData.Clone();
-            employeeWorksheetGrid.DataSource = searchResults;
+        private void cbFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxRole.SelectedItem?.ToString() == "All Roles")
+            {
+                employeeWorksheetGrid.DataSource = worksheetData;
+            }
+            else
+            {
+                Search();
+            }
+        }
 
-            employeeWorksheetGrid.ClearSelection();
+        private void textBoxSearch_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Search();
+            }
+        }
+
+        private void pictureBoxSearch_Click(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }
