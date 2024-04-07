@@ -34,12 +34,10 @@
             employeeWorksheetGrid = new DataGridView();
             groupBox1 = new GroupBox();
             textBoxName = new TextBox();
-            cbStatus = new ComboBox();
             dateTimePicker1 = new DateTimePicker();
             cbShift = new ComboBox();
             lbDate = new Label();
             lbShift = new Label();
-            label6 = new Label();
             pictureBox2 = new PictureBox();
             worksheetDetailsLabel = new Label();
             userPictureBox = new PictureBox();
@@ -83,9 +81,10 @@
             btnAddWorksheet.BorderSize = 2;
             btnAddWorksheet.FlatStyle = FlatStyle.Flat;
             btnAddWorksheet.ForeColor = Color.White;
-            btnAddWorksheet.Location = new Point(47, 317);
+            btnAddWorksheet.Location = new Point(54, 423);
+            btnAddWorksheet.Margin = new Padding(3, 4, 3, 4);
             btnAddWorksheet.Name = "btnAddWorksheet";
-            btnAddWorksheet.Size = new Size(225, 40);
+            btnAddWorksheet.Size = new Size(257, 53);
             btnAddWorksheet.TabIndex = 23;
             btnAddWorksheet.Text = "Add Worksheet";
             btnAddWorksheet.TextColor = Color.White;
@@ -95,11 +94,10 @@
             // employeeWorksheetGrid
             // 
             employeeWorksheetGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            employeeWorksheetGrid.Location = new Point(41, 114);
-            employeeWorksheetGrid.Margin = new Padding(3, 2, 3, 2);
+            employeeWorksheetGrid.Location = new Point(47, 152);
             employeeWorksheetGrid.Name = "employeeWorksheetGrid";
             employeeWorksheetGrid.RowHeadersWidth = 51;
-            employeeWorksheetGrid.Size = new Size(803, 361);
+            employeeWorksheetGrid.Size = new Size(918, 481);
             employeeWorksheetGrid.TabIndex = 22;
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
             // 
@@ -107,12 +105,10 @@
             // 
             groupBox1.BackColor = Color.OrangeRed;
             groupBox1.Controls.Add(textBoxName);
-            groupBox1.Controls.Add(cbStatus);
             groupBox1.Controls.Add(dateTimePicker1);
             groupBox1.Controls.Add(cbShift);
             groupBox1.Controls.Add(lbDate);
             groupBox1.Controls.Add(lbShift);
-            groupBox1.Controls.Add(label6);
             groupBox1.Controls.Add(pictureBox2);
             groupBox1.Controls.Add(btnUnassignedWorksheet);
             groupBox1.Controls.Add(worksheetDetailsLabel);
@@ -121,82 +117,65 @@
             groupBox1.Controls.Add(comboBoxRole);
             groupBox1.Controls.Add(lblRole);
             groupBox1.Controls.Add(lblName);
-            groupBox1.Location = new Point(887, 51);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(1014, 68);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(300, 436);
+            groupBox1.Size = new Size(343, 581);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             // 
             // textBoxName
             // 
             textBoxName.BackColor = SystemColors.Control;
-            textBoxName.Location = new Point(102, 73);
+            textBoxName.Location = new Point(117, 97);
+            textBoxName.Margin = new Padding(3, 4, 3, 4);
             textBoxName.Name = "textBoxName";
             textBoxName.ReadOnly = true;
-            textBoxName.Size = new Size(170, 23);
+            textBoxName.Size = new Size(194, 27);
             textBoxName.TabIndex = 42;
-            // 
-            // cbStatus
-            // 
-            cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(102, 194);
-            cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(170, 23);
-            cbStatus.TabIndex = 40;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(102, 131);
+            dateTimePicker1.Location = new Point(117, 175);
+            dateTimePicker1.Margin = new Padding(3, 4, 3, 4);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(169, 23);
+            dateTimePicker1.Size = new Size(193, 27);
             dateTimePicker1.TabIndex = 39;
             // 
             // cbShift
             // 
             cbShift.FormattingEnabled = true;
             cbShift.Items.AddRange(new object[] { "Morning", "Afternoon", "Evening" });
-            cbShift.Location = new Point(102, 164);
+            cbShift.Location = new Point(117, 219);
+            cbShift.Margin = new Padding(3, 4, 3, 4);
             cbShift.Name = "cbShift";
-            cbShift.Size = new Size(169, 23);
+            cbShift.Size = new Size(193, 28);
             cbShift.TabIndex = 38;
             // 
             // lbDate
             // 
             lbDate.AutoSize = true;
-            lbDate.Location = new Point(14, 137);
+            lbDate.Location = new Point(16, 183);
             lbDate.Name = "lbDate";
-            lbDate.Size = new Size(34, 15);
+            lbDate.Size = new Size(44, 20);
             lbDate.TabIndex = 37;
             lbDate.Text = "Date:";
             // 
             // lbShift
             // 
             lbShift.AutoSize = true;
-            lbShift.Location = new Point(14, 167);
+            lbShift.Location = new Point(16, 223);
             lbShift.Name = "lbShift";
-            lbShift.Size = new Size(34, 15);
+            lbShift.Size = new Size(42, 20);
             lbShift.TabIndex = 36;
             lbShift.Text = "Shift:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(14, 197);
-            label6.Name = "label6";
-            label6.Size = new Size(42, 15);
-            label6.TabIndex = 31;
-            label6.Text = "Status:";
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.DimGray;
-            pictureBox2.Location = new Point(18, 52);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(21, 69);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(254, 2);
+            pictureBox2.Size = new Size(290, 3);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
@@ -206,9 +185,9 @@
             worksheetDetailsLabel.BackColor = Color.Transparent;
             worksheetDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             worksheetDetailsLabel.ForeColor = Color.Black;
-            worksheetDetailsLabel.Location = new Point(47, 35);
+            worksheetDetailsLabel.Location = new Point(54, 47);
             worksheetDetailsLabel.Name = "worksheetDetailsLabel";
-            worksheetDetailsLabel.Size = new Size(101, 15);
+            worksheetDetailsLabel.Size = new Size(130, 20);
             worksheetDetailsLabel.TabIndex = 26;
             worksheetDetailsLabel.Text = "Worksheet details";
             // 
@@ -216,10 +195,9 @@
             // 
             userPictureBox.BackColor = Color.OrangeRed;
             userPictureBox.Image = (Image)resources.GetObject("userPictureBox.Image");
-            userPictureBox.Location = new Point(5, 22);
-            userPictureBox.Margin = new Padding(3, 2, 3, 2);
+            userPictureBox.Location = new Point(6, 29);
             userPictureBox.Name = "userPictureBox";
-            userPictureBox.Size = new Size(53, 29);
+            userPictureBox.Size = new Size(61, 39);
             userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             userPictureBox.TabIndex = 25;
             userPictureBox.TabStop = false;
@@ -228,43 +206,42 @@
             // 
             comboBoxRole.BackColor = SystemColors.Control;
             comboBoxRole.DropDownHeight = 108;
+            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRole.Enabled = false;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.ItemHeight = 15;
-            comboBoxRole.Items.AddRange(new object[] { "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
-            comboBoxRole.Location = new Point(102, 101);
-            comboBoxRole.Margin = new Padding(3, 2, 3, 2);
+            comboBoxRole.ItemHeight = 20;
+            comboBoxRole.Items.AddRange(new object[] { "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
+            comboBoxRole.Location = new Point(117, 135);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(169, 23);
+            comboBoxRole.Size = new Size(193, 28);
             comboBoxRole.TabIndex = 16;
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(14, 109);
+            lblRole.Location = new Point(16, 145);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(33, 15);
+            lblRole.Size = new Size(42, 20);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(14, 81);
+            lblName.Location = new Point(16, 108);
             lblName.Margin = new Padding(2, 0, 2, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(62, 15);
+            lblName.Size = new Size(78, 20);
             lblName.TabIndex = 0;
             lblName.Text = "Employee:";
             // 
             // textBoxSearch
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
-            textBoxSearch.Location = new Point(41, 74);
-            textBoxSearch.Margin = new Padding(3, 2, 3, 2);
+            textBoxSearch.Location = new Point(47, 99);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(313, 23);
+            textBoxSearch.Size = new Size(357, 27);
             textBoxSearch.TabIndex = 26;
             textBoxSearch.Text = "Search...";
             textBoxSearch.KeyPress += textBoxSearch_KeyPress;
@@ -275,10 +252,9 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(333, 73);
-            pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxSearch.Location = new Point(381, 97);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(21, 23);
+            pictureBoxSearch.Size = new Size(24, 31);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 28;
             pictureBoxSearch.TabStop = false;
@@ -290,26 +266,28 @@
             cbFilter.DropDownHeight = 108;
             cbFilter.FormattingEnabled = true;
             cbFilter.IntegralHeight = false;
-            cbFilter.ItemHeight = 15;
+            cbFilter.ItemHeight = 20;
             cbFilter.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
-            cbFilter.Location = new Point(451, 73);
+            cbFilter.Location = new Point(515, 97);
+            cbFilter.Margin = new Padding(3, 4, 3, 4);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(306, 23);
+            cbFilter.Size = new Size(349, 28);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
             // 
             // UserControlWorksheet
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(cbFilter);
             Controls.Add(pictureBoxSearch);
             Controls.Add(textBoxSearch);
             Controls.Add(groupBox1);
             Controls.Add(employeeWorksheetGrid);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "UserControlWorksheet";
-            Size = new Size(1190, 559);
+            Size = new Size(1360, 745);
             ((System.ComponentModel.ISupportInitialize)employeeWorksheetGrid).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -336,12 +314,10 @@
         private TextBox textBoxSearch;
         private ComboBox comboBoxRoleWorksheet;
         private PictureBox pictureBoxSearch;
-        private Label label6;
         private DateTimePicker dateTimePicker1;
         private ComboBox cbShift;
         private Label lbDate;
         private Label lbShift;
-        private ComboBox cbStatus;
         private CustomButton btnAssignWorksheet;
         private TextBox textBoxName;
         private ComboBox cbFilter;
