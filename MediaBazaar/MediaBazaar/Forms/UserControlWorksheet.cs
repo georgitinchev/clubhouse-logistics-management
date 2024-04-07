@@ -83,6 +83,7 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.AutoGenerateColumns = false;
             //employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            employeeWorksheetGrid.AllowUserToAddRows = false;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(33, 150, 243);
             employeeWorksheetGrid.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
@@ -300,6 +301,16 @@ namespace MediaBazaar.Forms
         private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
             Search();
+        }
+
+        private void btnAddWorksheet_Click_1(object sender, EventArgs e)
+        {
+            // make a constructor for the add worksheet dialogue and pass to it the employeemanager and the employeeworksheet manager 
+            AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue(employeeManager, employeeWorksheetManager);
+            addWorksheetDialogue.ShowDialog();
+            PopulateWorksheetData();
+            employeeWorksheetGrid.DataSource = worksheetData;
+            employeeWorksheetGrid.ClearSelection();
         }
     }
 }

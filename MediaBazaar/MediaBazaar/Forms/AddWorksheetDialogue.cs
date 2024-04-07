@@ -14,14 +14,14 @@ namespace MediaBazaar.Forms
 {
     public partial class AddWorksheetDialogue : Form
     {
-        private EmployeeWorksheetManager employeeWorksheetManager;
-        private EmployeeManager employeeManager;
+        private EmployeeWorksheetManager _employeeWorksheetManager;
+        private EmployeeManager _employeeManager;
 
-        public AddWorksheetDialogue()
+        public AddWorksheetDialogue(EmployeeManager employeeManager, EmployeeWorksheetManager worksheetManager)
         {
             InitializeComponent();
-            employeeWorksheetManager = new EmployeeWorksheetManager();
-            employeeManager = new EmployeeManager();
+            _employeeWorksheetManager = worksheetManager;
+            _employeeManager = employeeManager;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -44,7 +44,7 @@ namespace MediaBazaar.Forms
 
                 EmployeeWorksheet worksheet = new EmployeeWorksheet(timeSlot, weekDay, employeeId, weekNr);
 
-                employeeWorksheetManager.AddWorksheetToDB(worksheet);
+                _employeeWorksheetManager.AddWorksheetToDB(worksheet);
 
                 MessageBox.Show("Worksheet created and added to the database successfully.");
             }
@@ -79,7 +79,7 @@ namespace MediaBazaar.Forms
 
         private Employee GetEmployeeByName(string name)
         {
-            return employeeManager.GetAllEmployees().FirstOrDefault(emp => $"{emp.FirstName} {emp.LastName}" == name);
+            return _employeeManager.GetAllEmployees().FirstOrDefault(emp => $"{emp.FirstName} {emp.LastName}" == name);
         }
 
         private int GetEmployeeIdByName(string name)
@@ -87,8 +87,5 @@ namespace MediaBazaar.Forms
             Employee employee = GetEmployeeByName(name);
             return employee != null ? employee.EmployeeID : -1;
         }
-
-
     }
-
 }
