@@ -348,7 +348,6 @@
             // 
             comboBoxRole.Cursor = Cursors.Hand;
             comboBoxRole.DropDownHeight = 108;
-            comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 20;
@@ -357,6 +356,7 @@
             comboBoxRole.Name = "comboBoxRole";
             comboBoxRole.Size = new Size(306, 28);
             comboBoxRole.TabIndex = 18;
+            comboBoxRole.Text = "Choose Role";
             comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
             // 
             // textBoxSearch

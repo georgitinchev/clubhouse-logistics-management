@@ -36,9 +36,12 @@ namespace MediaBazaar.Forms
             PopulateWorksheetData();
         }
 
-        private void UserControlWorksheet_Load_1(object sender, EventArgs e)
+        private void UserControlWorksheet_Load(object sender, EventArgs e)
         {
             InitializeGridViewWorksheet();
+            employeeWorksheetGrid.ClearSelection();
+            groupBox1.Visible = false;
+            UpdateLayout();
         }
 
         public void PopulateWorksheetData()
@@ -63,14 +66,14 @@ namespace MediaBazaar.Forms
         }
 
 
-        private void btnAddWorksheet_Click(object sender, EventArgs e)
+        /*private void btnAddWorksheet_Click(object sender, EventArgs e)
         {
             AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue();
             addWorksheetDialogue.ShowDialog();
             PopulateWorksheetData();
             employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.ClearSelection();
-        }
+        }*/
 
         private void InitializeFocus()
         {
@@ -130,13 +133,6 @@ namespace MediaBazaar.Forms
 
             employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
             employeeWorksheetGrid.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
-        }
-
-        private void UserControlWorksheet_Load(object sender, EventArgs e)
-        {
-            employeeWorksheetGrid.ClearSelection();
-            groupBox1.Visible = false;
-            UpdateLayout();
         }
 
         private void dataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
@@ -199,14 +195,6 @@ namespace MediaBazaar.Forms
             }
         }
 
-        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                Search();
-            }
-        }
-
         private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)Keys.Enter)
@@ -221,7 +209,7 @@ namespace MediaBazaar.Forms
             {
                 DataGridViewRow selectedRow = employeeWorksheetGrid.Rows[e.RowIndex];
 
-                textBoxEmployee.Text = selectedRow.Cells["Employee"].Value.ToString();
+                textBoxName.Text = selectedRow.Cells["Employee"].Value.ToString();
 
                 comboBoxRole.SelectedItem = selectedRow.Cells["Role"].Value.ToString();
 
@@ -285,14 +273,6 @@ namespace MediaBazaar.Forms
                 employeeWorksheetGrid.DataSource = worksheetData;
             }
             else
-            {
-                Search();
-            }
-        }
-
-        private void textBoxSearch_KeyDown_1(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
             {
                 Search();
             }
