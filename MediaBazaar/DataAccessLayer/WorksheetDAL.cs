@@ -44,7 +44,7 @@ namespace DataAccessLayer
                             (int)reader["Id"],
                             (int)reader["TimeSlot"],
                             (int)reader["WeekDay"],
-                            (int)reader["EmployeeId"],
+                             reader["EmployeeId"] == DBNull.Value ? (int?)null : (int)reader["EmployeeId"],
                             (int)reader["WeekNr"]
                         );
                     }
@@ -63,13 +63,11 @@ namespace DataAccessLayer
                 var command = new SqlCommand(
                     "UPDATE EmployeeWorksheet SET TimeSlot = @TimeSlot, WeekDay = @WeekDay, " +
                     "EmployeeId = @EmployeeId, WeekNr = @WeekNr WHERE Id = @Id", connection);
-
                 command.Parameters.AddWithValue("@Id", worksheet.Id);
                 command.Parameters.AddWithValue("@TimeSlot", worksheet.TimeSlot);
                 command.Parameters.AddWithValue("@WeekDay", worksheet.WeekDay);
-                command.Parameters.AddWithValue("@EmployeeId", worksheet.EmployeeId);
+                command.Parameters.AddWithValue("@EmployeeId", worksheet.EmployeeId ?? (object)DBNull.Value);
                 command.Parameters.AddWithValue("@WeekNr", worksheet.WeekNr);
-
                 command.ExecuteNonQuery();
             }
         }
@@ -100,7 +98,7 @@ namespace DataAccessLayer
                             (int)reader["Id"],
                             (int)reader["TimeSlot"],
                             (int)reader["WeekDay"],
-                            (int)reader["EmployeeId"],
+                            reader["EmployeeId"] == DBNull.Value ? (int?)null : (int)reader["EmployeeId"],
                             (int) reader["WeekNr"]
                         ));
                     }

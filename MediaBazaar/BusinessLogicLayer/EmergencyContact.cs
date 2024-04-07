@@ -25,7 +25,5 @@ namespace MediaBazaar.Classes
             Email = email;
             
         }
-
-        
     }
 }

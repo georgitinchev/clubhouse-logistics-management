@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlWorksheet));
-            btnRemoveWorksheet = new CustomButton();
+            btnUnassignedWorksheet = new CustomButton();
             btnAddWorksheet = new CustomButton();
             employeeWorksheetGrid = new DataGridView();
             groupBox1 = new GroupBox();
@@ -54,24 +54,23 @@
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
             SuspendLayout();
             // 
-            // btnRemoveWorksheet
+            // btnUnassignedWorksheet
             // 
-            btnRemoveWorksheet.BackColor = Color.DarkOrange;
-            btnRemoveWorksheet.BackgroundColor = Color.DarkOrange;
-            btnRemoveWorksheet.BorderColor = Color.White;
-            btnRemoveWorksheet.BorderRadius = 15;
-            btnRemoveWorksheet.BorderSize = 2;
-            btnRemoveWorksheet.FlatStyle = FlatStyle.Flat;
-            btnRemoveWorksheet.ForeColor = Color.White;
-            btnRemoveWorksheet.Location = new Point(53, 484);
-            btnRemoveWorksheet.Margin = new Padding(3, 4, 3, 4);
-            btnRemoveWorksheet.Name = "btnRemoveWorksheet";
-            btnRemoveWorksheet.Size = new Size(257, 53);
-            btnRemoveWorksheet.TabIndex = 24;
-            btnRemoveWorksheet.Text = "Remove Worksheet";
-            btnRemoveWorksheet.TextColor = Color.White;
-            btnRemoveWorksheet.UseVisualStyleBackColor = false;
-            btnRemoveWorksheet.Click += btnRemoveWorksheet_Click;
+            btnUnassignedWorksheet.BackColor = Color.DarkOrange;
+            btnUnassignedWorksheet.BackgroundColor = Color.DarkOrange;
+            btnUnassignedWorksheet.BorderColor = Color.White;
+            btnUnassignedWorksheet.BorderRadius = 15;
+            btnUnassignedWorksheet.BorderSize = 2;
+            btnUnassignedWorksheet.FlatStyle = FlatStyle.Flat;
+            btnUnassignedWorksheet.ForeColor = Color.White;
+            btnUnassignedWorksheet.Location = new Point(46, 363);
+            btnUnassignedWorksheet.Name = "btnUnassignedWorksheet";
+            btnUnassignedWorksheet.Size = new Size(225, 40);
+            btnUnassignedWorksheet.TabIndex = 24;
+            btnUnassignedWorksheet.Text = "Unassign Worksheet";
+            btnUnassignedWorksheet.TextColor = Color.White;
+            btnUnassignedWorksheet.UseVisualStyleBackColor = false;
+            btnUnassignedWorksheet.Click += btnUnassignedWorksheet_Click_1;
             // 
             // btnAddWorksheet
             // 
@@ -111,7 +110,7 @@
             groupBox1.Controls.Add(lbDate);
             groupBox1.Controls.Add(lbShift);
             groupBox1.Controls.Add(pictureBox2);
-            groupBox1.Controls.Add(btnRemoveWorksheet);
+            groupBox1.Controls.Add(btnUnassignedWorksheet);
             groupBox1.Controls.Add(worksheetDetailsLabel);
             groupBox1.Controls.Add(btnAddWorksheet);
             groupBox1.Controls.Add(userPictureBox);
@@ -302,7 +301,7 @@
 
         #endregion
 
-        private CustomButton btnRemoveWorksheet;
+        private CustomButton btnUnassignedWorksheet;
         private CustomButton btnAddWorksheet;
         private DataGridView employeeWorksheetGrid;
         private GroupBox groupBox1;

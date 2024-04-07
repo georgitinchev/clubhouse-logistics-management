@@ -60,15 +60,17 @@ namespace MediaBazaar.Forms
             {
                 string employeeName = "Unassigned";
                 string employeeRole = "Unassigned";
-                if (worksheet.employee != 0)
+
+                if (worksheet.employee.HasValue)
                 {
-                    Employee employee = employeeManager.GetEmployeeById(worksheet.employee);
+                    Employee employee = employeeManager.GetEmployeeById(worksheet.employee.Value);
                     if (employee != null)
                     {
                         employeeName = employee.GetFullName();
                         employeeRole = employee.Role.ToString();
                     }
                 }
+
                 worksheetData.Rows.Add(worksheet.id, employeeRole, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(), employeeName, worksheet.weekNr);
             }
             employeeWorksheetGrid.DataSource = worksheetData;
@@ -210,13 +212,10 @@ namespace MediaBazaar.Forms
             if (e.RowIndex >= 0 && e.RowIndex < worksheetData.Rows.Count)
             {
                 DataGridViewRow selectedRow = employeeWorksheetGrid.Rows[e.RowIndex];
-
                 textBoxName.Text = selectedRow.Cells["Employee"].Value.ToString();
                 comboBoxRole.SelectedItem = selectedRow.Cells["Role"].Value.ToString();
-
                 int weekNumber = Convert.ToInt32(selectedRow.Cells["Week"].Value);
                 DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedRow.Cells["WeekDay"].Value.ToString());
-
                 DateTime jan1 = new DateTime(DateTime.Now.Year, 1, 1);
                 while (jan1.DayOfWeek != dayOfWeek)
                 {
@@ -224,7 +223,6 @@ namespace MediaBazaar.Forms
                 }
                 DateTime result = jan1.AddDays((weekNumber - 1) * 7);
                 dateTimePicker1.Value = result;
-
                 string timeSlot = selectedRow.Cells["TimeSlot"].Value.ToString();
                 if (timeSlot == "Morning")
                     cbShift.SelectedItem = "Morning";
@@ -304,8 +302,24 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.ClearSelection();
         }
 
-        private void btnRemoveWorksheet_Click(object sender, EventArgs e)
+        private void btnUnassignedWorksheet_Click_1(object sender, EventArgs e)
         {
+            if (employeeWorksheetGrid.SelectedRows.Count > 0)
+            {
+                int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
+                int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
+                EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
+                if (worksheet.employee.HasValue)
+                {
+                    employeeWorksheetManager.UnassignWorksheet(worksheet);
+                    PopulateWorksheetData();
+                    MessageBox.Show("Worksheet unassigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("This worksheet is already unassigned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }
