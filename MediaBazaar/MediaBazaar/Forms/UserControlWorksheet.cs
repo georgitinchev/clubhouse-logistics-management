@@ -58,9 +58,8 @@ namespace MediaBazaar.Forms
             employeeWorksheetManager.GetAllWorksheetsInDB();
             foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
             {
-                string employeeName = "Unassigned";
-                string employeeRole = "Unassigned";
-
+                string employeeName = "*Unassigned*";
+                string employeeRole = "*Unassigned*";
                 if (worksheet.employee.HasValue)
                 {
                     Employee employee = employeeManager.GetEmployeeById(worksheet.employee.Value);
@@ -76,7 +75,6 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.ClearSelection();
         }
-
 
         /*private void btnAddWorksheet_Click(object sender, EventArgs e)
         {
@@ -212,7 +210,24 @@ namespace MediaBazaar.Forms
             if (e.RowIndex >= 0 && e.RowIndex < worksheetData.Rows.Count)
             {
                 DataGridViewRow selectedRow = employeeWorksheetGrid.Rows[e.RowIndex];
-                textBoxName.Text = selectedRow.Cells["Employee"].Value.ToString();
+                string employeeName = selectedRow.Cells["Employee"].Value.ToString();
+                if (employeeName == "Unassigned ✖️")
+                {
+                    textBoxName.Items.Clear();
+                    List<Employee> employees = employeeManager.GetAllEmployees();
+                    foreach (Employee employee in employees)
+                    {
+                        textBoxName.Items.Add(employee.GetFullName());
+                    }
+                    textBoxName.Enabled = true;
+                }
+                else
+                {
+                    textBoxName.Items.Clear();
+                    textBoxName.Items.Add(employeeName);
+                    textBoxName.SelectedIndex = 0;
+                    textBoxName.Enabled = false;
+                }
                 comboBoxRole.SelectedItem = selectedRow.Cells["Role"].Value.ToString();
                 int weekNumber = Convert.ToInt32(selectedRow.Cells["Week"].Value);
                 DayOfWeek dayOfWeek = (DayOfWeek)Enum.Parse(typeof(DayOfWeek), selectedRow.Cells["WeekDay"].Value.ToString());
@@ -318,6 +333,48 @@ namespace MediaBazaar.Forms
                 else
                 {
                     MessageBox.Show("This worksheet is already unassigned", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnRemoveWorksheet_Click(object sender, EventArgs e)
+        {
+            if(employeeWorksheetGrid.SelectedRows.Count > 0)
+            {
+                int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
+                int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
+                EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
+                if(worksheet != null)
+                {
+                    employeeWorksheetManager.DeleteWorksheet(worksheet);
+                    employeeWorksheetManager.DeleteWorksheetInDB(worksheet);
+                    PopulateWorksheetData();
+                    MessageBox.Show("Worksheet removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("This worksheet does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnAssignWorksheet_Click(object sender, EventArgs e)
+        {
+            if(employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
+            {
+                int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
+                int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
+                EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
+                string employeeName = textBoxName.SelectedItem.ToString();
+                Employee employee = employeeManager.GetEmployeeByName(employeeName);
+                if(employee != null)
+                {
+                    worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay,employee.EmployeeID,worksheet.weekNr);
+                    employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
+                    PopulateWorksheetData();
+                    MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
+                {
+                    MessageBox.Show("Employee does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

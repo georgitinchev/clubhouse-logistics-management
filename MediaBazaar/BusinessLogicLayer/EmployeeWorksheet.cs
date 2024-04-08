@@ -39,5 +39,13 @@ namespace MediaBazaar
 		{
 			employee = null;
         }
+
+		public void UpdateWorksheet(WorkingTime timeSlot, WeekDayEnum weekDay, int? employee, int weekNr)
+		{
+            this.timeSlot = timeSlot;
+            this.weekDay = weekDay;
+            this.employee = employee;
+            this.weekNr = weekNr;
+        }
 	}
 }

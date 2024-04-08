@@ -13,7 +13,6 @@ namespace MediaBazaar.Classes
         public ContractManager _contractManager { get; private set; }
         public EmployeeDAL employeeDAL { get; private set; }
         public List<Employee> employees { get; private set; }
-
         public EmployeeManager()
         {
             _emergencyContactManager = new EmergencyContactManager();
@@ -22,7 +21,6 @@ namespace MediaBazaar.Classes
             employeeDAL = new EmployeeDAL();
             GetEmployeesFromDB();
         }
-
         public void AddEmployee(Employee newEmployee)
         {
             if (employees.Any(e => e.EmployeeID == newEmployee.EmployeeID))
@@ -32,7 +30,6 @@ namespace MediaBazaar.Classes
             employees.Add(newEmployee);
             employeeDAL.CreateEmployee(TransformEmployeeToDTO(newEmployee));
         }
-
         public Employee SearchEmployee(int id)
         {
             foreach (Employee emp in employees)
@@ -134,7 +131,6 @@ namespace MediaBazaar.Classes
             throw new InvalidOperationException("Emergency contact or contract is null.");
         }
 
-
         public EmployeeDTO TransformEmployeeToDTO(Employee employee)
         {
             EmployeeDTO employeeDTO = new EmployeeDTO(
@@ -151,7 +147,7 @@ namespace MediaBazaar.Classes
                 employee.IsManager,
                 employee.Contract.Id,
                 employee.EmergencyContact.Id
-                ); ;
+                );
             return employeeDTO;
         }
 
@@ -177,6 +173,10 @@ namespace MediaBazaar.Classes
                 return true;
             }
             return false;
+        }
+        public Employee GetEmployeeByName(string name)
+        {
+            return employees.FirstOrDefault(e => e.FirstName + " " + e.LastName == name);
         }
     }
 }
