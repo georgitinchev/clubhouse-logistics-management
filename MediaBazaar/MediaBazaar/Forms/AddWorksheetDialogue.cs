@@ -25,7 +25,6 @@ namespace MediaBazaar.Forms
             ReloadEmployees();
         }
 
-
         private void ReloadEmployees()
         {
             _employeeManager.GetEmployeesFromDB();
@@ -89,6 +88,10 @@ namespace MediaBazaar.Forms
             if (string.IsNullOrEmpty(textBoxWeekNumber.Text) || !int.TryParse(textBoxWeekNumber.Text, out int weekNr))
             {
                 throw new Exception("Week number must be a valid integer.");
+            }
+            if (weekNr < 1 || weekNr > 52)
+            {
+                throw new Exception("Week number must be between 1 and 52.");
             }
         }
 
