@@ -58,8 +58,8 @@ namespace MediaBazaar.Forms
             employeeWorksheetManager.GetAllWorksheetsInDB();
             foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
             {
-                string employeeName = "*Unassigned*";
-                string employeeRole = "*Unassigned*";
+                string employeeName = "Unassigned ✖️";
+                string employeeRole = "Unassigned ✖️";
                 if (worksheet.employee.HasValue)
                 {
                     Employee employee = employeeManager.GetEmployeeById(worksheet.employee.Value);
