@@ -174,7 +174,6 @@
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Media Bazaar Managment";
-            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

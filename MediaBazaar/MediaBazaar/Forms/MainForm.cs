@@ -25,11 +25,6 @@ namespace MediaBazaar
 			userControlWorksheet.Hide();
 		}
 
-		private void Form1_Load(object sender, EventArgs e)
-		{
-
-		}
-
 		private void btnDashboard_Click(object sender, EventArgs e)
 		{
 			userControlWorksheet.Hide();
@@ -45,8 +40,16 @@ namespace MediaBazaar
 		private void logOutBtn_Click(object sender, EventArgs e)
 		{
 			Authentication authForm = new Authentication();
-			this.Close();
-			authForm.Show();
-		}
+            this.Hide(); 
+            authForm.ShowDialog(); 
+            if (authForm.isAuthenticated)
+            {
+                this.Show();
+            }
+            else
+            {
+                this.Close();
+            }
+        }
 	}
 }
