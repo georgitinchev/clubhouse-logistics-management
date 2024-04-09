@@ -79,7 +79,7 @@ namespace DataAccessLayer
             {
                 var command = new SqlCommand(
                     "UPDATE Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, Password = @Password, " +
-                    " Address = @Address, PhoneNumber = @PhoneNumber, Role = @Role " +
+                    " Address = @Address, PhoneNumber = @PhoneNumber,IsManager =@IsManager, Role = @Role " +
                     "WHERE Id = @Id", connection);
 
                 command.Parameters.AddWithValue("@Id", employee.Id);
@@ -92,6 +92,7 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
                 
                 command.Parameters.AddWithValue("@Role", employee.Role);
+                command.Parameters.AddWithValue("@IsManager", employee.IsManager);
                 
 
                 command.ExecuteNonQuery();

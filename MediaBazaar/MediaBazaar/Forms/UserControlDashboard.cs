@@ -373,8 +373,8 @@ namespace MediaBazaar.Forms
                                 textBoxPhone.Text,
                                 textBoxAddress.Text,
                                 comboBoxRoleDetails.SelectedIndex + 1,
-                                employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex + 1))
-                            );
+                                employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex))
+                                );
 
                                 employeeManager.employeeDAL.UpdateEmployee(employee);
                                 PopulateDataTable(employeeData);
