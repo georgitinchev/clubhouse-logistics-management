@@ -160,7 +160,17 @@ namespace MediaBazaar
 			throw new Exception("Worksheet was null");
 		}
 
-		public int GetNextId()
+        public void UnassignAllWorksheetsOfEmployee(int employeeId)
+        {
+            var employeeWorksheets = assignedWorksheets.Where(w => w.employee == employeeId).ToList();
+            foreach (var worksheet in employeeWorksheets)
+            {
+                UnassignWorksheet(worksheet);
+            }
+        }
+
+
+        public int GetNextId()
 		{
 			return worksheetDAL.GetNextWorksheetId();
 		}

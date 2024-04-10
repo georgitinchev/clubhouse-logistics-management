@@ -57,9 +57,10 @@
             panel1.Controls.Add(pictureBoxJupiter);
             panel1.Controls.Add(btnWorksheet);
             panel1.Controls.Add(btnDashboard);
-            panel1.Location = new Point(-2, -2);
+            panel1.Location = new Point(-3, -3);
+            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1188, 61);
+            panel1.Size = new Size(1697, 102);
             panel1.TabIndex = 1;
             // 
             // logOutBtn
@@ -72,9 +73,10 @@
             logOutBtn.FlatStyle = FlatStyle.Flat;
             logOutBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logOutBtn.ForeColor = Color.Black;
-            logOutBtn.Location = new Point(1087, 14);
+            logOutBtn.Location = new Point(1557, 13);
+            logOutBtn.Margin = new Padding(4, 5, 4, 5);
             logOutBtn.Name = "logOutBtn";
-            logOutBtn.Size = new Size(87, 35);
+            logOutBtn.Size = new Size(124, 58);
             logOutBtn.TabIndex = 23;
             logOutBtn.Text = "Logout 🔑";
             logOutBtn.TextColor = Color.Black;
@@ -84,20 +86,20 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(255, 128, 0);
-            pictureBox1.Location = new Point(671, 51);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(959, 85);
+            pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(150, 2);
+            pictureBox1.Size = new Size(214, 3);
             pictureBox1.TabIndex = 22;
             pictureBox1.TabStop = false;
             // 
             // lineEmployee
             // 
             lineEmployee.BackColor = Color.FromArgb(255, 128, 0);
-            lineEmployee.Location = new Point(430, 52);
-            lineEmployee.Margin = new Padding(3, 2, 3, 2);
+            lineEmployee.Location = new Point(614, 87);
+            lineEmployee.Margin = new Padding(4, 3, 4, 3);
             lineEmployee.Name = "lineEmployee";
-            lineEmployee.Size = new Size(150, 2);
+            lineEmployee.Size = new Size(214, 3);
             lineEmployee.TabIndex = 21;
             lineEmployee.TabStop = false;
             // 
@@ -105,10 +107,10 @@
             // 
             pictureBoxLogo.BackColor = Color.White;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
-            pictureBoxLogo.Location = new Point(602, 8);
-            pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxLogo.Location = new Point(860, 13);
+            pictureBoxLogo.Margin = new Padding(4, 3, 4, 3);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(53, 46);
+            pictureBoxLogo.Size = new Size(76, 77);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 4;
             pictureBoxLogo.TabStop = false;
@@ -117,10 +119,10 @@
             // 
             pictureBoxJupiter.BackColor = Color.OrangeRed;
             pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
-            pictureBoxJupiter.Location = new Point(25, -4);
-            pictureBoxJupiter.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxJupiter.Location = new Point(36, -7);
+            pictureBoxJupiter.Margin = new Padding(4, 3, 4, 3);
             pictureBoxJupiter.Name = "pictureBoxJupiter";
-            pictureBoxJupiter.Size = new Size(155, 55);
+            pictureBoxJupiter.Size = new Size(221, 92);
             pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxJupiter.TabIndex = 18;
             pictureBoxJupiter.TabStop = false;
@@ -135,9 +137,10 @@
             btnWorksheet.FlatStyle = FlatStyle.Flat;
             btnWorksheet.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWorksheet.ForeColor = Color.Black;
-            btnWorksheet.Location = new Point(671, 8);
+            btnWorksheet.Location = new Point(959, 13);
+            btnWorksheet.Margin = new Padding(4, 5, 4, 5);
             btnWorksheet.Name = "btnWorksheet";
-            btnWorksheet.Size = new Size(150, 35);
+            btnWorksheet.Size = new Size(214, 58);
             btnWorksheet.TabIndex = 2;
             btnWorksheet.Text = "Worksheet";
             btnWorksheet.TextColor = Color.Black;
@@ -154,9 +157,10 @@
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDashboard.ForeColor = Color.Black;
-            btnDashboard.Location = new Point(432, 8);
+            btnDashboard.Location = new Point(617, 13);
+            btnDashboard.Margin = new Padding(4, 5, 4, 5);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(150, 35);
+            btnDashboard.Size = new Size(214, 58);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextColor = Color.Black;
@@ -165,12 +169,12 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1184, 511);
+            ClientSize = new Size(1691, 852);
             Controls.Add(panel1);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Media Bazaar Managment";

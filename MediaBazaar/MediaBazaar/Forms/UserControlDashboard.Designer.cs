@@ -66,11 +66,11 @@
             // userDataGridView
             // 
             userDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            userDataGridView.Location = new Point(41, 114);
-            userDataGridView.Margin = new Padding(3, 2, 3, 2);
+            userDataGridView.Location = new Point(59, 220);
+            userDataGridView.Margin = new Padding(4, 3, 4, 3);
             userDataGridView.Name = "userDataGridView";
             userDataGridView.RowHeadersWidth = 51;
-            userDataGridView.Size = new Size(803, 373);
+            userDataGridView.Size = new Size(1147, 622);
             userDataGridView.TabIndex = 22;
             userDataGridView.CellClick += userDataGridView_CellClick;
             userDataGridView.SelectionChanged += userDataGridView_SelectionChanged;
@@ -99,11 +99,11 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(lblRole);
             groupBox1.Controls.Add(lblName);
-            groupBox1.Location = new Point(887, 51);
-            groupBox1.Margin = new Padding(3, 2, 3, 2);
+            groupBox1.Location = new Point(1263, 96);
+            groupBox1.Margin = new Padding(4, 3, 4, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(300, 436);
+            groupBox1.Padding = new Padding(4, 3, 4, 3);
+            groupBox1.Size = new Size(429, 727);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             // 
@@ -111,90 +111,100 @@
             // 
             dateTimePickerBirthday.Enabled = false;
             dateTimePickerBirthday.Format = DateTimePickerFormat.Short;
-            dateTimePickerBirthday.Location = new Point(117, 249);
+            dateTimePickerBirthday.Location = new Point(167, 415);
+            dateTimePickerBirthday.Margin = new Padding(4, 5, 4, 5);
             dateTimePickerBirthday.Name = "dateTimePickerBirthday";
-            dateTimePickerBirthday.Size = new Size(169, 23);
+            dateTimePickerBirthday.Size = new Size(240, 31);
             dateTimePickerBirthday.TabIndex = 41;
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(16, 249);
+            label5.Location = new Point(23, 415);
+            label5.Margin = new Padding(4, 0, 4, 0);
             label5.Name = "label5";
-            label5.Size = new Size(54, 15);
+            label5.Size = new Size(81, 25);
             label5.TabIndex = 39;
             label5.Text = "Birthday:";
             // 
             // textBoxAddress
             // 
             textBoxAddress.BackColor = SystemColors.ControlDark;
-            textBoxAddress.Location = new Point(116, 276);
+            textBoxAddress.Location = new Point(166, 460);
+            textBoxAddress.Margin = new Padding(4, 5, 4, 5);
             textBoxAddress.Name = "textBoxAddress";
             textBoxAddress.ReadOnly = true;
-            textBoxAddress.Size = new Size(169, 23);
+            textBoxAddress.Size = new Size(240, 31);
             textBoxAddress.TabIndex = 38;
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(15, 278);
+            label6.Location = new Point(21, 463);
+            label6.Margin = new Padding(4, 0, 4, 0);
             label6.Name = "label6";
-            label6.Size = new Size(52, 15);
+            label6.Size = new Size(81, 25);
             label6.TabIndex = 37;
             label6.Text = "Address:";
             // 
             // textBoxPhone
             // 
             textBoxPhone.BackColor = SystemColors.ControlDark;
-            textBoxPhone.Location = new Point(117, 220);
+            textBoxPhone.Location = new Point(167, 367);
+            textBoxPhone.Margin = new Padding(4, 5, 4, 5);
             textBoxPhone.Name = "textBoxPhone";
             textBoxPhone.ReadOnly = true;
-            textBoxPhone.Size = new Size(169, 23);
+            textBoxPhone.Size = new Size(240, 31);
             textBoxPhone.TabIndex = 38;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(16, 222);
+            label4.Location = new Point(23, 370);
+            label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
-            label4.Size = new Size(91, 15);
+            label4.Size = new Size(136, 25);
             label4.TabIndex = 37;
             label4.Text = "Phone Number:";
             // 
             // textBoxBSN
             // 
             textBoxBSN.BackColor = SystemColors.ControlDark;
-            textBoxBSN.Location = new Point(117, 194);
+            textBoxBSN.Location = new Point(167, 323);
+            textBoxBSN.Margin = new Padding(4, 5, 4, 5);
             textBoxBSN.Name = "textBoxBSN";
             textBoxBSN.ReadOnly = true;
-            textBoxBSN.Size = new Size(169, 23);
+            textBoxBSN.Size = new Size(240, 31);
             textBoxBSN.TabIndex = 36;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(16, 194);
+            label3.Location = new Point(23, 323);
+            label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
-            label3.Size = new Size(32, 15);
+            label3.Size = new Size(49, 25);
             label3.TabIndex = 35;
             label3.Text = "BSN:";
             // 
             // textBoxPassword
             // 
             textBoxPassword.BackColor = SystemColors.ControlDark;
-            textBoxPassword.Location = new Point(117, 165);
+            textBoxPassword.Location = new Point(167, 275);
+            textBoxPassword.Margin = new Padding(4, 5, 4, 5);
             textBoxPassword.Name = "textBoxPassword";
             textBoxPassword.ReadOnly = true;
-            textBoxPassword.Size = new Size(169, 23);
+            textBoxPassword.Size = new Size(240, 31);
             textBoxPassword.TabIndex = 34;
             textBoxPassword.UseSystemPasswordChar = true;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(16, 165);
+            label2.Location = new Point(23, 275);
+            label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
-            label2.Size = new Size(60, 15);
+            label2.Size = new Size(91, 25);
             label2.TabIndex = 33;
             label2.Text = "Password:";
             // 
@@ -204,12 +214,12 @@
             comboBoxRoleDetails.DropDownHeight = 108;
             comboBoxRoleDetails.FormattingEnabled = true;
             comboBoxRoleDetails.IntegralHeight = false;
-            comboBoxRoleDetails.ItemHeight = 15;
+            comboBoxRoleDetails.ItemHeight = 25;
             comboBoxRoleDetails.Items.AddRange(new object[] { "DepartmentManager", "HR Manager", "Sales Representative", "Support Employee", "Cashier", "Security Guard", "Depot Worker" });
-            comboBoxRoleDetails.Location = new Point(116, 104);
-            comboBoxRoleDetails.Margin = new Padding(3, 2, 3, 2);
+            comboBoxRoleDetails.Location = new Point(166, 173);
+            comboBoxRoleDetails.Margin = new Padding(4, 3, 4, 3);
             comboBoxRoleDetails.Name = "comboBoxRoleDetails";
-            comboBoxRoleDetails.Size = new Size(170, 23);
+            comboBoxRoleDetails.Size = new Size(241, 33);
             comboBoxRoleDetails.TabIndex = 32;
             comboBoxRoleDetails.SelectedIndexChanged += comboBoxRoleDetails_SelectedIndexChanged;
             // 
@@ -223,9 +233,10 @@
             removeEmployeeBtn.Cursor = Cursors.Hand;
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(46, 382);
+            removeEmployeeBtn.Location = new Point(66, 637);
+            removeEmployeeBtn.Margin = new Padding(4, 5, 4, 5);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
-            removeEmployeeBtn.Size = new Size(225, 40);
+            removeEmployeeBtn.Size = new Size(321, 67);
             removeEmployeeBtn.TabIndex = 30;
             removeEmployeeBtn.Text = "Remove Employee";
             removeEmployeeBtn.TextColor = Color.White;
@@ -242,9 +253,10 @@
             editEmployeeBtn.Cursor = Cursors.Hand;
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(46, 337);
+            editEmployeeBtn.Location = new Point(66, 562);
+            editEmployeeBtn.Margin = new Padding(4, 5, 4, 5);
             editEmployeeBtn.Name = "editEmployeeBtn";
-            editEmployeeBtn.Size = new Size(225, 40);
+            editEmployeeBtn.Size = new Size(321, 67);
             editEmployeeBtn.TabIndex = 29;
             editEmployeeBtn.Text = "Edit Employee";
             editEmployeeBtn.TextColor = Color.White;
@@ -254,10 +266,10 @@
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.DimGray;
-            pictureBox2.Location = new Point(18, 52);
-            pictureBox2.Margin = new Padding(3, 2, 3, 2);
+            pictureBox2.Location = new Point(26, 87);
+            pictureBox2.Margin = new Padding(4, 3, 4, 3);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(269, 3);
+            pictureBox2.Size = new Size(384, 5);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
@@ -267,9 +279,10 @@
             employeeDetailsLabel.BackColor = Color.Transparent;
             employeeDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             employeeDetailsLabel.ForeColor = Color.DimGray;
-            employeeDetailsLabel.Location = new Point(50, 36);
+            employeeDetailsLabel.Location = new Point(71, 60);
+            employeeDetailsLabel.Margin = new Padding(4, 0, 4, 0);
             employeeDetailsLabel.Name = "employeeDetailsLabel";
-            employeeDetailsLabel.Size = new Size(96, 15);
+            employeeDetailsLabel.Size = new Size(153, 25);
             employeeDetailsLabel.TabIndex = 26;
             employeeDetailsLabel.Text = "Employee details";
             // 
@@ -277,10 +290,10 @@
             // 
             userPictureBox.BackColor = Color.OrangeRed;
             userPictureBox.Image = (Image)resources.GetObject("userPictureBox.Image");
-            userPictureBox.Location = new Point(5, 22);
-            userPictureBox.Margin = new Padding(3, 2, 3, 2);
+            userPictureBox.Location = new Point(7, 37);
+            userPictureBox.Margin = new Padding(4, 3, 4, 3);
             userPictureBox.Name = "userPictureBox";
-            userPictureBox.Size = new Size(53, 29);
+            userPictureBox.Size = new Size(76, 48);
             userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             userPictureBox.TabIndex = 25;
             userPictureBox.TabStop = false;
@@ -288,47 +301,50 @@
             // textBoxEmail
             // 
             textBoxEmail.BackColor = SystemColors.ControlDark;
-            textBoxEmail.Location = new Point(117, 135);
-            textBoxEmail.Margin = new Padding(3, 2, 3, 2);
+            textBoxEmail.Location = new Point(167, 225);
+            textBoxEmail.Margin = new Padding(4, 3, 4, 3);
             textBoxEmail.Name = "textBoxEmail";
             textBoxEmail.ReadOnly = true;
-            textBoxEmail.Size = new Size(169, 23);
+            textBoxEmail.Size = new Size(240, 31);
             textBoxEmail.TabIndex = 20;
             // 
             // textBoxName
             // 
             textBoxName.BackColor = SystemColors.ControlDark;
-            textBoxName.Location = new Point(116, 72);
-            textBoxName.Margin = new Padding(3, 2, 3, 2);
+            textBoxName.Location = new Point(166, 120);
+            textBoxName.Margin = new Padding(4, 3, 4, 3);
             textBoxName.Name = "textBoxName";
             textBoxName.ReadOnly = true;
-            textBoxName.Size = new Size(170, 23);
+            textBoxName.Size = new Size(241, 31);
             textBoxName.TabIndex = 18;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(16, 135);
+            label1.Location = new Point(23, 225);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(39, 15);
+            label1.Size = new Size(58, 25);
             label1.TabIndex = 17;
             label1.Text = "Email:";
             // 
             // lblRole
             // 
             lblRole.AutoSize = true;
-            lblRole.Location = new Point(16, 104);
+            lblRole.Location = new Point(23, 173);
+            lblRole.Margin = new Padding(4, 0, 4, 0);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(33, 15);
+            lblRole.Size = new Size(50, 25);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
             // 
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Location = new Point(16, 74);
+            lblName.Location = new Point(23, 123);
+            lblName.Margin = new Padding(4, 0, 4, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(42, 15);
+            lblName.Size = new Size(63, 25);
             lblName.TabIndex = 0;
             lblName.Text = "Name:";
             // 
@@ -337,10 +353,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(333, 74);
-            pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxSearch.Location = new Point(506, 150);
+            pictureBoxSearch.Margin = new Padding(4, 3, 4, 3);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(21, 23);
+            pictureBoxSearch.Size = new Size(30, 38);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 19;
             pictureBoxSearch.TabStop = false;
@@ -352,12 +368,12 @@
             comboBoxRole.DropDownHeight = 108;
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.ItemHeight = 15;
+            comboBoxRole.ItemHeight = 25;
             comboBoxRole.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
-            comboBoxRole.Location = new Point(377, 74);
-            comboBoxRole.Margin = new Padding(3, 2, 3, 2);
+            comboBoxRole.Location = new Point(541, 152);
+            comboBoxRole.Margin = new Padding(4, 3, 4, 3);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(268, 23);
+            comboBoxRole.Size = new Size(381, 33);
             comboBoxRole.TabIndex = 18;
             comboBoxRole.Text = "Choose Role";
             comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
@@ -365,10 +381,10 @@
             // textBoxSearch
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
-            textBoxSearch.Location = new Point(41, 74);
-            textBoxSearch.Margin = new Padding(3, 2, 3, 2);
+            textBoxSearch.Location = new Point(59, 154);
+            textBoxSearch.Margin = new Padding(4, 3, 4, 3);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(313, 23);
+            textBoxSearch.Size = new Size(445, 31);
             textBoxSearch.TabIndex = 17;
             textBoxSearch.KeyDown += textBoxSearch_KeyDown;
             textBoxSearch.KeyPress += textBoxSearch_KeyPress;
@@ -383,9 +399,10 @@
             addEmployeeBtn.Cursor = Cursors.Hand;
             addEmployeeBtn.FlatStyle = FlatStyle.Flat;
             addEmployeeBtn.ForeColor = Color.White;
-            addEmployeeBtn.Location = new Point(651, 69);
+            addEmployeeBtn.Location = new Point(930, 150);
+            addEmployeeBtn.Margin = new Padding(4, 5, 4, 5);
             addEmployeeBtn.Name = "addEmployeeBtn";
-            addEmployeeBtn.Size = new Size(193, 30);
+            addEmployeeBtn.Size = new Size(276, 50);
             addEmployeeBtn.TabIndex = 31;
             addEmployeeBtn.Text = "Add Employee";
             addEmployeeBtn.TextColor = Color.White;
@@ -394,7 +411,7 @@
             // 
             // UserControlDashboard
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(addEmployeeBtn);
             Controls.Add(userDataGridView);
@@ -403,8 +420,9 @@
             Controls.Add(comboBoxRole);
             Controls.Add(textBoxSearch);
             Cursor = Cursors.Hand;
+            Margin = new Padding(4, 5, 4, 5);
             Name = "UserControlDashboard";
-            Size = new Size(1499, 644);
+            Size = new Size(1696, 991);
             ((System.ComponentModel.ISupportInitialize)userDataGridView).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

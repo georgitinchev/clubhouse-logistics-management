@@ -22,17 +22,15 @@ namespace MediaBazaar.Forms
         private EmployeeWorksheetManager employeeWorksheetManager;
         private EmployeeManager employeeManager;
         private DataTable worksheetData;
-        public UserControlWorksheet(EmployeeManager _employeeManager)
+        public UserControlWorksheet(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager)
         {
-            employeeWorksheetManager = new EmployeeWorksheetManager();
+            employeeWorksheetManager = _worksheetManager;
             employeeManager = _employeeManager;
-
             InitializeComponent();
             InitializeFocus();
             Load += UserControlWorksheet_Load;
             employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
-
             PopulateWorksheetData();
         }
 
@@ -166,7 +164,6 @@ namespace MediaBazaar.Forms
         private void UpdateLayout()
         {
             bool isEmployeeSelected = employeeWorksheetGrid.SelectedRows.Count > 0;
-
             if (isEmployeeSelected)
             {
                 MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
@@ -313,7 +310,6 @@ namespace MediaBazaar.Forms
 
         private void btnAddWorksheet_Click_1(object sender, EventArgs e)
         {
-            // make a constructor for the add worksheet dialogue and pass to it the employeemanager and the employeeworksheet manager 
             AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue(employeeManager, employeeWorksheetManager);
             addWorksheetDialogue.ShowDialog();
             PopulateWorksheetData();

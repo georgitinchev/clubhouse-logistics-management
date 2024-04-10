@@ -14,11 +14,13 @@ namespace MediaBazaar.Forms
     {
         private DataTable employeeData;
         private EmployeeManager employeeManager;
+        private EmployeeWorksheetManager worksheetManager;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
 
-        public UserControlDashboard(EmployeeManager _employeeManager)
+        public UserControlDashboard(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager)
         {
             employeeManager = _employeeManager;
+            worksheetManager = _worksheetManager;
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
@@ -81,7 +83,6 @@ namespace MediaBazaar.Forms
         {
             userDataGridView.ClearSelection();
             groupBox1.Visible = false;
-            UpdateLayout();
         }
 
         private void YourFormName_Load(object sender, EventArgs e)
@@ -155,28 +156,9 @@ namespace MediaBazaar.Forms
 
         private void DataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            UpdateLayout();
         }
 
-        private void UpdateLayout()
-        {
-            bool isEmployeeSelected = userDataGridView.SelectedRows.Count > 0;
 
-            if (isEmployeeSelected)
-            {
-                MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
-                MoveControlsToLocation(comboBoxRole, new Point(377, 74), new Size(268, 23));
-                MoveControlsToLocation(addEmployeeBtn, new Point(651, 69), new Size(193, 30));
-                MoveControlsToLocation(pictureBoxSearch, new Point(333, 74), new Size(21, 23));
-            }
-            else
-            {
-                MoveControlsToLocation(textBoxSearch, new Point(855, 114), new Size(313, 23));
-                MoveControlsToLocation(comboBoxRole, new Point(855, 152), new Size(313, 23));
-                MoveControlsToLocation(addEmployeeBtn, new Point(855, 189), new Size(313, 30));
-                MoveControlsToLocation(pictureBoxSearch, new Point(1147, 114), new Size(21, 23));
-            }
-        }
 
         private void MoveControlsToLocation(Control control, Point location, Size size)
         {
@@ -448,6 +430,7 @@ namespace MediaBazaar.Forms
                 {
                     try
                     {
+                        worksheetManager.UnassignAllWorksheetsOfEmployee(employeeId);
                         employeeManager.DeleteEmployee(employeeId);
                         InitializeData();
                         MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

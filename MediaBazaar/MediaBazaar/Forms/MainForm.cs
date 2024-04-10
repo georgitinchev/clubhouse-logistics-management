@@ -8,6 +8,7 @@ namespace MediaBazaar
 	public partial class MainForm : Form
 	{
 		private EmployeeManager employeeManager;
+		private EmployeeWorksheetManager worksheetManager;
 		private UserControlDashboard userControlDashboard;
 		private UserControlWorksheet userControlWorksheet;
 
@@ -15,10 +16,11 @@ namespace MediaBazaar
 		public MainForm(EmployeeManager _employeeManager)
 		{
 			employeeManager = _employeeManager;
+			worksheetManager = new EmployeeWorksheetManager();
 			Application.EnableVisualStyles();
 			InitializeComponent();
-			userControlDashboard = new UserControlDashboard(employeeManager);
-			userControlWorksheet = new UserControlWorksheet(employeeManager);
+			userControlDashboard = new UserControlDashboard(employeeManager, worksheetManager);
+			userControlWorksheet = new UserControlWorksheet(employeeManager, worksheetManager);
 			Controls.Add(userControlDashboard);
 			Controls.Add(userControlWorksheet);
 			userControlDashboard.Show();
@@ -34,6 +36,7 @@ namespace MediaBazaar
 		private void btnWorksheet_Click(object sender, EventArgs e)
 		{
 			userControlDashboard.Hide();
+			userControlWorksheet.PopulateWorksheetData();
 			userControlWorksheet.Show();
 		}
 

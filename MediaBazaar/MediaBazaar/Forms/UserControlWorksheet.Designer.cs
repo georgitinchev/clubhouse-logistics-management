@@ -33,6 +33,7 @@
             btnAddWorksheet = new CustomButton();
             employeeWorksheetGrid = new DataGridView();
             groupBox1 = new GroupBox();
+            textBoxName = new ComboBox();
             dateTimePicker1 = new DateTimePicker();
             cbShift = new ComboBox();
             lbDate = new Label();
@@ -49,7 +50,6 @@
             textBoxSearch = new TextBox();
             pictureBoxSearch = new PictureBox();
             cbFilter = new ComboBox();
-            textBoxName = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)employeeWorksheetGrid).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -86,10 +86,10 @@
             btnAddWorksheet.BorderSize = 2;
             btnAddWorksheet.FlatStyle = FlatStyle.Flat;
             btnAddWorksheet.ForeColor = Color.White;
-            btnAddWorksheet.Location = new Point(965, 115);
+            btnAddWorksheet.Location = new Point(949, 115);
             btnAddWorksheet.Margin = new Padding(4, 5, 4, 5);
             btnAddWorksheet.Name = "btnAddWorksheet";
-            btnAddWorksheet.Size = new Size(242, 50);
+            btnAddWorksheet.Size = new Size(258, 50);
             btnAddWorksheet.TabIndex = 23;
             btnAddWorksheet.Text = "Add Worksheet";
             btnAddWorksheet.TextColor = Color.White;
@@ -129,6 +129,14 @@
             groupBox1.Size = new Size(429, 726);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
+            // 
+            // textBoxName
+            // 
+            textBoxName.FormattingEnabled = true;
+            textBoxName.Location = new Point(146, 116);
+            textBoxName.Name = "textBoxName";
+            textBoxName.Size = new Size(240, 33);
+            textBoxName.TabIndex = 45;
             // 
             // dateTimePicker1
             // 
@@ -328,14 +336,6 @@
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
-            // 
-            // textBoxName
-            // 
-            textBoxName.FormattingEnabled = true;
-            textBoxName.Location = new Point(146, 116);
-            textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(240, 33);
-            textBoxName.TabIndex = 45;
             // 
             // UserControlWorksheet
             // 
