@@ -47,7 +47,48 @@ namespace MediaBazaar
 			assignedWorksheets.AddRange(worksheets);
 		}
 
-		public EmployeeWorksheet TransformDTOToWorksheet(WorksheetDTO worksheetDTO)
+        public bool CanAssignWorksheet(int employeeId, WeekDayEnum weekDay, WorkingTime timeSlot)
+        {
+            var sameDayWorksheets = assignedWorksheets.Where(w => w.employee == employeeId & w.weekDay == weekDay).ToList();
+            if (sameDayWorksheets.Count >= 2)
+            {
+                return false;
+            }
+            if (sameDayWorksheets.Count == 1)
+            {
+                var existingTimeSlot = sameDayWorksheets[0].timeSlot;
+                if (!IsAdjacentTimeSlot(existingTimeSlot, timeSlot))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        public bool CanAssignWorksheet(int employeeId, WeekDayEnum weekDay, WorkingTime timeSlot, int weekNr)
+        {
+            var sameDayAndWeekWorksheets = assignedWorksheets.Where(w => w.employee == employeeId & w.weekDay == weekDay & w.weekNr == weekNr).ToList();
+            if (sameDayAndWeekWorksheets.Count >= 2)
+            {
+                return false;
+            }
+            if (sameDayAndWeekWorksheets.Count == 1)
+            {
+                var existingTimeSlot = sameDayAndWeekWorksheets[0].timeSlot;
+                if (!IsAdjacentTimeSlot(existingTimeSlot, timeSlot))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool IsAdjacentTimeSlot(WorkingTime slot1, WorkingTime slot2)
+        {
+            return Math.Abs(slot1 - slot2) == 1;
+        }
+
+        public EmployeeWorksheet TransformDTOToWorksheet(WorksheetDTO worksheetDTO)
 		{
 			
 			if (worksheetDTO != null)

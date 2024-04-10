@@ -57,10 +57,17 @@ namespace MediaBazaar.Forms
                     return;
                 }
 
+                if(_employeeWorksheetManager.CanAssignWorksheet(employeeId, weekDay, timeSlot, weekNr))
+                {
                 _employeeWorksheetManager.CreateWorksheet(_employeeWorksheetManager.GetNextId(), timeSlot, weekDay, employeeId, weekNr);
                 _employeeWorksheetManager.AddWorksheetToDB(_employeeWorksheetManager.ViewEmployeeWorksheets().Last());
                 MessageBox.Show("Worksheet created and added to the database successfully.");
                 this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Cannot create worksheet because the employee already has two worksheets on the same day or the shifts are not adjacent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             catch (Exception ex)
             {

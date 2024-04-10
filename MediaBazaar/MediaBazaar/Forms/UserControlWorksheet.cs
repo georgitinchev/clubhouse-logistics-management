@@ -220,6 +220,10 @@ namespace MediaBazaar.Forms
                         textBoxName.Items.Add(employee.GetFullName());
                     }
                     textBoxName.Enabled = true;
+                    if(textBoxName.Items.Count > 0)
+                    {
+                        textBoxName.SelectedIndex = 0;
+                    }
                 }
                 else
                 {
@@ -356,23 +360,31 @@ namespace MediaBazaar.Forms
                 }
             }
         }
-
         private void btnAssignWorksheet_Click(object sender, EventArgs e)
         {
-            if(employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
+            if (employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
             {
                 int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
                 int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
                 EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
                 string employeeName = textBoxName.SelectedItem.ToString();
                 Employee employee = employeeManager.GetEmployeeByName(employeeName);
-                if(employee != null)
+                if (employee != null)
                 {
-                    worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay,employee.EmployeeID,worksheet.weekNr);
-                    employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
-                    PopulateWorksheetData();
-                    MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
+                    // Check if the worksheet can be assigned to the employee
+                    if (employeeWorksheetManager.CanAssignWorksheet(employee.EmployeeID, worksheet.weekDay, worksheet.timeSlot))
+                    {
+                        worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay, employee.EmployeeID, worksheet.weekNr);
+                        employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
+                        PopulateWorksheetData();
+                        MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot assign worksheet because the employee already has two worksheets on the same day or the shifts are not adjacent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
                 {
                     MessageBox.Show("Employee does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }

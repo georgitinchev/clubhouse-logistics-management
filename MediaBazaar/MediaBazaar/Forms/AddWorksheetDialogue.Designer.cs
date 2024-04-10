@@ -182,6 +182,7 @@
             Controls.Add(panel1);
             Margin = new Padding(4, 3, 4, 3);
             Name = "AddWorksheetDialogue";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "AddWorksheetDialogue";
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
