@@ -105,7 +105,8 @@ namespace MediaBazaar.Forms
             userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             userDataGridView.RowHeadersVisible = false;
             userDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            userDataGridView.Font = new Font("Segoe UI", 10);
+            userDataGridView.Font = new Font("Segoe UI Semibold", 14);
+            userDataGridView.RowTemplate.Height = 35;
 
             userDataGridView.EnableHeadersVisualStyles = false;
             userDataGridView.BorderStyle = BorderStyle.None;

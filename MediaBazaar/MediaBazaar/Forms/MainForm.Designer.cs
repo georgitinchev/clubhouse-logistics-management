@@ -59,7 +59,7 @@
             panel1.Controls.Add(btnDashboard);
             panel1.Location = new Point(-2, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1188, 61);
+            panel1.Size = new Size(1486, 66);
             panel1.TabIndex = 1;
             // 
             // logOutBtn
@@ -70,11 +70,11 @@
             logOutBtn.BorderRadius = 15;
             logOutBtn.BorderSize = 2;
             logOutBtn.FlatStyle = FlatStyle.Flat;
-            logOutBtn.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            logOutBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logOutBtn.ForeColor = Color.Black;
-            logOutBtn.Location = new Point(1087, 14);
+            logOutBtn.Location = new Point(1332, 8);
             logOutBtn.Name = "logOutBtn";
-            logOutBtn.Size = new Size(87, 35);
+            logOutBtn.Size = new Size(120, 44);
             logOutBtn.TabIndex = 23;
             logOutBtn.Text = "Logout 🔑";
             logOutBtn.TextColor = Color.Black;
@@ -84,7 +84,7 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(255, 128, 0);
-            pictureBox1.Location = new Point(671, 51);
+            pictureBox1.Location = new Point(793, 51);
             pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(150, 2);
@@ -94,7 +94,7 @@
             // lineEmployee
             // 
             lineEmployee.BackColor = Color.FromArgb(255, 128, 0);
-            lineEmployee.Location = new Point(430, 52);
+            lineEmployee.Location = new Point(552, 52);
             lineEmployee.Margin = new Padding(3, 2, 3, 2);
             lineEmployee.Name = "lineEmployee";
             lineEmployee.Size = new Size(150, 2);
@@ -105,10 +105,10 @@
             // 
             pictureBoxLogo.BackColor = Color.White;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
-            pictureBoxLogo.Location = new Point(602, 8);
+            pictureBoxLogo.Location = new Point(720, 8);
             pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(53, 46);
+            pictureBoxLogo.Size = new Size(61, 52);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 4;
             pictureBoxLogo.TabStop = false;
@@ -120,7 +120,7 @@
             pictureBoxJupiter.Location = new Point(25, -4);
             pictureBoxJupiter.Margin = new Padding(3, 2, 3, 2);
             pictureBoxJupiter.Name = "pictureBoxJupiter";
-            pictureBoxJupiter.Size = new Size(155, 55);
+            pictureBoxJupiter.Size = new Size(163, 60);
             pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxJupiter.TabIndex = 18;
             pictureBoxJupiter.TabStop = false;
@@ -133,11 +133,11 @@
             btnWorksheet.BorderRadius = 15;
             btnWorksheet.BorderSize = 2;
             btnWorksheet.FlatStyle = FlatStyle.Flat;
-            btnWorksheet.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnWorksheet.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWorksheet.ForeColor = Color.Black;
-            btnWorksheet.Location = new Point(671, 8);
+            btnWorksheet.Location = new Point(793, 8);
             btnWorksheet.Name = "btnWorksheet";
-            btnWorksheet.Size = new Size(150, 35);
+            btnWorksheet.Size = new Size(150, 40);
             btnWorksheet.TabIndex = 2;
             btnWorksheet.Text = "Worksheet";
             btnWorksheet.TextColor = Color.Black;
@@ -152,11 +152,11 @@
             btnDashboard.BorderRadius = 15;
             btnDashboard.BorderSize = 2;
             btnDashboard.FlatStyle = FlatStyle.Flat;
-            btnDashboard.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDashboard.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDashboard.ForeColor = Color.Black;
-            btnDashboard.Location = new Point(432, 8);
+            btnDashboard.Location = new Point(554, 8);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(150, 35);
+            btnDashboard.Size = new Size(150, 40);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextColor = Color.Black;
@@ -168,7 +168,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1184, 511);
+            ClientSize = new Size(1483, 691);
             Controls.Add(panel1);
             Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
