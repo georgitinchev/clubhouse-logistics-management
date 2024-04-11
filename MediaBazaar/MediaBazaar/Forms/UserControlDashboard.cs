@@ -14,20 +14,29 @@ namespace MediaBazaar.Forms
     {
         private DataTable employeeData;
         private EmployeeManager employeeManager;
-        private EmployeeWorksheetManager worksheetManager;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
 
-        public UserControlDashboard(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager)
+        public UserControlDashboard(EmployeeManager _employeeManager)
         {
             employeeManager = _employeeManager;
-            worksheetManager = _worksheetManager;
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
             InitializeControls();
             InitializeFocus();
             SubscribeToLoadEvent();
-            userDataGridView.SelectionChanged += DataGridView_SelectionChanged;
+            this.Resize += UserControlDashboard_Resize;
+            this.MinimumSize = new Size(800, 600);
+        }
+
+        private void UserControlDashboard_Resize(object sender, EventArgs e)
+        {
+            panelOperations.Width = this.ClientSize.Width - groupBox1.Width - 120;
+            panelOperations.Location = new Point(40, 67);
+            userDataGridView.Size = new Size(this.ClientSize.Width - groupBox1.Width - 120, this.ClientSize.Height - 200);
+            userDataGridView.Location = new Point(40, panelOperations.Bottom + 10); 
+            groupBox1.Size = new Size(376, this.ClientSize.Height - 100);
+            groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - 40, 40);
         }
 
         private void SubscribeToLoadEvent()
@@ -68,12 +77,6 @@ namespace MediaBazaar.Forms
             employeeData.Columns.Add("Email", typeof(string));
             employeeData.Columns.Add("Role", typeof(string));
             employeeData.Columns.Add("WeeklyHours", typeof(int));
-            //employeeData.Columns.Add("Password", typeof(string));
-            //employeeData.Columns.Add("BSN", typeof(string));
-            //employeeData.Columns.Add("EmergencyPhoneNumber", typeof(string));
-            //employeeData.Columns.Add("Birthday", typeof(DateTime));
-            //employeeData.Columns.Add("EmergencyContact", typeof(string));
-            //employeeData.Columns.Add("IsManager", typeof(bool));
             PopulateDataTable(employeeData);
             userDataGridView.DataSource = employeeData;
         }
@@ -106,15 +109,14 @@ namespace MediaBazaar.Forms
             userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             userDataGridView.RowHeadersVisible = false;
             userDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            userDataGridView.Font = new Font("Segoe UI", 10);
-
+            userDataGridView.Font = new Font("Segoe UI Semibold", 14);
+            userDataGridView.RowTemplate.Height = 35;
             userDataGridView.EnableHeadersVisualStyles = false;
             userDataGridView.BorderStyle = BorderStyle.None;
             userDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             userDataGridView.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235);
             userDataGridView.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             userDataGridView.BackgroundColor = Color.White;
-
             userDataGridView.CellMouseEnter += (sender, e) =>
             {
                 if (e.RowIndex >= 0)
@@ -133,13 +135,6 @@ namespace MediaBazaar.Forms
 
             userDataGridView.SelectionChanged += DataGridView1_SelectionChanged;
             userDataGridView.ScrollBars = ScrollBars.Vertical;
-            /*userDataGridView.Columns["Password"].Visible = false;
-			userDataGridView.Columns["BSN"].Visible = false;
-			userDataGridView.Columns["PhoneNumber"].Visible = false;
-			userDataGridView.Columns["Birthday"].Visible = false;
-			userDataGridView.Columns["ActiveContract"].Visible = false;
-			userDataGridView.Columns["EmergencyContact"].Visible = false;
-			userDataGridView.Columns["IsManager"].Visible = false;*/
         }
 
         private void DataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -153,12 +148,6 @@ namespace MediaBazaar.Forms
                 groupBox1.Visible = false;
             }
         }
-
-        private void DataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-        }
-
-
 
         private void MoveControlsToLocation(Control control, Point location, Size size)
         {
@@ -215,9 +204,7 @@ namespace MediaBazaar.Forms
         {
             string searchTerm = textBoxSearch.Text.Trim();
             string selectedRole = comboBoxRole.SelectedItem?.ToString();
-
             var query = employeeData.AsEnumerable();
-
             try
             {
                 if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")
@@ -430,7 +417,6 @@ namespace MediaBazaar.Forms
                 {
                     try
                     {
-                        worksheetManager.UnassignAllWorksheetsOfEmployee(employeeId);
                         employeeManager.DeleteEmployee(employeeId);
                         InitializeData();
                         MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

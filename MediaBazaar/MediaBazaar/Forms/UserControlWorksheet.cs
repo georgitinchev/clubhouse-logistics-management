@@ -22,16 +22,30 @@ namespace MediaBazaar.Forms
         private EmployeeWorksheetManager employeeWorksheetManager;
         private EmployeeManager employeeManager;
         private DataTable worksheetData;
-        public UserControlWorksheet(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager)
+        public UserControlWorksheet(EmployeeManager _employeeManager)
         {
-            employeeWorksheetManager = _worksheetManager;
+            employeeWorksheetManager = new EmployeeWorksheetManager();
             employeeManager = _employeeManager;
+
             InitializeComponent();
             InitializeFocus();
             Load += UserControlWorksheet_Load;
-            employeeWorksheetGrid.SelectionChanged += DataGridViewWorksheet_SelectionChanged;
+            this.Resize += UserControlWorksheet_Resize;
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
             PopulateWorksheetData();
+
+        }
+
+        private void UserControlWorksheet_Resize(object sender, EventArgs e)
+        {
+            panelOperationsWorksheet.Width = this.ClientSize.Width - groupBox1.Width - 120;
+            panelOperationsWorksheet.Location = new Point(31, 73);
+            employeeWorksheetGrid.Size = new Size(this.ClientSize.Width - groupBox1.Width - 120, this.ClientSize.Height - 200);
+            employeeWorksheetGrid.Location = new Point(31, panelOperationsWorksheet.Bottom + 10);
+            groupBox1.Size = new Size(376, this.ClientSize.Height - 100);
+            groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - 40, 40);
+            textBoxSearch.Width = cbFilter.Location.X - pictureBoxSearch.Width - textBoxSearch.Location.X - 10; 
+            pictureBoxSearch.Location = new Point(textBoxSearch.Location.X + textBoxSearch.Width, textBoxSearch.Location.Y);
         }
 
         private void UserControlWorksheet_Load(object sender, EventArgs e)
@@ -39,7 +53,6 @@ namespace MediaBazaar.Forms
             InitializeGridViewWorksheet();
             employeeWorksheetGrid.ClearSelection();
             groupBox1.Visible = false;
-            UpdateLayout();
         }
 
         public void PopulateWorksheetData()
@@ -74,15 +87,6 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.ClearSelection();
         }
 
-        /*private void btnAddWorksheet_Click(object sender, EventArgs e)
-        {
-            AddWorksheetDialogue addWorksheetDialogue = new AddWorksheetDialogue();
-            addWorksheetDialogue.ShowDialog();
-            PopulateWorksheetData();
-            employeeWorksheetGrid.DataSource = worksheetData;
-            employeeWorksheetGrid.ClearSelection();
-        }*/
-
         private void InitializeFocus()
         {
             textBoxSearch.GotFocus += new System.EventHandler(textBoxSearch_GotFocus);
@@ -92,7 +96,6 @@ namespace MediaBazaar.Forms
         private void InitializeGridViewWorksheet()
         {
             employeeWorksheetGrid.AutoGenerateColumns = false;
-            //employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             employeeWorksheetGrid.AllowUserToAddRows = false;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
@@ -104,30 +107,19 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             employeeWorksheetGrid.RowHeadersVisible = false;
             employeeWorksheetGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeWorksheetGrid.Font = new Font("Segoe UI", 10);
-
-            // Apply subtle animations
+            employeeWorksheetGrid.Font = new Font("Segoe UI Semibold", 14);
+            employeeWorksheetGrid.RowTemplate.Height = 70;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.BorderStyle = BorderStyle.None;
             employeeWorksheetGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
             employeeWorksheetGrid.DefaultCellStyle.SelectionBackColor = Color.FromArgb(235, 235, 235);
             employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             employeeWorksheetGrid.BackgroundColor = Color.White;
-
-            // Add columns
-            /*employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "ID", HeaderText = "Id" });
-            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Role", HeaderText = "Department" });
-            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "TimeSlot", HeaderText = "TimeSlot" });
-            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "WeekDay", HeaderText = "WeekDay" });
-            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Employee", HeaderText = "Employee" });
-            employeeWorksheetGrid.Columns.Add(new DataGridViewTextBoxColumn() { DataPropertyName = "Week", HeaderText = "Week" });*/
-
-            // Apply hover effect
             employeeWorksheetGrid.CellMouseEnter += (sender, e) =>
             {
                 if (e.RowIndex >= 0)
                 {
-                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240); // Light gray
+                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240); 
                 }
             };
 
@@ -135,7 +127,7 @@ namespace MediaBazaar.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; // Reset to white
+                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; 
                 }
             };
 
@@ -152,29 +144,6 @@ namespace MediaBazaar.Forms
             else
             {
                 groupBox1.Visible = false;
-            }
-        }
-
-        private void DataGridViewWorksheet_SelectionChanged(object sender, EventArgs e)
-        {
-            UpdateLayout();
-        }
-
-
-        private void UpdateLayout()
-        {
-            bool isEmployeeSelected = employeeWorksheetGrid.SelectedRows.Count > 0;
-            if (isEmployeeSelected)
-            {
-                MoveControlsToLocation(textBoxSearch, new Point(41, 74), new Size(313, 23));
-                //MoveControlsToLocation(comboBoxDepartment, new Point(377, 74), new Size(268, 23));
-                MoveControlsToLocation(pictureBoxSearch, new Point(333, 74), new Size(21, 23));
-            }
-            else
-            {
-                MoveControlsToLocation(textBoxSearch, new Point(855, 114), new Size(313, 23));
-                //MoveControlsToLocation(comboBoxDepartment, new Point(855, 152), new Size(313, 23));
-                MoveControlsToLocation(pictureBoxSearch, new Point(1147, 114), new Size(21, 23));
             }
         }
 
@@ -217,10 +186,6 @@ namespace MediaBazaar.Forms
                         textBoxName.Items.Add(employee.GetFullName());
                     }
                     textBoxName.Enabled = true;
-                    if(textBoxName.Items.Count > 0)
-                    {
-                        textBoxName.SelectedIndex = 0;
-                    }
                 }
                 else
                 {
@@ -356,31 +321,23 @@ namespace MediaBazaar.Forms
                 }
             }
         }
+
         private void btnAssignWorksheet_Click(object sender, EventArgs e)
         {
-            if (employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
+            if(employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
             {
                 int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
                 int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
                 EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
                 string employeeName = textBoxName.SelectedItem.ToString();
                 Employee employee = employeeManager.GetEmployeeByName(employeeName);
-                if (employee != null)
+                if(employee != null)
                 {
-                    // Check if the worksheet can be assigned to the employee
-                    if (employeeWorksheetManager.CanAssignWorksheet(employee.EmployeeID, worksheet.weekDay, worksheet.timeSlot))
-                    {
-                        worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay, employee.EmployeeID, worksheet.weekNr);
-                        employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
-                        PopulateWorksheetData();
-                        MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot assign worksheet because the employee already has two worksheets on the same day or the shifts are not adjacent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
+                    worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay,employee.EmployeeID,worksheet.weekNr);
+                    employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
+                    PopulateWorksheetData();
+                    MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                } else
                 {
                     MessageBox.Show("Employee does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
