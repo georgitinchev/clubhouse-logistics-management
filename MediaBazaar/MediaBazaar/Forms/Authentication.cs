@@ -24,6 +24,8 @@ namespace MediaBazaar.Forms
 			this.Resize += AuthenticationForm_Resize;
 		}
 
+
+		// Responsive UI Design for Authentication Form Elements
         private void AuthenticationForm_Resize(object sender, EventArgs e)
         {
             int groupX = (this.ClientSize.Width - loginFormGroup.Width) / 2;
@@ -36,7 +38,7 @@ namespace MediaBazaar.Forms
             label1.Location = new Point(labelX, labelY);
             pictureBoxJupiter.Location = new Point(groupX + (loginFormGroup.Width - pictureBoxJupiter.Width) / 2, groupY - pictureBoxJupiter.Height - label1.Height - 20);
             loginStatusLabel.Location = new Point(statusLabelX, statusLabelY);
-            loginBtn.Location = new Point(groupX + (loginFormGroup.Width - loginBtn.Width) / 2, statusLabelY + loginStatusLabel.Height + 10); // Add a small gap between loginStatusLabel and loginBtn
+            loginBtn.Location = new Point(groupX + (loginFormGroup.Width - loginBtn.Width) / 2, statusLabelY + loginStatusLabel.Height + 10); 
         }
 
         private void loginBtn_Click(object sender, EventArgs e)

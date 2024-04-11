@@ -35,8 +35,8 @@
             passwordLabel = new Label();
             pictureBoxJupiter = new PictureBox();
             loginFormGroup = new GroupBox();
-            label1 = new Label();
             userPictureBox = new PictureBox();
+            label1 = new Label();
             loginBtn = new CustomButton();
             loginStatusLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
@@ -109,16 +109,6 @@
             loginFormGroup.TabIndex = 21;
             loginFormGroup.TabStop = false;
             // 
-            // label1
-            // 
-            label1.BackColor = Color.White;
-            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(397, 138);
-            label1.Name = "label1";
-            label1.Size = new Size(373, 30);
-            label1.TabIndex = 22;
-            label1.Text = "Please enter administrative credentials:";
-            // 
             // userPictureBox
             // 
             userPictureBox.BackColor = Color.OrangeRed;
@@ -130,6 +120,16 @@
             userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             userPictureBox.TabIndex = 26;
             userPictureBox.TabStop = false;
+            // 
+            // label1
+            // 
+            label1.BackColor = Color.White;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(397, 138);
+            label1.Name = "label1";
+            label1.Size = new Size(373, 30);
+            label1.TabIndex = 22;
+            label1.Text = "Please enter administrative credentials:";
             // 
             // loginBtn
             // 
