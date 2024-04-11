@@ -33,7 +33,6 @@ namespace MediaBazaar.Forms
             this.Resize += UserControlWorksheet_Resize;
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
             PopulateWorksheetData();
-
         }
 
         private void UserControlWorksheet_Resize(object sender, EventArgs e)
@@ -64,7 +63,6 @@ namespace MediaBazaar.Forms
             worksheetData.Columns.Add("Weekday", typeof(string));
             worksheetData.Columns.Add("Employee", typeof(string));
             worksheetData.Columns.Add("Week", typeof(int));
-
             worksheetData.Clear();
             employeeWorksheetManager.GetAllWorksheetsInDB();
             foreach (EmployeeWorksheet worksheet in employeeWorksheetManager.assignedWorksheets)
@@ -85,6 +83,7 @@ namespace MediaBazaar.Forms
             }
             employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.ClearSelection();
+            employeeWorksheetGrid.RowTemplate.Height = 70;
         }
 
         private void InitializeFocus()
@@ -108,7 +107,7 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.RowHeadersVisible = false;
             employeeWorksheetGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeWorksheetGrid.Font = new Font("Segoe UI Semibold", 14);
-            employeeWorksheetGrid.RowTemplate.Height = 70;
+        
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.BorderStyle = BorderStyle.None;
             employeeWorksheetGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -130,7 +129,6 @@ namespace MediaBazaar.Forms
                     employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; 
                 }
             };
-
             employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
             employeeWorksheetGrid.SelectionChanged += dataGridViewWorksheet_SelectionChanged;
         }
@@ -145,12 +143,6 @@ namespace MediaBazaar.Forms
             {
                 groupBox1.Visible = false;
             }
-        }
-
-        private void MoveControlsToLocation(Control control, Point location, Size size)
-        {
-            control.Location = location;
-            control.Size = size;
         }
 
         private string placeholder = "Search...";

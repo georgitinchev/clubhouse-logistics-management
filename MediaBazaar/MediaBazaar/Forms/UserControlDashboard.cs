@@ -110,7 +110,7 @@ namespace MediaBazaar.Forms
             userDataGridView.RowHeadersVisible = false;
             userDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             userDataGridView.Font = new Font("Segoe UI Semibold", 14);
-            userDataGridView.RowTemplate.Height = 35;
+            userDataGridView.RowTemplate.Height = 70;
             userDataGridView.EnableHeadersVisualStyles = false;
             userDataGridView.BorderStyle = BorderStyle.None;
             userDataGridView.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
