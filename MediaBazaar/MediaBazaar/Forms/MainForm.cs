@@ -35,6 +35,10 @@ namespace MediaBazaar
             logOutBtn.Location = new Point(panel1.Width - logOutBtn.Width - 25, 9);
             pictureBox1.Location = new Point(btnDashboard.Location.X + (btnDashboard.Width - pictureBox1.Width) / 2, btnDashboard.Location.Y + btnDashboard.Height + 10);
             lineEmployee.Location = new Point(btnWorksheet.Location.X + (btnWorksheet.Width - lineEmployee.Width) / 2, btnWorksheet.Location.Y + btnWorksheet.Height + 10);
+            userControlDashboard.Size = new Size(this.ClientSize.Width, this.ClientSize.Height - panel1.Height);
+            userControlDashboard.Location = new Point(0, panel1.Height);
+            userControlWorksheet.Size = new Size(this.ClientSize.Width, this.ClientSize.Height - panel1.Height);
+            userControlWorksheet.Location = new Point(0, panel1.Height);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)

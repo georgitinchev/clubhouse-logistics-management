@@ -50,12 +50,14 @@
             textBoxSearch = new TextBox();
             pictureBoxSearch = new PictureBox();
             cbFilter = new ComboBox();
+            panelOperationsWorksheet = new Panel();
             ((System.ComponentModel.ISupportInitialize)employeeWorksheetGrid).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userPictureBox).BeginInit();
             assignUnassignGroup.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
+            panelOperationsWorksheet.SuspendLayout();
             SuspendLayout();
             // 
             // btnUnassignWorksheet
@@ -66,11 +68,12 @@
             btnUnassignWorksheet.BorderRadius = 15;
             btnUnassignWorksheet.BorderSize = 2;
             btnUnassignWorksheet.FlatStyle = FlatStyle.Flat;
+            btnUnassignWorksheet.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             btnUnassignWorksheet.ForeColor = Color.White;
-            btnUnassignWorksheet.Location = new Point(24, 145);
-            btnUnassignWorksheet.Margin = new Padding(4, 3, 4, 3);
+            btnUnassignWorksheet.Location = new Point(17, 87);
+            btnUnassignWorksheet.Margin = new Padding(3, 2, 3, 2);
             btnUnassignWorksheet.Name = "btnUnassignWorksheet";
-            btnUnassignWorksheet.Size = new Size(409, 83);
+            btnUnassignWorksheet.Size = new Size(286, 50);
             btnUnassignWorksheet.TabIndex = 24;
             btnUnassignWorksheet.Text = "Unassign Worksheet";
             btnUnassignWorksheet.TextColor = Color.White;
@@ -87,10 +90,9 @@
             btnAddWorksheet.FlatStyle = FlatStyle.Flat;
             btnAddWorksheet.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAddWorksheet.ForeColor = Color.White;
-            btnAddWorksheet.Location = new Point(1279, 143);
-            btnAddWorksheet.Margin = new Padding(4, 5, 4, 5);
+            btnAddWorksheet.Location = new Point(868, 3);
             btnAddWorksheet.Name = "btnAddWorksheet";
-            btnAddWorksheet.Size = new Size(281, 68);
+            btnAddWorksheet.Size = new Size(159, 55);
             btnAddWorksheet.TabIndex = 23;
             btnAddWorksheet.Text = "Add Worksheet";
             btnAddWorksheet.TextColor = Color.White;
@@ -100,11 +102,11 @@
             // employeeWorksheetGrid
             // 
             employeeWorksheetGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            employeeWorksheetGrid.Location = new Point(44, 233);
-            employeeWorksheetGrid.Margin = new Padding(4, 3, 4, 3);
+            employeeWorksheetGrid.Location = new Point(31, 140);
+            employeeWorksheetGrid.Margin = new Padding(3, 2, 3, 2);
             employeeWorksheetGrid.Name = "employeeWorksheetGrid";
             employeeWorksheetGrid.RowHeadersWidth = 51;
-            employeeWorksheetGrid.Size = new Size(1516, 940);
+            employeeWorksheetGrid.Size = new Size(1061, 564);
             employeeWorksheetGrid.TabIndex = 22;
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
             // 
@@ -123,71 +125,68 @@
             groupBox1.Controls.Add(lblRole);
             groupBox1.Controls.Add(lblName);
             groupBox1.Controls.Add(assignUnassignGroup);
-            groupBox1.Location = new Point(1604, 85);
-            groupBox1.Margin = new Padding(4, 3, 4, 3);
+            groupBox1.Location = new Point(1123, 51);
+            groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 3, 4, 3);
-            groupBox1.Size = new Size(537, 1088);
+            groupBox1.Padding = new Padding(3, 2, 3, 2);
+            groupBox1.Size = new Size(376, 653);
             groupBox1.TabIndex = 25;
             groupBox1.TabStop = false;
             // 
             // textBoxName
             // 
-            textBoxName.Font = new Font("Segoe UI", 11.25F);
+            textBoxName.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             textBoxName.FormattingEnabled = true;
-            textBoxName.Location = new Point(146, 117);
+            textBoxName.Location = new Point(102, 70);
+            textBoxName.Margin = new Padding(2);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(338, 39);
+            textBoxName.Size = new Size(238, 28);
             textBoxName.TabIndex = 45;
             // 
             // dateTimePicker1
             // 
-            dateTimePicker1.Font = new Font("Segoe UI", 11.25F);
+            dateTimePicker1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(146, 268);
-            dateTimePicker1.Margin = new Padding(4, 5, 4, 5);
+            dateTimePicker1.Location = new Point(102, 161);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(338, 37);
+            dateTimePicker1.Size = new Size(238, 27);
             dateTimePicker1.TabIndex = 39;
             // 
             // cbShift
             // 
-            cbShift.Font = new Font("Segoe UI", 11.25F);
+            cbShift.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             cbShift.FormattingEnabled = true;
             cbShift.Items.AddRange(new object[] { "Morning", "Afternoon", "Evening" });
-            cbShift.Location = new Point(146, 352);
-            cbShift.Margin = new Padding(4, 5, 4, 5);
+            cbShift.Location = new Point(102, 211);
             cbShift.Name = "cbShift";
-            cbShift.Size = new Size(338, 39);
+            cbShift.Size = new Size(238, 28);
             cbShift.TabIndex = 38;
             // 
             // lbDate
             // 
-            lbDate.Font = new Font("Segoe UI", 11.25F);
-            lbDate.Location = new Point(69, 277);
-            lbDate.Margin = new Padding(4, 0, 4, 0);
+            lbDate.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            lbDate.Location = new Point(48, 166);
             lbDate.Name = "lbDate";
-            lbDate.Size = new Size(69, 30);
+            lbDate.Size = new Size(48, 18);
             lbDate.TabIndex = 37;
             lbDate.Text = "Date:";
             // 
             // lbShift
             // 
-            lbShift.Font = new Font("Segoe UI", 11.25F);
-            lbShift.Location = new Point(73, 363);
-            lbShift.Margin = new Padding(4, 0, 4, 0);
+            lbShift.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            lbShift.Location = new Point(51, 218);
             lbShift.Name = "lbShift";
-            lbShift.Size = new Size(69, 35);
+            lbShift.Size = new Size(48, 21);
             lbShift.TabIndex = 36;
             lbShift.Text = "Shift:";
             // 
             // pictureBox2
             // 
             pictureBox2.BackColor = Color.DimGray;
-            pictureBox2.Location = new Point(26, 87);
-            pictureBox2.Margin = new Padding(4, 3, 4, 3);
+            pictureBox2.Location = new Point(18, 52);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(361, 3);
+            pictureBox2.Size = new Size(253, 2);
             pictureBox2.TabIndex = 25;
             pictureBox2.TabStop = false;
             // 
@@ -195,12 +194,11 @@
             // 
             worksheetDetailsLabel.AutoSize = true;
             worksheetDetailsLabel.BackColor = Color.Transparent;
-            worksheetDetailsLabel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            worksheetDetailsLabel.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold);
             worksheetDetailsLabel.ForeColor = Color.Black;
-            worksheetDetailsLabel.Location = new Point(69, 58);
-            worksheetDetailsLabel.Margin = new Padding(4, 0, 4, 0);
+            worksheetDetailsLabel.Location = new Point(65, 29);
             worksheetDetailsLabel.Name = "worksheetDetailsLabel";
-            worksheetDetailsLabel.Size = new Size(161, 25);
+            worksheetDetailsLabel.Size = new Size(141, 21);
             worksheetDetailsLabel.TabIndex = 26;
             worksheetDetailsLabel.Text = "Worksheet details";
             // 
@@ -208,10 +206,10 @@
             // 
             userPictureBox.BackColor = Color.OrangeRed;
             userPictureBox.Image = (Image)resources.GetObject("userPictureBox.Image");
-            userPictureBox.Location = new Point(9, 37);
-            userPictureBox.Margin = new Padding(4, 3, 4, 3);
+            userPictureBox.Location = new Point(6, 22);
+            userPictureBox.Margin = new Padding(3, 2, 3, 2);
             userPictureBox.Name = "userPictureBox";
-            userPictureBox.Size = new Size(76, 48);
+            userPictureBox.Size = new Size(53, 29);
             userPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             userPictureBox.TabIndex = 25;
             userPictureBox.TabStop = false;
@@ -222,34 +220,33 @@
             comboBoxRole.DropDownHeight = 108;
             comboBoxRole.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxRole.Enabled = false;
-            comboBoxRole.Font = new Font("Segoe UI", 11.25F);
+            comboBoxRole.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.ItemHeight = 31;
+            comboBoxRole.ItemHeight = 20;
             comboBoxRole.Items.AddRange(new object[] { "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
-            comboBoxRole.Location = new Point(146, 192);
-            comboBoxRole.Margin = new Padding(4, 3, 4, 3);
+            comboBoxRole.Location = new Point(102, 115);
+            comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(338, 39);
+            comboBoxRole.Size = new Size(238, 28);
             comboBoxRole.TabIndex = 16;
             // 
             // lblRole
             // 
-            lblRole.Font = new Font("Segoe UI", 11.25F);
-            lblRole.Location = new Point(69, 197);
-            lblRole.Margin = new Padding(4, 0, 4, 0);
+            lblRole.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            lblRole.Location = new Point(48, 118);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(60, 35);
+            lblRole.Size = new Size(42, 21);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
             // 
             // lblName
             // 
-            lblName.Font = new Font("Segoe UI", 11.25F);
-            lblName.Location = new Point(26, 123);
+            lblName.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            lblName.Location = new Point(18, 74);
             lblName.Margin = new Padding(1, 0, 1, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(116, 40);
+            lblName.Size = new Size(81, 24);
             lblName.TabIndex = 0;
             lblName.Text = "Employee:";
             // 
@@ -258,10 +255,12 @@
             assignUnassignGroup.Controls.Add(btnRemoveWorksheet);
             assignUnassignGroup.Controls.Add(btnAssignWorksheet);
             assignUnassignGroup.Controls.Add(btnUnassignWorksheet);
-            assignUnassignGroup.Font = new Font("Segoe UI", 11.25F);
-            assignUnassignGroup.Location = new Point(53, 683);
+            assignUnassignGroup.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            assignUnassignGroup.Location = new Point(37, 410);
+            assignUnassignGroup.Margin = new Padding(2);
             assignUnassignGroup.Name = "assignUnassignGroup";
-            assignUnassignGroup.Size = new Size(451, 370);
+            assignUnassignGroup.Padding = new Padding(2);
+            assignUnassignGroup.Size = new Size(316, 222);
             assignUnassignGroup.TabIndex = 44;
             assignUnassignGroup.TabStop = false;
             assignUnassignGroup.Text = "Assignation";
@@ -274,11 +273,11 @@
             btnRemoveWorksheet.BorderRadius = 15;
             btnRemoveWorksheet.BorderSize = 2;
             btnRemoveWorksheet.FlatStyle = FlatStyle.Flat;
+            btnRemoveWorksheet.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             btnRemoveWorksheet.ForeColor = Color.White;
-            btnRemoveWorksheet.Location = new Point(24, 255);
-            btnRemoveWorksheet.Margin = new Padding(4, 5, 4, 5);
+            btnRemoveWorksheet.Location = new Point(17, 153);
             btnRemoveWorksheet.Name = "btnRemoveWorksheet";
-            btnRemoveWorksheet.Size = new Size(409, 83);
+            btnRemoveWorksheet.Size = new Size(286, 50);
             btnRemoveWorksheet.TabIndex = 43;
             btnRemoveWorksheet.Text = "Remove Worksheet";
             btnRemoveWorksheet.TextColor = Color.White;
@@ -293,11 +292,12 @@
             btnAssignWorksheet.BorderRadius = 15;
             btnAssignWorksheet.BorderSize = 2;
             btnAssignWorksheet.FlatStyle = FlatStyle.Flat;
+            btnAssignWorksheet.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             btnAssignWorksheet.ForeColor = Color.White;
-            btnAssignWorksheet.Location = new Point(24, 40);
-            btnAssignWorksheet.Margin = new Padding(4, 3, 4, 3);
+            btnAssignWorksheet.Location = new Point(17, 24);
+            btnAssignWorksheet.Margin = new Padding(3, 2, 3, 2);
             btnAssignWorksheet.Name = "btnAssignWorksheet";
-            btnAssignWorksheet.Size = new Size(409, 83);
+            btnAssignWorksheet.Size = new Size(286, 50);
             btnAssignWorksheet.TabIndex = 24;
             btnAssignWorksheet.Text = "Assign Worksheet";
             btnAssignWorksheet.TextColor = Color.White;
@@ -307,11 +307,11 @@
             // textBoxSearch
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
-            textBoxSearch.Font = new Font("Segoe UI", 12F);
-            textBoxSearch.Location = new Point(44, 147);
-            textBoxSearch.Margin = new Padding(4, 3, 4, 3);
+            textBoxSearch.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBoxSearch.Location = new Point(13, 17);
+            textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(713, 39);
+            textBoxSearch.Size = new Size(552, 29);
             textBoxSearch.TabIndex = 26;
             textBoxSearch.Text = "Search...";
             textBoxSearch.KeyDown += textBoxSearch_KeyDown;
@@ -323,10 +323,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(753, 143);
-            pictureBoxSearch.Margin = new Padding(4, 3, 4, 3);
+            pictureBoxSearch.Location = new Point(533, 17);
+            pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(60, 53);
+            pictureBoxSearch.Size = new Size(42, 29);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 28;
             pictureBoxSearch.TabStop = false;
@@ -336,32 +336,38 @@
             // 
             cbFilter.Cursor = Cursors.Hand;
             cbFilter.DropDownHeight = 108;
-            cbFilter.Font = new Font("Segoe UI", 11.25F);
+            cbFilter.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cbFilter.FormattingEnabled = true;
             cbFilter.IntegralHeight = false;
-            cbFilter.ItemHeight = 31;
+            cbFilter.ItemHeight = 20;
             cbFilter.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
-            cbFilter.Location = new Point(844, 153);
-            cbFilter.Margin = new Padding(4, 5, 4, 5);
+            cbFilter.Location = new Point(581, 18);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(397, 39);
+            cbFilter.Size = new Size(279, 28);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
             // 
+            // panelOperationsWorksheet
+            // 
+            panelOperationsWorksheet.Controls.Add(pictureBoxSearch);
+            panelOperationsWorksheet.Controls.Add(btnAddWorksheet);
+            panelOperationsWorksheet.Controls.Add(cbFilter);
+            panelOperationsWorksheet.Controls.Add(textBoxSearch);
+            panelOperationsWorksheet.Location = new Point(31, 73);
+            panelOperationsWorksheet.Name = "panelOperationsWorksheet";
+            panelOperationsWorksheet.Size = new Size(1030, 62);
+            panelOperationsWorksheet.TabIndex = 30;
+            // 
             // UserControlWorksheet
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(cbFilter);
-            Controls.Add(btnAddWorksheet);
-            Controls.Add(pictureBoxSearch);
-            Controls.Add(textBoxSearch);
+            Controls.Add(panelOperationsWorksheet);
             Controls.Add(groupBox1);
             Controls.Add(employeeWorksheetGrid);
-            Margin = new Padding(4, 5, 4, 5);
             Name = "UserControlWorksheet";
-            Size = new Size(2141, 1217);
+            Size = new Size(1499, 730);
             ((System.ComponentModel.ISupportInitialize)employeeWorksheetGrid).EndInit();
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
@@ -369,8 +375,9 @@
             ((System.ComponentModel.ISupportInitialize)userPictureBox).EndInit();
             assignUnassignGroup.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
+            panelOperationsWorksheet.ResumeLayout(false);
+            panelOperationsWorksheet.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -398,5 +405,6 @@
         private GroupBox assignUnassignGroup;
         private ComboBox cbFilter;
         private ComboBox textBoxName;
+        private Panel panelOperationsWorksheet;
     }
 }

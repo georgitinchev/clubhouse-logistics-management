@@ -56,11 +56,13 @@
             comboBoxRole = new ComboBox();
             textBoxSearch = new TextBox();
             addEmployeeBtn = new CustomButton();
+            panelOperations = new Panel();
             ((System.ComponentModel.ISupportInitialize)userDataGridView).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)userPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
+            panelOperations.SuspendLayout();
             SuspendLayout();
             // 
             // userDataGridView
@@ -355,10 +357,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(550, 86);
+            pictureBoxSearch.Location = new Point(506, 16);
             pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(41, 32);
+            pictureBoxSearch.Size = new Size(41, 27);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 19;
             pictureBoxSearch.TabStop = false;
@@ -373,10 +375,10 @@
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 20;
             comboBoxRole.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
-            comboBoxRole.Location = new Point(608, 86);
+            comboBoxRole.Location = new Point(553, 16);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(279, 28);
+            comboBoxRole.Size = new Size(245, 28);
             comboBoxRole.TabIndex = 18;
             comboBoxRole.Text = "Choose Role";
             comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
@@ -384,11 +386,11 @@
             // textBoxSearch
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
-            textBoxSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBoxSearch.Location = new Point(40, 86);
+            textBoxSearch.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            textBoxSearch.Location = new Point(13, 16);
             textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(551, 29);
+            textBoxSearch.Size = new Size(523, 27);
             textBoxSearch.TabIndex = 17;
             textBoxSearch.KeyDown += textBoxSearch_KeyDown;
             textBoxSearch.KeyPress += textBoxSearch_KeyPress;
@@ -404,25 +406,33 @@
             addEmployeeBtn.FlatStyle = FlatStyle.Flat;
             addEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             addEmployeeBtn.ForeColor = Color.White;
-            addEmployeeBtn.Location = new Point(905, 73);
+            addEmployeeBtn.Location = new Point(804, 3);
             addEmployeeBtn.Name = "addEmployeeBtn";
-            addEmployeeBtn.Size = new Size(197, 41);
+            addEmployeeBtn.Size = new Size(136, 50);
             addEmployeeBtn.TabIndex = 31;
             addEmployeeBtn.Text = "Add Employee";
             addEmployeeBtn.TextColor = Color.White;
             addEmployeeBtn.UseVisualStyleBackColor = false;
             addEmployeeBtn.Click += addEmployeeBtn_Click;
             // 
+            // panelOperations
+            // 
+            panelOperations.Controls.Add(pictureBoxSearch);
+            panelOperations.Controls.Add(addEmployeeBtn);
+            panelOperations.Controls.Add(comboBoxRole);
+            panelOperations.Controls.Add(textBoxSearch);
+            panelOperations.Location = new Point(41, 67);
+            panelOperations.Name = "panelOperations";
+            panelOperations.Size = new Size(946, 57);
+            panelOperations.TabIndex = 32;
+            // 
             // UserControlDashboard
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(addEmployeeBtn);
+            Controls.Add(panelOperations);
             Controls.Add(userDataGridView);
             Controls.Add(groupBox1);
-            Controls.Add(pictureBoxSearch);
-            Controls.Add(comboBoxRole);
-            Controls.Add(textBoxSearch);
             Cursor = Cursors.Hand;
             Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "UserControlDashboard";
@@ -433,8 +443,9 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)userPictureBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
+            panelOperations.ResumeLayout(false);
+            panelOperations.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -466,5 +477,6 @@
         private DateTimePicker dateTimePickerBirthday;
         private TextBox textBoxAddress;
         private Label label6;
+        private Panel panelOperations;
     }
 }
