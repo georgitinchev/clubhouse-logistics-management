@@ -49,6 +49,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.OrangeRed;
             panel1.Controls.Add(logOutBtn);
             panel1.Controls.Add(pictureBox1);
@@ -57,13 +58,15 @@
             panel1.Controls.Add(pictureBoxJupiter);
             panel1.Controls.Add(btnWorksheet);
             panel1.Controls.Add(btnDashboard);
-            panel1.Location = new Point(-2, -2);
+            panel1.Location = new Point(-3, -3);
+            panel1.Margin = new Padding(4, 5, 4, 5);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1486, 66);
+            panel1.Size = new Size(2141, 110);
             panel1.TabIndex = 1;
             // 
             // logOutBtn
             // 
+            logOutBtn.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             logOutBtn.BackColor = Color.OrangeRed;
             logOutBtn.BackgroundColor = Color.OrangeRed;
             logOutBtn.BorderColor = Color.Black;
@@ -72,9 +75,10 @@
             logOutBtn.FlatStyle = FlatStyle.Flat;
             logOutBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logOutBtn.ForeColor = Color.Black;
-            logOutBtn.Location = new Point(1332, 8);
+            logOutBtn.Location = new Point(1938, 15);
+            logOutBtn.Margin = new Padding(4, 5, 4, 5);
             logOutBtn.Name = "logOutBtn";
-            logOutBtn.Size = new Size(120, 44);
+            logOutBtn.Size = new Size(171, 73);
             logOutBtn.TabIndex = 23;
             logOutBtn.Text = "Logout 🔑";
             logOutBtn.TextColor = Color.Black;
@@ -84,49 +88,52 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(255, 128, 0);
-            pictureBox1.Location = new Point(793, 51);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
+            pictureBox1.Location = new Point(1133, 85);
+            pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(150, 2);
+            pictureBox1.Size = new Size(214, 3);
             pictureBox1.TabIndex = 22;
             pictureBox1.TabStop = false;
             // 
             // lineEmployee
             // 
             lineEmployee.BackColor = Color.FromArgb(255, 128, 0);
-            lineEmployee.Location = new Point(552, 52);
-            lineEmployee.Margin = new Padding(3, 2, 3, 2);
+            lineEmployee.Location = new Point(789, 87);
+            lineEmployee.Margin = new Padding(4, 3, 4, 3);
             lineEmployee.Name = "lineEmployee";
-            lineEmployee.Size = new Size(150, 2);
+            lineEmployee.Size = new Size(214, 3);
             lineEmployee.TabIndex = 21;
             lineEmployee.TabStop = false;
             // 
             // pictureBoxLogo
             // 
+            pictureBoxLogo.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxLogo.BackColor = Color.White;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
-            pictureBoxLogo.Location = new Point(720, 8);
-            pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxLogo.Location = new Point(1029, 13);
+            pictureBoxLogo.Margin = new Padding(4, 3, 4, 3);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(61, 52);
+            pictureBoxLogo.Size = new Size(87, 87);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 4;
             pictureBoxLogo.TabStop = false;
             // 
             // pictureBoxJupiter
             // 
+            pictureBoxJupiter.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pictureBoxJupiter.BackColor = Color.OrangeRed;
             pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
-            pictureBoxJupiter.Location = new Point(25, -4);
-            pictureBoxJupiter.Margin = new Padding(3, 2, 3, 2);
+            pictureBoxJupiter.Location = new Point(36, -7);
+            pictureBoxJupiter.Margin = new Padding(4, 3, 4, 3);
             pictureBoxJupiter.Name = "pictureBoxJupiter";
-            pictureBoxJupiter.Size = new Size(163, 60);
+            pictureBoxJupiter.Size = new Size(233, 100);
             pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxJupiter.TabIndex = 18;
             pictureBoxJupiter.TabStop = false;
             // 
             // btnWorksheet
             // 
+            btnWorksheet.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnWorksheet.BackColor = Color.OrangeRed;
             btnWorksheet.BackgroundColor = Color.OrangeRed;
             btnWorksheet.BorderColor = Color.Black;
@@ -135,9 +142,10 @@
             btnWorksheet.FlatStyle = FlatStyle.Flat;
             btnWorksheet.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWorksheet.ForeColor = Color.Black;
-            btnWorksheet.Location = new Point(793, 8);
+            btnWorksheet.Location = new Point(1133, 13);
+            btnWorksheet.Margin = new Padding(4, 5, 4, 5);
             btnWorksheet.Name = "btnWorksheet";
-            btnWorksheet.Size = new Size(150, 40);
+            btnWorksheet.Size = new Size(214, 67);
             btnWorksheet.TabIndex = 2;
             btnWorksheet.Text = "Worksheet";
             btnWorksheet.TextColor = Color.Black;
@@ -146,6 +154,7 @@
             // 
             // btnDashboard
             // 
+            btnDashboard.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             btnDashboard.BackColor = Color.OrangeRed;
             btnDashboard.BackgroundColor = Color.OrangeRed;
             btnDashboard.BorderColor = Color.Black;
@@ -154,9 +163,10 @@
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDashboard.ForeColor = Color.Black;
-            btnDashboard.Location = new Point(554, 8);
+            btnDashboard.Location = new Point(791, 13);
+            btnDashboard.Margin = new Padding(4, 5, 4, 5);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(150, 40);
+            btnDashboard.Size = new Size(214, 67);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextColor = Color.Black;
@@ -165,15 +175,16 @@
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1483, 691);
+            ClientSize = new Size(2119, 1152);
             Controls.Add(panel1);
-            Margin = new Padding(3, 2, 3, 2);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Media Bazaar Managment";
+            WindowState = FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

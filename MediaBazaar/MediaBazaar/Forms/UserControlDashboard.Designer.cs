@@ -70,7 +70,7 @@
             userDataGridView.Margin = new Padding(3, 2, 3, 2);
             userDataGridView.Name = "userDataGridView";
             userDataGridView.RowHeadersWidth = 51;
-            userDataGridView.Size = new Size(955, 495);
+            userDataGridView.Size = new Size(1061, 564);
             userDataGridView.TabIndex = 22;
             userDataGridView.CellClick += userDataGridView_CellClick;
             userDataGridView.SelectionChanged += userDataGridView_SelectionChanged;
@@ -99,11 +99,11 @@
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(lblRole);
             groupBox1.Controls.Add(lblName);
-            groupBox1.Location = new Point(1016, 36);
+            groupBox1.Location = new Point(1123, 40);
             groupBox1.Margin = new Padding(3, 2, 3, 2);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(3, 2, 3, 2);
-            groupBox1.Size = new Size(376, 584);
+            groupBox1.Size = new Size(376, 653);
             groupBox1.TabIndex = 21;
             groupBox1.TabStop = false;
             // 
@@ -235,7 +235,7 @@
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(44, 500);
+            removeEmployeeBtn.Location = new Point(48, 551);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(286, 50);
             removeEmployeeBtn.TabIndex = 30;
@@ -255,7 +255,7 @@
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(44, 436);
+            editEmployeeBtn.Location = new Point(48, 487);
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(286, 50);
             editEmployeeBtn.TabIndex = 29;
@@ -355,10 +355,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(444, 86);
+            pictureBoxSearch.Location = new Point(550, 86);
             pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(148, 32);
+            pictureBoxSearch.Size = new Size(41, 32);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 19;
             pictureBoxSearch.TabStop = false;
@@ -376,7 +376,7 @@
             comboBoxRole.Location = new Point(608, 86);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(191, 28);
+            comboBoxRole.Size = new Size(279, 28);
             comboBoxRole.TabIndex = 18;
             comboBoxRole.Text = "Choose Role";
             comboBoxRole.SelectedIndexChanged += comboBoxRole_SelectedIndexChanged;
@@ -404,9 +404,9 @@
             addEmployeeBtn.FlatStyle = FlatStyle.Flat;
             addEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             addEmployeeBtn.ForeColor = Color.White;
-            addEmployeeBtn.Location = new Point(800, 73);
+            addEmployeeBtn.Location = new Point(905, 73);
             addEmployeeBtn.Name = "addEmployeeBtn";
-            addEmployeeBtn.Size = new Size(197, 54);
+            addEmployeeBtn.Size = new Size(197, 41);
             addEmployeeBtn.TabIndex = 31;
             addEmployeeBtn.Text = "Add Employee";
             addEmployeeBtn.TextColor = Color.White;
