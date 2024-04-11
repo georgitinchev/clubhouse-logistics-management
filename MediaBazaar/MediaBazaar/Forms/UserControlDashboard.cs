@@ -204,9 +204,7 @@ namespace MediaBazaar.Forms
         {
             string searchTerm = textBoxSearch.Text.Trim();
             string selectedRole = comboBoxRole.SelectedItem?.ToString();
-
             var query = employeeData.AsEnumerable();
-
             try
             {
                 if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")

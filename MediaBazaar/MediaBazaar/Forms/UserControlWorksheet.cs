@@ -39,13 +39,14 @@ namespace MediaBazaar.Forms
         private void UserControlWorksheet_Resize(object sender, EventArgs e)
         {
             panelOperationsWorksheet.Width = this.ClientSize.Width - groupBox1.Width - 120;
-            panelOperationsWorksheet.Location = new Point(31, 73); // Adjust the Y value as needed
+            panelOperationsWorksheet.Location = new Point(31, 73);
             employeeWorksheetGrid.Size = new Size(this.ClientSize.Width - groupBox1.Width - 120, this.ClientSize.Height - 200);
-            employeeWorksheetGrid.Location = new Point(31, panelOperationsWorksheet.Bottom + 10); // Position it below the panel
+            employeeWorksheetGrid.Location = new Point(31, panelOperationsWorksheet.Bottom + 10);
             groupBox1.Size = new Size(376, this.ClientSize.Height - 100);
             groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - 40, 40);
+            textBoxSearch.Width = cbFilter.Location.X - pictureBoxSearch.Width - textBoxSearch.Location.X - 10; 
+            pictureBoxSearch.Location = new Point(textBoxSearch.Location.X + textBoxSearch.Width, textBoxSearch.Location.Y);
         }
-
 
         private void UserControlWorksheet_Load(object sender, EventArgs e)
         {
@@ -95,7 +96,6 @@ namespace MediaBazaar.Forms
         private void InitializeGridViewWorksheet()
         {
             employeeWorksheetGrid.AutoGenerateColumns = false;
-            //employeeWorksheetGrid.DataSource = worksheetData;
             employeeWorksheetGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             employeeWorksheetGrid.AllowUserToAddRows = false;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
@@ -119,7 +119,7 @@ namespace MediaBazaar.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240); // Light gray
+                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240); 
                 }
             };
 
@@ -127,7 +127,7 @@ namespace MediaBazaar.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; // Reset to white
+                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; 
                 }
             };
 

@@ -325,10 +325,10 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(533, 19);
+            pictureBoxSearch.Location = new Point(533, 20);
             pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(42, 33);
+            pictureBoxSearch.Size = new Size(42, 28);
             pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxSearch.TabIndex = 28;
             pictureBoxSearch.TabStop = false;
