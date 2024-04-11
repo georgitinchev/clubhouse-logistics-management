@@ -30,6 +30,7 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             InitializeFocus();
             Load += UserControlWorksheet_Load;
+            this.Resize += UserControlWorksheet_Resize;
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
             PopulateWorksheetData();
 
@@ -106,7 +107,8 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.DefaultCellStyle.SelectionForeColor = Color.FromArgb(33, 33, 33);
             employeeWorksheetGrid.RowHeadersVisible = false;
             employeeWorksheetGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            employeeWorksheetGrid.Font = new Font("Segoe UI", 10);
+            employeeWorksheetGrid.Font = new Font("Segoe UI Semibold", 14);
+            employeeWorksheetGrid.RowTemplate.Height = 70;
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.BorderStyle = BorderStyle.None;
             employeeWorksheetGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
