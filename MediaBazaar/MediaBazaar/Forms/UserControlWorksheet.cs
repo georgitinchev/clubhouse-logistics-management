@@ -36,12 +36,15 @@ namespace MediaBazaar.Forms
         }
         private void UserControlWorksheet_Resize(object sender, EventArgs e)
         {
-            panelOperationsWorksheet.Width = this.ClientSize.Width - groupBox1.Width - 120;
-            panelOperationsWorksheet.Location = new Point(31, 73);
-            employeeWorksheetGrid.Size = new Size(this.ClientSize.Width - groupBox1.Width - 120, this.ClientSize.Height - 200);
-            employeeWorksheetGrid.Location = new Point(31, panelOperationsWorksheet.Bottom + 10);
-            groupBox1.Size = new Size(376, this.ClientSize.Height - 100);
-            groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - 40, 40);
+            int padding = 31;
+            int groupBoxWidth = this.ClientSize.Width / 4; 
+            int otherControlsWidth = this.ClientSize.Width - groupBoxWidth - 2 * padding; 
+            panelOperationsWorksheet.Width = otherControlsWidth;
+            panelOperationsWorksheet.Location = new Point(padding, 73);
+            employeeWorksheetGrid.Size = new Size(otherControlsWidth, this.ClientSize.Height - 200);
+            employeeWorksheetGrid.Location = new Point(padding, panelOperationsWorksheet.Bottom + 10);
+            groupBox1.Size = new Size(groupBoxWidth, this.ClientSize.Height - 100);
+            groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - padding, padding);
             textBoxSearch.Width = cbFilter.Location.X - pictureBoxSearch.Width - textBoxSearch.Location.X - 10;
             pictureBoxSearch.Location = new Point(textBoxSearch.Location.X + textBoxSearch.Width, textBoxSearch.Location.Y);
         }
