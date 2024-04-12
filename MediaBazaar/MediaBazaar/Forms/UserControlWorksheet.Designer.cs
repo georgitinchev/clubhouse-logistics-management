@@ -259,7 +259,7 @@
             assignUnassignGroup.Controls.Add(btnAssignWorksheet);
             assignUnassignGroup.Controls.Add(btnUnassignWorksheet);
             assignUnassignGroup.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            assignUnassignGroup.Location = new Point(36, 412);
+            assignUnassignGroup.Location = new Point(34, 401);
             assignUnassignGroup.Margin = new Padding(2);
             assignUnassignGroup.Name = "assignUnassignGroup";
             assignUnassignGroup.Padding = new Padding(2);
@@ -314,7 +314,7 @@
             textBoxSearch.Location = new Point(13, 19);
             textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(552, 29);
+            textBoxSearch.Size = new Size(514, 29);
             textBoxSearch.TabIndex = 26;
             textBoxSearch.Text = "Search...";
             textBoxSearch.KeyDown += textBoxSearch_KeyDown;
@@ -326,7 +326,7 @@
             pictureBoxSearch.BackColor = Color.White;
             pictureBoxSearch.Cursor = Cursors.Hand;
             pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(533, 20);
+            pictureBoxSearch.Location = new Point(504, 20);
             pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
             pictureBoxSearch.Name = "pictureBoxSearch";
             pictureBoxSearch.Size = new Size(42, 28);
@@ -344,9 +344,9 @@
             cbFilter.IntegralHeight = false;
             cbFilter.ItemHeight = 20;
             cbFilter.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
-            cbFilter.Location = new Point(581, 20);
+            cbFilter.Location = new Point(552, 19);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(136, 28);
+            cbFilter.Size = new Size(168, 28);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;

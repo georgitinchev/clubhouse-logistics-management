@@ -105,7 +105,6 @@ namespace DataAccessLayer
             {
                 var command = new SqlCommand("DELETE FROM Employee WHERE Id = @Id", connection);
                 command.Parameters.AddWithValue("@Id", id);
-
                 command.ExecuteNonQuery();
             }
         }

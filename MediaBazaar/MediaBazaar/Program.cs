@@ -20,7 +20,7 @@ namespace MediaBazaar
 			// and open MainForm if authenticated
 			if (authenticationForm.isAuthenticated)
 			{
-				MainForm mainForm = new MainForm(authenticationForm.employeeManager);
+				MainForm mainForm = new MainForm(authenticationForm.employeeManager, authenticationForm.worksheetManager);
 				Application.Run(mainForm);
 			}
 		}

@@ -220,7 +220,7 @@
             comboBoxRoleDetails.FormattingEnabled = true;
             comboBoxRoleDetails.IntegralHeight = false;
             comboBoxRoleDetails.ItemHeight = 20;
-            comboBoxRoleDetails.Items.AddRange(new object[] { "HR Manager", "Sales Representative", "Support", "Cashier", "Security Guard", "Depot Worker" });
+            comboBoxRoleDetails.Items.AddRange(new object[] { "DepartmentManager", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
             comboBoxRoleDetails.Location = new Point(116, 156);
             comboBoxRoleDetails.Margin = new Padding(3, 2, 3, 2);
             comboBoxRoleDetails.Name = "comboBoxRoleDetails";
@@ -376,7 +376,7 @@
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 20;
-            comboBoxRole.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
+            comboBoxRole.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
             comboBoxRole.Location = new Point(553, 16);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";

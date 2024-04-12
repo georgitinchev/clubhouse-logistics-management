@@ -15,13 +15,16 @@ namespace MediaBazaar.Forms
 	public partial class Authentication : Form
 	{
 		public EmployeeManager employeeManager { get; private set; }
+		public EmployeeWorksheetManager worksheetManager { get; private set; }
 		public bool isAuthenticated { get; private set; } = false;
 		public Authentication()
 		{
 			employeeManager = new EmployeeManager();
+			worksheetManager = new EmployeeWorksheetManager();
 			InitializeComponent();
 			passwordLoginTxt.PasswordChar = '*';
 			this.Resize += AuthenticationForm_Resize;
+		    passwordLoginTxt.KeyDown += passwordLoginTxt_KeyDown;
 		}
 
 
@@ -64,5 +67,14 @@ namespace MediaBazaar.Forms
 				loginStatusLabel.Text = ex.Message;
 			}
 		}
-	}
+
+        private void passwordLoginTxt_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                loginBtn_Click(sender, e);
+            }
+        }
+
+    }
 }
