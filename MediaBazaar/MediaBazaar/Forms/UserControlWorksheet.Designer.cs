@@ -140,19 +140,19 @@
             // 
             textBoxName.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             textBoxName.FormattingEnabled = true;
-            textBoxName.Location = new Point(102, 79);
+            textBoxName.Location = new Point(129, 78);
             textBoxName.Margin = new Padding(2);
             textBoxName.Name = "textBoxName";
-            textBoxName.Size = new Size(238, 28);
+            textBoxName.Size = new Size(238, 33);
             textBoxName.TabIndex = 45;
             // 
             // dateTimePicker1
             // 
             dateTimePicker1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(102, 182);
+            dateTimePicker1.Location = new Point(129, 182);
             dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(238, 27);
+            dateTimePicker1.Size = new Size(238, 32);
             dateTimePicker1.TabIndex = 39;
             // 
             // cbShift
@@ -160,26 +160,26 @@
             cbShift.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             cbShift.FormattingEnabled = true;
             cbShift.Items.AddRange(new object[] { "Morning", "Afternoon", "Evening" });
-            cbShift.Location = new Point(102, 239);
+            cbShift.Location = new Point(129, 239);
             cbShift.Name = "cbShift";
-            cbShift.Size = new Size(238, 28);
+            cbShift.Size = new Size(238, 33);
             cbShift.TabIndex = 38;
             // 
             // lbDate
             // 
             lbDate.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lbDate.Location = new Point(48, 188);
+            lbDate.Location = new Point(18, 188);
             lbDate.Name = "lbDate";
-            lbDate.Size = new Size(48, 20);
+            lbDate.Size = new Size(60, 20);
             lbDate.TabIndex = 37;
             lbDate.Text = "Date:";
             // 
             // lbShift
             // 
             lbShift.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lbShift.Location = new Point(51, 247);
+            lbShift.Location = new Point(18, 242);
             lbShift.Name = "lbShift";
-            lbShift.Size = new Size(48, 24);
+            lbShift.Size = new Size(63, 24);
             lbShift.TabIndex = 36;
             lbShift.Text = "Shift:";
             // 
@@ -201,7 +201,7 @@
             worksheetDetailsLabel.ForeColor = Color.Black;
             worksheetDetailsLabel.Location = new Point(65, 33);
             worksheetDetailsLabel.Name = "worksheetDetailsLabel";
-            worksheetDetailsLabel.Size = new Size(141, 21);
+            worksheetDetailsLabel.Size = new Size(175, 28);
             worksheetDetailsLabel.TabIndex = 26;
             worksheetDetailsLabel.Text = "Worksheet details";
             // 
@@ -226,20 +226,20 @@
             comboBoxRole.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
-            comboBoxRole.ItemHeight = 20;
+            comboBoxRole.ItemHeight = 25;
             comboBoxRole.Items.AddRange(new object[] { "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
-            comboBoxRole.Location = new Point(102, 130);
+            comboBoxRole.Location = new Point(129, 131);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
-            comboBoxRole.Size = new Size(238, 28);
+            comboBoxRole.Size = new Size(238, 33);
             comboBoxRole.TabIndex = 16;
             // 
             // lblRole
             // 
             lblRole.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblRole.Location = new Point(48, 134);
+            lblRole.Location = new Point(18, 134);
             lblRole.Name = "lblRole";
-            lblRole.Size = new Size(42, 24);
+            lblRole.Size = new Size(54, 24);
             lblRole.TabIndex = 2;
             lblRole.Text = "Role:";
             // 
@@ -249,7 +249,7 @@
             lblName.Location = new Point(18, 84);
             lblName.Margin = new Padding(1, 0, 1, 0);
             lblName.Name = "lblName";
-            lblName.Size = new Size(81, 27);
+            lblName.Size = new Size(108, 27);
             lblName.TabIndex = 0;
             lblName.Text = "Employee:";
             // 
@@ -314,7 +314,7 @@
             textBoxSearch.Location = new Point(13, 19);
             textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(552, 29);
+            textBoxSearch.Size = new Size(552, 34);
             textBoxSearch.TabIndex = 26;
             textBoxSearch.Text = "Search...";
             textBoxSearch.KeyDown += textBoxSearch_KeyDown;
@@ -342,11 +342,11 @@
             cbFilter.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cbFilter.FormattingEnabled = true;
             cbFilter.IntegralHeight = false;
-            cbFilter.ItemHeight = 20;
+            cbFilter.ItemHeight = 25;
             cbFilter.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
             cbFilter.Location = new Point(581, 20);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(136, 28);
+            cbFilter.Size = new Size(136, 33);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
@@ -371,18 +371,18 @@
             cbDayFilter.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             cbDayFilter.FormattingEnabled = true;
             cbDayFilter.IntegralHeight = false;
-            cbDayFilter.ItemHeight = 20;
+            cbDayFilter.ItemHeight = 25;
             cbDayFilter.Items.AddRange(new object[] { "Any Day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
             cbDayFilter.Location = new Point(726, 20);
             cbDayFilter.Name = "cbDayFilter";
-            cbDayFilter.Size = new Size(136, 28);
+            cbDayFilter.Size = new Size(136, 33);
             cbDayFilter.TabIndex = 30;
             cbDayFilter.Text = "Choose Day";
             cbDayFilter.SelectedIndexChanged += cbDayFilter_SelectedIndexChanged;
             // 
             // UserControlWorksheet
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panelOperationsWorksheet);
             Controls.Add(groupBox1);
