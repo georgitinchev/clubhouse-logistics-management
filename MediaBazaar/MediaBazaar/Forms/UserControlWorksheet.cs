@@ -34,7 +34,6 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.CellClick += employeeWorksheetGrid_CellClick;
             PopulateWorksheetData();
         }
-
         private void UserControlWorksheet_Resize(object sender, EventArgs e)
         {
             panelOperationsWorksheet.Width = this.ClientSize.Width - groupBox1.Width - 120;
@@ -43,7 +42,7 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.Location = new Point(31, panelOperationsWorksheet.Bottom + 10);
             groupBox1.Size = new Size(376, this.ClientSize.Height - 100);
             groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - 40, 40);
-            textBoxSearch.Width = cbFilter.Location.X - pictureBoxSearch.Width - textBoxSearch.Location.X - 10; 
+            textBoxSearch.Width = cbFilter.Location.X - pictureBoxSearch.Width - textBoxSearch.Location.X - 10;
             pictureBoxSearch.Location = new Point(textBoxSearch.Location.X + textBoxSearch.Width, textBoxSearch.Location.Y);
         }
 
@@ -78,7 +77,6 @@ namespace MediaBazaar.Forms
                         employeeRole = employee.Role.ToString();
                     }
                 }
-
                 worksheetData.Rows.Add(worksheet.id, employeeRole, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(), employeeName, worksheet.weekNr);
             }
             employeeWorksheetGrid.DataSource = worksheetData;
@@ -107,7 +105,6 @@ namespace MediaBazaar.Forms
             employeeWorksheetGrid.RowHeadersVisible = false;
             employeeWorksheetGrid.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             employeeWorksheetGrid.Font = new Font("Segoe UI Semibold", 14);
-        
             employeeWorksheetGrid.EnableHeadersVisualStyles = false;
             employeeWorksheetGrid.BorderStyle = BorderStyle.None;
             employeeWorksheetGrid.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
@@ -118,7 +115,7 @@ namespace MediaBazaar.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240); 
+                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.FromArgb(240, 240, 240);
                 }
             };
 
@@ -126,7 +123,7 @@ namespace MediaBazaar.Forms
             {
                 if (e.RowIndex >= 0)
                 {
-                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White; 
+                    employeeWorksheetGrid.Rows[e.RowIndex].DefaultCellStyle.BackColor = Color.White;
                 }
             };
             employeeWorksheetGrid.ScrollBars = ScrollBars.Vertical;
@@ -209,10 +206,9 @@ namespace MediaBazaar.Forms
         private void Search()
         {
             string searchTerm = textBoxSearch.Text.Trim();
-            string selectedRole = comboBoxRole.SelectedItem?.ToString();
-
+            string selectedRole = cbFilter.SelectedItem?.ToString();
+            string selectedDay = cbDayFilter.SelectedItem?.ToString();
             var query = worksheetData.AsEnumerable();
-
             try
             {
                 if (!string.IsNullOrEmpty(selectedRole) && selectedRole != "Any Role")
@@ -220,11 +216,15 @@ namespace MediaBazaar.Forms
                     query = query.Where(row => row.Field<string>("Role") == selectedRole);
                 }
 
+                if (!string.IsNullOrEmpty(selectedDay) && selectedDay != "Any Day")
+                {
+                    query = query.Where(row => row.Field<string>("Weekday") == selectedDay); 
+                }
+
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
                     query = query.Where(row => row.Field<string>("Employee").Contains(searchTerm));
                 }
-
                 DataTable searchResults = query.Any() ? query.CopyToDataTable() : worksheetData.Clone();
                 employeeWorksheetGrid.DataSource = searchResults;
             }
@@ -296,18 +296,19 @@ namespace MediaBazaar.Forms
 
         private void btnRemoveWorksheet_Click(object sender, EventArgs e)
         {
-            if(employeeWorksheetGrid.SelectedRows.Count > 0)
+            if (employeeWorksheetGrid.SelectedRows.Count > 0)
             {
                 int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
                 int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
                 EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
-                if(worksheet != null)
+                if (worksheet != null)
                 {
                     employeeWorksheetManager.DeleteWorksheet(worksheet);
                     employeeWorksheetManager.DeleteWorksheetInDB(worksheet);
                     PopulateWorksheetData();
                     MessageBox.Show("Worksheet removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
+                }
+                else
                 {
                     MessageBox.Show("This worksheet does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -316,24 +317,30 @@ namespace MediaBazaar.Forms
 
         private void btnAssignWorksheet_Click(object sender, EventArgs e)
         {
-            if(employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
+            if (employeeWorksheetGrid.SelectedRows.Count > 0 && textBoxName.SelectedItem != null)
             {
                 int selectedRow = employeeWorksheetGrid.SelectedRows[0].Index;
                 int id = Convert.ToInt32(employeeWorksheetGrid.Rows[selectedRow].Cells["ID"].Value);
                 EmployeeWorksheet worksheet = employeeWorksheetManager.GetWorksheetById(id);
                 string employeeName = textBoxName.SelectedItem.ToString();
                 Employee employee = employeeManager.GetEmployeeByName(employeeName);
-                if(employee != null)
+                if (employee != null)
                 {
-                    worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay,employee.EmployeeID,worksheet.weekNr);
+                    worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay, employee.EmployeeID, worksheet.weekNr);
                     employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
                     PopulateWorksheetData();
                     MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Employee does not exist", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void cbDayFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Search();
         }
     }
 }

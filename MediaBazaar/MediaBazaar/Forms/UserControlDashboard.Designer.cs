@@ -67,6 +67,7 @@
             // 
             // userDataGridView
             // 
+            userDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             userDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             userDataGridView.Location = new Point(41, 129);
             userDataGridView.Margin = new Padding(3, 2, 3, 2);
@@ -79,6 +80,7 @@
             // 
             // groupBox1
             // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             groupBox1.BackColor = Color.OrangeRed;
             groupBox1.Controls.Add(dateTimePickerBirthday);
             groupBox1.Controls.Add(label5);
@@ -237,7 +239,7 @@
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(48, 551);
+            removeEmployeeBtn.Location = new Point(48, 459);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(286, 50);
             removeEmployeeBtn.TabIndex = 30;
@@ -257,7 +259,7 @@
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(48, 487);
+            editEmployeeBtn.Location = new Point(48, 395);
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(286, 50);
             editEmployeeBtn.TabIndex = 29;
@@ -374,7 +376,7 @@
             comboBoxRole.FormattingEnabled = true;
             comboBoxRole.IntegralHeight = false;
             comboBoxRole.ItemHeight = 20;
-            comboBoxRole.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
+            comboBoxRole.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "Support", "Cashier", "SecurityGuard", "DepotWorker" });
             comboBoxRole.Location = new Point(553, 16);
             comboBoxRole.Margin = new Padding(3, 2, 3, 2);
             comboBoxRole.Name = "comboBoxRole";
@@ -417,6 +419,7 @@
             // 
             // panelOperations
             // 
+            panelOperations.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelOperations.Controls.Add(pictureBoxSearch);
             panelOperations.Controls.Add(addEmployeeBtn);
             panelOperations.Controls.Add(comboBoxRole);

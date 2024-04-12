@@ -51,6 +51,7 @@
             pictureBoxSearch = new PictureBox();
             cbFilter = new ComboBox();
             panelOperationsWorksheet = new Panel();
+            cbDayFilter = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)employeeWorksheetGrid).BeginInit();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -342,16 +343,17 @@
             cbFilter.FormattingEnabled = true;
             cbFilter.IntegralHeight = false;
             cbFilter.ItemHeight = 20;
-            cbFilter.Items.AddRange(new object[] { "Any Role", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
+            cbFilter.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
             cbFilter.Location = new Point(581, 20);
             cbFilter.Name = "cbFilter";
-            cbFilter.Size = new Size(279, 28);
+            cbFilter.Size = new Size(136, 28);
             cbFilter.TabIndex = 29;
             cbFilter.Text = "Choose Role";
             cbFilter.SelectedIndexChanged += cbFilter_SelectedIndexChanged;
             // 
             // panelOperationsWorksheet
             // 
+            panelOperationsWorksheet.Controls.Add(cbDayFilter);
             panelOperationsWorksheet.Controls.Add(pictureBoxSearch);
             panelOperationsWorksheet.Controls.Add(btnAddWorksheet);
             panelOperationsWorksheet.Controls.Add(cbFilter);
@@ -361,6 +363,22 @@
             panelOperationsWorksheet.Name = "panelOperationsWorksheet";
             panelOperationsWorksheet.Size = new Size(1030, 70);
             panelOperationsWorksheet.TabIndex = 30;
+            // 
+            // cbDayFilter
+            // 
+            cbDayFilter.Cursor = Cursors.Hand;
+            cbDayFilter.DropDownHeight = 108;
+            cbDayFilter.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            cbDayFilter.FormattingEnabled = true;
+            cbDayFilter.IntegralHeight = false;
+            cbDayFilter.ItemHeight = 20;
+            cbDayFilter.Items.AddRange(new object[] { "Any Day", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" });
+            cbDayFilter.Location = new Point(726, 20);
+            cbDayFilter.Name = "cbDayFilter";
+            cbDayFilter.Size = new Size(136, 28);
+            cbDayFilter.TabIndex = 30;
+            cbDayFilter.Text = "Choose Day";
+            cbDayFilter.SelectedIndexChanged += cbDayFilter_SelectedIndexChanged;
             // 
             // UserControlWorksheet
             // 
@@ -411,5 +429,6 @@
         private ComboBox cbFilter;
         private ComboBox textBoxName;
         private Panel panelOperationsWorksheet;
+        private ComboBox cbDayFilter;
     }
 }
