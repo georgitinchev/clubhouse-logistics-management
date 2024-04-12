@@ -239,7 +239,7 @@
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(48, 459);
+            removeEmployeeBtn.Location = new Point(47, 560);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(286, 50);
             removeEmployeeBtn.TabIndex = 30;
@@ -259,7 +259,7 @@
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(48, 395);
+            editEmployeeBtn.Location = new Point(47, 496);
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(286, 50);
             editEmployeeBtn.TabIndex = 29;

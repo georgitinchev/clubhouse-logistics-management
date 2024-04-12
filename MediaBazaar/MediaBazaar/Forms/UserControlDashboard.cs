@@ -31,13 +31,21 @@ namespace MediaBazaar.Forms
 
         private void UserControlDashboard_Resize(object sender, EventArgs e)
         {
-            panelOperations.Width = this.ClientSize.Width - groupBox1.Width - 120;
-            panelOperations.Location = new Point(40, 67);
-            userDataGridView.Size = new Size(this.ClientSize.Width - groupBox1.Width - 120, this.ClientSize.Height - 200);
-            userDataGridView.Location = new Point(40, panelOperations.Bottom + 10); 
-            groupBox1.Size = new Size(376, this.ClientSize.Height - 100);
-            groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - 40, 40);
+            int padding = 31;
+            int groupBoxWidth = this.ClientSize.Width / 4;
+            int otherControlsWidth = this.ClientSize.Width - groupBoxWidth - 2 * padding;
+
+            panelOperations.Width = otherControlsWidth;
+            panelOperations.Location = new Point(padding, 67);
+
+            userDataGridView.Size = new Size(otherControlsWidth, this.ClientSize.Height - 200);
+            userDataGridView.Location = new Point(padding, panelOperations.Bottom + 10);
+
+            groupBox1.Size = new Size(groupBoxWidth, this.ClientSize.Height - 100);
+            groupBox1.Location = new Point(this.ClientSize.Width - groupBox1.Width - padding, padding);
         }
+
+
 
         private void SubscribeToLoadEvent()
         {
