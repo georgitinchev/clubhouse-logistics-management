@@ -14,11 +14,13 @@ namespace MediaBazaar.Forms
     {
         private DataTable employeeData;
         private EmployeeManager employeeManager;
+        private EmployeeWorksheetManager employeeWorksheetManager;
         private List<(Control control, Color originalBackColor, bool originalReadOnly)> originalControlStates = new List<(Control, Color, bool)>();
 
-        public UserControlDashboard(EmployeeManager _employeeManager)
+        public UserControlDashboard(EmployeeManager _employeeManager, EmployeeWorksheetManager _employeeWorksheetManager)
         {
             employeeManager = _employeeManager;
+            employeeWorksheetManager = _employeeWorksheetManager;
             InitializeComponent();
             InitializeData();
             InitializeDataGridView();
@@ -77,7 +79,7 @@ namespace MediaBazaar.Forms
         }
 
 
-        private void InitializeData()
+        internal void InitializeData()
         {
             employeeData = new DataTable();
             employeeData.Columns.Add("EmployeeID", typeof(int));
@@ -222,9 +224,26 @@ namespace MediaBazaar.Forms
 
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
-                    query = query.Where(row => row.Field<string>("Name").Contains(searchTerm) || row.Field<string>("Email").Contains(searchTerm));
+                    bool isNumber = int.TryParse(searchTerm, out int number);
+                    bool isValidEmail = new System.ComponentModel.DataAnnotations.EmailAddressAttribute().IsValid(searchTerm);
+                    query = query.Where(row =>
+                    {
+                        if (isNumber)
+                        {
+                            return row.Field<int>("EmployeeID") == number;
+                        }
+                        else
+                        {
+                            string name = row.Field<string>("Name");
+                            string[] nameParts = name.Split(' ');
+                            string firstName = nameParts[0];
+                            string lastName = nameParts.Length > 1 ? nameParts[1] : "";
+                            return (firstName.Contains(searchTerm) || lastName.Contains(searchTerm)
+                                    || (isValidEmail && row.Field<string>("Email") == searchTerm)
+                                    || row.Field<string>("Role").Contains(searchTerm));
+                        }
+                    });
                 }
-
                 DataTable searchResults = query.Any() ? query.CopyToDataTable() : employeeData.Clone();
                 userDataGridView.DataSource = searchResults;
             }
@@ -279,6 +298,8 @@ namespace MediaBazaar.Forms
                         dateTimePicker.Enabled = true;
                     }
                 }
+                textBoxBSN.ReadOnly = true;
+                dateTimePickerBirthday.Enabled = false;
                 editEmployeeBtn.Text = "Save";
             }
             else if (editEmployeeBtn.Text == "Save")
@@ -305,6 +326,8 @@ namespace MediaBazaar.Forms
                         dateTimePicker.Enabled = false;
                     }
                 }
+                textBoxBSN.ReadOnly = true;
+                dateTimePickerBirthday.Enabled = false;
                 editEmployeeBtn.Text = "Edit Employee";
             }
         }
@@ -416,15 +439,13 @@ namespace MediaBazaar.Forms
             if (userDataGridView.SelectedRows.Count > 0)
             {
                 DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
-
                 int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
-
                 DialogResult result = MessageBox.Show("Are you sure you want to remove this employee?", "Remove Employee", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
                 if (result == DialogResult.Yes)
                 {
                     try
                     {
+                        employeeWorksheetManager.UnassignAllWorksheetsOfEmployee(employeeId);
                         employeeManager.DeleteEmployee(employeeId);
                         InitializeData();
                         MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

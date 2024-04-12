@@ -22,11 +22,10 @@ namespace MediaBazaar.Forms
         private EmployeeWorksheetManager employeeWorksheetManager;
         private EmployeeManager employeeManager;
         private DataTable worksheetData;
-        public UserControlWorksheet(EmployeeManager _employeeManager)
+        public UserControlWorksheet(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager)
         {
-            employeeWorksheetManager = new EmployeeWorksheetManager();
+            employeeWorksheetManager = _worksheetManager;
             employeeManager = _employeeManager;
-
             InitializeComponent();
             InitializeFocus();
             Load += UserControlWorksheet_Load;

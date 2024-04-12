@@ -24,7 +24,6 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@WeekDay", worksheet.WeekDay);
                 command.Parameters.AddWithValue("@EmployeeId", worksheet.EmployeeId);
                 command.Parameters.AddWithValue("@WeekNr", worksheet.WeekNr);
-
                 command.ExecuteNonQuery();
             }
         }
