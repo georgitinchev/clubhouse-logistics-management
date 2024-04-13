@@ -328,10 +328,16 @@ namespace MediaBazaar.Forms
                 Employee employee = employeeManager.GetEmployeeByName(employeeName);
                 if (employee != null)
                 {
-                    worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay, employee.EmployeeID, worksheet.weekNr);
-                    employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
-                    PopulateWorksheetData();
-                    MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if(employeeWorksheetManager.CanAssignWorksheet(employee.EmployeeID, worksheet.weekDay, worksheet.timeSlot, worksheet.weekNr))
+                    {
+                        worksheet.UpdateWorksheet(worksheet.timeSlot, worksheet.weekDay, employee.EmployeeID, worksheet.weekNr);
+                        employeeWorksheetManager.UpdateWorksheetInDB(worksheet);
+                        PopulateWorksheetData();
+                        MessageBox.Show("Worksheet assigned successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } else
+                    {
+                        MessageBox.Show("Cannot assign worksheet. Employee already has two shifts or the shifts are not adjacent.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
