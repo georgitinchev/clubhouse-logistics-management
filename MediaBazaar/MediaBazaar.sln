@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccessLayer", "DataAcce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DTOLayer", "DTOLayer\DTOLayer.csproj", "{CF9532A8-8888-4D2B-8FC9-8AF72ACBB84A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaBazaarWebsite", "MediaBazaarWebsite\MediaBazaarWebsite.csproj", "{4F63A222-8563-401C-AB4E-94AA8C63A2F4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MediaBazaarWebsite", "MediaBazaarWebsite\MediaBazaarWebsite.csproj", "{4F63A222-8563-401C-AB4E-94AA8C63A2F4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

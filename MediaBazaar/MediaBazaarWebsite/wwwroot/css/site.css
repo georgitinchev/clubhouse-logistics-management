@@ -8,6 +8,10 @@ html {
   }
 }
 
+a {
+    text-decoration: none;
+}
+
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
   box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
@@ -70,4 +74,189 @@ header .nav-item:hover::after {
 
 header .nav-item a:hover {
     color: #fff!important;
+}
+
+.nav-button {
+    right: 0;
+}
+
+
+/*Login ---------------------------------------------------*/
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.login-content {
+    display: flex;
+    max-width: 900px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+    flex: 1;
+    padding: 80px;
+}
+
+.login-form h2 {
+    margin-top: 0;
+}
+
+.login-form p {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 30px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #d56936;
+    color: #fff;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.login-container button:hover {
+    background-color: #000;
+    color: #d56936;
+}
+
+.login-image {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 0 10px 10px 0;
+}
+
+.login-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/*Details ----------------------------------*/
+
+/* styles.css */
+
+.details {
+    background-image: url("~/img/background.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 50px auto;
+}
+
+.info-section {
+    flex: 0 0 45%;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+.info-section h2 {
+    margin-top: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.info-section label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.info-section input[type="text"],
+.info-section input[type="email"],
+.info-section input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 5px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.info-section .btn-edit {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.info-section .btn-edit:hover {
+    background-color: #0056b3;
+}
+
+
+
+/*Availability ------------------------*/
+
+.month {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+
+#calendar-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+#calendar-header div {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+}
+
+.day {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.day-header {
+  font-weight: bold;
+  text-align: center;
+}
+
+.slot {
+  cursor: pointer;
+}
+
+.slot.reserved {
+  background-color: red;
+  color: white;
 }
