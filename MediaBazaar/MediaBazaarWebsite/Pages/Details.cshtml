@@ -1,35 +1,33 @@
 ﻿@page
 @model MediaBazaarWebsite.Pages.DetailsModel
 @{
+	Layout = "_Layout";
 }
 
-<section class="details">
-    <div class="info-section personal-info">
-        <h2>Personal Information</h2>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email">
-        <label for="bsn">BSN</label>
-        <input type="text" id="bsn" name="bsn">
-        <label for="password">Password</label>
-        <input type="password" id="password" name="password">
-        <label for="phone">Phone Number</label>
-        <input type="text" id="phone" name="phone">
-        <label for="birthday">Birthday</label>
-        <input type="text" id="birthday" name="birthday">
-        <label for="address">Address</label>
-        <input type="text" id="address" name="address">
-        <button class="btn-edit">Edit</button>
-    </div>
-    <div class="info-section emergency-contact">
-        <h2>Emergency Contact</h2>
-        <label for="emergency-name">Name</label>
-        <input type="text" id="emergency-name" name="emergency-name">
-        <label for="emergency-email">Email</label>
-        <input type="email" id="emergency-email" name="emergency-email">
-        <label for="emergency-phone">Phone Number</label>
-        <input type="text" id="emergency-phone" name="emergency-phone">
-        <button class="btn-edit">Edit</button>
-    </div>
-</section>
+<form method="post">
+	<section class="details">
+		<div class="info-section personal-info">
+			<h2>Personal Information</h2>
+			<label for="name">Name</label>
+			<input type="text" id="name" asp-for="employee.FirstName">
+			<label for="email">Email</label>
+			<input type="email" id="email" asp-for="employee.Email">
+			<label for="password">Password</label>
+			<input type="password" id="password" asp-for="employee.Password">
+			<label for="phone">Phone Number</label>
+			<input type="text" id="phone" asp-for="employee.PhoneNumber">
+			<label for="address">Address</label>
+			<input type="text" id="address" asp-for="employee.Address">
+			<button type="submit">Save</button>
+		</div>
+		<div class="info-section emergency-contact">
+			<h2>Emergency Contact</h2>
+			<label for="emergency-name">Name</label>
+			<input type="text" id="emergency-name" asp-for="employee.EmergencyContact.FirstName">
+			<label for="emergency-email">Email</label>
+			<input type="email" id="emergency-email" asp-for="employee.EmergencyContact.Email">
+			<label for="emergency-phone">Phone Number</label>
+			<input type="text" id="emergency-phone" asp-for="employee.EmergencyContact.PhoneNumber">
+		</div>
+	</section>
+</form>

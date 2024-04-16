@@ -1,4 +1,7 @@
+using MediaBazaar.Classes;
+
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<EmployeeManager>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
