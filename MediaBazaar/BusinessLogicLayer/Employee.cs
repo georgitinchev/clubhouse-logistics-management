@@ -21,6 +21,7 @@ namespace DTOLayer
 		public string Address { get; private set; }
 		public Contract Contract { get; private set; }
 		public bool FirstPassword { get; private set; }
+		public string Salt { get; private set; }
 
 		public Employee(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{
@@ -34,7 +35,7 @@ namespace DTOLayer
 			Role = role;
 		}
 		public Employee(int id, string firstName, string lastName, string email, string password, string phoneNumber, string bsn, DateTime birthday, int role, bool isManager, EmergencyContact emergencyContact, string address
-				, Contract contract)
+				, Contract contract,bool firstPassword, string salt)
 		{
             EmployeeID = id;
 			FirstName = firstName;
@@ -49,7 +50,8 @@ namespace DTOLayer
 			EmergencyContact = emergencyContact ?? throw new ArgumentNullException(nameof(emergencyContact), "EmergencyContact cannot be null.");
 			Address = address;
 			Contract = contract ?? throw new ArgumentNullException(nameof(contract), "Contract cannot be null.");
-			FirstPassword = true;
+			FirstPassword = firstPassword;
+			Salt = salt;
 		}
 		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{

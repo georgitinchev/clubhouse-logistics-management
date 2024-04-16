@@ -63,7 +63,9 @@ namespace DataAccessLayer
                             (int)reader["Role"],
                             (bool)reader["IsManager"],
                             (int)reader["ActiveContractId"],
-                            (int)reader["EmergencyContactId"]
+                            (int)reader["EmergencyContactId"],
+                            (bool)reader["FirstPassword"],
+                            reader["Salt"].ToString()
                         );
                         
                     }
@@ -134,8 +136,9 @@ namespace DataAccessLayer
                             (int)reader["Role"],
                             (bool)reader["IsManager"],
                             activeContractId,
-                        reader.IsDBNull(reader.GetOrdinal("EmergencyContactId")) ? -1 : reader.GetInt32(reader.GetOrdinal("EmergencyContactId"))
-
+                        reader.IsDBNull(reader.GetOrdinal("EmergencyContactId")) ? -1 : reader.GetInt32(reader.GetOrdinal("EmergencyContactId")),
+                            (bool)reader["FirstPassword"],
+                            reader["Salt"].ToString()
                         )) ;
                     }
                 }

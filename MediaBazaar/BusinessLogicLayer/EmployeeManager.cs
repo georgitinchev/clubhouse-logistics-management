@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using DTOLayer;
 using DataAccessLayer;
 using BusinessLogicLayer;
@@ -125,7 +126,9 @@ namespace MediaBazaar.Classes
                                       employeeDTO.IsManager,
                                       emergencyContact,
                                       employeeDTO.Address,
-                                      contract);
+                                      contract,
+                                      employeeDTO.FirstPassword,
+                                      employeeDTO.Salt);
                 return employee;
             }
             throw new InvalidOperationException("Emergency contact or contract is null.");
@@ -146,7 +149,9 @@ namespace MediaBazaar.Classes
                 (int)employee.Role,
                 employee.IsManager,
                 employee.Contract.Id,
-                employee.EmergencyContact.Id
+                employee.EmergencyContact.Id,
+                employee.FirstPassword,
+                employee.Salt
                 );
             return employeeDTO;
         }
@@ -178,5 +183,7 @@ namespace MediaBazaar.Classes
         {
             return employees.FirstOrDefault(e => e.FirstName + " " + e.LastName == name);
         }
+
+        
     }
 }

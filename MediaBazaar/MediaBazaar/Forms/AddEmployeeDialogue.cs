@@ -49,7 +49,7 @@ namespace MediaBazaar.Forms
                 int employeeId = _employeeManager.GetNextEmployeeId();
                 var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
-                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract);
+                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract,true,"n");
 
                 _contractManager.AddContract(contract);
                 _employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
