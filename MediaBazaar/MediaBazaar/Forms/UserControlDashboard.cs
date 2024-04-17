@@ -361,23 +361,36 @@ namespace MediaBazaar.Forms
 
                             if (nameParts.Length == 2)
                             {
+                                string salt;
+                                string hashedpassword;
                                 string firstName = nameParts[0];
                                 string lastName = nameParts[1];
+                                
+                                Employee _employee= employeeManager.GetEmployeeById(employeeId);
+                                if (_employee.Salt == "0")
+                                {
+                                    salt = employeeManager._passwordHasher.GenerateSalt();
+                                    hashedpassword = employeeManager._passwordHasher.HashPassword(textBoxPassword.Text, salt);
+                                   
+                                }
+                                else
+                                {
+                                    hashedpassword= employeeManager._passwordHasher.HashPassword(textBoxPassword.Text,_employee.Salt);
+                                }
+                                    EmployeeDTO employee = new EmployeeDTO(
+                                    employeeId,
+                                    firstName,
+                                    lastName,
+                                    textBoxEmail.Text,
+                                    textBoxPassword.Text,
+                                    textBoxPhone.Text,
+                                    textBoxAddress.Text,
+                                    comboBoxRoleDetails.SelectedIndex + 1,
+                                    employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex))
+                                    );
 
-                                EmployeeDTO employee = new EmployeeDTO(
-                                employeeId,
-                                firstName,
-                                lastName,
-                                textBoxEmail.Text,
-                                textBoxPassword.Text,
-                                textBoxPhone.Text,
-                                textBoxAddress.Text,
-                                comboBoxRoleDetails.SelectedIndex + 1,
-                                employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex))
-                                );
-
-                                employeeManager.employeeDAL.UpdateEmployee(employee);
-                                PopulateDataTable(employeeData);
+                                    employeeManager.employeeDAL.UpdateEmployee(employee);
+                                    PopulateDataTable(employeeData);
                             }
                             else MessageBox.Show("Only input First and Last name");
                         }

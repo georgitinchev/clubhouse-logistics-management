@@ -81,7 +81,7 @@ namespace DataAccessLayer
             {
                 var command = new SqlCommand(
                     "UPDATE Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, Password = @Password, " +
-                    " Address = @Address, PhoneNumber = @PhoneNumber,IsManager =@IsManager, Role = @Role " +
+                    " Address = @Address, PhoneNumber = @PhoneNumber,IsManager =@IsManager, Role = @Role, Salt=@Salt " +
                     "WHERE Id = @Id", connection);
 
                 command.Parameters.AddWithValue("@Id", employee.Id);
@@ -95,6 +95,7 @@ namespace DataAccessLayer
                 
                 command.Parameters.AddWithValue("@Role", employee.Role);
                 command.Parameters.AddWithValue("@IsManager", employee.IsManager);
+                command.Parameters.AddWithValue("@Salt",employee.Salt);
                 
 
                 command.ExecuteNonQuery();
@@ -157,6 +158,27 @@ namespace DataAccessLayer
                     return _nextId;
                 }
                 return (int)result + 1;
+            }
+        }
+
+        public void ChangePassword(int id, string password, string salt)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("UPDATE Employee SET Password = @Password , FirstPassword = @FirstPassword, Salt = @Salt" +
+                                                "WHERE Id = @Id ", connection);
+                command.Parameters.AddWithValue("@Id", id);
+                
+                command.Parameters.AddWithValue("@Password", password);
+                command.Parameters.AddWithValue("@FirstPassword", 0);
+                command.Parameters.AddWithValue("@Salt", salt);
+
+                
+
+                
+
+
+                command.ExecuteNonQuery();
             }
         }
     }

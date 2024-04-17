@@ -9,7 +9,7 @@ namespace BusinessLogicLayer
 {
     public class PasswordHasher
     {
-        public static string GenerateSalt()
+        public  string GenerateSalt()
         {
             byte[] salt = new byte[16];
             using (var rng = RandomNumberGenerator.Create())
@@ -19,7 +19,7 @@ namespace BusinessLogicLayer
             return Convert.ToBase64String(salt);
         }
 
-        public static string HashPassword(string password, string salt)
+        public string HashPassword(string password, string salt)
         {
             return BCrypt.Net.BCrypt.HashPassword(password + salt);
         }

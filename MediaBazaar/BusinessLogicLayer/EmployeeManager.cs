@@ -14,6 +14,7 @@ namespace MediaBazaar.Classes
         public ContractManager _contractManager { get; private set; }
         public EmployeeDAL employeeDAL { get; private set; }
         public List<Employee> employees { get; private set; }
+        public  PasswordHasher _passwordHasher { get; private set; }
         public EmployeeManager()
         {
             _emergencyContactManager = new EmergencyContactManager();
@@ -21,6 +22,7 @@ namespace MediaBazaar.Classes
             employees = new List<Employee>();
             employeeDAL = new EmployeeDAL();
             GetEmployeesFromDB();
+            _passwordHasher = new PasswordHasher();
         }
         public void AddEmployee(Employee newEmployee)
         {
@@ -105,7 +107,21 @@ namespace MediaBazaar.Classes
 
         public Employee AuthenticateEmployee(string email, string password)
         {
-            return employees.FirstOrDefault(e => e.Email == email && e.Password == password && e.IsManager);
+            Employee foundemployee = employees.FirstOrDefault(e => e.Email == email);
+            if(foundemployee != null)
+            if (foundemployee.IsManager)
+                if (foundemployee.Salt == "0")
+                {
+                    if (foundemployee.Password == password)
+                        return foundemployee;
+                }
+                else
+                {
+                    if (foundemployee.Password == _passwordHasher.HashPassword(password, foundemployee.Salt))
+                        return foundemployee;
+                }
+            return null;
+            //return employees.FirstOrDefault(e => e.Email == email && e.Password == password && e.IsManager);
         }
 
         public Employee TransformDTOToEmployee(EmployeeDTO employeeDTO)
@@ -184,6 +200,10 @@ namespace MediaBazaar.Classes
             return employees.FirstOrDefault(e => e.FirstName + " " + e.LastName == name);
         }
 
+        public void ChangePassword(string password,string salt, int employeeID)
+        {
+            employeeDAL.ChangePassword(employeeID, password, salt);
+        }
         
     }
 }
