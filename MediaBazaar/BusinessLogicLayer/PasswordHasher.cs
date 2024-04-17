@@ -11,17 +11,20 @@ namespace BusinessLogicLayer
     {
         public  string GenerateSalt()
         {
-            byte[] salt = new byte[16];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(salt);
-            }
-            return Convert.ToBase64String(salt);
+            return BCrypt.Net.BCrypt.GenerateSalt();
+            
         }
 
         public string HashPassword(string password, string salt)
         {
             return BCrypt.Net.BCrypt.HashPassword(password + salt);
         }
+
+        public string DeHashedPassword(string password, string salt)
+        {
+            return BCrypt.Net.BCrypt.GenerateSalt();
+        }
+
+
     }
 }
