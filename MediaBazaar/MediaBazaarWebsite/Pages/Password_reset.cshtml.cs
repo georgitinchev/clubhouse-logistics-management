@@ -29,7 +29,7 @@ namespace MediaBazaarWebsite.Pages
                 {
                     string salt = hasher.GenerateSalt();
                     string hashedpassword = hasher.HashPassword(password, salt);
-                    // _employeeManager.ChangePassword(hashedpassword,salt,_employeeID);
+                    _employeeManager.ChangePassword(hashedpassword,salt,_employeeID);
                     return RedirectToPage("/");
                 }
                 else
