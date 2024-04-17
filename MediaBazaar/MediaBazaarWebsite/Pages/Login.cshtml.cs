@@ -63,7 +63,7 @@ namespace MediaBazaarWebsite.Pages
 				  new ClaimsPrincipal(claimsIdentity),
 				  authProperties);
 
-				return RedirectToPage("/Index");
+				return RedirectToPage("/Schedule");
 			}
 			ModelState.AddModelError(string.Empty, "Invalid password or email.");
 			return Page();
