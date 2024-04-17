@@ -18,6 +18,7 @@
                     <label asp-for="Password">Password</label>
                     <input asp-for="Password" type="password" id="password" name="password" required>
                 </div>
+                <div asp-validation-summary="All" class="text-danger"></div>
                 <button type="submit">Login</button>
                 <a href="/Password_reset">Forgot password?</a>
             </form>
