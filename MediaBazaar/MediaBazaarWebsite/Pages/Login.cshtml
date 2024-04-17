@@ -1,0 +1,27 @@
+﻿@page
+@model MediaBazaarWebsite.Pages.LoginModel
+@{
+}
+<div class="login-container">
+    <div class="login-content">
+        <div class="login-form">
+            <h2>Login</h2>
+            <p>Welcome back! Please login to continue.</p>
+            <form>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit">Login</button>
+                <a href="/Password_reset">Forgot password?</a>
+            </form>
+        </div>
+        <div class="login-image">
+            <img src="~/img/login_bg.png" alt="Login Image">
+        </div>
+    </div>
+</div>
