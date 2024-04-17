@@ -200,6 +200,11 @@ namespace MediaBazaar.Classes
             return employees.FirstOrDefault(e => e.FirstName + " " + e.LastName == name);
         }
 
+        public Employee GetEmployeeByEmail(string email)
+        {
+            return employees.FirstOrDefault(e => e.Email == email);
+        }
+
         public void ChangePassword(string password,string salt, int employeeID)
         {
             employeeDAL.ChangePassword(employeeID, password, salt);

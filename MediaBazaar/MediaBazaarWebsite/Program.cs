@@ -1,22 +1,24 @@
-<<<<<<< Updated upstream
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-=======
 using Microsoft.AspNetCore.Authentication.Cookies;
 using MediaBazaar.Classes;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<EmployeeManager>();
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 	.AddCookie(options =>
 	{
 		options.LoginPath = "/Login";
 	});
->>>>>>> Stashed changes
-builder.Services.AddRazorPages();
+
+builder.Services.AddRazorPages(options =>
+{
+	options.Conventions.AuthorizeFolder("/");
+	options.Conventions.AllowAnonymousToPage("/Login");
+});
 
 var app = builder.Build();
+
 if (!app.Environment.IsDevelopment())
 {
 	app.UseExceptionHandler("/Error");
