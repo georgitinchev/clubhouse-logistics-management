@@ -1,27 +1,21 @@
 ﻿@page
 @model MediaBazaarWebsite.Pages.IndexModel
 @{
+    ViewData["Title"] = "Welcome";
 }
-<div class="login-container">
-    <div class="login-content">
-        <div class="login-form">
-            <h2>Login</h2>
-            <p>Welcome back! Please login to continue.</p>
-            <form>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
-                <button type="submit">Login</button>
-                <a href="/Password_reset">Forgot password?</a>
-            </form>
-        </div>
-        <div class="login-image">
-            <img src="~/img/login_bg.png" alt="Login Image">
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="text-center">
+                <img src="~/img/login_bg.png" class="img-fluid rounded my-3" alt="Welcome Banner">
+                <h2>Welcome, @Model.FirstName @Model.LastName!</h2>
+                <p>You have successfully logged in. Start managing your tasks now.</p>
+            </div>
+            <div class="d-grid gap-2">
+                <a class="btn btn-primary btn-lg" asp-page="/Schedule">Schedule</a>
+                <a class="btn btn-secondary btn-lg" asp-page="/Details">Details</a>
+            </div>
         </div>
     </div>
 </div>

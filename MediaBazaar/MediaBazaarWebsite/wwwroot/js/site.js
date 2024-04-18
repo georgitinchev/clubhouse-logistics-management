@@ -92,7 +92,6 @@ document.getElementById('submit-availability').addEventListener('click', functio
     });
 
     // adding the code to send the availabilitySlots to the backend below this line
-
 });
 
 function prevMonth() {
