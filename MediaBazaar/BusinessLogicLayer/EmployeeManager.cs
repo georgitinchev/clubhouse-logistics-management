@@ -109,7 +109,7 @@ namespace MediaBazaar.Classes
         {
             Employee foundemployee = employees.FirstOrDefault(e => e.Email == email);
             if(foundemployee != null)
-            if (foundemployee.IsManager)
+            
                 if (foundemployee.Salt == "0")
                 {
                     if (foundemployee.Password == password)
