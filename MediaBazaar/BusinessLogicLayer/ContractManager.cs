@@ -13,13 +13,15 @@ namespace BusinessLogicLayer
 {
     public class ContractManager
     {
+        public AvailabilityManager availabilityManager { get; private set; }
         public ContractDAL contractDAL { get; private set; }
         public List<Contract> contracts { get; private set; }
 
         public ContractManager()
         {
-            contractDAL = new ContractDAL();
             contracts = new List<Contract>();
+            contractDAL = new ContractDAL();
+            availabilityManager = new AvailabilityManager();
             GetAllContractsFromDB();
         }
 

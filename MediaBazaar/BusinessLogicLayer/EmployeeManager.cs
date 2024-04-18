@@ -21,8 +21,8 @@ namespace MediaBazaar.Classes
             _contractManager = new ContractManager();
             employees = new List<Employee>();
             employeeDAL = new EmployeeDAL();
-            GetEmployeesFromDB();
             _passwordHasher = new PasswordHasher();
+            GetEmployeesFromDB();
         }
         public void AddEmployee(Employee newEmployee)
         {
