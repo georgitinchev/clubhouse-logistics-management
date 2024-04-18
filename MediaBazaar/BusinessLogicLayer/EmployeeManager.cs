@@ -72,7 +72,7 @@ namespace MediaBazaar.Classes
             }
             employeeDAL.DeleteEmployee(employeeId);
             employees.Remove(employee);
-            _emergencyContactManager.RemoveEmergencyContactFromDB(employee.EmergencyContact.Id);
+            _emergencyContactManager.RemoveEmergencyContactFromDB((int)employee.EmergencyContact.Id);
         }
 
         public Employee GetEmployeeById(int employeeID)
@@ -80,7 +80,7 @@ namespace MediaBazaar.Classes
             return employees.FirstOrDefault(e => e.EmployeeID == employeeID);
         }
 
-        public List<Employee> GetAllRegularEmployees()
+		public List<Employee> GetAllRegularEmployees()
         {
             return employees.Where(e => !e.IsManager).ToList();
         }
@@ -198,6 +198,11 @@ namespace MediaBazaar.Classes
         public Employee GetEmployeeByName(string name)
         {
             return employees.FirstOrDefault(e => e.FirstName + " " + e.LastName == name);
+        }
+
+        public Employee GetEmployeeByEmail(string email)
+        {
+            return employees.FirstOrDefault(e => e.Email == email);
         }
 
         public void ChangePassword(string password,string salt, int employeeID)

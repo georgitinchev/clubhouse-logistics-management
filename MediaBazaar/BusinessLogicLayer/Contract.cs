@@ -18,6 +18,7 @@ namespace MediaBazaar.Classes
 		public bool isActive { get; private set; }
 		public string? terminationReason { get; private set; }
 		public DateTime? availability {  get; private set; }
+        public List<Tuple<WorkingTime, WeekDayEnum>> Availability { get; private set; }
 
         public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime? availability)
         {
