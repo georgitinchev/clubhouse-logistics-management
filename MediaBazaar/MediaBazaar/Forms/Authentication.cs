@@ -52,7 +52,7 @@ namespace MediaBazaar.Forms
 			{
 				Employee employee = employeeManager.AuthenticateEmployee(email, password);
 
-				if (employee != null)
+				if (employee != null && employee.IsManager)
 				{
 					isAuthenticated = true;
 					this.Close();

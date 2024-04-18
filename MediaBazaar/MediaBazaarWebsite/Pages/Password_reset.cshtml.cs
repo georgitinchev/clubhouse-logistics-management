@@ -43,8 +43,7 @@ namespace MediaBazaarWebsite.Pages
                     
 
                     }
-                    return RedirectToPage("/");  
-                   
+                    return RedirectToPage("/Index");  
                 }
                 else
                 {
