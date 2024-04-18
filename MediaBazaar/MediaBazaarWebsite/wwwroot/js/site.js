@@ -1,5 +1,4 @@
-﻿// Function to generate the calendar
-function generateCalendar(year, month) {
+﻿function generateCalendar(year, month) {
     const calendarHeader = document.getElementById('calendar-header');
     const calendarElement = document.getElementById('calendar');
     const monthYearContainer = document.getElementById('calendar-month-year');
@@ -7,14 +6,12 @@ function generateCalendar(year, month) {
     calendarElement.innerHTML = '';
     monthYearContainer.innerHTML = '';
 
-    // Array of week days starting from Monday
     const weekDays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    const slotNames = ['Morning', 'Afternoon', 'Evening'];
 
-    // Get the first day and last day of the month
     const firstDay = new Date(year, month, 1);
     const lastDay = new Date(year, month + 1, 0);
 
-    // Create header row with weekday names
     weekDays.forEach(day => {
         const headerCell = document.createElement('div');
         headerCell.textContent = day;
@@ -22,27 +19,23 @@ function generateCalendar(year, month) {
         calendarHeader.appendChild(headerCell);
     });
 
-    // Create h2 element with month and year
     const monthYearHeader = document.createElement('h2');
     monthYearHeader.textContent = `${firstDay.toLocaleString('default', { month: 'long' })} ${year}`;
     monthYearContainer.appendChild(monthYearHeader);
 
-    // Fill in the calendar with slots for each day
     for (let i = 1; i <= lastDay.getDate(); i++) {
         const dayElement = document.createElement('div');
         dayElement.classList.add('day');
 
-        // Add day number
         const dayNumber = document.createElement('div');
         dayNumber.textContent = i;
         dayNumber.classList.add('day-header');
         dayElement.appendChild(dayNumber);
 
-        // Add three slots for each day
         for (let j = 0; j < 3; j++) {
             const slot = document.createElement('div');
             slot.classList.add('slot');
-            slot.textContent = `Slot ${j + 1}`;
+            slot.textContent = slotNames[j];
             slot.setAttribute('data-date', `${year}-${month + 1}-${i}`);
             slot.addEventListener('click', reserveSlot);
             dayElement.appendChild(slot);
@@ -52,11 +45,25 @@ function generateCalendar(year, month) {
     }
 }
 
-// Function to handle slot reservation
+
 function reserveSlot(event) {
     const slot = event.target;
-    slot.classList.toggle('reserved');
+    const dayElement = slot.parentNode;
+    const slots = Array.from(dayElement.getElementsByClassName('slot'));
+    const index = slots.indexOf(slot);
+
+    if (slot.classList.contains('reserved')) {
+        slot.classList.remove('reserved');
+    } else {
+        slots.forEach((otherSlot, otherIndex) => {
+            if (otherIndex !== index - 1 && otherIndex !== index + 1) {
+                otherSlot.classList.remove('reserved');
+            }
+        });
+        slot.classList.add('reserved');
+    }
 }
+
 
 function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
@@ -74,10 +81,8 @@ function nextMonth() {
     generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
 }
 
-// Initial calendar generation
 const currentDate = new Date();
 generateCalendar(currentDate.getFullYear(), currentDate.getMonth());
 
-// Button event listeners
 document.getElementById('prev-month').addEventListener('click', prevMonth);
 document.getElementById('next-month').addEventListener('click', nextMonth);
