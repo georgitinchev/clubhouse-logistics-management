@@ -101,7 +101,7 @@ namespace BusinessLogicLayer
 
         public void AddAvailability(WorkingTime timeSlot, WeekDayEnum weekDay)
         {
-            if()
+            //if()
         }
     }
 }
