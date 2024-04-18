@@ -2,35 +2,49 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using BusinessLogicLayer;
 using MediaBazaar.Classes;
+using System.Security.Claims;
 
 namespace MediaBazaarWebsite.Pages
 {
-    public class Password_ReserModel : PageModel
+    public class Password_ResetModel : PageModel
     {
         private EmployeeManager _employeeManager;
-        private int _employeeID;
-        
-        public void OnGet(EmployeeManager employeeManager, int employeeID)
+        [BindProperty]
+        public string? password { get; private set; }
+        [BindProperty]
+        public string? password2 {  get; private set; }
+
+        public Password_ResetModel(EmployeeManager employeeManager)
         {
-            _employeeID = employeeID;
             _employeeManager = employeeManager;
-            
+        }
+        
+        public void OnGet()
+        { 
         }
 
         public ActionResult OnPost()
         {
-            string password = Request.Form["password"];
-            string password2 = Request.Form["password2"];
+            
+            password = Request.Form["password"];
+            password2 = Request.Form["password2"];
             PasswordHasher hasher = new PasswordHasher();
 
             if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(password2))
             {
                 if (password == password2)
                 {
-                    string salt = hasher.GenerateSalt();
+                    var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+                    if (idClaim != null)
+                    {
+                       string salt = hasher.GenerateSalt();
                     string hashedpassword = hasher.HashPassword(password, salt);
-                    _employeeManager.ChangePassword(hashedpassword,salt,_employeeID);
-                    return RedirectToPage("/");
+                    _employeeManager.ChangePassword(hashedpassword, salt,int.Parse(idClaim.Value));
+                    
+
+                    }
+                    return RedirectToPage("/");  
+                   
                 }
                 else
                 {

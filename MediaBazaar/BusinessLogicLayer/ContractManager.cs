@@ -101,9 +101,9 @@ namespace BusinessLogicLayer
             return contractDAL.GetNextId();
         }
 
-        public void AddAvailability(WorkingTime timeSlot, WeekDayEnum weekDay)
+        public List<AvailabilitySlot> GetContractAvailabilitySlots(int contractId)
         {
-            if()
+            return availabilityManager.GetContractSlots(contractId);
         }
     }
 }
