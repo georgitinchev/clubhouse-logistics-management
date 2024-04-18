@@ -55,7 +55,8 @@ namespace MediaBazaarWebsite.Pages
                     new Claim(ClaimTypes.Email, employee.Email),
                     new Claim(ClaimTypes.GivenName, employee.FirstName),
                     new Claim(ClaimTypes.Surname, employee.LastName),
-                    new Claim(ClaimTypes.Role, employee.Role.ToString())
+                    new Claim(ClaimTypes.Role, employee.Role.ToString()),
+                    new Claim("ContractID", employee.Contract.Id.ToString())
                 };
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     var authProperties = new AuthenticationProperties();

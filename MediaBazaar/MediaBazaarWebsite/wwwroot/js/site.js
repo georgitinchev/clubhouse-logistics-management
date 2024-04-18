@@ -37,6 +37,7 @@
             slot.classList.add('slot');
             slot.textContent = slotNames[j];
             slot.setAttribute('data-date', `${year}-${month + 1}-${i}`);
+            slot.setAttribute('data-timeslot', j);
             slot.addEventListener('click', reserveSlot);
             dayElement.appendChild(slot);
         }
@@ -44,7 +45,6 @@
         calendarElement.appendChild(dayElement);
     }
 }
-
 
 function reserveSlot(event) {
     const slot = event.target;
@@ -64,6 +64,36 @@ function reserveSlot(event) {
     }
 }
 
+function getWeekNumber(d) {
+    d = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()));
+    d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+    const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    return weekNo;
+}
+
+function AvailabilitySlotDTO(contractID, slotID, timeSlotID, weekDayID, weekNr, month) {
+    this.ContractID = contractID;
+    this.Id = slotID;
+    this.TimeSlotID = timeSlotID;
+    this.WeekDayID = weekDayID;
+    this.WeekNr = weekNr;
+    this.Month = month;
+}
+
+document.getElementById('submit-availability').addEventListener('click', function () {
+    const reservedSlots = document.querySelectorAll('.slot.reserved');
+    const availabilitySlots = Array.from(reservedSlots).map(slot => {
+        const date = new Date(slot.getAttribute('data-date'));
+        const weekNr = getWeekNumber(date);
+        const month = Math.ceil(weekNr / 4.34524);
+        const timeSlotID = slot.getAttribute('data-timeslot');
+        return new AvailabilitySlotDTO(contractID, slotID, timeSlotID, date.getDay(), weekNr, month);
+    });
+
+    // adding the code to send the availabilitySlots to the backend below this line
+
+});
 
 function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
