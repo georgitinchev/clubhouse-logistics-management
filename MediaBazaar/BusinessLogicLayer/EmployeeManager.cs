@@ -117,7 +117,7 @@ namespace MediaBazaar.Classes
                 }
                 else
                 {
-                    if (foundemployee.Password == _passwordHasher.HashPassword(password, foundemployee.Salt))
+                    if (_passwordHasher.VerifyPassword(password, foundemployee.Password))
                         return foundemployee;
                 }
             return null;

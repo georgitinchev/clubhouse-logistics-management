@@ -20,11 +20,13 @@ namespace BusinessLogicLayer
             return BCrypt.Net.BCrypt.HashPassword(password + salt);
         }
 
-        public string DeHashedPassword(string password, string salt)
+        public bool VerifyPassword(string password, string hashedpassword)
         {
-            return BCrypt.Net.BCrypt.GenerateSalt();
+            return BCrypt.Net.BCrypt.Verify(password, hashedpassword);
         }
 
+
+       
 
     }
 }
