@@ -1,3 +1,5 @@
+using DTOLayer;
+using MediaBazaar.Classes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Security.Claims;
@@ -6,17 +8,25 @@ namespace MediaBazaarWebsite.Pages
 {
     public class ScheduleModel : PageModel
     {
+        private EmployeeManager _employeeManager;
+        public ScheduleModel(EmployeeManager employeeManager)
+        {
+            _employeeManager = employeeManager;
+        }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public void OnGet()
         {
-            var firstNameClaim = User.FindFirst(ClaimTypes.GivenName);
-            var lastNameClaim = User.FindFirst(ClaimTypes.Surname);
-
-            if (firstNameClaim != null && lastNameClaim != null)
+            var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (idClaim != null)
             {
-                FirstName = firstNameClaim.Value;
-                LastName = lastNameClaim.Value;
+                int id = int.Parse(idClaim.Value);
+                var employee = _employeeManager.GetEmployeeById(id);
+                if (employee != null)
+                {
+                    FirstName = employee.FirstName;
+                    LastName = employee.LastName;
+                }
             }
         }
     }
