@@ -65,7 +65,10 @@ namespace MediaBazaarWebsite.Pages
                       CookieAuthenticationDefaults.AuthenticationScheme,
                       new ClaimsPrincipal(claimsIdentity),
                       authProperties);
-
+                    if (employee.FirstPassword)
+                    {
+                        return RedirectToPage("/Password_Reset");
+                    }
                     return RedirectToPage("/Schedule");
                 }
                 ModelState.AddModelError(string.Empty, "Invalid password or email.");

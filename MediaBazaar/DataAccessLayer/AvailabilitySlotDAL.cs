@@ -11,7 +11,7 @@ namespace DataAccessLayer
 {
     public class AvailabilitySlotDAL : Database
     {
-        public void CreateContract(AvailabilitySlotDTO availabilitySlot)
+        public void CreateSlot(AvailabilitySlotDTO availabilitySlot)
         {
             using (var connection = OpenConnection())
             {
