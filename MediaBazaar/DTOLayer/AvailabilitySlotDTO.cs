@@ -9,16 +9,18 @@ namespace DTOLayer
     public class AvailabilitySlotDTO
     {
         public int ContractID;
-        public int SlotID;
+        public int Id;
         public int TimeSlotID;
         public int WeekDayID;
+        public int WeekNr;
 
-        public AvailabilitySlotDTO(int contractID, int slotID, int timeSlotID, int weekDayID)
+        public AvailabilitySlotDTO(int contractID, int slotID, int timeSlotID, int weekDayID, int weekNr)
         {
             ContractID = contractID;
-            SlotID = slotID;
+            Id = slotID;
             TimeSlotID = timeSlotID;
             WeekDayID = weekDayID;
+            WeekNr = weekNr;
         }
     }
 }

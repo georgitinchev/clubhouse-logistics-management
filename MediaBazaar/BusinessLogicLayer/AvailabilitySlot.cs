@@ -11,13 +11,18 @@ namespace BusinessLogicLayer
     {
         public WorkingTime TimeSlot { get; private set; }
         public WeekDayEnum WeekDay { get; private set; }
-        public int ID { get; private set; }
+        public int Id { get; private set; }
+        public int WeekNr { get; private set; }
+        public int ContractId { get; private set; }
 
-        public AvailabilitySlot(int  id,WorkingTime timeSlot, WeekDayEnum weekDay)
-        {
+        public AvailabilitySlot(int  id,int contractid,WorkingTime timeSlot, WeekDayEnum weekDay,int weeknr)
+        {   
+
+            Id = id;
+            ContractId=contractid;
             TimeSlot = timeSlot;
             WeekDay = weekDay;
-            ID = id;
+            WeekNr = weeknr;
         }
         
     }

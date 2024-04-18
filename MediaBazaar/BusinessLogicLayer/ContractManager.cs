@@ -99,9 +99,6 @@ namespace BusinessLogicLayer
             return contractDAL.GetNextId();
         }
 
-        public void AddAvailability(WorkingTime timeSlot, WeekDayEnum weekDay)
-        {
-            if()
-        }
+        
     }
 }
