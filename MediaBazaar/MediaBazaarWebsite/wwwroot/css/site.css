@@ -43,6 +43,19 @@ body {
     animation: float 2s ease-in-out infinite;
 }
 
+.calendar-button {
+    background-color: #d56936;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+    .calendar-button:hover {
+        background-color: #b3582d;
+    }
 
 #submit-availability {
     margin-top: 20px;
@@ -56,9 +69,9 @@ body {
     transition: 0.4s;
 }
 
-.orange-button:hover {
+    .orange-button:hover {
         background-color: #b3582d;
-}
+    }
 
 
 .navbar-brand img {
@@ -126,6 +139,12 @@ header {
 .nav-button {
     right: 0;
 }
+
+.center-button {
+    display: flex;
+    justify-content: center;
+}
+
 
 
 /*Login ---------------------------------------------------*/
