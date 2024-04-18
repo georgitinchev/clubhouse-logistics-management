@@ -23,9 +23,13 @@ namespace DTOLayer
 		public bool FirstPassword { get; private set; }
 		public string Salt { get; private set; }
 
+		public Employee()
+		{
+
+		}
 		public Employee(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{
-            EmployeeID = id;
+			EmployeeID = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
@@ -35,9 +39,9 @@ namespace DTOLayer
 			Role = role;
 		}
 		public Employee(int id, string firstName, string lastName, string email, string password, string phoneNumber, string bsn, DateTime birthday, int role, bool isManager, EmergencyContact emergencyContact, string address
-				, Contract contract,bool firstPassword, string salt)
+				, Contract contract, bool firstPassword, string salt)
 		{
-            EmployeeID = id;
+			EmployeeID = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
@@ -55,7 +59,7 @@ namespace DTOLayer
 		}
 		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
 		{
-            EmployeeID = id;
+			EmployeeID = id;
 			FirstName = firstName;
 			LastName = lastName;
 			Email = email;
@@ -63,6 +67,15 @@ namespace DTOLayer
 			BSN = bSN;
 			Birthday = birthday;
 			Role = role;
+		}
+
+		public void UpdateInformationWebsite(string firstName, string lastName, string email, string phoneNumber, string address)
+		{
+			FirstName = firstName;
+			LastName = lastName;
+			Email = email;
+			PhoneNumber = phoneNumber;
+			Address = address;
 		}
 
 		public string GetFullName()

@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using MediaBazaar.Classes;
+using BusinessLogicLayer;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<EmployeeManager>();
+builder.Services.AddScoped<EmergencyContactManager>();
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

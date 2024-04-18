@@ -10,63 +10,71 @@ using System.Security.Claims;
 
 namespace MediaBazaarWebsite.Pages
 {
-	public class LoginModel : PageModel
-	{
-		private EmployeeManager? employeeManager;
-		private IHttpContextAccessor? httpContextAccessor;
-		public LoginModel(EmployeeManager _employeeManager, IHttpContextAccessor _httpContextAccessor)
-		{
-			employeeManager = _employeeManager;
-			httpContextAccessor = _httpContextAccessor;
-		}
+    public class LoginModel : PageModel
+    {
+        private EmployeeManager? employeeManager;
+        private IHttpContextAccessor? httpContextAccessor;
+        public LoginModel(EmployeeManager _employeeManager, IHttpContextAccessor _httpContextAccessor)
+        {
+            employeeManager = _employeeManager;
+            httpContextAccessor = _httpContextAccessor;
+        }
 
-		[BindProperty]
-		public string? Email { get; set; }
-		[BindProperty]
-		public string? Password { get; set; }
+        [BindProperty]
+        public string? Email { get; set; }
+        [BindProperty]
+        public string? Password { get; set; }
 
-		public void OnGet()
-		{
+        public void OnGet()
+        {
 
-		}
+        }
 
-		public IActionResult OnPost()
-		{
-			if (!ModelState.IsValid)
-			{
-				return Page();
-			}
+        public IActionResult OnPost()
+        {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
 
-			var employee = employeeManager?.GetEmployeeByEmail(Email);
-			if (employee == null)
-			{
-				ModelState.AddModelError(string.Empty, "Employee does not exist.");
-				return Page();
-			}
+            try
+            {
+                var employee = employeeManager?.GetEmployeeByEmail(Email);
+                if (employee == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Employee does not exist.");
+                    return Page();
+                }
 
-			var isPasswordValid = employeeManager.AuthenticateEmployee(employee.Email, Password);
-			if (isPasswordValid != null)
-			{
-				var claims = new List<Claim>
-				{
-					new Claim(ClaimTypes.NameIdentifier, employee.EmployeeID.ToString()),
-					new Claim(ClaimTypes.Email, employee.Email),
-					new Claim(ClaimTypes.GivenName, employee.FirstName),
-					new Claim(ClaimTypes.Surname, employee.LastName),
-					new Claim(ClaimTypes.Role, employee.Role.ToString())
-				};
-				var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-				var authProperties = new AuthenticationProperties();
+                Employee isPasswordValid = employeeManager.AuthenticateEmployee(employee.Email, Password);
+                if (isPasswordValid != null)
+                {
+                    var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.NameIdentifier, employee.EmployeeID.ToString()),
+                    new Claim(ClaimTypes.Email, employee.Email),
+                    new Claim(ClaimTypes.GivenName, employee.FirstName),
+                    new Claim(ClaimTypes.Surname, employee.LastName),
+                    new Claim(ClaimTypes.Role, employee.Role.ToString())
+                };
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties();
 
-				httpContextAccessor?.HttpContext?.SignInAsync(
-				  CookieAuthenticationDefaults.AuthenticationScheme,
-				  new ClaimsPrincipal(claimsIdentity),
-				  authProperties);
+                    httpContextAccessor?.HttpContext?.SignInAsync(
+                      CookieAuthenticationDefaults.AuthenticationScheme,
+                      new ClaimsPrincipal(claimsIdentity),
+                      authProperties);
 
-				return RedirectToPage("/Schedule");
-			}
-			ModelState.AddModelError(string.Empty, "Invalid password or email.");
-			return Page();
-		}
-	}
+                    return RedirectToPage("/Schedule");
+                }
+                ModelState.AddModelError(string.Empty, "Invalid password or email.");
+                return Page();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                return Page();
+            }
+        }
+    }
 }
