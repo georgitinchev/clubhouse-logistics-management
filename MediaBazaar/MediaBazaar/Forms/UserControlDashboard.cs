@@ -72,11 +72,13 @@ namespace MediaBazaar.Forms
 
             employeeManager.GetEmployeesFromDB();
             foreach (Employee employee in employeeManager.employees)
+
             {
+                if(employee.Contract.isActive)
                 employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Contract.weeklyHours);
             }
         }
-
+        
 
         internal void InitializeData()
         {
