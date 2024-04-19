@@ -173,10 +173,22 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@FirstPassword", 0);
                 command.Parameters.AddWithValue("@Salt", salt);
 
-                
 
-                
+                command.ExecuteNonQuery();
+            }
+        }
 
+        public void ResetPassword(int id)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand(
+                    "UPDATE Employee SET Password=@Password,FirstPassword=@FirstPassword,Salt=@Salt" +
+                     
+                    "WHERE Id = @Id", connection);
+                command.Parameters.AddWithValue("@Password", "12345");
+                command.Parameters.AddWithValue("@FirstPassword", 1);
+                command.Parameters.AddWithValue("@Salt", "0");
 
                 command.ExecuteNonQuery();
             }

@@ -209,6 +209,11 @@ namespace MediaBazaar.Classes
         {
             employeeDAL.ChangePassword(employeeID, password, salt);
         }
+
+        public void ResetPassword(int id) 
+        { 
+            employeeDAL.ResetPassword(id);
+        }
         
     }
 }

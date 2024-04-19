@@ -39,10 +39,10 @@
             label4 = new Label();
             textBoxBSN = new TextBox();
             label3 = new Label();
-            textBoxPassword = new TextBox();
             label2 = new Label();
             comboBoxRoleDetails = new ComboBox();
             removeEmployeeBtn = new CustomButton();
+            resetPasswordBtn = new CustomButton();
             editEmployeeBtn = new CustomButton();
             pictureBox2 = new PictureBox();
             employeeDetailsLabel = new Label();
@@ -90,10 +90,10 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(textBoxBSN);
             groupBox1.Controls.Add(label3);
-            groupBox1.Controls.Add(textBoxPassword);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(comboBoxRoleDetails);
             groupBox1.Controls.Add(removeEmployeeBtn);
+            groupBox1.Controls.Add(resetPasswordBtn);
             groupBox1.Controls.Add(editEmployeeBtn);
             groupBox1.Controls.Add(pictureBox2);
             groupBox1.Controls.Add(employeeDetailsLabel);
@@ -191,26 +191,14 @@
             label3.TabIndex = 35;
             label3.Text = "BSN:";
             // 
-            // textBoxPassword
-            // 
-            textBoxPassword.BackColor = SystemColors.ControlDark;
-            textBoxPassword.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            textBoxPassword.Location = new Point(117, 225);
-            textBoxPassword.Name = "textBoxPassword";
-            textBoxPassword.ReadOnly = true;
-            textBoxPassword.Size = new Size(231, 27);
-            textBoxPassword.TabIndex = 34;
-            textBoxPassword.UseSystemPasswordChar = true;
-            // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             label2.Location = new Point(16, 225);
             label2.Name = "label2";
-            label2.Size = new Size(77, 20);
+            label2.Size = new Size(0, 20);
             label2.TabIndex = 33;
-            label2.Text = "Password:";
             // 
             // comboBoxRoleDetails
             // 
@@ -239,7 +227,7 @@
             removeEmployeeBtn.FlatStyle = FlatStyle.Flat;
             removeEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeEmployeeBtn.ForeColor = Color.White;
-            removeEmployeeBtn.Location = new Point(47, 560);
+            removeEmployeeBtn.Location = new Point(48, 560);
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(286, 50);
             removeEmployeeBtn.TabIndex = 30;
@@ -247,6 +235,26 @@
             removeEmployeeBtn.TextColor = Color.White;
             removeEmployeeBtn.UseVisualStyleBackColor = false;
             removeEmployeeBtn.Click += removeEmployeeBtn_Click;
+            // 
+            // resetPasswordBtn
+            // 
+            resetPasswordBtn.BackColor = Color.DarkOrange;
+            resetPasswordBtn.BackgroundColor = Color.DarkOrange;
+            resetPasswordBtn.BorderColor = Color.White;
+            resetPasswordBtn.BorderRadius = 9;
+            resetPasswordBtn.BorderSize = 2;
+            resetPasswordBtn.Cursor = Cursors.Hand;
+            resetPasswordBtn.FlatStyle = FlatStyle.Flat;
+            resetPasswordBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            resetPasswordBtn.ForeColor = Color.White;
+            resetPasswordBtn.Location = new Point(48, 496);
+            resetPasswordBtn.Name = "resetPasswordBtn";
+            resetPasswordBtn.Size = new Size(286, 50);
+            resetPasswordBtn.TabIndex = 29;
+            resetPasswordBtn.Text = "Reset Password";
+            resetPasswordBtn.TextColor = Color.White;
+            resetPasswordBtn.UseVisualStyleBackColor = false;
+            resetPasswordBtn.Click += resetPasswordBtn_Click;
             // 
             // editEmployeeBtn
             // 
@@ -259,7 +267,7 @@
             editEmployeeBtn.FlatStyle = FlatStyle.Flat;
             editEmployeeBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             editEmployeeBtn.ForeColor = Color.White;
-            editEmployeeBtn.Location = new Point(47, 496);
+            editEmployeeBtn.Location = new Point(48, 432);
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(286, 50);
             editEmployeeBtn.TabIndex = 29;
@@ -472,7 +480,6 @@
         private ComboBox comboBoxRoleDetails;
         private TextBox textBoxBSN;
         private Label label3;
-        private TextBox textBoxPassword;
         private Label label2;
         private TextBox textBoxPhone;
         private Label label4;
@@ -481,5 +488,6 @@
         private TextBox textBoxAddress;
         private Label label6;
         private Panel panelOperations;
+        private CustomButton resetPasswordBtn;
     }
 }

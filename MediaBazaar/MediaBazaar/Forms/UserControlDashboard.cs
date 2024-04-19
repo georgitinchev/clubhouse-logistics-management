@@ -60,7 +60,6 @@ namespace MediaBazaar.Forms
             originalControlStates.Add((textBoxName, textBoxName.BackColor, textBoxName.ReadOnly));
             originalControlStates.Add((comboBoxRoleDetails, comboBoxRoleDetails.BackColor, comboBoxRoleDetails.Enabled));
             originalControlStates.Add((textBoxEmail, textBoxEmail.BackColor, textBoxEmail.ReadOnly));
-            originalControlStates.Add((textBoxPassword, textBoxPassword.BackColor, textBoxPassword.ReadOnly));
             originalControlStates.Add((textBoxBSN, textBoxBSN.BackColor, textBoxBSN.ReadOnly));
             originalControlStates.Add((textBoxPhone, textBoxPhone.BackColor, textBoxPhone.ReadOnly));
             originalControlStates.Add((dateTimePickerBirthday, dateTimePickerBirthday.BackColor, dateTimePickerBirthday.Enabled));
@@ -284,10 +283,7 @@ namespace MediaBazaar.Forms
                     {
                         textBox.ReadOnly = false;
 
-                        if (textBox == textBoxPassword)
-                        {
-                            textBox.UseSystemPasswordChar = false;
-                        }
+
                     }
                     else if (control is System.Windows.Forms.ComboBox comboBox)
                     {
@@ -312,10 +308,7 @@ namespace MediaBazaar.Forms
                     if (control is System.Windows.Forms.TextBox textBox)
                     {
                         textBox.ReadOnly = originalReadOnly;
-                        if (textBox == textBoxPassword)
-                        {
-                            textBox.UseSystemPasswordChar = true;
-                        }
+
                     }
                     else if (control is System.Windows.Forms.ComboBox comboBox)
                     {
@@ -361,23 +354,23 @@ namespace MediaBazaar.Forms
 
                             if (nameParts.Length == 2)
                             {
-                                
+
                                 string firstName = nameParts[0];
                                 string lastName = nameParts[1];
-                                    EmployeeDTO employee = new EmployeeDTO(
-                                    employeeId,
-                                    firstName,
-                                    lastName,
-                                    textBoxEmail.Text,
-                     
-                                    textBoxPhone.Text,
-                                    textBoxAddress.Text,
-                                    comboBoxRoleDetails.SelectedIndex + 1,
-                                    employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex))
-                                    );
+                                EmployeeDTO employee = new EmployeeDTO(
+                                employeeId,
+                                firstName,
+                                lastName,
+                                textBoxEmail.Text,
 
-                                    employeeManager.employeeDAL.UpdateEmployee(employee);
-                                    PopulateDataTable(employeeData);
+                                textBoxPhone.Text,
+                                textBoxAddress.Text,
+                                comboBoxRoleDetails.SelectedIndex + 1,
+                                employeeManager.CheckManager((EmployeeRoleEnum)(comboBoxRoleDetails.SelectedIndex))
+                                );
+
+                                employeeManager.employeeDAL.UpdateEmployee(employee);
+                                PopulateDataTable(employeeData);
                             }
                             else MessageBox.Show("Only input First and Last name");
                         }
@@ -401,7 +394,6 @@ namespace MediaBazaar.Forms
                 textBoxName.Text = selectedRow.Cells["Name"].Value.ToString();
                 comboBoxRoleDetails.Text = selectedRow.Cells["Role"].Value.ToString();
                 textBoxEmail.Text = selectedRow.Cells["Email"].Value.ToString();
-                textBoxPassword.Text = selectedEmployee.Password;
                 textBoxBSN.Text = selectedEmployee.BSN;
                 textBoxPhone.Text = selectedEmployee.PhoneNumber;
                 textBoxAddress.Text = selectedEmployee.Address;
@@ -412,7 +404,6 @@ namespace MediaBazaar.Forms
                 textBoxName.ReadOnly = true;
                 comboBoxRoleDetails.Enabled = false;
                 textBoxEmail.ReadOnly = true;
-                textBoxPassword.ReadOnly = true;
                 textBoxBSN.ReadOnly = true;
                 textBoxPhone.ReadOnly = true;
                 textBoxAddress.ReadOnly = true;
@@ -449,6 +440,32 @@ namespace MediaBazaar.Forms
                         employeeManager.DeleteEmployee(employeeId);
                         InitializeData();
                         MessageBox.Show("Employee removed successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("No employee selected currently.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void resetPasswordBtn_Click(object sender, EventArgs e)
+        {
+            if (userDataGridView.SelectedRows.Count > 0)
+            {
+                DataGridViewRow selectedRow = userDataGridView.SelectedRows[0];
+                int employeeId = Convert.ToInt32(selectedRow.Cells["EmployeeID"].Value);
+                DialogResult result = MessageBox.Show("Are you sure you want to reset the password for this employee?", "Reset Password", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    try
+                    {
+                        employeeManager.ResetPassword(employeeId);
+                        MessageBox.Show("PasswordReseted Successfuly", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
