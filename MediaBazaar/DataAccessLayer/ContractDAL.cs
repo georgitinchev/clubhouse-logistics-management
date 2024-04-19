@@ -71,7 +71,7 @@ namespace DataAccessLayer
 				var command = new SqlCommand(
 					"UPDATE Contract SET Role = @Role, HourlyWage = @HourlyWage, WeeklyHours = @WeeklyHours, " +
 					"StartDate = @StartDate, EndDate = @EndDate, IsActive = @IsActive, " +
-					"TerminationReason = @TerminationReason, Availability = @Availability " +
+					"TerminationReason = @TerminationReason " +
 					"WHERE Id = @Id", connection);
 
 				command.Parameters.AddWithValue("@Id", contract.Id);

@@ -183,9 +183,10 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "UPDATE Employee SET Password=@Password,FirstPassword=@FirstPassword,Salt=@Salt" +
+                    "UPDATE Employee SET Password=@Password,FirstPassword=@FirstPassword,Salt=@Salt " +
                      
                     "WHERE Id = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
                 command.Parameters.AddWithValue("@Password", "12345");
                 command.Parameters.AddWithValue("@FirstPassword", 1);
                 command.Parameters.AddWithValue("@Salt", "0");
