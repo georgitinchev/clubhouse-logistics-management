@@ -51,7 +51,7 @@ namespace BusinessLogicLayer
             {
                 Contract contract = new Contract
                 (
-                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason, contractDTO.Availability
+                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason
 
                 );
                 return contract;
@@ -63,7 +63,7 @@ namespace BusinessLogicLayer
         public ContractDTO TransformContractToDTO(Contract contract)
         {
             ContractDTO contractDTO = new ContractDTO(contract.Id, (int)contract.role, contract.hourlyWage, contract.weeklyHours,
-                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason, contract.availability);
+                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason);
 
             return contractDTO;
         }

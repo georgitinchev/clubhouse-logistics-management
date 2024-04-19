@@ -44,7 +44,7 @@ namespace MediaBazaar.Forms
                 weeklyHours = int.Parse(contractWeeklyHoursTextBox.Text);
 
                 int contractId = _contractManager.GetNextContractId();
-                var contract = new Contract(contractId, role, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null, DateTime.Now);
+                var contract = new Contract(contractId, role, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null);
 
                 int employeeId = _employeeManager.GetNextEmployeeId();
                 var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);

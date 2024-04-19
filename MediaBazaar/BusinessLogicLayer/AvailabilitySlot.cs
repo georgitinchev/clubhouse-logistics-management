@@ -17,7 +17,6 @@ namespace BusinessLogicLayer
 
         public AvailabilitySlot(int  id,int contractid,WorkingTime timeSlot, WeekDayEnum weekDay,int weeknr)
         {   
-
             Id = id;
             ContractId=contractid;
             TimeSlot = timeSlot;
