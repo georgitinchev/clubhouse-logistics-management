@@ -52,13 +52,10 @@ namespace DTOLayer
             FirstName = firstName;
             LastName = lastName;
             Email = email;
-            
             PhoneNumber = phoneNumber;
             Address=address;
             Role = role;
             IsManager = isManager;
-            
-
         }
     }
 }

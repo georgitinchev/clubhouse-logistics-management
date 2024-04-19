@@ -18,8 +18,8 @@ namespace DataAccessLayer
 			using (var connection = OpenConnection())
 			{
 				var command = new SqlCommand(
-					"INSERT INTO Contract (Id,Role, HourlyWage, WeeklyHours, StartDate, EndDate, IsActive, TerminationReason, Availability) " +
-					"VALUES (@Id,@Role, @HourlyWage, @WeeklyHours, @StartDate, @EndDate, @IsActive, @TerminationReason, @Availability)", connection);
+					"INSERT INTO Contract (Id,Role, HourlyWage, WeeklyHours, StartDate, EndDate, IsActive, TerminationReason) " +
+					"VALUES (@Id,@Role, @HourlyWage, @WeeklyHours, @StartDate, @EndDate, @IsActive, @TerminationReason)", connection);
 				command.Parameters.AddWithValue("@Id", contract.Id);
 				command.Parameters.AddWithValue("@Role", contract.Role);
 				command.Parameters.Add("@HourlyWage", SqlDbType.Decimal).Value = contract.HourlyWage;
