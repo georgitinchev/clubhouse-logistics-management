@@ -2,12 +2,26 @@
 @model MediaBazaarWebsite.Pages.AvailabilityModel
 @{
 }
+
 <div id="calendar-controls">
-	<button id="prev-month">Previous Month</button>
-	<button id="next-month">Next Month</button>
+    <button id="prev-month">Previous Month</button>
+    <button id="next-month">Next Month</button>
 </div>
 <div id="calendar-month-year"></div>
 <div id="calendar-header"></div>
-<div id="calendar"></div>
-
-
+<div id="calendar">
+    <!-- Generate slots for each day -->
+    @for (int day = 1; day <= DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month); day++)
+    {
+        <div class="day">
+            <div class="day-header">@day</div>
+            @for (int slot = 1; slot <= 3; slot++)
+            {
+                <div class="slot" data-date="@DateTime.Now.Year-@DateTime.Now.Month-@day" data-slot-id="@day-@slot" data-selected="false">
+                    <!-- Add user name display -->
+                    <span class="user-name"></span>
+                </div>
+            }
+        </div>
+    }
+</div>

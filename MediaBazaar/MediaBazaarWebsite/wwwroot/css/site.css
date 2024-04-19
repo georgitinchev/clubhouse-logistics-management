@@ -157,9 +157,53 @@ header .nav-item a:hover {
     object-fit: cover;
 }
 
-/*Details ----------------------------------*/
+/*Schedule -----------------------------------*/
 
-/* styles.css */
+.schedule-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.week-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.schedule {
+    display: flex;
+}
+
+.days {
+    flex: 0 0 100px;
+}
+
+.day {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.slots {
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.slot {
+    flex: 0 0 calc(20% - 10px);
+    margin: 5px;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+
+
+
+/*Details ----------------------------------*/
 
 .details {
     background-image: url("~/img/background.jpg");
@@ -172,7 +216,10 @@ header .nav-item a:hover {
 }
 
 .info-section {
-    flex: 0 0 45%;
+    flex: 0 0 calc(50% - 10px);
+    display: grid;
+    grid-template-columns: 25% 75%;
+    gap: 10px;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -183,25 +230,33 @@ header .nav-item a:hover {
     margin-top: 0;
     font-size: 20px;
     color: #333;
+    text-align: center;
+    grid-column: span 2;
 }
 
 .info-section label {
-    display: block;
-    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
     font-weight: bold;
+}
+
+.info-section label::after {
+    content: ":";
+    margin-right: 5px;
 }
 
 .info-section input[type="text"],
 .info-section input[type="email"],
 .info-section input[type="password"] {
-    width: calc(100% - 20px);
+    width: 100%;
     padding: 5px 10px;
-    margin-bottom: 15px;
+    margin-top: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
 
 .info-section .btn-edit {
+    width: 100%;
     padding: 8px 15px;
     background-color: #007bff;
     color: #fff;
@@ -213,6 +268,7 @@ header .nav-item a:hover {
 .info-section .btn-edit:hover {
     background-color: #0056b3;
 }
+
 
 
 
