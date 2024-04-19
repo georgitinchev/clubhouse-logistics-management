@@ -17,8 +17,8 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO Employee (Id, FirstName, LastName, Email, Password, Birthday, Address, PhoneNumber, Bsn, Role, ActiveContractId,isManager, EmergencyContactId) " +
-                    "VALUES (@Id, @FirstName, @LastName, @Email, @Password, @Birthday, @Address, @PhoneNumber, @Bsn, @Role, @ActiveContractId,@isManager, @EmergencyContactId)", connection);
+                    "INSERT INTO Employee (Id, FirstName, LastName, Email, Password, Birthday, Address, PhoneNumber, Bsn, Role, ActiveContractId,isManager, EmergencyContactId, FirstPassword,Salt) " +
+                    "VALUES (@Id, @FirstName, @LastName, @Email, @Password, @Birthday, @Address, @PhoneNumber, @Bsn, @Role, @ActiveContractId,@isManager, @EmergencyContactId, @FirstPassword,@Salt)", connection);
 
                 command.Parameters.AddWithValue("@Id", employee.Id);
                 command.Parameters.AddWithValue("@FirstName", employee.FirstName);
@@ -33,6 +33,8 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@ActiveContractId", employee.ActiveContractId);
                 command.Parameters.AddWithValue("@isManager", employee.IsManager);
                 command.Parameters.AddWithValue("EmergencyContactId", employee.EmergencyContactId);
+                command.Parameters.AddWithValue("@FirstPassword", 1);
+                command.Parameters.AddWithValue("@Salt", "0");
 
                 command.ExecuteNonQuery();
             }
