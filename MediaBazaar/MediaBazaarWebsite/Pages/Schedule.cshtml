@@ -4,3 +4,20 @@
 }
 <h1>Welcome @Model.FirstName @Model.LastName</h1>
 
+<div class="row">
+    @foreach (var worksheet in Model.Worksheets)
+    {
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title">Worksheet #@worksheet.id</h5>
+                </div>
+                <div class="card-body">
+                    <p class="card-text"><strong>Time Slot:</strong> @worksheet.timeSlot</p>
+                    <p class="card-text"><strong>Week Day:</strong> @worksheet.weekDay</p>
+                    <p class="card-text"><strong>Week Number:</strong> @worksheet.weekNr</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

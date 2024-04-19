@@ -3,59 +3,50 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using BusinessLogicLayer;
 using MediaBazaar.Classes;
 using System.Security.Claims;
+using System.ComponentModel.DataAnnotations;
 
 namespace MediaBazaarWebsite.Pages
 {
-    public class Password_ResetModel : PageModel
-    {
-        private EmployeeManager _employeeManager;
-        [BindProperty]
-        public string? password { get; private set; }
-        [BindProperty]
-        public string? password2 {  get; private set; }
+	public class Password_ResetModel : PageModel
+	{
+		private EmployeeManager _employeeManager;
 
-        public Password_ResetModel(EmployeeManager employeeManager)
-        {
-            _employeeManager = employeeManager;
-        }
-        
-        public void OnGet()
-        { 
-        }
+		[BindProperty]
+		[Required(ErrorMessage = "Password is required")]
+		[DataType(DataType.Password)]
+		[RegularExpression(@"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$", ErrorMessage = "Password must be at least 8 characters long and contain at least one uppercase letter, one lowercase letter, one number, and one special character.")]
+		public string? password { get; set; }
 
-        public ActionResult OnPost()
-        {
-            
-            password = Request.Form["password"];
-            password2 = Request.Form["password2"];
-            PasswordHasher hasher = new PasswordHasher();
+		[BindProperty]
+		[Required(ErrorMessage = "Confirm Password is required")]
+		[DataType(DataType.Password)]
+		[Compare(nameof(password), ErrorMessage = "Passwords do not match")]
+		public string? password2 { get; set; }
 
-            if (!string.IsNullOrEmpty(password) && !string.IsNullOrEmpty(password2))
-            {
-                if (password == password2)
-                {
-                    var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);
-                    if (idClaim != null)
-                    {
-                       string salt = hasher.GenerateSalt();
-                    string hashedpassword = hasher.HashPassword(password, salt);
-                    _employeeManager.ChangePassword(hashedpassword, salt,int.Parse(idClaim.Value));
-                    
+		public Password_ResetModel(EmployeeManager employeeManager)
+		{
+			_employeeManager = employeeManager;
+		}
 
-                    }
-                    return RedirectToPage("/Index");  
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = "Passwords do not match.";
-                    return Page();
-                }
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Password can't be empty";
-                return Page();
-            }
-        }
-    }
+		public void OnGet()
+		{
+		}
+
+		public ActionResult OnPost()
+		{
+			if (!ModelState.IsValid)
+			{
+				return Page(); 
+			}
+			PasswordHasher hasher = new PasswordHasher();
+			var idClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+			if (idClaim != null)
+			{
+				string salt = hasher.GenerateSalt();
+				string hashedpassword = hasher.HashPassword(password, salt);
+				_employeeManager.ChangePassword(hashedpassword, salt, int.Parse(idClaim.Value));
+			}
+			return RedirectToPage("/Index");
+		}
+	}
 }

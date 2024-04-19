@@ -72,27 +72,61 @@ function getWeekNumber(d) {
     return weekNo;
 }
 
-function AvailabilitySlotDTO(contractID, slotID, timeSlotID, weekDayID, weekNr, month) {
+function AvailabilitySlotDTO(contractID, slotID, timeSlotID, weekDayID, weekNr) {
     this.ContractID = contractID;
     this.Id = slotID;
-    this.TimeSlotID = timeSlotID;
-    this.WeekDayID = weekDayID;
+    this.TimeSlotID = slotNameToWorkingTime[timeSlotID];
+    this.WeekDayID = jsDayToWeekDayEnum[weekDayID];
     this.WeekNr = weekNr;
-    this.Month = month;
 }
+
+const slotNameToWorkingTime = {
+    'Morning': 1,
+    'Afternoon': 2,
+    'Evening': 3
+};
+
+const jsDayToWeekDayEnum = {
+    0: 7, 
+    1: 1, 
+    2: 2,
+    3: 3, 
+    4: 4, 
+    5: 5, 
+    6: 6  
+};
 
 document.getElementById('submit-availability').addEventListener('click', function () {
     const reservedSlots = document.querySelectorAll('.slot.reserved');
     const availabilitySlots = Array.from(reservedSlots).map(slot => {
         const date = new Date(slot.getAttribute('data-date'));
         const weekNr = getWeekNumber(date);
-        const month = Math.ceil(weekNr / 4.34524);
-        const timeSlotID = slot.getAttribute('data-timeslot');
-        return new AvailabilitySlotDTO(contractID, slotID, timeSlotID, date.getDay(), weekNr, month);
+        const timeSlotID = slot.textContent.trim(); 
+        return new AvailabilitySlotDTO(contractID, null, timeSlotID, date.getDay(), weekNr);
     });
 
-    // adding the code to send the availabilitySlots to the backend below this line
+    fetch('/Availability/Submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(availabilitySlots)
+    })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 });
+
+
 
 function prevMonth() {
     currentDate.setMonth(currentDate.getMonth() - 1);
