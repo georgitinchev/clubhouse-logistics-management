@@ -18,8 +18,8 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO Contract (Id,Role, HourlyWage, WeeklyHours, StartDate, EndDate, IsActive, TerminationReason, Availability) " +
-                    "VALUES (@Id,@Role, @HourlyWage, @WeeklyHours, @StartDate, @EndDate, @IsActive, @TerminationReason, @Availability)", connection);
+                    "INSERT INTO Contract (Id,Role, HourlyWage, WeeklyHours, StartDate, EndDate, IsActive, TerminationReason) " +
+                    "VALUES (@Id,@Role, @HourlyWage, @WeeklyHours, @StartDate, @EndDate, @IsActive, @TerminationReason)", connection);
                 command.Parameters.AddWithValue("@Id", contract.Id);
                 command.Parameters.AddWithValue("@Role", contract.Role);
                 command.Parameters.Add("@HourlyWage", SqlDbType.Decimal).Value = contract.HourlyWage;
@@ -30,7 +30,7 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@EndDate", (object)contract.EndDate ?? DBNull.Value);
                 command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = contract.IsActive;
                 command.Parameters.AddWithValue("@TerminationReason", (object)contract.TerminationReason ?? DBNull.Value);
-                command.Parameters.AddWithValue("@Availability", contract.Availability);
+                
                 command.ExecuteNonQuery();
             }
         }
@@ -55,8 +55,8 @@ namespace DataAccessLayer
                             (DateTime)reader["StartDate"],
                             reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
                             (bool)reader["IsActive"],
-                            reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
-                            (DateTime)reader["Availability"]
+                            reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString()
+                            
 
 
                         );
@@ -76,7 +76,7 @@ namespace DataAccessLayer
                 var command = new SqlCommand(
                     "UPDATE Contract SET Role = @Role, HourlyWage = @HourlyWage, WeeklyHours = @WeeklyHours, " +
                     "StartDate = @StartDate, EndDate = @EndDate, IsActive = @IsActive, " +
-                    "TerminationReason = @TerminationReason, Availability = @Availability " +
+                    "TerminationReason = @TerminationReason " +
                     "WHERE Id = @Id", connection);
 
                 command.Parameters.AddWithValue("@Id", contract.Id);
@@ -89,7 +89,7 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@EndDate", (object)contract.EndDate ?? DBNull.Value);
                 command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = contract.IsActive;
                 command.Parameters.AddWithValue("@TerminationReason", (object)contract.TerminationReason ?? DBNull.Value);
-                command.Parameters.AddWithValue("@Availability", contract.Availability);
+                
 
                 command.ExecuteNonQuery();
             }
@@ -125,9 +125,8 @@ namespace DataAccessLayer
                             (DateTime)reader["StartDate"],
                             reader.IsDBNull(reader.GetOrdinal("EndDate")) ? (DateTime?)null : (DateTime)reader["EndDate"],
                             (bool)reader["IsActive"],
-                            reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString(),
-                            (DateTime)reader["Availability"]
-
+                            reader.IsDBNull(reader.GetOrdinal("TerminationReason")) ? null : reader["TerminationReason"].ToString()
+                            
                         )
                         );
                     }

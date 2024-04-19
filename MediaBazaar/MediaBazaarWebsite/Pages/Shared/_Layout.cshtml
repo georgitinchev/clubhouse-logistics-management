@@ -30,6 +30,12 @@
 							<li class="nav-item @(ViewContext.RouteData.Values["Page"]?.ToString() == "Availability" ? "active" : "")">
 								<a class="nav-link text-dark" asp-area="" asp-page="/Availability">Availability</a>
 							</li>
+							@if (User.Claims.FirstOrDefault(c => c.Type=="IsManager")?.Value =="True")
+							{
+								<li class="nav-item">
+									<a class="nav-link text-dark" asp-area="" asp-page="/AdminPage">Admin Page</a>
+								</li>
+							}
 						</ul>
 						<ul class="navbar-nav">
 							<li class="nav-button">
