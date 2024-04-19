@@ -214,6 +214,25 @@ namespace MediaBazaar.Classes
         { 
             employeeDAL.ResetPassword(id);
         }
-        
+
+        public int HiredInTimeFrame(int months)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime comparisonDate = currentDate.AddMonths(-months);
+            return employees.Count(e => e.Contract.startDate > comparisonDate && e.Contract.startDate <= DateTime.Now);
+        }
+
+        public int FiredInTimeFrame(int months)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime comparisonDate = currentDate.AddMonths(-months);
+            return employees.Count(e => e.Contract.endDate > comparisonDate && e.Contract.endDate <= DateTime.Now);
+        }
+
+        public int DeactivatedEmployees()
+        {
+            return employees.Count(e => !e.Contract.isActive);
+        }
+
     }
 }
