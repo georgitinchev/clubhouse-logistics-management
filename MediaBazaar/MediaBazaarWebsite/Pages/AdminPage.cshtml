@@ -3,6 +3,11 @@
 @{
 }
 <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <canvas id="lineChart" height="400"></canvas>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-4 col-xl-3">
             <div class="card bg-c-green order-card">
@@ -132,3 +137,58 @@
         </div>
     </div>
 </div>
+
+@section Scripts {
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       
+        var hiredData = [
+            @Model.Hired1Month,
+            @Model.Hired3Month,
+            @Model.Hired6Month,
+            @Model.Hired1Year
+        ];
+
+        var firedData = [
+            @Model.Fired1Month,
+            @Model.Fired3Month,
+            @Model.Fired6Month,
+            @Model.Fired1Year
+        ];
+
+        var labels = ["1 Month", "3 Months", "6 Months", "1 Year"];
+
+       
+        var ctx = document.getElementById('lineChart').getContext('2d');
+        var lineChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'New Employees',
+                    data: hiredData,
+                    borderColor: 'green',
+                    backgroundColor: 'transparent',
+                    borderWidth: 4
+                }, {
+                    label: 'Fired Employees',
+                    data: firedData,
+                    borderColor: 'red',
+                    backgroundColor: 'transparent',
+                    borderWidth: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false, 
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+}
