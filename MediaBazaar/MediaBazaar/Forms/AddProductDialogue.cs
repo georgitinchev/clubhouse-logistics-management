@@ -14,9 +14,11 @@ namespace MediaBazaar.Forms
 {
     public partial class addProductForm : Form
     {
-        public addProductForm()
+        public ProductManager productManager { get; private set; }
+        public addProductForm(ProductManager _productManager)
         {
             InitializeComponent();
+            productManager = _productManager;
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -30,9 +32,8 @@ namespace MediaBazaar.Forms
             var width = addWidthNumeric.Value;
             var depth = addDepthNumeric.Value;
             var category = (ProductCategoryEum)addCategoryCombo.SelectedIndex;
-
-            var product = new Product(0, model, brand, price, description, weight, height, width, depth, category);
-            var productManager = new ProductManager();
+            var stock = Decimal.ToInt32(addStockNumeric.Value);
+            var product = new Product(0, model, brand, price, description, weight, height, width, depth, category, stock);
             productManager.AddProduct(product);
         }
     }
