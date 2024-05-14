@@ -375,3 +375,56 @@ header {
 .f-right {
     float: right;
 }
+
+/*AvailabilityCalendar----------------------------------------------------------------*/
+Razor CSHTML
+@page
+@model CalendarModel
+
+<style >
+#calendar {
+    width: 800px;
+    font-family: sans-serif;
+    margin: 0 auto; /* Center the calendar */
+    border: 1px solid #ddd;
+}
+
+#calendar-header {
+    background-color: #f0f0f0;
+    padding: 15px;
+    text-align: center;
+}
+
+#calendar-body table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#calendar-body th, #calendar-body td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+    height: 120px; /* Adjust for more space */
+}
+
+#calendar-body th {
+    background-color: #eee;
+}
+
+.other-month {
+    color: #999;
+}
+
+.today {
+    background-color: #e8f0fe;
+}
+
+#calendar-body ul {
+    list-style: none;
+    padding: 0;
+    margin: 5px 0;
+}
+
+#calendar-body input[type="checkbox"] {
+    margin-right: 5px;
+}

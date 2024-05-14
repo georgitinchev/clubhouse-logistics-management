@@ -1,0 +1,68 @@
+﻿@page
+@model MediaBazaarWebsite.Pages.AvailabilityCalendarModel
+@{
+}
+
+<<form method="post">
+    <div id="calendar">
+        <div id="calendar-header">
+            <h3>@Model.CurrentMonthName @Model.CurrentYear</h3>
+        </div>
+        <table id="calendar-body">
+            <tr>
+                @foreach (var dayName in Model.DayNames)
+                {
+                    <th>@dayName</th>
+                }
+            </tr>
+            @for (int week = 0; week < Model.Weeks.Count; week++)
+            {
+                <tr>
+                    @for (int day = 0; day < Model.Weeks[week].Count; day++)
+                    {
+                        var date = Model.Weeks[week][day];
+                        <td class="@(date.Month == Model.CurrentMonth ? "" : "other-month") @(date == Model.Today ? "today" : "")">
+                            @date.Day
+                            <ul>
+                                @foreach (var slot in Model.TimeSlots)
+                                {
+                                    <li>
+                                        <label>
+                                            <input type="checkbox" name="selectedTimeSlots" value="@($"{date.ToShortDateString()} - {slot}")" />
+                                            @slot
+                                        </label>
+                                    </li>
+                                }
+                            </ul>
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+<script>
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+    checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function () {
+            const date = this.value.split(' - ')[0]; 
+            const checkedForDate = Array.from(checkboxes)
+                .filter(cb => cb.value.startsWith(date) && cb.checked);
+
+            if (checkedForDate.length > 2) {
+                this.checked = false; 
+                alert('You can only select up to 2 time slots per day.');
+            }
+        });
+    });
+</script>
