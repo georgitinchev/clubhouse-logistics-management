@@ -11,7 +11,7 @@ namespace BusinessLogicLayer
     public class ProductManager
     {
         private ProductDAL productDAL;
-
+        public List<Product> Products { get; private set; }
         public ProductManager()
         {
             productDAL = new ProductDAL();
@@ -40,20 +40,28 @@ namespace BusinessLogicLayer
             productDAL.DeleteProduct(productId);
         }
 
-        public List<Product> GetAllProducts()
+        public bool GetAllProducts()
         {
-            var productDTOs = productDAL.GetAllProducts();
-            return productDTOs.Select(TransformDTOToProduct).ToList();
+            try
+            {
+                var productDTOs = productDAL.GetAllProducts();
+                Products = productDTOs.Select(TransformDTOToProduct).ToList();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         private Product TransformDTOToProduct(ProductDTO productDTO)
         {
-            return new Product(productDTO.Id, productDTO.Model, productDTO.Brand, productDTO.Price, productDTO.Description, productDTO.Weight, productDTO.Height, productDTO.Width, productDTO.Depth, (ProductCategoryEum)productDTO.Category);
+            return new Product(productDTO.Id, productDTO.Model, productDTO.Brand, productDTO.Price, productDTO.Description, productDTO.Weight, productDTO.Height, productDTO.Width, productDTO.Depth, (ProductCategoryEum)productDTO.Category, productDTO.Stock);
         }
 
         private ProductDTO TransformProductToDTO(Product product)
         {
-            return new ProductDTO { Id = product.Id, Model = product.Model, Brand = product.Brand, Price = product.Price, Description = product.Description, Weight = product.Weight, Height = product.Height, Width = product.Width, Depth = product.Depth, Category = (int)product.Category };
+            return new ProductDTO { Id = product.Id, Model = product.Model, Brand = product.Brand, Price = product.Price, Description = product.Description, Weight = product.Weight, Height = product.Height, Width = product.Width, Depth = product.Depth, Category = (int)product.Category, Stock = product.Stock };
         }
     }
 

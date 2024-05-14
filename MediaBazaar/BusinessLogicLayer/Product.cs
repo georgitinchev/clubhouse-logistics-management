@@ -19,8 +19,9 @@ namespace BusinessLogicLayer
         public decimal Width { get; private set; }
         public decimal Depth { get; private set; }
         public ProductCategoryEum Category { get; private set; }
+        public int Stock { get; private set; } = 0;
 
-        public Product(int id, string model, string brand, decimal price, string description, decimal weight, decimal height, decimal width, decimal depth, ProductCategoryEum category)
+        public Product(int id, string model, string brand, decimal price, string description, decimal weight, decimal height, decimal width, decimal depth, ProductCategoryEum category, int stock)
         {
             Id = id;
             Model = model;
@@ -32,9 +33,10 @@ namespace BusinessLogicLayer
             Width = width;
             Depth = depth;
             Category = category;
+            Stock = stock;
         }
 
-        public void UpdateProduct(string model, string brand, decimal price, string description, decimal weight, decimal height, decimal width, decimal depth, ProductCategoryEum category)
+        public void UpdateProduct(string model, string brand, decimal price, string description, decimal weight, decimal height, decimal width, decimal depth, ProductCategoryEum category,int stock)
         {
             Model = model;
             Brand = brand;
@@ -45,6 +47,7 @@ namespace BusinessLogicLayer
             Width = width;
             Depth = depth;
             Category = category;
+            Stock = stock;
         }
     }
 
