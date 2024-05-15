@@ -29,7 +29,7 @@ namespace MediaBazaarWebsite.Pages
             DateTime firstDayOfMonth = new DateTime(CurrentYear, CurrentMonth, 1);
             int daysInMonth = DateTime.DaysInMonth(CurrentYear, CurrentMonth);
 
-            // Initialize the 'Weeks' list with empty weeks (as needed)
+            
             Weeks = new List<List<DateTime>>();
             for (int i = 0; i < 6; i++)
             {
@@ -46,11 +46,17 @@ namespace MediaBazaarWebsite.Pages
                     currentDay++;
                 }
             }
+            SelectedTimeSlots = new List<string>
+            {
+                $"{DateTime.Today.AddDays(1).ToShortDateString()} - {WorkingTime.Morning}",
+                $"{DateTime.Today.AddDays(3).ToShortDateString()} - {WorkingTime.Afternoon}",
+                $"{DateTime.Today.AddDays(5).ToShortDateString()} - {WorkingTime.Evening}",
+            };
 
-            // ... (The rest of the OnPost method remains the same)
+
         }
 
-        // ... (The rest of the code remains the same)
+       
 
         public IActionResult OnPost(List<string> selectedTimeSlots)
         {

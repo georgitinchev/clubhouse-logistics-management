@@ -377,11 +377,7 @@ header {
 }
 
 /*AvailabilityCalendar----------------------------------------------------------------*/
-Razor CSHTML
-@page
-@model CalendarModel
 
-<style >
 #calendar {
     width: 800px;
     font-family: sans-serif;
@@ -427,4 +423,18 @@ Razor CSHTML
 
 #calendar-body input[type="checkbox"] {
     margin-right: 5px;
+}
+
+#calendar-body li {
+    display: flex; 
+    align-items: center; 
+}
+
+#calendar-body label {
+    order: 2;
+    margin-left: 10px; 
+}
+
+#calendar-body input[type="checkbox"] {
+    order: 1; 
 }

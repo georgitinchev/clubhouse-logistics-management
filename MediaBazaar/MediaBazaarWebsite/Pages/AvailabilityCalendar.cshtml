@@ -26,9 +26,11 @@
                             <ul>
                                 @foreach (var slot in Model.TimeSlots)
                                 {
+                                    var value = $"{date.ToShortDateString()} - {slot}";
                                     <li>
                                         <label>
-                                            <input type="checkbox" name="selectedTimeSlots" value="@($"{date.ToShortDateString()} - {slot}")" />
+                                            <input type="checkbox" name="selectedTimeSlots" value="@value"
+                                            @(Model.SelectedTimeSlots.Contains(value) ? "checked" : "") /> @* Check if pre-selected *@
                                             @slot
                                         </label>
                                     </li>
@@ -52,16 +54,30 @@
 
 <script>
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    const timeSlots = ['Morning', 'Afternoon', 'Evening'];
 
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', function () {
-            const date = this.value.split(' - ')[0]; 
+            const [date, selectedSlot] = this.value.split(' - ');
+            const selectedSlotIndex = timeSlots.indexOf(selectedSlot);
+
             const checkedForDate = Array.from(checkboxes)
-                .filter(cb => cb.value.startsWith(date) && cb.checked);
+                .filter(cb => cb.value.startsWith(date) && cb.checked)
+                .map(cb => cb.value.split(' - ')[1])
+                .map(slot => timeSlots.indexOf(slot));
 
             if (checkedForDate.length > 2) {
-                this.checked = false; 
+                this.checked = false;
                 alert('You can only select up to 2 time slots per day.');
+                return; // Exit the function if the maximum is exceeded
+            }
+            if (checkedForDate.length === 2) {
+                // Check if the slots are consecutive
+                checkedForDate.sort();
+                if (checkedForDate[1] - checkedForDate[0] !== 1) {
+                    this.checked = false;
+                    alert('You can only select consecutive time slots (e.g., Morning & Afternoon, or Afternoon & Evening).');
+                }
             }
         });
     });
