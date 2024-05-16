@@ -8,19 +8,28 @@ namespace DTOLayer
 {
     public class AvailabilitySlotDTO
     {
-        public int ContractID;
-        public int Id;
-        public int TimeSlotID;
-        public int WeekDayID;
-        public int WeekNr;
+        public int ContractID { get; set; }
+       
+        public int TimeSlotID {  get; set; }
+        public DateTime Date {  get; set; }
+        public bool IsSelected { get; set; }
 
-        public AvailabilitySlotDTO( int slotID,int contractID ,int timeSlotID, int weekDayID, int weekNr)
+        public AvailabilitySlotDTO() { }
+
+        public AvailabilitySlotDTO(int contractID,  int timeSlotID, DateTime date)
         {
             ContractID = contractID;
-            Id = slotID;
+           
             TimeSlotID = timeSlotID;
-            WeekDayID = weekDayID;
-            WeekNr = weekNr;
+            Date = date;
+        }
+
+        public AvailabilitySlotDTO(int contractID, int timeSlotID, DateTime date, bool selected)
+        {
+            ContractID=contractID;
+            TimeSlotID = timeSlotID;
+            Date = date;
+            IsSelected = selected;
         }
     }
 }

@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using DTOLayer;
 using DataAccessLayer;
 using MediaBazaar.Classes;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.NetworkInformation;
 
 namespace BusinessLogicLayer
 {
@@ -13,11 +15,13 @@ namespace BusinessLogicLayer
 	{
 		public AvailabilitySlotDAL availabilityDAL { get; private set; }
 		public List<AvailabilitySlot> slots { get; private set; }
+		public List<AvailabilitySlotDTO> slotsDTO { get; private set; }
 
 		public AvailabilityManager()
 		{
 			availabilityDAL = new AvailabilitySlotDAL();
 			slots = new List<AvailabilitySlot>();
+			slotsDTO = new List<AvailabilitySlotDTO>();
 			GetAllAvailabilitySlots();
 		}
 
@@ -60,14 +64,25 @@ namespace BusinessLogicLayer
 			}
 		}
 
+		public void GetAllAvailabilitySlotsDTO()
+		{
+			slotsDTO.Clear();
+            foreach (AvailabilitySlotDTO dto in availabilityDAL.GetAvailabilitySlots())
+            {
+                slotsDTO.Add(dto);
+            }
+        }
+
+
+
 		public AvailabilitySlot TransformDTOToSlot(AvailabilitySlotDTO dto)
 		{
-			return new AvailabilitySlot(dto.Id, dto.ContractID, (WorkingTime)dto.TimeSlotID, (WeekDayEnum)dto.WeekDayID, dto.WeekNr);
+			return new AvailabilitySlot((WorkingTime)dto.TimeSlotID ,dto.Date,dto.ContractID);
 		}
 
 		public AvailabilitySlotDTO TransformSlotToDTO(AvailabilitySlot slot)
 		{
-			return new AvailabilitySlotDTO(slot.Id, slot.ContractId, (int)slot.TimeSlot, (int)slot.WeekDay, slot.WeekNr);
+			return new AvailabilitySlotDTO(slot.ContractId, (int)slot.TimeSlot, slot.Date);
 		}
 
 		public List<AvailabilitySlot> GetContractSlots(int contractid)
@@ -80,5 +95,30 @@ namespace BusinessLogicLayer
 			}
 			return contractslots;
 		}
-	}
+
+        public List<AvailabilitySlotDTO> GetContractSlotsAsDTO(int contractid)
+        {
+			GetAllAvailabilitySlotsDTO();
+            List<AvailabilitySlotDTO> contractslots = new List<AvailabilitySlotDTO>();
+			try
+			{
+				foreach (AvailabilitySlotDTO s in slotsDTO)
+				{
+					if (s.ContractID == contractid)
+						contractslots.Add(s);
+				}
+			}
+			catch (Exception ex)
+			{
+				return null;
+			}
+            return contractslots;
+        }
+
+        public void UpdateSlots(List<AvailabilitySlotDTO> slots, int contractID,DateTime currentMonth, DateTime specificMonth)
+        {
+            availabilityDAL.DeleteAvailabilitySlots(contractID,currentMonth,specificMonth);
+            AddAvailabilitySlots(slots);
+        }
+    }
 }

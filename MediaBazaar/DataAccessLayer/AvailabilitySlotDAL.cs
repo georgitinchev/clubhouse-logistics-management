@@ -16,13 +16,11 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO Availability (ContractID, TimeSlotID, WeekdayId,WeekNumber) VALUES (@ContractId, @TimeslotID, @WeekdayID, @WeekNr)", connection);
+                    "INSERT INTO Availability (ContractId, WorkingTimeId, Date) VALUES (@ContractId, @TimeslotID, @Date)", connection);
                 command.Parameters.AddWithValue("@ContractID", availabilitySlot.ContractID);
                 command.Parameters.AddWithValue("@TimeSlotID", availabilitySlot.TimeSlotID);
-                command.Parameters.AddWithValue("@WeekdayID", availabilitySlot.WeekDayID);
-                command.Parameters.AddWithValue("WeekNumber",availabilitySlot.WeekNr);
+                command.Parameters.AddWithValue("@Date", availabilitySlot.Date.Date); // Use Date property for just date
 
-                
                 command.ExecuteNonQuery();
             }
         }
@@ -32,7 +30,7 @@ namespace DataAccessLayer
             var slots = new List<AvailabilitySlotDTO>();
             using (var connection = OpenConnection())
             {
-                var command = new SqlCommand("SELECT * FROM Availability WHERE ContractId= @ContractId", connection);
+                var command = new SqlCommand("SELECT ContractId, WorkingTimeId, Date FROM Availability WHERE ContractId= @ContractId", connection);
                 command.Parameters.AddWithValue("@ContractId", contractID);
 
                 using ( var reader = command.ExecuteReader()) 
@@ -40,11 +38,11 @@ namespace DataAccessLayer
                     while(reader.Read())
                     {
                         slots.Add(new AvailabilitySlotDTO(
-                            (int)reader["Id"],
+                            
                             (int)reader["ContractId"],
                             (int)reader["WorkingTimeId"],
-                            (int)reader["WeekDayId"],
-                            (int)reader["WeekNumber"]
+                            (DateTime)reader["Date"],
+                            true
                             ));
                     }
                 }
@@ -65,11 +63,11 @@ namespace DataAccessLayer
                     while(reader.Read())
                     {
                         slots.Add(new AvailabilitySlotDTO(
-                            (int)reader["Id"],
+                            
                             (int)reader["ContractId"],
                             (int)reader["WorkingTimeId"],
-                            (int)reader["WeekDayId"],
-                            (int)reader["WeekNumber"]
+                            (DateTime)reader["Date"],
+                            true
                             ));
                     }
                 }
@@ -81,12 +79,47 @@ namespace DataAccessLayer
         {
             using (var connection = OpenConnection())
             {
-                var command = new SqlCommand("DELETE FROM Availability WHERE Id = @Id", connection);
+                var command = new SqlCommand("DELETE FROM Availability WHERE ContractId = @Id", connection);
                 command.Parameters.AddWithValue("@Id", Id);
                 command.ExecuteNonQuery();
 
             }
 
         }
+
+        public void DeleteAvailabilitySlots(int Id, DateTime currentMonth, DateTime? specificMonth)
+        {
+            using (var connection = OpenConnection())
+            {
+                string query;
+
+                if (specificMonth.HasValue)
+                {
+                    query = "DELETE FROM Availability WHERE ContractId = @Id AND " +
+                            "DATEPART(year, Date) = @SpecificYear AND " +
+                            "DATEPART(month, Date) = @SpecificMonth";
+                }
+                else
+                {
+                    query = "DELETE FROM Availability WHERE ContractId = @Id AND Date < @CurrentMonthStart";
+                }
+
+                var command = new SqlCommand(query, connection);
+                command.Parameters.AddWithValue("@Id", Id);
+
+                if (specificMonth.HasValue)
+                {
+                    command.Parameters.AddWithValue("@SpecificYear", specificMonth.Value.Year);
+                    command.Parameters.AddWithValue("@SpecificMonth", specificMonth.Value.Month);
+                }
+                else
+                {
+                    command.Parameters.AddWithValue("@CurrentMonthStart", new DateTime(currentMonth.Year, currentMonth.Month, 1));
+                }
+
+                command.ExecuteNonQuery();
+            }
+        }
+
     }
 }

@@ -10,19 +10,18 @@ namespace BusinessLogicLayer
     public class AvailabilitySlot
     {
         public WorkingTime TimeSlot { get; private set; }
-        public WeekDayEnum WeekDay { get; private set; }
-        public int Id { get; private set; }
-        public int WeekNr { get; private set; }
+        
+      
+        public DateTime Date { get; private set; }
+        
         public int ContractId { get; private set; }
 
-        public AvailabilitySlot(int  id,int contractid,WorkingTime timeSlot, WeekDayEnum weekDay,int weeknr)
-        {   
-            Id = id;
-            ContractId=contractid;
+        public AvailabilitySlot(WorkingTime timeSlot,  DateTime date, int contractId)
+        {
             TimeSlot = timeSlot;
-            WeekDay = weekDay;
-            WeekNr = weeknr;
+          
+            Date = date;
+            ContractId = contractId;
         }
-        
     }
 }

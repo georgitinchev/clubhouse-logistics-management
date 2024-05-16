@@ -378,63 +378,43 @@ header {
 
 /*AvailabilityCalendar----------------------------------------------------------------*/
 
-#calendar {
-    width: 800px;
-    font-family: sans-serif;
-    margin: 0 auto; /* Center the calendar */
-    border: 1px solid #ddd;
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
 }
 
-#calendar-header {
-    background-color: #f0f0f0;
-    padding: 15px;
-    text-align: center;
-}
-
-#calendar-body table {
+.week {
+    display: flex;
     width: 100%;
-    border-collapse: collapse;
 }
 
-#calendar-body th, #calendar-body td {
-    border: 1px solid #ddd;
+.day {
+    border: 1px solid #ccc;
     padding: 10px;
-    text-align: center;
-    height: 120px; /* Adjust for more space */
+    box-sizing: border-box;
+    width: calc(100% / 7);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-#calendar-body th {
-    background-color: #eee;
+.date {
+    font-weight: bold;
+    margin-bottom: 10px;
 }
 
-.other-month {
-    color: #999;
-}
-
-.today {
-    background-color: #e8f0fe;
-}
-
-#calendar-body ul {
-    list-style: none;
-    padding: 0;
+.shift {
     margin: 5px 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-#calendar-body input[type="checkbox"] {
-    margin-right: 5px;
-}
+    .shift label {
+        margin-left: 5px;
+    }
 
-#calendar-body li {
-    display: flex; 
-    align-items: center; 
-}
-
-#calendar-body label {
-    order: 2;
-    margin-left: 10px; 
-}
-
-#calendar-body input[type="checkbox"] {
-    order: 1; 
-}
+@media (max-width: 768px) {
+    .day {
+        width: 100%;
+    }

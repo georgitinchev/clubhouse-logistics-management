@@ -101,9 +101,10 @@ namespace BusinessLogicLayer
             return contractDAL.GetNextId();
         }
 
-        public List<AvailabilitySlot> GetContractAvailabilitySlots(int contractId)
+        public List<AvailabilitySlotDTO> GetContractAvailabilitySlots(int contractId)
         {
-            return availabilityManager.GetContractSlots(contractId);
+            // return availabilityManager.GetContractSlots(contractId);
+            return null;
         }
     }
 }
