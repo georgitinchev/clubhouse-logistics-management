@@ -19,8 +19,9 @@ namespace MediaBazaar.Forms
         private DataTable productData;
         public UserControlDeport(ProductManager _productManager)
         {
-            InitializeComponent();
+            
             this.productManager = _productManager;
+            InitializeComponent();
             this.Resize += UserControlDeport_Resize;
             InitializeDataGridView();
             InitializeProductData();
