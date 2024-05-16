@@ -14,23 +14,47 @@ namespace MediaBazaar
         private UserControlDashboard userControlDashboard;
         private UserControlWorksheet userControlWorksheet;
         private UserControlDeport userControlDeport;
+        private EmployeeRoleEnum employeeRole;
 
-        public MainForm(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager, ProductManager _productManager)
+        public MainForm(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager, ProductManager _productManager, EmployeeRoleEnum userRole)
         {
             employeeManager = _employeeManager;
             worksheetManager = _worksheetManager;
             productManager = _productManager;
             Application.EnableVisualStyles();
             InitializeComponent();
+            employeeRole = userRole;
+            userControlDeport = new UserControlDeport(productManager); 
             userControlDashboard = new UserControlDashboard(employeeManager, worksheetManager);
             userControlWorksheet = new UserControlWorksheet(employeeManager, worksheetManager);
-            userControlDeport = new UserControlDeport(productManager);
-            Controls.Add(userControlDashboard);
-            Controls.Add(userControlWorksheet);
-            Controls.Add(userControlDeport);
-            userControlDashboard.Show();
-            userControlWorksheet.Hide();
-            userControlDeport.Hide();
+            if (employeeRole == EmployeeRoleEnum.DepotWorker)
+            {
+                
+                Controls.Add(userControlDeport);
+                userControlDeport.Show();
+                userControlDashboard.Hide();
+                userControlWorksheet.Hide();
+                btnDashboard.Hide();
+                btnWorksheet.Hide();
+                
+            }
+            else
+            {
+               
+                Controls.Add(userControlDashboard);
+                Controls.Add(userControlWorksheet);
+                userControlDashboard.Show();
+                userControlWorksheet.Hide();
+                userControlDeport.Hide();
+                btnProduct.Hide();
+                
+            }
+           
+           
+            
+            
+            
+            
             this.Resize += MainForm_Resize;
         }
 

@@ -21,7 +21,7 @@ namespace BusinessLogicLayer
         {
             contracts = new List<Contract>();
             contractDAL = new ContractDAL();
-            availabilityManager = new AvailabilityManager();
+            //availabilityManager = new AvailabilityManager(); Might want to change this *
             GetAllContractsFromDB();
         }
 
