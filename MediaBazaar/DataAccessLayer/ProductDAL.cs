@@ -15,10 +15,9 @@ namespace DataAccessLayer
         {
             using (var connection = OpenConnection())
             {
-                var command = new SqlCommand("INSERT INTO Product (Id, Model, Brand, Price, Description, Weight, Height, Width, Depth, Category) " +
-                    "VALUES (@Id, @Model, @Brand, @Price, @Description, @Weight, @Height, @Width, @Depth, @Category); " +
-                    "INSERT INTO Stock (ProductId, Quantity) VALUES (@Id, @Stock)", connection);
-                command.Parameters.AddWithValue("@Id", GetNextAvailableId());
+                var command = new SqlCommand("INSERT INTO Product (Model, Brand, Price, Description, Weight, Height, Width, Depth, Category) " +
+                    "VALUES (@Model, @Brand, @Price, @Description, @Weight, @Height, @Width, @Depth, @Category); " +
+                    "INSERT INTO Stock (ProductId, Quantity) VALUES (SCOPE_IDENTITY(), @Stock)", connection);
                 command.Parameters.AddWithValue("@Model", product.Model);
                 command.Parameters.AddWithValue("@Brand", product.Brand);
                 command.Parameters.AddWithValue("@Price", product.Price);
@@ -124,24 +123,13 @@ namespace DataAccessLayer
                             Width = reader.GetDecimal(7),
                             Depth = reader.GetDecimal(8),
                             Category = (int)(ProductCategoryEum)reader.GetInt32(9),
-                            Stock = reader.GetInt32(10)
+                            Stock = reader.IsDBNull(10) ? 0 : reader.GetInt32(10)
                         });
                     }
                 }
             }
 
             return products;
-        }
-
-
-        public int GetNextAvailableId()
-        {
-            using (var connection = OpenConnection())
-            {
-                var command = new SqlCommand("WITH NumberSequence AS (SELECT ROW_NUMBER() OVER (ORDER BY Id) AS rn, Id FROM Product) SELECT MIN(NS1.rn) FROM NumberSequence NS1 LEFT JOIN NumberSequence NS2 ON NS2.rn = NS1.rn + 1 WHERE NS2.rn IS NULL", connection);
-                var result = command.ExecuteScalar();
-                return (result != null) ? Convert.ToInt32(result) : 1;
-            }
         }
     }
 }

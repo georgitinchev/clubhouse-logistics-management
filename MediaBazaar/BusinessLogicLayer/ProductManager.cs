@@ -15,6 +15,7 @@ namespace BusinessLogicLayer
         public ProductManager()
         {
             productDAL = new ProductDAL();
+            GetAllProducts();
         }
 
         public void AddProduct(Product newProduct)
