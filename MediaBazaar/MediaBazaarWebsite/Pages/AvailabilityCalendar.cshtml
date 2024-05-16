@@ -18,7 +18,7 @@
 
     <input type="hidden" name="selectedMonth" value="@Model.CurrentMonth.ToString("yyyy-MM")" />
 
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div> <!-- Validation summary -->
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div> 
 
     <div class="calendar">
         @foreach (var weekGroup in Model.AvailabilitySlots.GroupBy(slot => CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(slot.Date, CalendarWeekRule.FirstDay, DayOfWeek.Monday)))

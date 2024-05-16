@@ -77,7 +77,7 @@ namespace MediaBazaarWebsite.Pages
                     .Where(slot => slot.IsSelected && slot.Date.Month == CurrentMonth.Month && slot.Date.Year == CurrentMonth.Year)
                     .ToList();
 
-                // Validate and process the selected shifts
+               
                 var groupedSlots = selectedSlots
                     .GroupBy(slot => slot.Date)
                     .ToList();
@@ -105,7 +105,7 @@ namespace MediaBazaarWebsite.Pages
                     return Page();
                 }
 
-                // Update the availability slots in the database
+                
                 _availabilityManager.UpdateSlots(selectedSlots, ContractID, DateTime.Now, CurrentMonth);
             }
             LoadAvailabilitySlots();
