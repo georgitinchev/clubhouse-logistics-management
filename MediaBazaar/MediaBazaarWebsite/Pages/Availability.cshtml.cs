@@ -12,7 +12,7 @@ namespace MediaBazaarWebsite.Pages
 		private readonly AvailabilityManager _availabilityManager;
 		public AvailabilityModel(EmployeeManager employeeManager)
 		{
-			_availabilityManager = employeeManager._contractManager.availabilityManager;
+			//_availabilityManager = employeeManager._contractManager.availabilityManager;
 		}
 
         [HttpPost]
