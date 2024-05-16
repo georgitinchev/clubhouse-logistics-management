@@ -18,6 +18,6 @@ namespace DTOLayer
         public decimal Width { get; set; }
         public decimal Depth { get; set; }
         public int Category { get; set; }
-        public int Stock { get; set; } = 0;
+        public int Stock { get; set; }
     }
 }
