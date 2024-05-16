@@ -18,6 +18,7 @@ namespace MediaBazaar.Forms
         public EmployeeWorksheetManager worksheetManager { get; private set; }
         public ProductManager productManager { get; private set; }
         public bool isAuthenticated { get; private set; } = false;
+        public EmployeeRoleEnum UserRole { get; private set; }
         public Authentication()
         {
             employeeManager = new EmployeeManager();
@@ -50,19 +51,21 @@ namespace MediaBazaar.Forms
         {
             string email = userNameLoginTxt.Text;
             string password = passwordLoginTxt.Text;
+
             try
             {
                 Employee employee = employeeManager.AuthenticateEmployee(email, password);
-
-                if (employee != null && employee.IsManager)
-                {
-                    isAuthenticated = true;
-                    this.Close();
-                }
-                else
-                {
-                    throw (new Exception("⚠️ Invalid credentials or unauthorized access"));
-                }
+                UserRole = employee.Role;
+                if (employee != null)
+                    if (employee.IsManager || (employee.Role == EmployeeRoleEnum.DepotWorker))
+                    {
+                        isAuthenticated = true;
+                        this.Close();
+                    }
+                    else
+                    {
+                        throw (new Exception("⚠️ Invalid credentials or unauthorized access"));
+                    }
             }
             catch (Exception ex)
             {
