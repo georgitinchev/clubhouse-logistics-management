@@ -14,7 +14,7 @@ namespace MediaBazaar
         private UserControlDashboard userControlDashboard;
         private UserControlWorksheet userControlWorksheet;
         private UserControlDeport userControlDeport;
-        private EmployeeRoleEnum employeeRole;
+        
 
 
 
@@ -34,7 +34,7 @@ namespace MediaBazaar
             userControlDashboard.Show();
             userControlWorksheet.Hide();
             userControlDeport.Hide();
-            if (employeeRole == EmployeeRoleEnum.DepotWorker)
+            if (userRole == EmployeeRoleEnum.DepotWorker)
             {
 
                 Controls.Add(userControlDeport);
