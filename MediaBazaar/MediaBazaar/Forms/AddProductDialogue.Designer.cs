@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            addFormProductBtn = new CustomButton();
             addStockNumeric = new NumericUpDown();
             lblAddStock = new Label();
             lblErrorHandling = new Label();
@@ -51,7 +52,6 @@
             lblAddBrand = new Label();
             lblAddModel = new Label();
             addModelTextBox = new TextBox();
-            addFormProductBtn = new CustomButton();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)addStockNumeric).BeginInit();
             dimensionsGroup.SuspendLayout();
@@ -87,10 +87,32 @@
             panel1.Size = new Size(805, 587);
             panel1.TabIndex = 0;
             // 
+            // addFormProductBtn
+            // 
+            addFormProductBtn.BackColor = Color.DarkOrange;
+            addFormProductBtn.BackgroundColor = Color.DarkOrange;
+            addFormProductBtn.BorderColor = Color.White;
+            addFormProductBtn.BorderRadius = 15;
+            addFormProductBtn.BorderSize = 2;
+            addFormProductBtn.Cursor = Cursors.Hand;
+            addFormProductBtn.FlatStyle = FlatStyle.Flat;
+            addFormProductBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            addFormProductBtn.ForeColor = Color.White;
+            addFormProductBtn.Location = new Point(261, 518);
+            addFormProductBtn.Margin = new Padding(3, 2, 3, 2);
+            addFormProductBtn.Name = "addFormProductBtn";
+            addFormProductBtn.Size = new Size(243, 48);
+            addFormProductBtn.TabIndex = 33;
+            addFormProductBtn.Text = "Add Product";
+            addFormProductBtn.TextColor = Color.White;
+            addFormProductBtn.UseVisualStyleBackColor = false;
+            addFormProductBtn.Click += addFormProductBtn_Click;
+            // 
             // addStockNumeric
             // 
             addStockNumeric.Font = new Font("Segoe UI", 14.25F);
             addStockNumeric.Location = new Point(584, 252);
+            addStockNumeric.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             addStockNumeric.Name = "addStockNumeric";
             addStockNumeric.Size = new Size(154, 33);
             addStockNumeric.TabIndex = 27;
@@ -171,24 +193,30 @@
             // 
             // addDepthNumeric
             // 
+            addDepthNumeric.DecimalPlaces = 2;
             addDepthNumeric.Font = new Font("Segoe UI", 14.25F);
             addDepthNumeric.Location = new Point(135, 130);
+            addDepthNumeric.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             addDepthNumeric.Name = "addDepthNumeric";
             addDepthNumeric.Size = new Size(154, 33);
             addDepthNumeric.TabIndex = 15;
             // 
             // addHeightNumeric
             // 
+            addHeightNumeric.DecimalPlaces = 2;
             addHeightNumeric.Font = new Font("Segoe UI", 14.25F);
             addHeightNumeric.Location = new Point(135, 87);
+            addHeightNumeric.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             addHeightNumeric.Name = "addHeightNumeric";
             addHeightNumeric.Size = new Size(154, 33);
             addHeightNumeric.TabIndex = 14;
             // 
             // addWidthNumeric
             // 
+            addWidthNumeric.DecimalPlaces = 2;
             addWidthNumeric.Font = new Font("Segoe UI", 14.25F);
             addWidthNumeric.Location = new Point(135, 41);
+            addWidthNumeric.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             addWidthNumeric.Name = "addWidthNumeric";
             addWidthNumeric.Size = new Size(154, 33);
             addWidthNumeric.TabIndex = 13;
@@ -228,6 +256,7 @@
             addWeightNumeric.DecimalPlaces = 2;
             addWeightNumeric.Font = new Font("Segoe UI", 14.25F);
             addWeightNumeric.Location = new Point(174, 194);
+            addWeightNumeric.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             addWeightNumeric.Name = "addWeightNumeric";
             addWeightNumeric.Size = new Size(147, 33);
             addWeightNumeric.TabIndex = 8;
@@ -247,6 +276,7 @@
             addPriceNumeric.DecimalPlaces = 2;
             addPriceNumeric.Font = new Font("Segoe UI", 14.25F);
             addPriceNumeric.Location = new Point(174, 141);
+            addPriceNumeric.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             addPriceNumeric.Name = "addPriceNumeric";
             addPriceNumeric.Size = new Size(147, 33);
             addPriceNumeric.TabIndex = 6;
@@ -296,26 +326,6 @@
             addModelTextBox.Name = "addModelTextBox";
             addModelTextBox.Size = new Size(262, 33);
             addModelTextBox.TabIndex = 1;
-            // 
-            // addFormProductBtn
-            // 
-            addFormProductBtn.BackColor = Color.DarkOrange;
-            addFormProductBtn.BackgroundColor = Color.DarkOrange;
-            addFormProductBtn.BorderColor = Color.White;
-            addFormProductBtn.BorderRadius = 15;
-            addFormProductBtn.BorderSize = 2;
-            addFormProductBtn.Cursor = Cursors.Hand;
-            addFormProductBtn.FlatStyle = FlatStyle.Flat;
-            addFormProductBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            addFormProductBtn.ForeColor = Color.White;
-            addFormProductBtn.Location = new Point(261, 518);
-            addFormProductBtn.Margin = new Padding(3, 2, 3, 2);
-            addFormProductBtn.Name = "addFormProductBtn";
-            addFormProductBtn.Size = new Size(243, 48);
-            addFormProductBtn.TabIndex = 33;
-            addFormProductBtn.Text = "Add Product";
-            addFormProductBtn.TextColor = Color.White;
-            addFormProductBtn.UseVisualStyleBackColor = false;
             // 
             // addProductForm
             // 
