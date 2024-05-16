@@ -32,7 +32,6 @@
             panelOperationsProduct = new Panel();
             addProductBtn = new CustomButton();
             searchPictureBox = new PictureBox();
-            pictureBoxSearch = new PictureBox();
             categoryFilter = new ComboBox();
             textBoxSearch = new TextBox();
             productsGrid = new DataGridView();
@@ -63,9 +62,9 @@
             productImage = new PictureBox();
             lblBrand = new Label();
             lblModel = new Label();
+            productsErrorLabel = new Label();
             panelOperationsProduct.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)searchPictureBox).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)productsGrid).BeginInit();
             productDetailsGroupbox.SuspendLayout();
             productOperationsGroup.SuspendLayout();
@@ -83,7 +82,6 @@
             // 
             panelOperationsProduct.Controls.Add(addProductBtn);
             panelOperationsProduct.Controls.Add(searchPictureBox);
-            panelOperationsProduct.Controls.Add(pictureBoxSearch);
             panelOperationsProduct.Controls.Add(categoryFilter);
             panelOperationsProduct.Controls.Add(textBoxSearch);
             panelOperationsProduct.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -103,10 +101,10 @@
             addProductBtn.FlatStyle = FlatStyle.Flat;
             addProductBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             addProductBtn.ForeColor = Color.White;
-            addProductBtn.Location = new Point(704, 2);
+            addProductBtn.Location = new Point(771, 5);
             addProductBtn.Margin = new Padding(3, 2, 3, 2);
             addProductBtn.Name = "addProductBtn";
-            addProductBtn.Size = new Size(147, 38);
+            addProductBtn.Size = new Size(172, 47);
             addProductBtn.TabIndex = 32;
             addProductBtn.Text = "Add Product";
             addProductBtn.TextColor = Color.White;
@@ -119,28 +117,14 @@
             searchPictureBox.BackColor = Color.White;
             searchPictureBox.Cursor = Cursors.Hand;
             searchPictureBox.Image = Properties.Resources.search_icon;
-            searchPictureBox.Location = new Point(551, 23);
+            searchPictureBox.Location = new Point(507, 18);
             searchPictureBox.Margin = new Padding(3, 2, 3, 2);
             searchPictureBox.Name = "searchPictureBox";
-            searchPictureBox.Size = new Size(42, 24);
+            searchPictureBox.Size = new Size(41, 27);
             searchPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             searchPictureBox.TabIndex = 30;
             searchPictureBox.TabStop = false;
             searchPictureBox.Click += searchPictureBox_Click;
-            // 
-            // pictureBoxSearch
-            // 
-            pictureBoxSearch.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            pictureBoxSearch.BackColor = Color.White;
-            pictureBoxSearch.Cursor = Cursors.Hand;
-            pictureBoxSearch.Image = Properties.Resources.search_icon;
-            pictureBoxSearch.Location = new Point(1251, -23);
-            pictureBoxSearch.Margin = new Padding(3, 2, 3, 2);
-            pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(42, 28);
-            pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxSearch.TabIndex = 28;
-            pictureBoxSearch.TabStop = false;
             // 
             // categoryFilter
             // 
@@ -150,10 +134,10 @@
             categoryFilter.FormattingEnabled = true;
             categoryFilter.IntegralHeight = false;
             categoryFilter.ItemHeight = 20;
-            categoryFilter.Items.AddRange(new object[] { "Any Role", "DepartmentManager", "HRManager", "SalesRepresentative", "SupportEmployee", "Cashier", "SecurityGuard", "DepotWorker" });
-            categoryFilter.Location = new Point(506, 8);
+            categoryFilter.Items.AddRange(new object[] { "Any Category", "Electronics", "HomeAppliances", "ComputersAccessories", "MobilePhonesTablets", "AudioVideo", "CamerasPhotography", "Gaming", "OfficeSupplies", "SmartHome", "SportsOutdoors" });
+            categoryFilter.Location = new Point(554, 18);
             categoryFilter.Name = "categoryFilter";
-            categoryFilter.Size = new Size(193, 28);
+            categoryFilter.Size = new Size(211, 28);
             categoryFilter.TabIndex = 29;
             categoryFilter.Text = "Choose Category";
             categoryFilter.SelectedIndexChanged += categoryFilter_SelectedIndexChanged;
@@ -162,12 +146,11 @@
             // 
             textBoxSearch.Cursor = Cursors.IBeam;
             textBoxSearch.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            textBoxSearch.Location = new Point(13, 9);
+            textBoxSearch.Location = new Point(13, 18);
             textBoxSearch.Margin = new Padding(3, 2, 3, 2);
             textBoxSearch.Name = "textBoxSearch";
-            textBoxSearch.Size = new Size(458, 27);
+            textBoxSearch.Size = new Size(523, 27);
             textBoxSearch.TabIndex = 26;
-            textBoxSearch.Text = "Search...";
             // 
             // productsGrid
             // 
@@ -178,7 +161,8 @@
             productsGrid.Name = "productsGrid";
             productsGrid.RowHeadersWidth = 51;
             productsGrid.Size = new Size(1061, 564);
-            productsGrid.TabIndex = 32;
+            productsGrid.TabIndex = 22;
+            productsGrid.CellClick += ProductsGrid_CellClick;
             // 
             // productDetailsGroupbox
             // 
@@ -213,7 +197,7 @@
             productDetailsGroupbox.Name = "productDetailsGroupbox";
             productDetailsGroupbox.Padding = new Padding(3, 2, 3, 2);
             productDetailsGroupbox.Size = new Size(376, 653);
-            productDetailsGroupbox.TabIndex = 33;
+            productDetailsGroupbox.TabIndex = 22;
             productDetailsGroupbox.TabStop = false;
             // 
             // productOperationsGroup
@@ -221,11 +205,11 @@
             productOperationsGroup.Controls.Add(removeProductBtn);
             productOperationsGroup.Controls.Add(updateProductBtn);
             productOperationsGroup.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            productOperationsGroup.Location = new Point(18, 374);
-            productOperationsGroup.Margin = new Padding(2, 2, 2, 2);
+            productOperationsGroup.Location = new Point(18, 464);
+            productOperationsGroup.Margin = new Padding(2);
             productOperationsGroup.Name = "productOperationsGroup";
-            productOperationsGroup.Padding = new Padding(2, 2, 2, 2);
-            productOperationsGroup.Size = new Size(294, 105);
+            productOperationsGroup.Padding = new Padding(2);
+            productOperationsGroup.Size = new Size(330, 159);
             productOperationsGroup.TabIndex = 44;
             productOperationsGroup.TabStop = false;
             productOperationsGroup.Text = "Product Operations";
@@ -241,10 +225,10 @@
             removeProductBtn.FlatStyle = FlatStyle.Flat;
             removeProductBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             removeProductBtn.ForeColor = Color.White;
-            removeProductBtn.Location = new Point(22, 63);
+            removeProductBtn.Location = new Point(23, 93);
             removeProductBtn.Margin = new Padding(3, 2, 3, 2);
             removeProductBtn.Name = "removeProductBtn";
-            removeProductBtn.Size = new Size(250, 38);
+            removeProductBtn.Size = new Size(286, 50);
             removeProductBtn.TabIndex = 65;
             removeProductBtn.Text = "Remove Product";
             removeProductBtn.TextColor = Color.White;
@@ -262,10 +246,10 @@
             updateProductBtn.FlatStyle = FlatStyle.Flat;
             updateProductBtn.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             updateProductBtn.ForeColor = Color.White;
-            updateProductBtn.Location = new Point(22, 23);
+            updateProductBtn.Location = new Point(22, 26);
             updateProductBtn.Margin = new Padding(3, 2, 3, 2);
             updateProductBtn.Name = "updateProductBtn";
-            updateProductBtn.Size = new Size(250, 38);
+            updateProductBtn.Size = new Size(286, 50);
             updateProductBtn.TabIndex = 65;
             updateProductBtn.Text = "Update Product";
             updateProductBtn.TextColor = Color.White;
@@ -275,7 +259,8 @@
             // numericUpDownStock
             // 
             numericUpDownStock.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            numericUpDownStock.Location = new Point(138, 344);
+            numericUpDownStock.Location = new Point(216, 423);
+            numericUpDownStock.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             numericUpDownStock.Name = "numericUpDownStock";
             numericUpDownStock.Size = new Size(93, 27);
             numericUpDownStock.TabIndex = 64;
@@ -283,9 +268,9 @@
             // lblStock
             // 
             lblStock.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblStock.Location = new Point(77, 346);
+            lblStock.Location = new Point(115, 425);
             lblStock.Name = "lblStock";
-            lblStock.Size = new Size(56, 22);
+            lblStock.Size = new Size(56, 25);
             lblStock.TabIndex = 63;
             lblStock.Text = "Stock:";
             // 
@@ -293,7 +278,7 @@
             // 
             comboBoxCategory.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             comboBoxCategory.FormattingEnabled = true;
-            comboBoxCategory.Location = new Point(92, 314);
+            comboBoxCategory.Location = new Point(130, 389);
             comboBoxCategory.Name = "comboBoxCategory";
             comboBoxCategory.Size = new Size(221, 28);
             comboBoxCategory.TabIndex = 62;
@@ -301,24 +286,28 @@
             // lblCategory
             // 
             lblCategory.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblCategory.Location = new Point(0, 316);
+            lblCategory.Location = new Point(38, 391);
             lblCategory.Name = "lblCategory";
-            lblCategory.Size = new Size(87, 28);
+            lblCategory.Size = new Size(87, 32);
             lblCategory.TabIndex = 61;
             lblCategory.Text = "Category:";
             // 
             // numericUpDownDepth
             // 
+            numericUpDownDepth.DecimalPlaces = 2;
             numericUpDownDepth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            numericUpDownDepth.Location = new Point(220, 284);
+            numericUpDownDepth.Location = new Point(259, 352);
+            numericUpDownDepth.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             numericUpDownDepth.Name = "numericUpDownDepth";
             numericUpDownDepth.Size = new Size(92, 27);
             numericUpDownDepth.TabIndex = 60;
             // 
             // numericUpDownWidth
             // 
+            numericUpDownWidth.DecimalPlaces = 2;
             numericUpDownWidth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            numericUpDownWidth.Location = new Point(220, 254);
+            numericUpDownWidth.Location = new Point(259, 317);
+            numericUpDownWidth.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             numericUpDownWidth.Name = "numericUpDownWidth";
             numericUpDownWidth.Size = new Size(92, 27);
             numericUpDownWidth.TabIndex = 59;
@@ -326,9 +315,9 @@
             // lblDepth
             // 
             lblDepth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblDepth.Location = new Point(150, 283);
+            lblDepth.Location = new Point(188, 354);
             lblDepth.Name = "lblDepth";
-            lblDepth.Size = new Size(65, 27);
+            lblDepth.Size = new Size(65, 31);
             lblDepth.TabIndex = 58;
             lblDepth.Text = "Depth:";
             lblDepth.TextAlign = ContentAlignment.TopCenter;
@@ -336,25 +325,29 @@
             // lblWidth
             // 
             lblWidth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblWidth.Location = new Point(150, 255);
+            lblWidth.Location = new Point(188, 322);
             lblWidth.Name = "lblWidth";
-            lblWidth.Size = new Size(65, 27);
+            lblWidth.Size = new Size(65, 31);
             lblWidth.TabIndex = 57;
             lblWidth.Text = "Width:";
             lblWidth.TextAlign = ContentAlignment.TopCenter;
             // 
             // numericUpDownHeight
             // 
+            numericUpDownHeight.DecimalPlaces = 2;
             numericUpDownHeight.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            numericUpDownHeight.Location = new Point(65, 284);
+            numericUpDownHeight.Location = new Point(103, 353);
+            numericUpDownHeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             numericUpDownHeight.Name = "numericUpDownHeight";
             numericUpDownHeight.Size = new Size(83, 27);
             numericUpDownHeight.TabIndex = 56;
             // 
             // numericUpDownWeight
             // 
+            numericUpDownWeight.DecimalPlaces = 2;
             numericUpDownWeight.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            numericUpDownWeight.Location = new Point(65, 254);
+            numericUpDownWeight.Location = new Point(103, 317);
+            numericUpDownWeight.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             numericUpDownWeight.Name = "numericUpDownWeight";
             numericUpDownWeight.Size = new Size(83, 27);
             numericUpDownWeight.TabIndex = 55;
@@ -362,16 +355,16 @@
             // lblHeight
             // 
             lblHeight.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblHeight.Location = new Point(3, 284);
+            lblHeight.Location = new Point(41, 355);
             lblHeight.Name = "lblHeight";
-            lblHeight.Size = new Size(66, 27);
+            lblHeight.Size = new Size(66, 31);
             lblHeight.TabIndex = 54;
             lblHeight.Text = "Height:";
             // 
             // textBoxBrand
             // 
             textBoxBrand.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            textBoxBrand.Location = new Point(75, 98);
+            textBoxBrand.Location = new Point(110, 123);
             textBoxBrand.Name = "textBoxBrand";
             textBoxBrand.Size = new Size(238, 27);
             textBoxBrand.TabIndex = 52;
@@ -379,7 +372,7 @@
             // textBoxModel
             // 
             textBoxModel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            textBoxModel.Location = new Point(75, 68);
+            textBoxModel.Location = new Point(110, 89);
             textBoxModel.Name = "textBoxModel";
             textBoxModel.Size = new Size(238, 27);
             textBoxModel.TabIndex = 51;
@@ -387,18 +380,18 @@
             // lblWeight
             // 
             lblWeight.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblWeight.Location = new Point(0, 254);
+            lblWeight.Location = new Point(38, 321);
             lblWeight.Name = "lblWeight";
-            lblWeight.Size = new Size(69, 24);
+            lblWeight.Size = new Size(69, 27);
             lblWeight.TabIndex = 50;
             lblWeight.Text = "Weight:";
             // 
             // textBoxDescription
             // 
             textBoxDescription.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            textBoxDescription.Location = new Point(6, 175);
+            textBoxDescription.Location = new Point(41, 210);
             textBoxDescription.Name = "textBoxDescription";
-            textBoxDescription.Size = new Size(307, 74);
+            textBoxDescription.Size = new Size(307, 83);
             textBoxDescription.TabIndex = 49;
             textBoxDescription.Text = "";
             // 
@@ -406,7 +399,8 @@
             // 
             priceNumericUpDown.DecimalPlaces = 2;
             priceNumericUpDown.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            priceNumericUpDown.Location = new Point(129, 128);
+            priceNumericUpDown.Location = new Point(163, 156);
+            priceNumericUpDown.Maximum = new decimal(new int[] { 99999, 0, 0, 0 });
             priceNumericUpDown.Name = "priceNumericUpDown";
             priceNumericUpDown.Size = new Size(125, 27);
             priceNumericUpDown.TabIndex = 48;
@@ -414,25 +408,25 @@
             // lblPrice
             // 
             lblPrice.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblPrice.Location = new Point(13, 128);
+            lblPrice.Location = new Point(48, 157);
             lblPrice.Name = "lblPrice";
-            lblPrice.Size = new Size(52, 20);
+            lblPrice.Size = new Size(52, 23);
             lblPrice.TabIndex = 37;
             lblPrice.Text = "Price:";
             // 
             // lblDescription
             // 
             lblDescription.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblDescription.Location = new Point(6, 154);
+            lblDescription.Location = new Point(41, 187);
             lblDescription.Name = "lblDescription";
-            lblDescription.Size = new Size(102, 18);
+            lblDescription.Size = new Size(102, 20);
             lblDescription.TabIndex = 36;
             lblDescription.Text = "Description:";
             // 
             // productPictureBox
             // 
             productPictureBox.BackColor = Color.DimGray;
-            productPictureBox.Location = new Point(18, 59);
+            productPictureBox.Location = new Point(18, 67);
             productPictureBox.Margin = new Padding(3, 2, 3, 2);
             productPictureBox.Name = "productPictureBox";
             productPictureBox.Size = new Size(253, 2);
@@ -445,7 +439,7 @@
             productDetailsLabel.BackColor = Color.Transparent;
             productDetailsLabel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
             productDetailsLabel.ForeColor = Color.Black;
-            productDetailsLabel.Location = new Point(65, 32);
+            productDetailsLabel.Location = new Point(65, 36);
             productDetailsLabel.Name = "productDetailsLabel";
             productDetailsLabel.Size = new Size(111, 20);
             productDetailsLabel.TabIndex = 26;
@@ -455,10 +449,10 @@
             // 
             productImage.BackColor = Color.OrangeRed;
             productImage.Image = (Image)resources.GetObject("productImage.Image");
-            productImage.Location = new Point(6, 25);
+            productImage.Location = new Point(6, 28);
             productImage.Margin = new Padding(3, 2, 3, 2);
             productImage.Name = "productImage";
-            productImage.Size = new Size(53, 33);
+            productImage.Size = new Size(53, 37);
             productImage.SizeMode = PictureBoxSizeMode.Zoom;
             productImage.TabIndex = 25;
             productImage.TabStop = false;
@@ -466,35 +460,46 @@
             // lblBrand
             // 
             lblBrand.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblBrand.Location = new Point(6, 98);
+            lblBrand.Location = new Point(41, 123);
             lblBrand.Name = "lblBrand";
-            lblBrand.Size = new Size(66, 24);
+            lblBrand.Size = new Size(66, 27);
             lblBrand.TabIndex = 2;
             lblBrand.Text = "Brand:";
             // 
             // lblModel
             // 
             lblModel.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblModel.Location = new Point(3, 64);
+            lblModel.Location = new Point(38, 85);
             lblModel.Margin = new Padding(1, 0, 1, 0);
             lblModel.Name = "lblModel";
-            lblModel.Size = new Size(69, 27);
+            lblModel.Size = new Size(69, 31);
             lblModel.TabIndex = 0;
             lblModel.Text = "Model:";
             // 
+            // productsErrorLabel
+            // 
+            productsErrorLabel.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            productsErrorLabel.ForeColor = Color.Red;
+            productsErrorLabel.Location = new Point(41, 695);
+            productsErrorLabel.Name = "productsErrorLabel";
+            productsErrorLabel.Size = new Size(1061, 70);
+            productsErrorLabel.TabIndex = 65;
+            productsErrorLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // UserControlDeport
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(productsErrorLabel);
             Controls.Add(productDetailsGroupbox);
-            Controls.Add(productsGrid);
             Controls.Add(panelOperationsProduct);
+            Controls.Add(productsGrid);
+            Font = new Font("Segoe UI", 9.75F);
             Name = "UserControlDeport";
             Size = new Size(1499, 730);
             panelOperationsProduct.ResumeLayout(false);
             panelOperationsProduct.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)searchPictureBox).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
             ((System.ComponentModel.ISupportInitialize)productsGrid).EndInit();
             productDetailsGroupbox.ResumeLayout(false);
             productDetailsGroupbox.PerformLayout();
@@ -513,7 +518,6 @@
         #endregion
 
         private Panel panelOperationsProduct;
-        private PictureBox pictureBoxSearch;
         private CustomButton btnAddProduct;
         private ComboBox categoryFilter;
         private TextBox textBoxSearch;
@@ -549,5 +553,6 @@
         private Label lblStock;
         private CustomButton updateProductBtn;
         private CustomButton removeProductBtn;
+        private Label productsErrorLabel;
     }
 }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             bindingSource1 = new BindingSource(components);
             panel1 = new Panel();
+            btnProduct = new CustomButton();
             logOutBtn = new CustomButton();
             pictureBox1 = new PictureBox();
             lineEmployee = new PictureBox();
@@ -39,19 +40,21 @@
             pictureBoxJupiter = new PictureBox();
             btnWorksheet = new CustomButton();
             btnDashboard = new CustomButton();
-            btnProduct = new CustomButton();
+            lineProduct = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)lineEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lineProduct).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.OrangeRed;
+            panel1.Controls.Add(lineProduct);
             panel1.Controls.Add(btnProduct);
             panel1.Controls.Add(logOutBtn);
             panel1.Controls.Add(pictureBox1);
@@ -60,11 +63,30 @@
             panel1.Controls.Add(pictureBoxJupiter);
             panel1.Controls.Add(btnWorksheet);
             panel1.Controls.Add(btnDashboard);
-            panel1.Location = new Point(-2, -3);
-            panel1.Margin = new Padding(3, 4, 3, 4);
+            panel1.Location = new Point(-2, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1713, 88);
+            panel1.Size = new Size(1499, 66);
             panel1.TabIndex = 1;
+            // 
+            // btnProduct
+            // 
+            btnProduct.Anchor = AnchorStyles.None;
+            btnProduct.BackColor = Color.OrangeRed;
+            btnProduct.BackgroundColor = Color.OrangeRed;
+            btnProduct.BorderColor = Color.Black;
+            btnProduct.BorderRadius = 15;
+            btnProduct.BorderSize = 2;
+            btnProduct.FlatStyle = FlatStyle.Flat;
+            btnProduct.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnProduct.ForeColor = Color.Black;
+            btnProduct.Location = new Point(1078, 8);
+            btnProduct.Name = "btnProduct";
+            btnProduct.Size = new Size(150, 40);
+            btnProduct.TabIndex = 24;
+            btnProduct.Text = "Product";
+            btnProduct.TextColor = Color.Black;
+            btnProduct.UseVisualStyleBackColor = false;
+            btnProduct.Click += btnProduct_Click;
             // 
             // logOutBtn
             // 
@@ -77,10 +99,9 @@
             logOutBtn.FlatStyle = FlatStyle.Flat;
             logOutBtn.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             logOutBtn.ForeColor = Color.Black;
-            logOutBtn.Location = new Point(1551, 12);
-            logOutBtn.Margin = new Padding(3, 4, 3, 4);
+            logOutBtn.Location = new Point(1357, 9);
             logOutBtn.Name = "logOutBtn";
-            logOutBtn.Size = new Size(137, 59);
+            logOutBtn.Size = new Size(120, 44);
             logOutBtn.TabIndex = 23;
             logOutBtn.Text = "Logout 🔑";
             logOutBtn.TextColor = Color.Black;
@@ -90,18 +111,20 @@
             // pictureBox1
             // 
             pictureBox1.BackColor = Color.FromArgb(255, 128, 0);
-            pictureBox1.Location = new Point(906, 68);
+            pictureBox1.Location = new Point(793, 51);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(171, 3);
+            pictureBox1.Size = new Size(150, 2);
             pictureBox1.TabIndex = 22;
             pictureBox1.TabStop = false;
             // 
             // lineEmployee
             // 
             lineEmployee.BackColor = Color.FromArgb(255, 128, 0);
-            lineEmployee.Location = new Point(631, 69);
+            lineEmployee.Location = new Point(552, 52);
+            lineEmployee.Margin = new Padding(3, 2, 3, 2);
             lineEmployee.Name = "lineEmployee";
-            lineEmployee.Size = new Size(171, 3);
+            lineEmployee.Size = new Size(150, 2);
             lineEmployee.TabIndex = 21;
             lineEmployee.TabStop = false;
             // 
@@ -110,9 +133,10 @@
             pictureBoxLogo.Anchor = AnchorStyles.None;
             pictureBoxLogo.BackColor = Color.White;
             pictureBoxLogo.Image = (Image)resources.GetObject("pictureBoxLogo.Image");
-            pictureBoxLogo.Location = new Point(823, 11);
+            pictureBoxLogo.Location = new Point(720, 8);
+            pictureBoxLogo.Margin = new Padding(3, 2, 3, 2);
             pictureBoxLogo.Name = "pictureBoxLogo";
-            pictureBoxLogo.Size = new Size(70, 69);
+            pictureBoxLogo.Size = new Size(61, 52);
             pictureBoxLogo.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxLogo.TabIndex = 4;
             pictureBoxLogo.TabStop = false;
@@ -122,9 +146,10 @@
             pictureBoxJupiter.Anchor = AnchorStyles.None;
             pictureBoxJupiter.BackColor = Color.OrangeRed;
             pictureBoxJupiter.Image = Properties.Resources.Jupiter_logo2;
-            pictureBoxJupiter.Location = new Point(29, -5);
+            pictureBoxJupiter.Location = new Point(25, -4);
+            pictureBoxJupiter.Margin = new Padding(3, 2, 3, 2);
             pictureBoxJupiter.Name = "pictureBoxJupiter";
-            pictureBoxJupiter.Size = new Size(186, 80);
+            pictureBoxJupiter.Size = new Size(163, 60);
             pictureBoxJupiter.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxJupiter.TabIndex = 18;
             pictureBoxJupiter.TabStop = false;
@@ -140,10 +165,9 @@
             btnWorksheet.FlatStyle = FlatStyle.Flat;
             btnWorksheet.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnWorksheet.ForeColor = Color.Black;
-            btnWorksheet.Location = new Point(906, 11);
-            btnWorksheet.Margin = new Padding(3, 4, 3, 4);
+            btnWorksheet.Location = new Point(793, 8);
             btnWorksheet.Name = "btnWorksheet";
-            btnWorksheet.Size = new Size(171, 53);
+            btnWorksheet.Size = new Size(150, 40);
             btnWorksheet.TabIndex = 2;
             btnWorksheet.Text = "Worksheet";
             btnWorksheet.TextColor = Color.Black;
@@ -161,44 +185,33 @@
             btnDashboard.FlatStyle = FlatStyle.Flat;
             btnDashboard.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnDashboard.ForeColor = Color.Black;
-            btnDashboard.Location = new Point(633, 11);
-            btnDashboard.Margin = new Padding(3, 4, 3, 4);
+            btnDashboard.Location = new Point(554, 8);
             btnDashboard.Name = "btnDashboard";
-            btnDashboard.Size = new Size(171, 53);
+            btnDashboard.Size = new Size(150, 40);
             btnDashboard.TabIndex = 1;
             btnDashboard.Text = "Dashboard";
             btnDashboard.TextColor = Color.Black;
             btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
             // 
-            // btnProduct
+            // lineProduct
             // 
-            btnProduct.Anchor = AnchorStyles.None;
-            btnProduct.BackColor = Color.OrangeRed;
-            btnProduct.BackgroundColor = Color.OrangeRed;
-            btnProduct.BorderColor = Color.Black;
-            btnProduct.BorderRadius = 15;
-            btnProduct.BorderSize = 2;
-            btnProduct.FlatStyle = FlatStyle.Flat;
-            btnProduct.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnProduct.ForeColor = Color.Black;
-            btnProduct.Location = new Point(1232, 11);
-            btnProduct.Margin = new Padding(3, 4, 3, 4);
-            btnProduct.Name = "btnProduct";
-            btnProduct.Size = new Size(171, 53);
-            btnProduct.TabIndex = 24;
-            btnProduct.Text = "Product";
-            btnProduct.TextColor = Color.Black;
-            btnProduct.UseVisualStyleBackColor = false;
-            btnProduct.Click += btnProduct_Click;
+            lineProduct.BackColor = Color.FromArgb(255, 128, 0);
+            lineProduct.Location = new Point(1078, 51);
+            lineProduct.Margin = new Padding(3, 2, 3, 2);
+            lineProduct.Name = "lineProduct";
+            lineProduct.Size = new Size(150, 2);
+            lineProduct.TabIndex = 25;
+            lineProduct.TabStop = false;
             // 
             // MainForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(1695, 921);
+            ClientSize = new Size(1483, 691);
             Controls.Add(panel1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "MainForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Media Bazaar Managment";
@@ -209,6 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)lineEmployee).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lineProduct).EndInit();
             ResumeLayout(false);
         }
 
@@ -227,5 +241,6 @@
         private CustomButton btnDashboard;
 		private CustomButton logOutBtn;
         private CustomButton btnProduct;
+        private PictureBox lineProduct;
     }
 }
