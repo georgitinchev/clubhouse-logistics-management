@@ -2,26 +2,33 @@
 @model MediaBazaarWebsite.Pages.ScheduleModel
 @{
 }
-
 <h1>Your Scheduled Work Plan, @Model.FirstName @Model.LastName</h1>
-<br />
-<div id="schedule-container" class="d-flex">
-    <div id="calendar-container" class="flex-fill">
-        <div id="schedule-controls" class="d-flex justify-content-between">
-            <button id="prev-month" class="schedule-button">Previous Month</button>
-            <div id="schedule-month-year"></div>
-            <button id="next-month" class="schedule-button">Next Month</button>
-        </div>
-        <div id="schedule-header" class="schedule-row"></div>
-        <div id="schedule" class="schedule-grid"></div>
-    </div>
-    <div id="day-details" class="flex-fill">
-        <h2>Day Details</h2>
-        <div id="day-details-content"></div>
-    </div>
-</div>
 
-<script>
-    const worksheetData = @Html.Raw(Json.Serialize(Model.Worksheets));
-</script>
-<script src="~/js/schedule.js" asp-append-version="true"></script>
+<div class="row">
+    @if (Model.Worksheets.Any())
+    {
+        foreach (var worksheet in Model.Worksheets)
+        {
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Worksheet #@worksheet.id</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><strong>Time Slot:</strong> @worksheet.timeSlot</p>
+                        <p class="card-text"><strong>Week Day:</strong> @worksheet.weekDay</p>
+                        <p class="card-text"><strong></strong> @ScheduleModel.WeekNumberToMonthAndWeek(worksheet.weekNr)</p>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="d-flex justify-content-center align-items-center" style="height: 100vh;">
+            <div class="alert alert-info" role="alert">
+                You currently have no scheduled worksheets.
+            </div>
+        </div>
+    }
+</div>
