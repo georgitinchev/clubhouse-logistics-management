@@ -28,6 +28,7 @@ namespace MediaBazaar.Forms
 
         private void UserControlDeport_Load(object sender, EventArgs e)
         {
+            InitializeProductData();
             InitializeControls();
             productsGrid.ClearSelection();
             productDetailsGroupbox.Visible = false;
