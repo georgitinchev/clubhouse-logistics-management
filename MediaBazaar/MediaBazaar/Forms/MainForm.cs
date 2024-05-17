@@ -43,7 +43,8 @@ namespace MediaBazaar
                 userControlWorksheet.Hide();
                 btnDashboard.Hide();
                 btnWorksheet.Hide();
-
+                lineEmployee.Hide(); 
+                pictureBox1.Hide();
             }
             else
             {
@@ -54,7 +55,7 @@ namespace MediaBazaar
                 userControlWorksheet.Hide();
                 userControlDeport.Hide();
                 btnProduct.Hide();
-
+                lineProduct.Hide();
             }
 
             this.Resize += MainForm_Resize;
