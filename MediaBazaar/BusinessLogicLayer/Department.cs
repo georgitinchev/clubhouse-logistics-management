@@ -11,7 +11,7 @@ namespace BusinessLogicLayer
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public Dictionary<string, int> RequiredPersonnel { get; set; }
+        public Dictionary<Role, int> RequiredPersonnel { get; set; }
         public string PointOfContact { get; set; }
 
 
