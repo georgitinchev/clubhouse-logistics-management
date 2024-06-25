@@ -3,11 +3,11 @@ namespace BusinessLogicLayer
 {
     public interface IDepartmentManager
     {
-        void Add(Department department);
-        IEnumerable<Department> GetAll();
-        Department GetById(int id);
-        void Remove(int id);
-        IEnumerable<Department> Search(string query);
-        void Update(Department department);
+        void AddDepartment(Department department);
+        IEnumerable<Department> GetAllDepartments();
+        Department GetDepartmentById(int id);
+        void RemoveDepartment(int id);
+        IEnumerable<Department> SearchDepartment(string query);
+        void UpdateDepartment(Department department);
     }
 }

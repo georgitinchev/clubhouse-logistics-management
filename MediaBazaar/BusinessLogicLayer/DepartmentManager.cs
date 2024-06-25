@@ -10,12 +10,12 @@ namespace BusinessLogicLayer
     {
         private readonly List<Department> _departments = new List<Department>();
 
-        public void Add(Department department)
+        public void AddDepartment(Department department)
         {
             _departments.Add(department);
         }
 
-        public void Update(Department department)
+        public void UpdateDepartment(Department department)
         {
             var existing = _departments.FirstOrDefault(d => d.Id == department.Id);
             if (existing != null)
@@ -27,7 +27,7 @@ namespace BusinessLogicLayer
             }
         }
 
-        public void Remove(int id)
+        public void RemoveDepartment(int id)
         {
             var department = _departments.FirstOrDefault(d => d.Id == id);
             if (department != null)
@@ -36,17 +36,17 @@ namespace BusinessLogicLayer
             }
         }
 
-        public Department GetById(int id)
+        public Department GetDepartmentById(int id)
         {
             return _departments.FirstOrDefault(d => d.Id == id);
         }
 
-        public IEnumerable<Department> Search(string query)
+        public IEnumerable<Department> SearchDepartment(string query)
         {
             return _departments.Where(d => d.Name.Contains(query) || d.Description.Contains(query));
         }
 
-        public IEnumerable<Department> GetAll()
+        public IEnumerable<Department> GetAllDepartments()
         {
             return _departments;
         }
