@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DataAccessLayer;
+using DTOLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,47 +10,53 @@ namespace BusinessLogicLayer
 {
     public class DepartmentManager : IDepartmentManager
     {
-        private readonly List<Department> _departments = new List<Department>();
+        private DepartmentDAL _departmentDAL;
 
-        public void AddDepartment(Department department)
+        public DepartmentManager()
         {
-            _departments.Add(department);
+            _departmentDAL = new DepartmentDAL();
         }
 
-        public void UpdateDepartment(Department department)
+        public DepartmentDTO GetDepartmentById(int id)
         {
-            var existing = _departments.FirstOrDefault(d => d.Id == department.Id);
-            if (existing != null)
+            if (id <= 0)
             {
-                existing.Name = department.Name;
-                existing.Description = department.Description;
-                existing.RequiredPersonnel = department.RequiredPersonnel;
-                existing.PointOfContact = department.PointOfContact;
+                throw new ArgumentException("id must be greater than 0");
             }
+            return _departmentDAL.ReadDepartment(id);
         }
 
-        public void RemoveDepartment(int id)
+        public void AddDepartment(DepartmentDTO department)
         {
-            var department = _departments.FirstOrDefault(d => d.Id == id);
-            if (department != null)
+            if (department == null)
             {
-                _departments.Remove(department);
+                throw new ArgumentNullException(nameof(department));
             }
+            department.Id = _departmentDAL.GetNextId();
+            _departmentDAL.CreateDepartment(department);
         }
 
-        public Department GetDepartmentById(int id)
+        public void UpdateDepartment(DepartmentDTO department)
         {
-            return _departments.FirstOrDefault(d => d.Id == id);
+            if (department == null)
+            {
+                throw new ArgumentNullException(nameof(department));
+            }
+            _departmentDAL.UpdateDepartment(department);
         }
 
-        public IEnumerable<Department> SearchDepartment(string query)
+        public void DeleteDepartment(int id)
         {
-            return _departments.Where(d => d.Name.Contains(query) || d.Description.Contains(query));
+            if (id <= 0)
+            {
+                throw new ArgumentException("id must be greater than 0");
+            }
+            _departmentDAL.DeleteDepartment(id);
         }
 
-        public IEnumerable<Department> GetAllDepartments()
+        public List<DepartmentDTO> GetAllDepartments()
         {
-            return _departments;
+            return _departmentDAL.GetAllDepartments();
         }
     }
 }

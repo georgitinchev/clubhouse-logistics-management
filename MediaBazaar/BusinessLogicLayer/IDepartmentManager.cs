@@ -1,13 +1,13 @@
-﻿
+﻿using DTOLayer;
+
 namespace BusinessLogicLayer
 {
     public interface IDepartmentManager
     {
-        void AddDepartment(Department department);
-        IEnumerable<Department> GetAllDepartments();
-        Department GetDepartmentById(int id);
-        void RemoveDepartment(int id);
-        IEnumerable<Department> SearchDepartment(string query);
-        void UpdateDepartment(Department department);
+        void AddDepartment(DepartmentDTO department);
+        void DeleteDepartment(int id);
+        List<DepartmentDTO> GetAllDepartments();
+        DepartmentDTO GetDepartmentById(int id);
+        void UpdateDepartment(DepartmentDTO department);
     }
 }
