@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BusinessLogicLayer;
 using DTOLayer;
 
 namespace MediaBazaar.Classes
@@ -17,9 +18,9 @@ namespace MediaBazaar.Classes
 		public DateTime? endDate { get; private set; }
 		public bool isActive { get; private set; }
 		public string? terminationReason { get; private set; }
-		public DateTime? availability {  get; private set; }
+        public List<AvailabilitySlot> Availability { get; private set; } = new List<AvailabilitySlot>();
 
-        public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, DateTime? availability)
+        public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason)
         {
             Id = id;
             this.role = role;
@@ -29,7 +30,6 @@ namespace MediaBazaar.Classes
             this.endDate = endDate;
             this.isActive = isActive;
             this.terminationReason = terminationReason;
-            this.availability = availability;
         }
 
         public void UpdateTerminationReason(string terminationReason)
@@ -44,5 +44,15 @@ namespace MediaBazaar.Classes
         {
             this.isActive = isActive;
         }
-    }
+
+        public void AddAvailabilitySlot(AvailabilitySlot slot)
+        {
+			Availability.Add(slot);
+		}
+
+		public void AddAvailabilitySlot(List<AvailabilitySlot> slot)
+		{
+			Availability.AddRange(slot);
+		}
+	}
 }

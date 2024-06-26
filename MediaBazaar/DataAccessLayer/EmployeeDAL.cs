@@ -17,8 +17,8 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO Employee (Id, FirstName, LastName, Email, Password, Birthday, Address, PhoneNumber, Bsn, Role, ActiveContractId,isManager, EmergencyContactId) " +
-                    "VALUES (@Id, @FirstName, @LastName, @Email, @Password, @Birthday, @Address, @PhoneNumber, @Bsn, @Role, @ActiveContractId,@isManager, @EmergencyContactId)", connection);
+                    "INSERT INTO Employee (Id, FirstName, LastName, Email, Password, Birthday, Address, PhoneNumber, Bsn, Role, ActiveContractId,isManager, EmergencyContactId, FirstPassword,Salt) " +
+                    "VALUES (@Id, @FirstName, @LastName, @Email, @Password, @Birthday, @Address, @PhoneNumber, @Bsn, @Role, @ActiveContractId,@isManager, @EmergencyContactId, @FirstPassword,@Salt)", connection);
 
                 command.Parameters.AddWithValue("@Id", employee.Id);
                 command.Parameters.AddWithValue("@FirstName", employee.FirstName);
@@ -33,6 +33,8 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@ActiveContractId", employee.ActiveContractId);
                 command.Parameters.AddWithValue("@isManager", employee.IsManager);
                 command.Parameters.AddWithValue("EmergencyContactId", employee.EmergencyContactId);
+                command.Parameters.AddWithValue("@FirstPassword", 1);
+                command.Parameters.AddWithValue("@Salt", "0");
 
                 command.ExecuteNonQuery();
             }
@@ -63,7 +65,9 @@ namespace DataAccessLayer
                             (int)reader["Role"],
                             (bool)reader["IsManager"],
                             (int)reader["ActiveContractId"],
-                            (int)reader["EmergencyContactId"]
+                            (int)reader["EmergencyContactId"],
+                            (bool)reader["FirstPassword"],
+                            reader["Salt"].ToString()
                         );
                         
                     }
@@ -78,7 +82,7 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "UPDATE Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, Password = @Password, " +
+                    "UPDATE Employee SET FirstName = @FirstName, LastName = @LastName, Email = @Email, " +
                     " Address = @Address, PhoneNumber = @PhoneNumber,IsManager =@IsManager, Role = @Role " +
                     "WHERE Id = @Id", connection);
 
@@ -86,13 +90,14 @@ namespace DataAccessLayer
                 command.Parameters.AddWithValue("@FirstName", employee.FirstName);
                 command.Parameters.AddWithValue("@LastName", employee.LastName);
                 command.Parameters.AddWithValue("@Email", employee.Email);
-                command.Parameters.AddWithValue("@Password", employee.Password); 
+                
                
                 command.Parameters.AddWithValue("@Address", employee.Address);
                 command.Parameters.AddWithValue("@PhoneNumber", employee.PhoneNumber);
                 
                 command.Parameters.AddWithValue("@Role", employee.Role);
                 command.Parameters.AddWithValue("@IsManager", employee.IsManager);
+               
                 
 
                 command.ExecuteNonQuery();
@@ -134,8 +139,9 @@ namespace DataAccessLayer
                             (int)reader["Role"],
                             (bool)reader["IsManager"],
                             activeContractId,
-                        reader.IsDBNull(reader.GetOrdinal("EmergencyContactId")) ? -1 : reader.GetInt32(reader.GetOrdinal("EmergencyContactId"))
-
+                        reader.IsDBNull(reader.GetOrdinal("EmergencyContactId")) ? -1 : reader.GetInt32(reader.GetOrdinal("EmergencyContactId")),
+                            (bool)reader["FirstPassword"],
+                            reader["Salt"].ToString()
                         )) ;
                     }
                 }
@@ -154,6 +160,40 @@ namespace DataAccessLayer
                     return _nextId;
                 }
                 return (int)result + 1;
+            }
+        }
+
+        public void ChangePassword(int id, string password, string salt)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand("UPDATE Employee SET Password = @Password , FirstPassword = @FirstPassword, Salt = @Salt " +
+                                                "WHERE Id = @Id ", connection);
+                command.Parameters.AddWithValue("@Id", id);
+                
+                command.Parameters.AddWithValue("@Password", password);
+                command.Parameters.AddWithValue("@FirstPassword", 0);
+                command.Parameters.AddWithValue("@Salt", salt);
+
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void ResetPassword(int id)
+        {
+            using (var connection = OpenConnection())
+            {
+                var command = new SqlCommand(
+                    "UPDATE Employee SET Password=@Password,FirstPassword=@FirstPassword,Salt=@Salt " +
+                     
+                    "WHERE Id = @Id", connection);
+                command.Parameters.AddWithValue("@Id", id);
+                command.Parameters.AddWithValue("@Password", "12345");
+                command.Parameters.AddWithValue("@FirstPassword", 1);
+                command.Parameters.AddWithValue("@Salt", "0");
+
+                command.ExecuteNonQuery();
             }
         }
     }

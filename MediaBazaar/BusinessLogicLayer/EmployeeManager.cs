@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using DTOLayer;
 using DataAccessLayer;
 using BusinessLogicLayer;
@@ -13,12 +14,14 @@ namespace MediaBazaar.Classes
         public ContractManager _contractManager { get; private set; }
         public EmployeeDAL employeeDAL { get; private set; }
         public List<Employee> employees { get; private set; }
+        public  PasswordHasher _passwordHasher { get; private set; }
         public EmployeeManager()
         {
             _emergencyContactManager = new EmergencyContactManager();
             _contractManager = new ContractManager();
             employees = new List<Employee>();
             employeeDAL = new EmployeeDAL();
+            _passwordHasher = new PasswordHasher();
             GetEmployeesFromDB();
         }
         public void AddEmployee(Employee newEmployee)
@@ -69,7 +72,7 @@ namespace MediaBazaar.Classes
             }
             employeeDAL.DeleteEmployee(employeeId);
             employees.Remove(employee);
-            _emergencyContactManager.RemoveEmergencyContactFromDB(employee.EmergencyContact.Id);
+            _emergencyContactManager.RemoveEmergencyContactFromDB((int)employee.EmergencyContact.Id);
         }
 
         public Employee GetEmployeeById(int employeeID)
@@ -77,7 +80,7 @@ namespace MediaBazaar.Classes
             return employees.FirstOrDefault(e => e.EmployeeID == employeeID);
         }
 
-        public List<Employee> GetAllRegularEmployees()
+		public List<Employee> GetAllRegularEmployees()
         {
             return employees.Where(e => !e.IsManager).ToList();
         }
@@ -104,7 +107,21 @@ namespace MediaBazaar.Classes
 
         public Employee AuthenticateEmployee(string email, string password)
         {
-            return employees.FirstOrDefault(e => e.Email == email && e.Password == password && e.IsManager);
+            Employee foundemployee = employees.FirstOrDefault(e => e.Email == email);
+            if(foundemployee != null)
+            
+                if (foundemployee.Salt == "0")
+                {
+                    if (foundemployee.Password == password)
+                        return foundemployee;
+                }
+                else
+                {
+                    if (_passwordHasher.VerifyPassword(password+foundemployee.Salt, foundemployee.Password))
+                        return foundemployee;
+                }
+            return null;
+            //return employees.FirstOrDefault(e => e.Email == email && e.Password == password && e.IsManager);
         }
 
         public Employee TransformDTOToEmployee(EmployeeDTO employeeDTO)
@@ -125,7 +142,9 @@ namespace MediaBazaar.Classes
                                       employeeDTO.IsManager,
                                       emergencyContact,
                                       employeeDTO.Address,
-                                      contract);
+                                      contract,
+                                      employeeDTO.FirstPassword,
+                                      employeeDTO.Salt);
                 return employee;
             }
             throw new InvalidOperationException("Emergency contact or contract is null.");
@@ -146,7 +165,9 @@ namespace MediaBazaar.Classes
                 (int)employee.Role,
                 employee.IsManager,
                 employee.Contract.Id,
-                employee.EmergencyContact.Id
+                employee.EmergencyContact.Id,
+                employee.FirstPassword,
+                employee.Salt
                 );
             return employeeDTO;
         }
@@ -178,5 +199,40 @@ namespace MediaBazaar.Classes
         {
             return employees.FirstOrDefault(e => e.FirstName + " " + e.LastName == name);
         }
+
+        public Employee GetEmployeeByEmail(string email)
+        {
+            return employees.FirstOrDefault(e => e.Email == email);
+        }
+
+        public void ChangePassword(string password,string salt, int employeeID)
+        {
+            employeeDAL.ChangePassword(employeeID, password, salt);
+        }
+
+        public void ResetPassword(int id) 
+        { 
+            employeeDAL.ResetPassword(id);
+        }
+
+        public int HiredInTimeFrame(int months)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime comparisonDate = currentDate.AddMonths(-months);
+            return employees.Count(e => e.Contract.startDate > comparisonDate && e.Contract.startDate <= DateTime.Now);
+        }
+
+        public int FiredInTimeFrame(int months)
+        {
+            DateTime currentDate = DateTime.Now;
+            DateTime comparisonDate = currentDate.AddMonths(-months);
+            return employees.Count(e => e.Contract.endDate > comparisonDate && e.Contract.endDate <= DateTime.Now);
+        }
+
+        public int DeactivatedEmployees()
+        {
+            return employees.Count(e => !e.Contract.isActive);
+        }
+
     }
 }
