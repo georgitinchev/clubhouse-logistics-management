@@ -1,0 +1,27 @@
+﻿@page
+@model MediaBazaarWebsite.Pages.SalesPageModel
+@{
+    ViewData["Title"] = "Sales Page";
+}
+
+<div class="container mt-3">
+    <div class="row">
+        @foreach (var product in Model.Products)
+        {
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">@product.Model</h5>
+                        <p class="card-text">@product.Description</p>
+                        <p class="card-text">Price: @product.Price.ToString("C")</p>
+                        <p class="card-text">Stock: @product.Stock</p>
+                        @if (product.Stock == 0)
+                        {
+                            <button class="btn btn-warning">Request Restock</button>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
