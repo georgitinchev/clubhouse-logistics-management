@@ -23,9 +23,11 @@ namespace DTOLayer
         public bool IsManager { get; set; } 
         public int ActiveContractId {  get; set; }
         public int EmergencyContactId {  get; set; }
+        public bool FirstPassword {  get; set; }
+        public string Salt { get; set; }
 
         public EmployeeDTO(int id, string firstName, string lastName, string email, string password, string phoneNumber, string address, string bSN, DateTime birthday,
-                             int role, bool isManager, int activeContractId, int emergencyContactId)
+                             int role, bool isManager, int activeContractId, int emergencyContactId, bool firstPassword, string salt)
         {
             Id = id;
             FirstName = firstName;
@@ -40,20 +42,20 @@ namespace DTOLayer
             EmergencyContactId = emergencyContactId;
             Address = address;
             ActiveContractId = activeContractId;
+            FirstPassword = firstPassword;
+            Salt = salt;
         }
 
-        public EmployeeDTO(int id,string firstName, string lastName, string email,string password, string phoneNumber, string address,int role,bool isManager)
+        public EmployeeDTO(int id,string firstName, string lastName, string email, string phoneNumber, string address,int role,bool isManager)
         {
             Id=id;
             FirstName = firstName;
             LastName = lastName;
             Email = email;
-            Password = password;
             PhoneNumber = phoneNumber;
             Address=address;
             Role = role;
             IsManager = isManager;
-            
         }
     }
 }

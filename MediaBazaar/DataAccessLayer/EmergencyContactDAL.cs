@@ -61,7 +61,7 @@ namespace DataAccessLayer
         {
             using (var connection = OpenConnection())
             {
-                var command = new SqlCommand("UPDATE EmergencyContact SET FirstName=@FirstName,LastName=@LastName,PhoneNumber=@PhoneNumber,Email=@Email" +
+                var command = new SqlCommand("UPDATE EmergencyContact SET FirstName=@FirstName,LastName=@LastName,PhoneNumber=@PhoneNumber,Email=@Email " +
                     "WHERE Id=@Id", connection);
                 command.Parameters.AddWithValue("@Id", contact.Id);
                 command.Parameters.AddWithValue("@FirstName", contact.FirstName);

@@ -48,20 +48,20 @@
             // 
             userNameLoginTxt.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             userNameLoginTxt.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            userNameLoginTxt.Location = new Point(95, 72);
+            userNameLoginTxt.Location = new Point(6, 72);
             userNameLoginTxt.Margin = new Padding(3, 4, 3, 4);
             userNameLoginTxt.Name = "userNameLoginTxt";
-            userNameLoginTxt.Size = new Size(329, 47);
+            userNameLoginTxt.Size = new Size(522, 47);
             userNameLoginTxt.TabIndex = 0;
             // 
             // passwordLoginTxt
             // 
             passwordLoginTxt.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             passwordLoginTxt.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            passwordLoginTxt.Location = new Point(95, 221);
+            passwordLoginTxt.Location = new Point(6, 221);
             passwordLoginTxt.Margin = new Padding(3, 4, 3, 4);
             passwordLoginTxt.Name = "passwordLoginTxt";
-            passwordLoginTxt.Size = new Size(329, 47);
+            passwordLoginTxt.Size = new Size(522, 47);
             passwordLoginTxt.TabIndex = 1;
             // 
             // userNameLabel
@@ -127,11 +127,12 @@
             // 
             label1.BackColor = Color.White;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label1.Location = new Point(454, 184);
+            label1.Location = new Point(403, 184);
             label1.Name = "label1";
-            label1.Size = new Size(426, 40);
+            label1.Size = new Size(534, 40);
             label1.TabIndex = 22;
             label1.Text = "Please enter administrative credentials:";
+            label1.TextAlign = ContentAlignment.TopCenter;
             // 
             // loginBtn
             // 

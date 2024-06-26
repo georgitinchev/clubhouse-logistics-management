@@ -13,13 +13,15 @@ namespace BusinessLogicLayer
 {
     public class ContractManager
     {
+        //public AvailabilityManager availabilityManager { get; private set; }
         public ContractDAL contractDAL { get; private set; }
         public List<Contract> contracts { get; private set; }
 
         public ContractManager()
         {
-            contractDAL = new ContractDAL();
             contracts = new List<Contract>();
+            contractDAL = new ContractDAL();
+            //availabilityManager = new AvailabilityManager();
             GetAllContractsFromDB();
         }
 
@@ -49,7 +51,7 @@ namespace BusinessLogicLayer
             {
                 Contract contract = new Contract
                 (
-                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason, contractDTO.Availability
+                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason
 
                 );
                 return contract;
@@ -61,7 +63,7 @@ namespace BusinessLogicLayer
         public ContractDTO TransformContractToDTO(Contract contract)
         {
             ContractDTO contractDTO = new ContractDTO(contract.Id, (int)contract.role, contract.hourlyWage, contract.weeklyHours,
-                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason, contract.availability);
+                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason);
 
             return contractDTO;
         }
@@ -98,5 +100,10 @@ namespace BusinessLogicLayer
         {
             return contractDAL.GetNextId();
         }
+
+        //public List<AvailabilitySlot> GetContractAvailabilitySlots(int contractId)
+        //{
+        //    return availabilityManager.GetContractSlots(contractId);
+        //}
     }
 }

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             bindingSource1 = new BindingSource(components);
             panel1 = new Panel();
+            btnProduct = new CustomButton();
             logOutBtn = new CustomButton();
             pictureBox1 = new PictureBox();
             lineEmployee = new PictureBox();
@@ -39,18 +40,22 @@
             pictureBoxJupiter = new PictureBox();
             btnWorksheet = new CustomButton();
             btnDashboard = new CustomButton();
+            lineProduct = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)lineEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lineProduct).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.OrangeRed;
+            panel1.Controls.Add(lineProduct);
+            panel1.Controls.Add(btnProduct);
             panel1.Controls.Add(logOutBtn);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(lineEmployee);
@@ -62,6 +67,26 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1499, 66);
             panel1.TabIndex = 1;
+            // 
+            // btnProduct
+            // 
+            btnProduct.Anchor = AnchorStyles.None;
+            btnProduct.BackColor = Color.OrangeRed;
+            btnProduct.BackgroundColor = Color.OrangeRed;
+            btnProduct.BorderColor = Color.Black;
+            btnProduct.BorderRadius = 15;
+            btnProduct.BorderSize = 2;
+            btnProduct.FlatStyle = FlatStyle.Flat;
+            btnProduct.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnProduct.ForeColor = Color.Black;
+            btnProduct.Location = new Point(1078, 8);
+            btnProduct.Name = "btnProduct";
+            btnProduct.Size = new Size(150, 40);
+            btnProduct.TabIndex = 24;
+            btnProduct.Text = "Product";
+            btnProduct.TextColor = Color.Black;
+            btnProduct.UseVisualStyleBackColor = false;
+            btnProduct.Click += btnProduct_Click;
             // 
             // logOutBtn
             // 
@@ -169,6 +194,16 @@
             btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
             // 
+            // lineProduct
+            // 
+            lineProduct.BackColor = Color.FromArgb(255, 128, 0);
+            lineProduct.Location = new Point(1078, 51);
+            lineProduct.Margin = new Padding(3, 2, 3, 2);
+            lineProduct.Name = "lineProduct";
+            lineProduct.Size = new Size(150, 2);
+            lineProduct.TabIndex = 25;
+            lineProduct.TabStop = false;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -187,6 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)lineEmployee).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lineProduct).EndInit();
             ResumeLayout(false);
         }
 
@@ -204,5 +240,7 @@
         private CustomButton btnWorksheet;
         private CustomButton btnDashboard;
 		private CustomButton logOutBtn;
-	}
+        private CustomButton btnProduct;
+        private PictureBox lineProduct;
+    }
 }
