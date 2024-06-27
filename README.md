@@ -1,20 +1,19 @@
-Credentials:
+Security Guard:
+[redacted]
+[redacted]
 
-Admin Login: 
-liam.gonzalez@example.com
-HF_gJ%919,&A
+Depot Worker:
+[redacted]
+12345
 
-Depot Login:
-alex.johnson@example.com
-password6
+Sales Rep Login:
+[redacted]
+[redacted]
 
-Main Admin View:
-daniel.rodriguez@example.com
-password10
+Department Manager:
+[redacted]
+[redacted]
 
-Normal Login:
-alice.johnson@example.co
-password6
 
-Link to repo:
-https://git.fhict.nl/I524441/the-clubhouse-s2-group-project
+Google API Details:
+CSE ID - [redacted]
