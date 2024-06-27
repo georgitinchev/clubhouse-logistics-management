@@ -16,7 +16,7 @@ namespace MediaBazaar
         private UserControlDeport userControlDeport;
         private UserControlRole userControlRole;
         private UserControlDepartment userControlDepartment;
-        
+        private UserControlRestock userControlRestock;
 
 
 
@@ -32,6 +32,7 @@ namespace MediaBazaar
             userControlDeport = new UserControlDeport(productManager);
             userControlRole = new UserControlRole();
             userControlDepartment = new UserControlDepartment();
+            userControlRestock = new UserControlRestock();
             Controls.Add(userControlDashboard);
             Controls.Add(userControlWorksheet);
             Controls.Add(userControlDeport);
@@ -50,7 +51,7 @@ namespace MediaBazaar
                 btnDashboard.Hide();
                 btnWorksheet.Hide();
                 lineEmployee.Hide(); 
-                pictureBox1.Hide();
+                worksheetLine.Hide();
             }
             else if(userRole.role == "HRManager")
             {
@@ -64,6 +65,7 @@ namespace MediaBazaar
                 btnProduct.Hide();
                 lineProduct.Hide();
             }
+
             else
             {
                 Controls.Add(userControlRole);
