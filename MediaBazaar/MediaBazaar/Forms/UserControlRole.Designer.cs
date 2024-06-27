@@ -93,7 +93,7 @@
             addRoleBtn.Text = "Add Role";
             addRoleBtn.TextColor = Color.White;
             addRoleBtn.UseVisualStyleBackColor = false;
-            addRoleBtn.Click += this.addRoleBtn_Click;
+            addRoleBtn.Click += addRoleBtn_Click;
             // 
             // textBoxSearch
             // 
@@ -154,6 +154,7 @@
             removeRoleBtn.Text = "Remove Role";
             removeRoleBtn.TextColor = Color.White;
             removeRoleBtn.UseVisualStyleBackColor = false;
+            removeRoleBtn.Click += this.removeRoleBtn_Click;
             // 
             // label2
             // 

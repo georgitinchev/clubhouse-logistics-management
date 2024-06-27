@@ -19,6 +19,7 @@ namespace MediaBazaar
     {
         private RoleManager roleManager;
         private DataTable roleData;
+        private int selectedRole;
         public UserControlRole()
         {
             roleManager = new RoleManager();
@@ -154,6 +155,7 @@ namespace MediaBazaar
                 string roleName= selectedRow.Cells["Name"].Value.ToString();
                   
                         textBoxName.Text = roleName;
+                selectedRole = Convert.ToInt32(selectedRow.Cells["Id"].Value);
                   
                     textBoxName.Enabled = true;   
             }
@@ -208,6 +210,11 @@ namespace MediaBazaar
             {
                 userDataGridView.ClearSelection();
             }
+        }
+
+        private void removeRoleBtn_Click(object sender, EventArgs e)
+        {
+            roleManager.DeleteRole(selectedRole);
         }
 
     }
