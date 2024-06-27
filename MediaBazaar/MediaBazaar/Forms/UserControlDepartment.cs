@@ -17,6 +17,7 @@ namespace MediaBazaar
     {
         private DepartmentManager departmentManager;
         private DataTable departmentData;
+        private int selectedDepartment;
         public UserControlDepartment()
         {
             departmentManager = new DepartmentManager();
@@ -151,6 +152,7 @@ namespace MediaBazaar
                 string departmentName = selectedRow.Cells["Name"].Value.ToString();
                 string departmentDescription = selectedRow.Cells["Description"].Value.ToString();
                 string departmentPointOfContact = selectedRow.Cells["PointOfContact"].Value.ToString();
+                selectedDepartment = Convert.ToInt32(selectedRow.Cells["Id"].Value);
 
                 textBoxName.Text = departmentName;
                 textBoxDescription.Text = departmentDescription;
@@ -165,6 +167,15 @@ namespace MediaBazaar
         private void addDepartmentBtn_Click(object sender, EventArgs e)
         {
             AddDepartmentDialogue addDepartmentDialogue = new AddDepartmentDialogue();
+            addDepartmentDialogue.ShowDialog();
+            PopulateDepartmentData();
+            departmentDataGridView.DataSource = departmentData;
+            departmentDataGridView.ClearSelection();
+        }
+
+        private void editEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            AddDepartmentDialogue addDepartmentDialogue = new AddDepartmentDialogue(departmentManager.GetDepartmentById(selectedDepartment));
             addDepartmentDialogue.ShowDialog();
             PopulateDepartmentData();
             departmentDataGridView.DataSource = departmentData;

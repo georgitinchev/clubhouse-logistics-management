@@ -47,7 +47,6 @@
             label1 = new Label();
             label3 = new Label();
             textBoxDescription = new RichTextBox();
-            lbDependencies = new ListBox();
             panelOperations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)departmentDataGridView).BeginInit();
@@ -125,7 +124,6 @@
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             groupBox1.BackColor = Color.OrangeRed;
-            groupBox1.Controls.Add(lbDependencies);
             groupBox1.Controls.Add(textBoxDescription);
             groupBox1.Controls.Add(label3);
             groupBox1.Controls.Add(textBoxPointOfContact);
@@ -192,6 +190,7 @@
             editEmployeeBtn.Text = "Edit Employee";
             editEmployeeBtn.TextColor = Color.White;
             editEmployeeBtn.UseVisualStyleBackColor = false;
+            editEmployeeBtn.Click += this.editEmployeeBtn_Click;
             // 
             // pictureBox2
             // 
@@ -288,15 +287,6 @@
             textBoxDescription.TabIndex = 38;
             textBoxDescription.Text = "";
             // 
-            // lbDependencies
-            // 
-            lbDependencies.FormattingEnabled = true;
-            lbDependencies.ItemHeight = 15;
-            lbDependencies.Location = new Point(68, 368);
-            lbDependencies.Name = "lbDependencies";
-            lbDependencies.Size = new Size(232, 94);
-            lbDependencies.TabIndex = 39;
-            // 
             // UserControlDepartment
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -337,6 +327,5 @@
         private Label label3;
         private TextBox textBoxPointOfContact;
         private Label label1;
-        private ListBox lbDependencies;
     }
 }
