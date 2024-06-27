@@ -208,9 +208,10 @@
             removeEmployeeBtn.Name = "removeEmployeeBtn";
             removeEmployeeBtn.Size = new Size(286, 50);
             removeEmployeeBtn.TabIndex = 30;
-            removeEmployeeBtn.Text = "Remove Employee";
+            removeEmployeeBtn.Text = "Remove Department";
             removeEmployeeBtn.TextColor = Color.White;
             removeEmployeeBtn.UseVisualStyleBackColor = false;
+            removeEmployeeBtn.Click += this.removeEmployeeBtn_Click;
             // 
             // editEmployeeBtn
             // 
@@ -227,7 +228,7 @@
             editEmployeeBtn.Name = "editEmployeeBtn";
             editEmployeeBtn.Size = new Size(286, 50);
             editEmployeeBtn.TabIndex = 29;
-            editEmployeeBtn.Text = "Edit Employee";
+            editEmployeeBtn.Text = "Edit Department";
             editEmployeeBtn.TextColor = Color.White;
             editEmployeeBtn.UseVisualStyleBackColor = false;
             editEmployeeBtn.Click += editEmployeeBtn_Click;

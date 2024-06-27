@@ -203,11 +203,11 @@ namespace MediaBazaar
         private void Search()
         {
             string searchTerm = textBoxSearch.Text.Trim();
-            
+
             var query = departmentData.AsEnumerable();
             try
             {
-              
+
 
                 if (!string.IsNullOrEmpty(searchTerm))
                 {
@@ -225,5 +225,11 @@ namespace MediaBazaar
                 departmentDataGridView.ClearSelection();
             }
         }
+
+        private void removeEmployeeBtn_Click(object sender, EventArgs e)
+        {
+            departmentManager.DeleteDepartment(selectedDepartment);
+        }
+
     }
 }
