@@ -6,7 +6,7 @@ namespace MediaBazaarWebsite.Pages
 {
     public class AdminPageModel : PageModel
     {
-        private EmployeeManager _employeeManager;
+        internal EmployeeManager _employeeManager;
         public int Hired1Month;
         public int Hired3Month;
         public int Hired6Month;

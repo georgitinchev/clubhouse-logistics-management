@@ -35,17 +35,18 @@ namespace MediaBazaar
             Controls.Add(userControlDashboard);
             Controls.Add(userControlWorksheet);
             Controls.Add(userControlDeport);
+            Controls.Add(userControlRestock);
+
             userControlDashboard.Show();
             userControlWorksheet.Hide();
             userControlDeport.Hide();
             userControlDeport.Hide();
             if (userRole.role == "DepotWorker")
             {
-
-                Controls.Add(userControlDeport);
                 userControlDeport.Show();
                 userControlDashboard.Hide();
                 userControlWorksheet.Hide();
+                userControlRestock.Show();
                 btnDashboard.Hide();
                 btnWorksheet.Hide();
                 lineEmployee.Hide(); 
@@ -53,9 +54,10 @@ namespace MediaBazaar
             }
             else if(userRole.role == "HRManager")
             {
-
-                Controls.Add(userControlDashboard);
-                Controls.Add(userControlWorksheet);
+                worksheetLine.Visible = true;
+                lineEmployee.Visible = true;
+                lineProduct.Visible = true;
+                lineRestock.Visible = true;
                 userControlDashboard.Show();
                 userControlWorksheet.Hide();
                 userControlDeport.Hide();
@@ -84,20 +86,24 @@ namespace MediaBazaar
         private void MainForm_Resize(object sender, EventArgs e)
         {
             pictureBoxJupiter.Location = new Point(25, -4);
-            pictureBoxLogo.Location = new Point(pictureBoxJupiter.Right + 10, 0); 
-            btnDashboard.Location = new Point(panel1.Width / 4 - btnDashboard.Width / 2, 8);
-            btnWorksheet.Location = new Point(panel1.Width / 2 - btnWorksheet.Width / 2, 8);
-            btnProduct.Location = new Point(panel1.Width * 3 / 4 - btnProduct.Width / 2, 8);
+            pictureBoxLogo.Location = new Point(pictureBoxJupiter.Right + 10, 0);
+            btnDashboard.Location = new Point(panel1.Width / 5 - btnDashboard.Width / 2, 8); 
+            btnWorksheet.Location = new Point(panel1.Width * 2 / 5 - btnWorksheet.Width / 2, 8); 
+            btnProduct.Location = new Point(panel1.Width * 3 / 5 - btnProduct.Width / 2, 8); 
+            btnRestocks.Location = new Point(panel1.Width * 4 / 5 - btnRestocks.Width / 2, 8); 
             logOutBtn.Location = new Point(panel1.Width - logOutBtn.Width - 25, 9);
-            pictureBox1.Location = new Point(btnDashboard.Location.X + (btnDashboard.Width - pictureBox1.Width) / 2, btnDashboard.Location.Y + btnDashboard.Height + 10);
+            worksheetLine.Location = new Point(btnDashboard.Location.X + (btnDashboard.Width - worksheetLine.Width) / 2, btnDashboard.Location.Y + btnDashboard.Height + 10);
             lineEmployee.Location = new Point(btnWorksheet.Location.X + (btnWorksheet.Width - lineEmployee.Width) / 2, btnWorksheet.Location.Y + btnWorksheet.Height + 10);
             lineProduct.Location = new Point(btnProduct.Location.X + (btnProduct.Width - lineProduct.Width) / 2, btnProduct.Location.Y + btnProduct.Height + 10);
+            lineRestock.Location = new Point(btnRestocks.Location.X + (btnRestocks.Width - lineRestock.Width) / 2, btnRestocks.Location.Y + btnRestocks.Height + 10);
             userControlDashboard.Size = new Size(this.ClientSize.Width, this.ClientSize.Height - panel1.Height);
             userControlDashboard.Location = new Point(0, panel1.Height);
             userControlWorksheet.Size = new Size(this.ClientSize.Width, this.ClientSize.Height - panel1.Height);
             userControlWorksheet.Location = new Point(0, panel1.Height);
             userControlDeport.Size = new Size(this.ClientSize.Width, this.ClientSize.Height - panel1.Height);
             userControlDeport.Location = new Point(0, panel1.Height);
+            userControlRestock.Size = new Size(this.ClientSize.Width, this.ClientSize.Height - panel1.Height);
+            userControlRestock.Location = new Point(0, panel1.Height);
         }
 
         private void btnDashboard_Click(object sender, EventArgs e)
@@ -155,6 +161,25 @@ namespace MediaBazaar
             {
                 this.Close();
             }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRestocks_Click(object sender, EventArgs e)
+        {
+            userControlDashboard.Hide();
+            userControlWorksheet.Hide();
+            userControlDeport.Hide();
+            userControlRestock.LoadRestockRequests();
+            userControlRestock.Show();
         }
     }
 }

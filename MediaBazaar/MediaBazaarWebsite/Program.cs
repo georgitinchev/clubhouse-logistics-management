@@ -2,12 +2,19 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using MediaBazaar.Classes;
 using BusinessLogicLayer;
 using MediaBazaar;
+using BusinessLogicLayer.Interfaces;
+using DataAccessLayer.Interfaces;
+using DataAccessLayer;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddScoped<IRestockRequestDAL, RestockRequestDAL>(); 
+builder.Services.AddScoped<IRestockRequestManager, RestockRequestManager>(); 
 builder.Services.AddScoped<EmployeeManager>();
 builder.Services.AddScoped<EmergencyContactManager>();
 builder.Services.AddScoped<EmployeeWorksheetManager>();
+builder.Services.AddScoped<IProductManager, ProductManager>();
 builder.Services.AddHttpContextAccessor();
+builder.Services.AddHttpClient();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
 	.AddCookie(options =>
