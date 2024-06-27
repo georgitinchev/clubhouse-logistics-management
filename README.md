@@ -8,6 +8,10 @@ Depot Login:
 alex.johnson@example.com
 password6
 
+Main Admin View:
+daniel.rodriguez@example.com
+password10
+
 Normal Login:
 alice.johnson@example.co
 password6
