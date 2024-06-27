@@ -122,6 +122,8 @@ namespace MediaBazaar.Forms
 
             textBoxSearch.Width = categoryFilter.Location.X - searchPictureBox.Width - textBoxSearch.Location.X - 10;
             searchPictureBox.Location = new Point(textBoxSearch.Location.X + textBoxSearch.Width, textBoxSearch.Location.Y);
+
+            productsErrorLabel.Location = new Point(productsGrid.Location.X, productsGrid.Bottom + 5);
         }
 
         private void ProductsGrid_CellClick(object sender, DataGridViewCellEventArgs e)

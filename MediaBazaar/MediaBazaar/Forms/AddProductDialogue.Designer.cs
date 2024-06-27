@@ -224,31 +224,31 @@
             // lblAddWidth
             // 
             lblAddWidth.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAddWidth.Location = new Point(42, 41);
+            lblAddWidth.Location = new Point(7, 41);
             lblAddWidth.Name = "lblAddWidth";
-            lblAddWidth.Size = new Size(73, 33);
+            lblAddWidth.Size = new Size(122, 33);
             lblAddWidth.TabIndex = 9;
-            lblAddWidth.Text = "Width:";
+            lblAddWidth.Text = "Width (cm):";
             lblAddWidth.TextAlign = ContentAlignment.TopRight;
             // 
             // lblAddDepth
             // 
             lblAddDepth.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAddDepth.Location = new Point(33, 130);
+            lblAddDepth.Location = new Point(7, 130);
             lblAddDepth.Name = "lblAddDepth";
-            lblAddDepth.Size = new Size(82, 33);
+            lblAddDepth.Size = new Size(122, 33);
             lblAddDepth.TabIndex = 11;
-            lblAddDepth.Text = "Depth:";
+            lblAddDepth.Text = "Depth (cm):";
             lblAddDepth.TextAlign = ContentAlignment.TopRight;
             // 
             // lblAddHeight
             // 
             lblAddHeight.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAddHeight.Location = new Point(33, 87);
+            lblAddHeight.Location = new Point(6, 87);
             lblAddHeight.Name = "lblAddHeight";
-            lblAddHeight.Size = new Size(82, 33);
+            lblAddHeight.Size = new Size(123, 33);
             lblAddHeight.TabIndex = 10;
-            lblAddHeight.Text = "Height:";
+            lblAddHeight.Text = "Height (cm):";
             lblAddHeight.TextAlign = ContentAlignment.TopRight;
             // 
             // addWeightNumeric
@@ -264,11 +264,11 @@
             // lblAddWeight
             // 
             lblAddWeight.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAddWeight.Location = new Point(27, 197);
+            lblAddWeight.Location = new Point(3, 197);
             lblAddWeight.Name = "lblAddWeight";
-            lblAddWeight.Size = new Size(82, 30);
+            lblAddWeight.Size = new Size(123, 30);
             lblAddWeight.TabIndex = 7;
-            lblAddWeight.Text = "Weight:";
+            lblAddWeight.Text = "Weight (kg):";
             lblAddWeight.TextAlign = ContentAlignment.TopRight;
             // 
             // addPriceNumeric

@@ -1,4 +1,5 @@
-﻿using DataAccessLayer;
+﻿using BusinessLogicLayer.Interfaces;
+using DataAccessLayer;
 using DTOLayer;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer
 {
-    public class ProductManager
+    public class ProductManager : IProductManager
     {
         private ProductDAL productDAL;
         public List<Product> Products { get; private set; }
@@ -41,17 +42,17 @@ namespace BusinessLogicLayer
             productDAL.DeleteProduct(productId);
         }
 
-        public bool GetAllProducts()
+        public List<Product> GetAllProducts()
         {
             try
             {
                 var productDTOs = productDAL.GetAllProducts();
                 Products = productDTOs.Select(TransformDTOToProduct).ToList();
-                return true;
+                return Products;
             }
             catch (Exception)
             {
-                return false;
+                return new List<Product>();
             }
         }
 

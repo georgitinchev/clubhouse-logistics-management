@@ -314,22 +314,22 @@
             // 
             // lblDepth
             // 
-            lblDepth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblDepth.Location = new Point(188, 354);
+            lblDepth.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblDepth.Location = new Point(188, 355);
             lblDepth.Name = "lblDepth";
-            lblDepth.Size = new Size(65, 31);
+            lblDepth.Size = new Size(74, 31);
             lblDepth.TabIndex = 58;
-            lblDepth.Text = "Depth:";
+            lblDepth.Text = "Depth cm";
             lblDepth.TextAlign = ContentAlignment.TopCenter;
             // 
             // lblWidth
             // 
-            lblWidth.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblWidth.Location = new Point(188, 322);
+            lblWidth.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold);
+            lblWidth.Location = new Point(188, 319);
             lblWidth.Name = "lblWidth";
-            lblWidth.Size = new Size(65, 31);
+            lblWidth.Size = new Size(74, 31);
             lblWidth.TabIndex = 57;
-            lblWidth.Text = "Width:";
+            lblWidth.Text = "Width cm";
             lblWidth.TextAlign = ContentAlignment.TopCenter;
             // 
             // numericUpDownHeight
@@ -355,11 +355,11 @@
             // lblHeight
             // 
             lblHeight.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblHeight.Location = new Point(41, 355);
+            lblHeight.Location = new Point(8, 355);
             lblHeight.Name = "lblHeight";
-            lblHeight.Size = new Size(66, 31);
+            lblHeight.Size = new Size(99, 31);
             lblHeight.TabIndex = 54;
-            lblHeight.Text = "Height:";
+            lblHeight.Text = "Height cm:";
             // 
             // textBoxBrand
             // 
@@ -380,11 +380,11 @@
             // lblWeight
             // 
             lblWeight.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            lblWeight.Location = new Point(38, 321);
+            lblWeight.Location = new Point(8, 319);
             lblWeight.Name = "lblWeight";
-            lblWeight.Size = new Size(69, 27);
+            lblWeight.Size = new Size(99, 27);
             lblWeight.TabIndex = 50;
-            lblWeight.Text = "Weight:";
+            lblWeight.Text = "Weight kg:";
             // 
             // textBoxDescription
             // 
