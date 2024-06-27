@@ -30,6 +30,12 @@
 							<li class="nav-item @(ViewContext.RouteData.Values["Page"]?.ToString() == "Availability" ? "active" : "")">
 								<a class="nav-link text-dark" asp-area="" asp-page="/AvailabilityCalendar">Availability</a>
 							</li>
+							@if (User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Role)?.Value == "SalesRepresentative")
+							{
+								<li class="nav-item @(ViewContext.RouteData.Values["Page"]?.ToString() == "/SalesPage" ? "active" : "")">
+									<a class="nav-link text-dark" asp-area="" asp-page="/SalesPage">Sales</a>
+								</li>
+							}
 							@if (User.Claims.FirstOrDefault(c => c.Type=="IsManager")?.Value =="True")
 							{
 								<li class="nav-item">
