@@ -14,8 +14,13 @@ namespace MediaBazaar
         private UserControlDashboard userControlDashboard;
         private UserControlWorksheet userControlWorksheet;
         private UserControlDeport userControlDeport;
-        private UserControlRestock userControlRestock;
-        public MainForm(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager, ProductManager _productManager, EmployeeRoleEnum userRole)
+        private UserControlRole userControlRole;
+        private UserControlDepartment userControlDepartment;
+        
+
+
+
+        public MainForm(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager, ProductManager _productManager,Role userRole)
         {
             employeeManager = _employeeManager;
             worksheetManager = _worksheetManager;
@@ -25,8 +30,8 @@ namespace MediaBazaar
             userControlDashboard = new UserControlDashboard(employeeManager, worksheetManager);
             userControlWorksheet = new UserControlWorksheet(employeeManager, worksheetManager);
             userControlDeport = new UserControlDeport(productManager);
-            userControlRestock = new UserControlRestock();
-
+            userControlRole = new UserControlRole();
+            userControlDepartment = new UserControlDepartment();
             Controls.Add(userControlDashboard);
             Controls.Add(userControlWorksheet);
             Controls.Add(userControlDeport);
@@ -35,14 +40,8 @@ namespace MediaBazaar
             userControlDashboard.Show();
             userControlWorksheet.Hide();
             userControlDeport.Hide();
-            userControlRestock.Hide();
-
-            worksheetLine.Visible = false;
-            lineEmployee.Visible = false;
-            lineProduct.Visible = false;
-            lineRestock.Visible = false;
-
-            if (userRole == EmployeeRoleEnum.DepotWorker)
+            userControlDeport.Hide();
+            if (userRole.role == "DepotWorker")
             {
                 userControlDeport.Show();
                 userControlDashboard.Hide();
@@ -50,16 +49,35 @@ namespace MediaBazaar
                 userControlRestock.Show();
                 btnDashboard.Hide();
                 btnWorksheet.Hide();
-                lineProduct.Visible = true;
-                lineRestock.Visible = true;
+                lineEmployee.Hide(); 
+                pictureBox1.Hide();
             }
-            else if (userRole == EmployeeRoleEnum.HRManager|| userRole == EmployeeRoleEnum.DepartmentManager)
+            else if(userRole.role == "HRManager")
             {
                 worksheetLine.Visible = true;
                 lineEmployee.Visible = true;
                 lineProduct.Visible = true;
                 lineRestock.Visible = true;
                 userControlDashboard.Show();
+                userControlWorksheet.Hide();
+                userControlDeport.Hide();
+                btnProduct.Hide();
+                lineProduct.Hide();
+            }
+            else
+            {
+                Controls.Add(userControlRole);
+                Controls.Add(userControlDepartment);
+                userControlDashboard.Hide();
+                userControlWorksheet.Hide();
+                userControlDeport.Hide();
+                userControlDepartment.Hide();
+                userControlRole.Show();
+                btnProduct.Hide();
+
+                lineProduct.Hide();
+                btnDashboard.Text = "Roles";
+                btnWorksheet.Text = "Departments";
             }
 
             this.Resize += MainForm_Resize;
@@ -90,18 +108,35 @@ namespace MediaBazaar
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
-            userControlWorksheet.Hide();
-            userControlDeport.Hide();
-            userControlDashboard.InitializeData();
-            userControlDashboard.Show();
+            if (btnDashboard.Text != "Roles")
+            {
+                userControlWorksheet.Hide();
+                userControlDeport.Hide();
+                userControlDashboard.InitializeData();
+                userControlDashboard.Show();
+            }
+            else
+            {
+                userControlDepartment.Hide();
+               
+                userControlRole.Show();
+            }
         }
 
         private void btnWorksheet_Click(object sender, EventArgs e)
         {
-            userControlDashboard.Hide();
-            userControlDeport.Hide();
-            userControlWorksheet.PopulateWorksheetData();
-            userControlWorksheet.Show();
+            if (btnWorksheet.Text != "Departments")
+            {
+                userControlDashboard.Hide();
+                userControlDeport.Hide();
+                userControlWorksheet.PopulateWorksheetData();
+                userControlWorksheet.Show();
+            }
+            else
+            {
+                userControlRole.Hide();
+                userControlDepartment.Show();
+            }
         }
 
         private void btnProduct_Click(object sender, EventArgs e)
