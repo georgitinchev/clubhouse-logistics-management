@@ -28,6 +28,7 @@ namespace MediaBazaar.Forms
             InitializeRestockGrid();
             productDetailsGroupbox.Visible = false;
             restockGrid.SelectionChanged += restockGrid_SelectionChanged;
+            LoadRestockRequests();
         }
 
         public void LoadRestockRequests()
