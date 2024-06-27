@@ -136,6 +136,42 @@
             </div>
         </div>
     </div>
+   <div class="row mt-5">
+    <div class="col-md-12">
+        <h3>Employee List</h3>
+        <div class="table-responsive">
+            <table class="table table-hover shadow-sm">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Employee Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Contract Start Date</th>
+                        <th scope="col">Contract End Date</th>
+                        <th scope="col">Termination Reason</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var employee in Model._employeeManager.GetAllEmployees())
+                    {
+                        <tr>
+                            <td>@employee.GetFullName()</td>
+                            <td>@employee.Email</td>
+                            <td>@employee.Contract.startDate.ToString("yyyy-MM-dd")</td>
+                            <td>@(employee.Contract.endDate.HasValue ? employee.Contract.endDate.Value.ToString("yyyy-MM-dd") : "N/A")</td>
+                            <td>@(string.IsNullOrEmpty(employee.Contract.terminationReason) ? "N/A" : employee.Contract.terminationReason)</td>
+                            <td>
+                                <span class="badge @(employee.Contract.isActive ? "badge-success" : "badge-secondary") text-black">
+                                    @(employee.Contract.isActive ? "Active" : "Deactivated")
+                                </span>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 </div>
 
 @section Scripts {
