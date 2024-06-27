@@ -55,7 +55,7 @@ namespace MediaBazaarWebsite.Pages
                     new Claim(ClaimTypes.Email, employee.Email),
                     new Claim(ClaimTypes.GivenName, employee.FirstName),
                     new Claim(ClaimTypes.Surname, employee.LastName),
-                    new Claim(ClaimTypes.Role, employee.Role.ToString()),
+                    new Claim(ClaimTypes.Role, employee.Role.role),
                     new Claim("ContractID", employee.Contract.Id.ToString()),
                     new Claim("IsManager", employee.IsManager.ToString())
                 };

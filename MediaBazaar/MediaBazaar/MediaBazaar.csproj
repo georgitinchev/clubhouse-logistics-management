@@ -6,12 +6,17 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationIcon>test.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Classes\**" />
     <EmbeddedResource Remove="Classes\**" />
     <None Remove="Classes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="test.ico" />
   </ItemGroup>
 
   <ItemGroup>

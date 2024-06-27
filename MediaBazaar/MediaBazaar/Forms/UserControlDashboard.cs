@@ -75,7 +75,7 @@ namespace MediaBazaar.Forms
 
             {
                 if(employee.Contract.isActive)
-                employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.ToString(), employee.Contract.weeklyHours);
+                employeeData.Rows.Add(employee.EmployeeID, $"{employee.FirstName} {employee.LastName}", employee.Email, employee.Role.role.ToString(), employee.Contract.weeklyHours);
             }
         }
         
