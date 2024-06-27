@@ -15,14 +15,14 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "INSERT INTO Role (Role) VALUES (@Role)", connection);
+                    "INSERT INTO Role (Name) VALUES (@Name)", connection);
               
-                command.Parameters.AddWithValue("@Role", role.Role);
+                command.Parameters.AddWithValue("@Name", role.Role);
                 command.ExecuteNonQuery();
             }
         }
 
-        public RoleDTO ReadRole(int id)
+        public RoleDTO GetRoleById(int id)
         {
             using (var connection = OpenConnection())
             {
@@ -36,7 +36,7 @@ namespace DataAccessLayer
                         return new RoleDTO
                         (
                             (int)reader["Id"],
-                            reader["Role"].ToString()
+                            reader["Name"].ToString()
                         );
                     }
                     else
@@ -52,10 +52,10 @@ namespace DataAccessLayer
             using (var connection = OpenConnection())
             {
                 var command = new SqlCommand(
-                    "UPDATE Role SET Role = @Role WHERE Id = @Id", connection);
+                    "UPDATE Role SET Name = @Name WHERE Id = @Id", connection);
 
                 command.Parameters.AddWithValue("@Id", role.Id);
-                command.Parameters.AddWithValue("@Role", role.Role);
+                command.Parameters.AddWithValue("@Name", role.Role);
                 command.ExecuteNonQuery();
             }
         }
@@ -83,7 +83,7 @@ namespace DataAccessLayer
                         roles.Add(new RoleDTO
                         (
                             (int)reader["Id"],
-                            reader["Role"].ToString()
+                            reader["Name"].ToString()
                         ));
                     }
                 }

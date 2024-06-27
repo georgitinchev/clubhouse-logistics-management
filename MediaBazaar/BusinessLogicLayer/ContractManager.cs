@@ -13,7 +13,7 @@ namespace BusinessLogicLayer
 {
     public class ContractManager
     {
-        //public AvailabilityManager availabilityManager { get; private set; }
+        public AvailabilityManager availabilityManager { get; private set; }
         public ContractDAL contractDAL { get; private set; }
         public List<Contract> contracts { get; private set; }
 
@@ -21,7 +21,7 @@ namespace BusinessLogicLayer
         {
             contracts = new List<Contract>();
             contractDAL = new ContractDAL();
-            //availabilityManager = new AvailabilityManager();
+            availabilityManager = new AvailabilityManager();
             GetAllContractsFromDB();
         }
 

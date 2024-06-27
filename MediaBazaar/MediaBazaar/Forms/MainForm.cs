@@ -14,6 +14,7 @@ namespace MediaBazaar
         private UserControlDashboard userControlDashboard;
         private UserControlWorksheet userControlWorksheet;
         private UserControlDeport userControlDeport;
+        private UserControlRole userControlRole;
         
 
 
@@ -28,11 +29,13 @@ namespace MediaBazaar
             userControlDashboard = new UserControlDashboard(employeeManager, worksheetManager);
             userControlWorksheet = new UserControlWorksheet(employeeManager, worksheetManager);
             userControlDeport = new UserControlDeport(productManager);
+            userControlRole = new UserControlRole();
             Controls.Add(userControlDashboard);
             Controls.Add(userControlWorksheet);
             Controls.Add(userControlDeport);
             userControlDashboard.Show();
             userControlWorksheet.Hide();
+            userControlDeport.Hide();
             userControlDeport.Hide();
             if (userRole == EmployeeRoleEnum.DepotWorker)
             {
@@ -46,7 +49,7 @@ namespace MediaBazaar
                 lineEmployee.Hide(); 
                 pictureBox1.Hide();
             }
-            else
+            else if(userRole== EmployeeRoleEnum.HRManager)
             {
 
                 Controls.Add(userControlDashboard);
@@ -55,6 +58,17 @@ namespace MediaBazaar
                 userControlWorksheet.Hide();
                 userControlDeport.Hide();
                 btnProduct.Hide();
+                lineProduct.Hide();
+            }
+            else
+            {
+                Controls.Add(userControlRole);
+                userControlDashboard.Hide();
+                userControlWorksheet.Hide();
+                userControlDeport.Hide();
+                userControlRole.Show();
+                btnProduct.Hide();
+
                 lineProduct.Hide();
             }
 

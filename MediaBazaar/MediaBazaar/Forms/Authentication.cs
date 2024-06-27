@@ -55,8 +55,10 @@ namespace MediaBazaar.Forms
             try
             {
                 Employee employee = employeeManager.AuthenticateEmployee(email, password);
-                UserRole = employee.Role;
+
                 if (employee != null)
+                {
+                    UserRole = employee.Role;
                     if (employee.IsManager || (employee.Role == EmployeeRoleEnum.DepotWorker))
                     {
                         isAuthenticated = true;
@@ -66,6 +68,7 @@ namespace MediaBazaar.Forms
                     {
                         throw (new Exception("⚠️ Invalid credentials or unauthorized access"));
                     }
+                }
             }
             catch (Exception ex)
             {
