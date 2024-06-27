@@ -17,7 +17,7 @@ namespace MediaBazaar.Forms
     {
         private DepartmentManager departmentManager;
         private RoleManager roleManager;
-        private DepartmentDTO department;
+        
         private List<RoleDTO> allRoles;
         private DepartmentDTO selectedDepartment;
 
@@ -26,7 +26,7 @@ namespace MediaBazaar.Forms
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterParent;
             departmentManager = new DepartmentManager();
-            department = new DepartmentDTO(0, string.Empty, string.Empty, string.Empty);
+            
             roleManager = new RoleManager();
             allRoles= roleManager.GetAllRoles();
             InitializeRoleListBox();
@@ -108,15 +108,14 @@ namespace MediaBazaar.Forms
 
             var selectedRole = (RoleDTO)listboxRole.SelectedItem;
             var numberOfEmployees = (int)nUDNumber.Value;
-
-            if (department.RequiredPersonnel.ContainsKey(selectedRole.Id))
+            if (selectedDepartment.RequiredPersonnel.ContainsKey(selectedRole.Id))
             {
-                department.RequiredPersonnel[selectedRole.Id] = numberOfEmployees;
+                selectedDepartment.RequiredPersonnel[selectedRole.Id] = numberOfEmployees;
                 UpdateAddedRolesListBox();
             }
             else
             {
-                department.RequiredPersonnel.Add(selectedRole.Id, numberOfEmployees);
+                selectedDepartment.RequiredPersonnel.Add(selectedRole.Id, numberOfEmployees);
                 listboxAdded.Items.Add($"{selectedRole.Role} - {numberOfEmployees}");
             }
         }
@@ -124,7 +123,7 @@ namespace MediaBazaar.Forms
         private void UpdateAddedRolesListBox()
         {
             listboxAdded.Items.Clear();
-            foreach (var rp in department.RequiredPersonnel)
+            foreach (var rp in selectedDepartment.RequiredPersonnel)
             {
                 var role = allRoles.FirstOrDefault(r => r.Id == rp.Key);
                 if (role != null)
@@ -146,9 +145,9 @@ namespace MediaBazaar.Forms
             var roleName = selectedItem.Split('-')[0].Trim();
             var role = allRoles.FirstOrDefault(r => r.Role == roleName);
 
-            if (role != null && department.RequiredPersonnel.ContainsKey(role.Id))
+            if (role != null && selectedDepartment.RequiredPersonnel.ContainsKey(role.Id))
             {
-                department.RequiredPersonnel.Remove(role.Id);
+                selectedDepartment.RequiredPersonnel.Remove(role.Id);
                 listboxAdded.Items.Remove(selectedItem);
             }
         }
