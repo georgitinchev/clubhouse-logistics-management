@@ -137,6 +137,7 @@ namespace MediaBazaar
             else
             {
                 userControlRole.Hide();
+                userControlRestock.Hide();
                 userControlDepartment.Show();
             }
         }
