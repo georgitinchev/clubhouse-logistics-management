@@ -15,6 +15,7 @@ namespace BusinessLogicLayer
     {
         public AvailabilityManager availabilityManager { get; private set; }
         public DepartmentManager departmentManager { get; private set; }
+        private RoleManager _roleManager;
         public ContractDAL contractDAL { get; private set; }
         public List<Contract> contracts { get; private set; }
 
@@ -22,6 +23,7 @@ namespace BusinessLogicLayer
         {
             contracts = new List<Contract>();
             contractDAL = new ContractDAL();
+            _roleManager = new RoleManager();
             availabilityManager = new AvailabilityManager();
             GetAllContractsFromDB();
         }
@@ -52,7 +54,7 @@ namespace BusinessLogicLayer
             {
                 Contract contract = new Contract
                 (
-                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate,
+                    contractDTO.Id, _roleManager.ConvertToEntity(_roleManager.GetRoleById(contractDTO.Role)), contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate,
                     contractDTO.IsActive, contractDTO.TerminationReason, departmentManager.ConvertToEntity(departmentManager.GetDepartmentById(contractDTO.Department))
 
                 ) ;
@@ -64,7 +66,7 @@ namespace BusinessLogicLayer
         }
         public ContractDTO TransformContractToDTO(Contract contract)
         {
-            ContractDTO contractDTO = new ContractDTO(contract.Id, (int)contract.role, contract.hourlyWage, contract.weeklyHours,
+            ContractDTO contractDTO = new ContractDTO(contract.Id, contract.role.id, contract.hourlyWage, contract.weeklyHours,
                 contract.startDate, contract.endDate, contract.isActive, contract.terminationReason,contract.department.Id);
 
             return contractDTO;

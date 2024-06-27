@@ -57,5 +57,15 @@ namespace BusinessLogicLayer
         {
             return _roleDAL.GetAllRoles();
         }
+
+        public Role ConvertToEntity(RoleDTO dto)
+        {
+            return new Role(dto.Id, dto.Role);
+        }
+
+        public RoleDTO ConvertToDTO(Role role)
+        {
+            return new RoleDTO(role.id, role.role);
+        }
     }
 }

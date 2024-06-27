@@ -20,7 +20,7 @@ namespace MediaBazaar
 
 
 
-        public MainForm(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager, ProductManager _productManager,EmployeeRoleEnum userRole)
+        public MainForm(EmployeeManager _employeeManager, EmployeeWorksheetManager _worksheetManager, ProductManager _productManager,Role userRole)
         {
             employeeManager = _employeeManager;
             worksheetManager = _worksheetManager;
@@ -39,7 +39,7 @@ namespace MediaBazaar
             userControlWorksheet.Hide();
             userControlDeport.Hide();
             userControlDeport.Hide();
-            if (userRole == EmployeeRoleEnum.DepotWorker)
+            if (userRole.role == "DepotWorker")
             {
 
                 Controls.Add(userControlDeport);
@@ -51,7 +51,7 @@ namespace MediaBazaar
                 lineEmployee.Hide(); 
                 pictureBox1.Hide();
             }
-            else if(userRole== EmployeeRoleEnum.HRManager)
+            else if(userRole.role == "HRManager")
             {
 
                 Controls.Add(userControlDashboard);

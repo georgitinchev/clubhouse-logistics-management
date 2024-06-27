@@ -18,7 +18,7 @@ namespace MediaBazaar.Forms
         public EmployeeWorksheetManager worksheetManager { get; private set; }
         public ProductManager productManager { get; private set; }
         public bool isAuthenticated { get; private set; } = false;
-        public EmployeeRoleEnum UserRole { get; private set; }
+        public Role UserRole { get; private set; }
         public Authentication()
         {
             employeeManager = new EmployeeManager();
@@ -59,7 +59,7 @@ namespace MediaBazaar.Forms
                 if (employee != null)
                 {
                     UserRole = employee.Role;
-                    if (employee.IsManager || (employee.Role == EmployeeRoleEnum.DepotWorker))
+                    if (employee.IsManager || (UserRole.role=="DepotWorker"))
                     {
                         isAuthenticated = true;
                         this.Close();

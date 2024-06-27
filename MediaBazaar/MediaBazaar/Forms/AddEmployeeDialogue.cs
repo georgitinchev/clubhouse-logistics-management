@@ -41,7 +41,7 @@ namespace MediaBazaar.Forms
         {
             try
             {
-                EmployeeRoleEnum role;
+                Role selectedrole;
                 decimal hourlyWage;
                 int weeklyHours;
                 Department department;
@@ -49,18 +49,18 @@ namespace MediaBazaar.Forms
                 ValidateFields();
 
                 // Retrieve values for role, hourly wage, and weekly hours after validation
-                role = (RoleDTO)contractEmpRoleComboBox.SelectedItem;
+                selectedrole = _roleManager.ConvertToEntity((RoleDTO)contractEmpRoleComboBox.SelectedItem);
                 hourlyWage = decimal.Parse(contractHourlyWageTextBox.Text);
                 weeklyHours = int.Parse(contractWeeklyHoursTextBox.Text);
                 department = _departmentManager.ConvertToEntity((DepartmentDTO)cbDepartment.SelectedItem);
 
                 int contractId = _contractManager.GetNextContractId();
-                var contract = new Contract(contractId, role, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null,department);
+                var contract = new Contract(contractId, selectedrole, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null,department);
 
                 int employeeId = _employeeManager.GetNextEmployeeId();
                 var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
-                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract,true,"0");
+                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, _roleManager.ConvertToEntity(_roleManager.GetRoleById(selectedrole.id)), false, emergencyContact, addressText.Text, contract,true,"0");
 
                 _contractManager.AddContract(contract);
                 _employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
