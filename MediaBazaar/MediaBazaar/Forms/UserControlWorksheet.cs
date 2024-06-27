@@ -76,7 +76,7 @@ namespace MediaBazaar.Forms
                     if (employee != null)
                     {
                         employeeName = employee.GetFullName();
-                        employeeRole = employee.Role.ToString();
+                        employeeRole = employee.Role.role.ToString();
                     }
                 }
                 worksheetData.Rows.Add(worksheet.id, employeeRole, worksheet.timeSlot.ToString(), worksheet.weekDay.ToString(), employeeName, worksheet.weekNr);
