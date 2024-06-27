@@ -1,4 +1,5 @@
-﻿using MediaBazaar.Classes;
+﻿using BusinessLogicLayer;
+using MediaBazaar.Classes;
 using System;
 using System.Collections.Generic;
 using static System.Runtime.InteropServices.JavaScript.JSType;
@@ -15,7 +16,7 @@ namespace DTOLayer
 		public string PhoneNumber { get; private set; }
 		public string BSN { get; private set; }
 		public DateTime Birthday { get; private set; }
-		public EmployeeRoleEnum Role { get; private set; }
+		public Role Role { get; private set; }
 		public bool IsManager { get; private set; }
 		public EmergencyContact EmergencyContact { get; private set; }
 		public string Address { get; private set; }
@@ -27,7 +28,7 @@ namespace DTOLayer
 		{
 
 		}
-		public Employee(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
+		public Employee(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, Role role)
 		{
 			EmployeeID = id;
 			FirstName = firstName;
@@ -38,7 +39,7 @@ namespace DTOLayer
 			Birthday = birthday;
 			Role = role;
 		}
-		public Employee(int id, string firstName, string lastName, string email, string password, string phoneNumber, string bsn, DateTime birthday, int role, bool isManager, EmergencyContact emergencyContact, string address
+		public Employee(int id, string firstName, string lastName, string email, string password, string phoneNumber, string bsn, DateTime birthday, Role role, bool isManager, EmergencyContact emergencyContact, string address
 				, Contract contract, bool firstPassword, string salt)
 		{
 			EmployeeID = id;
@@ -49,7 +50,7 @@ namespace DTOLayer
 			PhoneNumber = phoneNumber;
 			BSN = bsn;
 			Birthday = birthday;
-			Role = (EmployeeRoleEnum)role;
+			Role = role;
 			IsManager = isManager;
 			EmergencyContact = emergencyContact ?? throw new ArgumentNullException(nameof(emergencyContact), "EmergencyContact cannot be null.");
 			Address = address;
@@ -57,7 +58,7 @@ namespace DTOLayer
 			FirstPassword = firstPassword;
 			Salt = salt;
 		}
-		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, EmployeeRoleEnum role)
+		public void UpdateInformation(int id, string firstName, string lastName, string email, string password, string bSN, DateTime birthday, Role role)
 		{
 			EmployeeID = id;
 			FirstName = firstName;
