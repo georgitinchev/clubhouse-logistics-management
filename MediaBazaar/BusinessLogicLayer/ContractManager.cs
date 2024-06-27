@@ -24,6 +24,7 @@ namespace BusinessLogicLayer
             contracts = new List<Contract>();
             contractDAL = new ContractDAL();
             _roleManager = new RoleManager();
+            departmentManager = new DepartmentManager();
             availabilityManager = new AvailabilityManager();
             GetAllContractsFromDB();
         }

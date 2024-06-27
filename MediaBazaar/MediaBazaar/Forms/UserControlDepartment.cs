@@ -229,6 +229,8 @@ namespace MediaBazaar
         private void removeEmployeeBtn_Click(object sender, EventArgs e)
         {
             departmentManager.DeleteDepartment(selectedDepartment);
+            PopulateDepartmentData();
+
         }
 
     }

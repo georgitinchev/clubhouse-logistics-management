@@ -215,19 +215,30 @@ namespace MediaBazaar
         private void removeRoleBtn_Click(object sender, EventArgs e)
         {
             roleManager.DeleteRole(selectedRole);
+            PopulateRoleData();
         }
 
         private void editRoleBtn_Click(Object sender, EventArgs e)
         {
-            RoleDTO updatedRole;
-            try
+            if (editRoleBtn.Text != "Save")
             {
-                updatedRole = new RoleDTO(selectedRole, textBoxName.Text);
-                roleManager.UpdateRole(updatedRole);
+                editRoleBtn.Text = "Save";
+                textBoxName.ReadOnly = false;
             }
-            catch(Exception ex) 
+            else
             {
-                throw new Exception("There was an error updating: ", ex);
+                RoleDTO updatedRole;
+                try
+                {
+                    updatedRole = new RoleDTO(selectedRole, textBoxName.Text);
+                    roleManager.UpdateRole(updatedRole);
+                    PopulateRoleData();
+                    editRoleBtn.Text = "Edit";
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("There was an error updating: ", ex);
+                }
             }
         }
     }
