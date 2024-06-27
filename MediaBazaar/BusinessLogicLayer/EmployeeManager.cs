@@ -15,6 +15,7 @@ namespace MediaBazaar.Classes
         public EmployeeDAL employeeDAL { get; private set; }
         public List<Employee> employees { get; private set; }
         public  PasswordHasher _passwordHasher { get; private set; }
+        private RoleManager _roleManager;
         public EmployeeManager()
         {
             _emergencyContactManager = new EmergencyContactManager();
@@ -22,6 +23,7 @@ namespace MediaBazaar.Classes
             employees = new List<Employee>();
             employeeDAL = new EmployeeDAL();
             _passwordHasher = new PasswordHasher();
+            _roleManager = new RoleManager();
             GetEmployeesFromDB();
         }
         public void AddEmployee(Employee newEmployee)
@@ -138,7 +140,7 @@ namespace MediaBazaar.Classes
                                       employeeDTO.PhoneNumber,
                                       employeeDTO.BSN,
                                       employeeDTO.Birthday,
-                                      employeeDTO.Role,
+                                      _roleManager.ConvertToEntity(_roleManager.GetRoleById(employeeDTO.Role)),
                                       employeeDTO.IsManager,
                                       emergencyContact,
                                       employeeDTO.Address,
@@ -162,7 +164,7 @@ namespace MediaBazaar.Classes
                 employee.Address,
                 employee.BSN,
                 employee.Birthday,
-                (int)employee.Role,
+                employee.Role.id,
                 employee.IsManager,
                 employee.Contract.Id,
                 employee.EmergencyContact.Id,

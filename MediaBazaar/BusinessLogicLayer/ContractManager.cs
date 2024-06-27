@@ -13,7 +13,9 @@ namespace BusinessLogicLayer
 {
     public class ContractManager
     {
-        //public AvailabilityManager availabilityManager { get; private set; }
+        public AvailabilityManager availabilityManager { get; private set; }
+        public DepartmentManager departmentManager { get; private set; }
+        private RoleManager _roleManager;
         public ContractDAL contractDAL { get; private set; }
         public List<Contract> contracts { get; private set; }
 
@@ -21,7 +23,9 @@ namespace BusinessLogicLayer
         {
             contracts = new List<Contract>();
             contractDAL = new ContractDAL();
-            //availabilityManager = new AvailabilityManager();
+            _roleManager = new RoleManager();
+            departmentManager = new DepartmentManager();
+            availabilityManager = new AvailabilityManager();
             GetAllContractsFromDB();
         }
 
@@ -51,9 +55,10 @@ namespace BusinessLogicLayer
             {
                 Contract contract = new Contract
                 (
-                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason
+                    contractDTO.Id, _roleManager.ConvertToEntity(_roleManager.GetRoleById(contractDTO.Role)), contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate,
+                    contractDTO.IsActive, contractDTO.TerminationReason, departmentManager.ConvertToEntity(departmentManager.GetDepartmentById(contractDTO.Department))
 
-                );
+                ) ;
                 return contract;
             }
             catch { }
@@ -62,8 +67,8 @@ namespace BusinessLogicLayer
         }
         public ContractDTO TransformContractToDTO(Contract contract)
         {
-            ContractDTO contractDTO = new ContractDTO(contract.Id, (int)contract.role, contract.hourlyWage, contract.weeklyHours,
-                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason);
+            ContractDTO contractDTO = new ContractDTO(contract.Id, contract.role.id, contract.hourlyWage, contract.weeklyHours,
+                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason,contract.department.Id);
 
             return contractDTO;
         }

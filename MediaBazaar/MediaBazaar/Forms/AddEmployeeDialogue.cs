@@ -17,39 +17,50 @@ namespace MediaBazaar.Forms
     {
         private EmployeeManager _employeeManager;
         private ContractManager _contractManager;
+        private DepartmentManager _departmentManager;
+        private List<DepartmentDTO> _departments;
+        private RoleManager _roleManager;
+        private List<RoleDTO> _roles;
 
         public AddEmployeeForm(EmployeeManager employeeManager, ContractManager contractManager)
         {
             _employeeManager = employeeManager;
             _contractManager = contractManager;
+            _departmentManager = new DepartmentManager();
+            _roleManager = new RoleManager();
             InitializeComponent();
             HideTabControls();
             InitializeTabNavigation();
-            contractEmpRoleComboBox.DataSource = Enum.GetValues(typeof(EmployeeRoleEnum));
+            LoadDepartments();
+            LoadRoles();
+            
+
         }
 
         private void completeFormBtn_Click(object sender, EventArgs e)
         {
             try
             {
-                EmployeeRoleEnum role;
+                Role selectedrole;
                 decimal hourlyWage;
                 int weeklyHours;
+                Department department;
 
                 ValidateFields();
 
                 // Retrieve values for role, hourly wage, and weekly hours after validation
-                role = (EmployeeRoleEnum)contractEmpRoleComboBox.SelectedValue;
+                selectedrole = _roleManager.ConvertToEntity((RoleDTO)contractEmpRoleComboBox.SelectedItem);
                 hourlyWage = decimal.Parse(contractHourlyWageTextBox.Text);
                 weeklyHours = int.Parse(contractWeeklyHoursTextBox.Text);
+                department = _departmentManager.ConvertToEntity((DepartmentDTO)cbDepartment.SelectedItem);
 
                 int contractId = _contractManager.GetNextContractId();
-                var contract = new Contract(contractId, role, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null);
+                var contract = new Contract(contractId, selectedrole, hourlyWage, weeklyHours, contractStartDatePicker.Value, null, true, null,department);
 
                 int employeeId = _employeeManager.GetNextEmployeeId();
                 var emergencyContact = new EmergencyContact(employeeId, emcFirstNameBox.Text, emcLastNameBox.Text, emcPhoneText.Text, emcEmailBox.Text);
 
-                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, (int)role, false, emergencyContact, addressText.Text, contract,true,"0");
+                var employee = new Employee(employeeId, firstNameText.Text, lastNameText.Text, emailText.Text, passwordText.Text, phoneText.Text, bsnText.Text, birthdayDatePicker.Value, _roleManager.ConvertToEntity(_roleManager.GetRoleById(selectedrole.id)), false, emergencyContact, addressText.Text, contract,true,"0");
 
                 _contractManager.AddContract(contract);
                 _employeeManager._emergencyContactManager.AddEmergencyContact(emergencyContact);
@@ -62,6 +73,22 @@ namespace MediaBazaar.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void LoadDepartments()
+        {
+            _departments = _departmentManager.GetAllDepartments();
+            cbDepartment.DataSource = _departments;
+            cbDepartment.DisplayMember = "Name";
+        }
+
+        private void LoadRoles()
+        {
+            _roles = _roleManager.GetAllRoles();
+            contractEmpRoleComboBox.DataSource=_roles;
+            contractEmpRoleComboBox.DisplayMember = "Role";
+
+
         }
 
         private void InitializeTabNavigation()
@@ -102,8 +129,7 @@ namespace MediaBazaar.Forms
         {
             StringBuilder validationErrors = new StringBuilder(); 
 
-            if (!Enum.TryParse(contractEmpRoleComboBox.SelectedValue.ToString(), out EmployeeRoleEnum role))
-                validationErrors.AppendLine("Invalid role selected.");
+            
 
             decimal hourlyWage;
             if (!decimal.TryParse(contractHourlyWageTextBox.Text, out hourlyWage))
