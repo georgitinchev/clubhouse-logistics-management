@@ -32,32 +32,37 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             bindingSource1 = new BindingSource(components);
             panel1 = new Panel();
+            lineRestock = new PictureBox();
+            btnRestocks = new CustomButton();
+            lineProduct = new PictureBox();
             btnProduct = new CustomButton();
             logOutBtn = new CustomButton();
-            pictureBox1 = new PictureBox();
+            worksheetLine = new PictureBox();
             lineEmployee = new PictureBox();
             pictureBoxLogo = new PictureBox();
             pictureBoxJupiter = new PictureBox();
             btnWorksheet = new CustomButton();
             btnDashboard = new CustomButton();
-            lineProduct = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)bindingSource1).BeginInit();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lineRestock).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)lineProduct).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)worksheetLine).BeginInit();
             ((System.ComponentModel.ISupportInitialize)lineEmployee).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)lineProduct).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = Color.OrangeRed;
+            panel1.Controls.Add(lineRestock);
+            panel1.Controls.Add(btnRestocks);
             panel1.Controls.Add(lineProduct);
             panel1.Controls.Add(btnProduct);
             panel1.Controls.Add(logOutBtn);
-            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(worksheetLine);
             panel1.Controls.Add(lineEmployee);
             panel1.Controls.Add(pictureBoxLogo);
             panel1.Controls.Add(pictureBoxJupiter);
@@ -67,6 +72,47 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(1499, 66);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
+            // 
+            // lineRestock
+            // 
+            lineRestock.BackColor = Color.FromArgb(255, 128, 0);
+            lineRestock.Location = new Point(263, 52);
+            lineRestock.Margin = new Padding(3, 2, 3, 2);
+            lineRestock.Name = "lineRestock";
+            lineRestock.Size = new Size(150, 2);
+            lineRestock.TabIndex = 27;
+            lineRestock.TabStop = false;
+            // 
+            // btnRestocks
+            // 
+            btnRestocks.Anchor = AnchorStyles.None;
+            btnRestocks.BackColor = Color.OrangeRed;
+            btnRestocks.BackgroundColor = Color.OrangeRed;
+            btnRestocks.BorderColor = Color.Black;
+            btnRestocks.BorderRadius = 15;
+            btnRestocks.BorderSize = 2;
+            btnRestocks.FlatStyle = FlatStyle.Flat;
+            btnRestocks.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnRestocks.ForeColor = Color.Black;
+            btnRestocks.Location = new Point(263, 9);
+            btnRestocks.Name = "btnRestocks";
+            btnRestocks.Size = new Size(150, 40);
+            btnRestocks.TabIndex = 26;
+            btnRestocks.Text = "Restock";
+            btnRestocks.TextColor = Color.Black;
+            btnRestocks.UseVisualStyleBackColor = false;
+            btnRestocks.Click += btnRestocks_Click;
+            // 
+            // lineProduct
+            // 
+            lineProduct.BackColor = Color.FromArgb(255, 128, 0);
+            lineProduct.Location = new Point(1078, 51);
+            lineProduct.Margin = new Padding(3, 2, 3, 2);
+            lineProduct.Name = "lineProduct";
+            lineProduct.Size = new Size(150, 2);
+            lineProduct.TabIndex = 25;
+            lineProduct.TabStop = false;
             // 
             // btnProduct
             // 
@@ -108,15 +154,15 @@
             logOutBtn.UseVisualStyleBackColor = false;
             logOutBtn.Click += logOutBtn_Click;
             // 
-            // pictureBox1
+            // worksheetLine
             // 
-            pictureBox1.BackColor = Color.FromArgb(255, 128, 0);
-            pictureBox1.Location = new Point(793, 51);
-            pictureBox1.Margin = new Padding(3, 2, 3, 2);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(150, 2);
-            pictureBox1.TabIndex = 22;
-            pictureBox1.TabStop = false;
+            worksheetLine.BackColor = Color.FromArgb(255, 128, 0);
+            worksheetLine.Location = new Point(793, 51);
+            worksheetLine.Margin = new Padding(3, 2, 3, 2);
+            worksheetLine.Name = "worksheetLine";
+            worksheetLine.Size = new Size(150, 2);
+            worksheetLine.TabIndex = 22;
+            worksheetLine.TabStop = false;
             // 
             // lineEmployee
             // 
@@ -194,16 +240,6 @@
             btnDashboard.UseVisualStyleBackColor = false;
             btnDashboard.Click += btnDashboard_Click;
             // 
-            // lineProduct
-            // 
-            lineProduct.BackColor = Color.FromArgb(255, 128, 0);
-            lineProduct.Location = new Point(1078, 51);
-            lineProduct.Margin = new Padding(3, 2, 3, 2);
-            lineProduct.Name = "lineProduct";
-            lineProduct.Size = new Size(150, 2);
-            lineProduct.TabIndex = 25;
-            lineProduct.TabStop = false;
-            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -216,13 +252,15 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Media Bazaar Managment";
             WindowState = FormWindowState.Maximized;
+            Load += MainForm_Load;
             ((System.ComponentModel.ISupportInitialize)bindingSource1).EndInit();
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lineRestock).EndInit();
+            ((System.ComponentModel.ISupportInitialize)lineProduct).EndInit();
+            ((System.ComponentModel.ISupportInitialize)worksheetLine).EndInit();
             ((System.ComponentModel.ISupportInitialize)lineEmployee).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxLogo).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxJupiter).EndInit();
-            ((System.ComponentModel.ISupportInitialize)lineProduct).EndInit();
             ResumeLayout(false);
         }
 
@@ -233,7 +271,7 @@
         private CustomButton btnEditEmployee;
         private CustomButton btnRemoveEmployee;
         private Panel panel1;
-        private PictureBox pictureBox1;
+        private PictureBox worksheetLine;
         private PictureBox lineEmployee;
         private PictureBox pictureBoxLogo;
         private PictureBox pictureBoxJupiter;
@@ -242,5 +280,7 @@
 		private CustomButton logOutBtn;
         private CustomButton btnProduct;
         private PictureBox lineProduct;
+        private PictureBox lineRestock;
+        private CustomButton btnRestocks;
     }
 }
