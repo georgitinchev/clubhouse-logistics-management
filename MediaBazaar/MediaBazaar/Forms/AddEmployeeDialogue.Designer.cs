@@ -68,6 +68,8 @@
             personalEmail = new Label();
             personalLastName = new Label();
             personalFirstName = new Label();
+            label8 = new Label();
+            cbDepartment = new ComboBox();
             addEmployeeTabControl.SuspendLayout();
             employeeContractTab.SuspendLayout();
             employeeEmergencyDetailsTab.SuspendLayout();
@@ -92,6 +94,8 @@
             // employeeContractTab
             // 
             employeeContractTab.BackColor = Color.White;
+            employeeContractTab.Controls.Add(label8);
+            employeeContractTab.Controls.Add(cbDepartment);
             employeeContractTab.Controls.Add(label5);
             employeeContractTab.Controls.Add(nextBtnP1);
             employeeContractTab.Controls.Add(label4);
@@ -104,7 +108,7 @@
             employeeContractTab.Controls.Add(contractEmpRoleComboBox);
             employeeContractTab.Location = new Point(4, 34);
             employeeContractTab.Name = "employeeContractTab";
-            employeeContractTab.Padding = new Padding(3, 3, 3, 3);
+            employeeContractTab.Padding = new Padding(3);
             employeeContractTab.Size = new Size(485, 417);
             employeeContractTab.TabIndex = 0;
             employeeContractTab.Text = "📝 Contract Details";
@@ -228,7 +232,7 @@
             employeeEmergencyDetailsTab.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             employeeEmergencyDetailsTab.Location = new Point(4, 34);
             employeeEmergencyDetailsTab.Name = "employeeEmergencyDetailsTab";
-            employeeEmergencyDetailsTab.Padding = new Padding(3, 3, 3, 3);
+            employeeEmergencyDetailsTab.Padding = new Padding(3);
             employeeEmergencyDetailsTab.Size = new Size(485, 417);
             employeeEmergencyDetailsTab.TabIndex = 1;
             employeeEmergencyDetailsTab.Text = "🚑 Emergency Contact";
@@ -375,7 +379,7 @@
             employeeDetailsTab.Controls.Add(personalFirstName);
             employeeDetailsTab.Location = new Point(4, 34);
             employeeDetailsTab.Name = "employeeDetailsTab";
-            employeeDetailsTab.Padding = new Padding(3, 3, 3, 3);
+            employeeDetailsTab.Padding = new Padding(3);
             employeeDetailsTab.Size = new Size(485, 417);
             employeeDetailsTab.TabIndex = 2;
             employeeDetailsTab.Text = "👤 Personal Details";
@@ -422,7 +426,7 @@
             label7.Font = new Font("Segoe UI", 18F);
             label7.Location = new Point(135, 15);
             label7.Name = "label7";
-            label7.Size = new Size(222, 32);
+            label7.Size = new Size(217, 32);
             label7.TabIndex = 14;
             label7.Text = "👤 Personal Details";
             // 
@@ -573,6 +577,25 @@
             personalFirstName.TabIndex = 0;
             personalFirstName.Text = "First Name";
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 14.25F);
+            label8.Location = new Point(164, 300);
+            label8.Name = "label8";
+            label8.Size = new Size(112, 25);
+            label8.TabIndex = 11;
+            label8.Text = "Department";
+            // 
+            // cbDepartment
+            // 
+            cbDepartment.Font = new Font("Segoe UI", 12F);
+            cbDepartment.FormattingEnabled = true;
+            cbDepartment.Location = new Point(147, 338);
+            cbDepartment.Name = "cbDepartment";
+            cbDepartment.Size = new Size(177, 29);
+            cbDepartment.TabIndex = 10;
+            // 
             // AddEmployeeForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -640,5 +663,7 @@
 		private TextBox addressText;
 		private TextBox phoneText;
 		private Label phoneNumLabel;
-	}
+        private Label label8;
+        private ComboBox cbDepartment;
+    }
 }

@@ -14,6 +14,7 @@ namespace BusinessLogicLayer
     public class ContractManager
     {
         public AvailabilityManager availabilityManager { get; private set; }
+        public DepartmentManager departmentManager { get; private set; }
         public ContractDAL contractDAL { get; private set; }
         public List<Contract> contracts { get; private set; }
 
@@ -51,9 +52,10 @@ namespace BusinessLogicLayer
             {
                 Contract contract = new Contract
                 (
-                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate, contractDTO.IsActive, contractDTO.TerminationReason
+                    contractDTO.Id, (EmployeeRoleEnum)contractDTO.Role, contractDTO.HourlyWage, contractDTO.WeeklyHours, contractDTO.StartDate, contractDTO.EndDate,
+                    contractDTO.IsActive, contractDTO.TerminationReason, departmentManager.ConvertToEntity(departmentManager.GetDepartmentById(contractDTO.Department))
 
-                );
+                ) ;
                 return contract;
             }
             catch { }
@@ -63,7 +65,7 @@ namespace BusinessLogicLayer
         public ContractDTO TransformContractToDTO(Contract contract)
         {
             ContractDTO contractDTO = new ContractDTO(contract.Id, (int)contract.role, contract.hourlyWage, contract.weeklyHours,
-                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason);
+                contract.startDate, contract.endDate, contract.isActive, contract.terminationReason,contract.department.Id);
 
             return contractDTO;
         }

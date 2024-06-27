@@ -217,5 +217,18 @@ namespace MediaBazaar
             roleManager.DeleteRole(selectedRole);
         }
 
+        private void editRoleBtn_Click(Object sender, EventArgs e)
+        {
+            RoleDTO updatedRole;
+            try
+            {
+                updatedRole = new RoleDTO(selectedRole, textBoxName.Text);
+                roleManager.UpdateRole(updatedRole);
+            }
+            catch(Exception ex) 
+            {
+                throw new Exception("There was an error updating: ", ex);
+            }
+        }
     }
 }

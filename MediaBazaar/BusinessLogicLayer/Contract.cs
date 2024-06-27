@@ -12,6 +12,7 @@ namespace MediaBazaar.Classes
 	{
 		public int Id { get; private set; }
 		public EmployeeRoleEnum role {  get; private set; }
+        public Department department { get; private set; }
 		public decimal hourlyWage { get; private set; }
 		public int weeklyHours { get; private set; }
 		public DateTime startDate { get; private set; }
@@ -20,7 +21,7 @@ namespace MediaBazaar.Classes
 		public string? terminationReason { get; private set; }
         public List<AvailabilitySlot> Availability { get; private set; } = new List<AvailabilitySlot>();
 
-        public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason)
+        public Contract(int id, EmployeeRoleEnum role, decimal hourlyWage, int weeklyHours, DateTime startDate, DateTime? endDate, bool isActive, string? terminationReason, Department department)
         {
             Id = id;
             this.role = role;
@@ -30,6 +31,7 @@ namespace MediaBazaar.Classes
             this.endDate = endDate;
             this.isActive = isActive;
             this.terminationReason = terminationReason;
+            this.department = department;   
         }
 
         public void UpdateTerminationReason(string terminationReason)

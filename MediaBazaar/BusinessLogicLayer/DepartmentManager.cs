@@ -61,7 +61,7 @@ namespace BusinessLogicLayer
             return _departmentDAL.GetAllDepartments();
         }
 
-        private DepartmentDTO ConvertToDTO(Department department)
+        public DepartmentDTO ConvertToDTO(Department department)
         {
             var requiredPersonnel = department.RequiredPersonnel.ToDictionary(kvp => (int)kvp.Key.Id, kvp => kvp.Value);
             return new DepartmentDTO(department.Id, department.Name, department.Description, department.PointOfContact)
@@ -70,7 +70,7 @@ namespace BusinessLogicLayer
             };
         }
 
-        private Department ConvertToEntity(DepartmentDTO dto)
+        public Department ConvertToEntity(DepartmentDTO dto)
         {
             var requiredPersonnel = dto.RequiredPersonnel.ToDictionary(kvp => _roleManager.GetRoleById(kvp.Key), kvp => kvp.Value);
             return new Department(dto.Id, dto.Name, dto.Description, requiredPersonnel, dto.PointOfContact);

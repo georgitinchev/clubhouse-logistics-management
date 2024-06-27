@@ -154,7 +154,7 @@
             removeRoleBtn.Text = "Remove Role";
             removeRoleBtn.TextColor = Color.White;
             removeRoleBtn.UseVisualStyleBackColor = false;
-            removeRoleBtn.Click += this.removeRoleBtn_Click;
+            removeRoleBtn.Click += removeRoleBtn_Click;
             // 
             // label2
             // 
@@ -183,6 +183,7 @@
             editRoleBtn.Text = "Edit Role";
             editRoleBtn.TextColor = Color.White;
             editRoleBtn.UseVisualStyleBackColor = false;
+            editRoleBtn.Click += this.editRoleBtn_Click;
             // 
             // pictureBox2
             // 
