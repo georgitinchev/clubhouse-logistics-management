@@ -35,6 +35,10 @@
             textBoxSearch = new TextBox();
             departmentDataGridView = new DataGridView();
             groupBox1 = new GroupBox();
+            textBoxDescription = new RichTextBox();
+            label3 = new Label();
+            textBoxPointOfContact = new TextBox();
+            label1 = new Label();
             label2 = new Label();
             removeEmployeeBtn = new CustomButton();
             editEmployeeBtn = new CustomButton();
@@ -43,10 +47,6 @@
             userPictureBox = new PictureBox();
             textBoxName = new TextBox();
             lblName = new Label();
-            textBoxPointOfContact = new TextBox();
-            label1 = new Label();
-            label3 = new Label();
-            textBoxDescription = new RichTextBox();
             panelOperations.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
             ((System.ComponentModel.ISupportInitialize)departmentDataGridView).BeginInit();
@@ -94,7 +94,7 @@
             addDepartmentBtn.Name = "addDepartmentBtn";
             addDepartmentBtn.Size = new Size(136, 50);
             addDepartmentBtn.TabIndex = 31;
-            addDepartmentBtn.Text = "Add Employee";
+            addDepartmentBtn.Text = "Add Department";
             addDepartmentBtn.TextColor = Color.White;
             addDepartmentBtn.UseVisualStyleBackColor = false;
             addDepartmentBtn.Click += addDepartmentBtn_Click;
@@ -144,6 +144,46 @@
             groupBox1.TabIndex = 33;
             groupBox1.TabStop = false;
             // 
+            // textBoxDescription
+            // 
+            textBoxDescription.Location = new Point(108, 168);
+            textBoxDescription.Name = "textBoxDescription";
+            textBoxDescription.ReadOnly = true;
+            textBoxDescription.Size = new Size(252, 96);
+            textBoxDescription.TabIndex = 38;
+            textBoxDescription.Text = "";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label3.Location = new Point(16, 173);
+            label3.Name = "label3";
+            label3.Size = new Size(95, 20);
+            label3.TabIndex = 36;
+            label3.Text = "Description: ";
+            // 
+            // textBoxPointOfContact
+            // 
+            textBoxPointOfContact.BackColor = SystemColors.ControlDark;
+            textBoxPointOfContact.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            textBoxPointOfContact.Location = new Point(116, 296);
+            textBoxPointOfContact.Margin = new Padding(3, 2, 3, 2);
+            textBoxPointOfContact.Name = "textBoxPointOfContact";
+            textBoxPointOfContact.ReadOnly = true;
+            textBoxPointOfContact.Size = new Size(232, 27);
+            textBoxPointOfContact.TabIndex = 35;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
+            label1.Location = new Point(24, 300);
+            label1.Name = "label1";
+            label1.Size = new Size(39, 20);
+            label1.TabIndex = 34;
+            label1.Text = "PoC:";
+            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -190,7 +230,7 @@
             editEmployeeBtn.Text = "Edit Employee";
             editEmployeeBtn.TextColor = Color.White;
             editEmployeeBtn.UseVisualStyleBackColor = false;
-            editEmployeeBtn.Click += this.editEmployeeBtn_Click;
+            editEmployeeBtn.Click += editEmployeeBtn_Click;
             // 
             // pictureBox2
             // 
@@ -246,46 +286,6 @@
             lblName.Size = new Size(54, 20);
             lblName.TabIndex = 0;
             lblName.Text = "Name:";
-            // 
-            // textBoxPointOfContact
-            // 
-            textBoxPointOfContact.BackColor = SystemColors.ControlDark;
-            textBoxPointOfContact.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            textBoxPointOfContact.Location = new Point(116, 296);
-            textBoxPointOfContact.Margin = new Padding(3, 2, 3, 2);
-            textBoxPointOfContact.Name = "textBoxPointOfContact";
-            textBoxPointOfContact.ReadOnly = true;
-            textBoxPointOfContact.Size = new Size(232, 27);
-            textBoxPointOfContact.TabIndex = 35;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            label1.Location = new Point(24, 300);
-            label1.Name = "label1";
-            label1.Size = new Size(39, 20);
-            label1.TabIndex = 34;
-            label1.Text = "PoC:";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold);
-            label3.Location = new Point(16, 173);
-            label3.Name = "label3";
-            label3.Size = new Size(95, 20);
-            label3.TabIndex = 36;
-            label3.Text = "Description: ";
-            // 
-            // textBoxDescription
-            // 
-            textBoxDescription.Location = new Point(108, 168);
-            textBoxDescription.Name = "textBoxDescription";
-            textBoxDescription.ReadOnly = true;
-            textBoxDescription.Size = new Size(252, 96);
-            textBoxDescription.TabIndex = 38;
-            textBoxDescription.Text = "";
             // 
             // UserControlDepartment
             // 

@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using DTOLayer;
 using MediaBazaar.Forms;
 using System;
@@ -180,6 +181,49 @@ namespace MediaBazaar
             PopulateDepartmentData();
             departmentDataGridView.DataSource = departmentData;
             departmentDataGridView.ClearSelection();
+        }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Search();
+            e.Handled = true;
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                Search();
+            }
+        }
+
+
+        private void Search()
+        {
+            string searchTerm = textBoxSearch.Text.Trim();
+            
+            var query = departmentData.AsEnumerable();
+            try
+            {
+              
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    query = query.Where(row => row.Field<string>("Employee").Contains(searchTerm));
+                }
+                DataTable searchResults = query.Any() ? query.CopyToDataTable() : departmentData.Clone();
+                departmentDataGridView.DataSource = searchResults;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while filtering: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                departmentDataGridView.ClearSelection();
+            }
         }
     }
 }

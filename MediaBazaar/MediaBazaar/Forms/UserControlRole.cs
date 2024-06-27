@@ -168,6 +168,47 @@ namespace MediaBazaar
             userDataGridView.ClearSelection();
         }
 
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                Search();
+            e.Handled = true;
+        }
+
+        private void textBoxSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true;
+                Search();
+            }
+        }
+
+        private void Search()
+        {
+            string searchTerm = textBoxSearch.Text.Trim();
+           
+            var query = roleData.AsEnumerable();
+            try
+            {
+               
+
+                if (!string.IsNullOrEmpty(searchTerm))
+                {
+                    query = query.Where(row => row.Field<string>("Name").Contains(searchTerm));
+                }
+                DataTable searchResults = query.Any() ? query.CopyToDataTable() : roleData.Clone();
+                userDataGridView.DataSource = searchResults;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred while filtering: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                userDataGridView.ClearSelection();
+            }
+        }
 
     }
 }
