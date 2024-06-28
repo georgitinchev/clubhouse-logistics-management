@@ -1,3 +1,7 @@
+Repo Link - https://git.fhict.nl/I524441/the-clubhouse-s2-group-project
+
+Roles related to app use cases:
+
 Security Guard:
 matei.johnson@example.co
 V{#zV1ZnsMG!
