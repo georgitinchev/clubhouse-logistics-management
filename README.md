@@ -14,6 +14,5 @@ Department Manager:
 [redacted]
 [redacted]
 
-
 Google API Details:
 CSE ID - [redacted]
