@@ -1,3 +1,5 @@
+**For users and testers outside of Fontys, you need a VPN connection to vdi.fhict.nl for the MS SQL link**
+
 Repo Link - https://git.fhict.nl/I524441/the-clubhouse-s2-group-project
 
 Roles related to app use cases:
