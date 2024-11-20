@@ -54,7 +54,11 @@ You can find the source code and further documentation in the GitHub repository:
 
 ## Demo
 
+### 1. **Desktop App Demo**  
+![Desktop App Demo](img/demo_desktop.gif)
 
+### 2. **Web App Demo**  
+![Web App Demo](img/demo_web.gif)
 
 ## Contributing
 
