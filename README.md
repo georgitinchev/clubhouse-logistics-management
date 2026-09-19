@@ -12,33 +12,7 @@ This project is designed to streamline logistics operations, improve communicati
 
 ## Setup & Usage
 
-For users and testers outside of Fontys, please ensure you have an active VPN connection to `vdi.fhict.nl` to access the MS SQL database.
-
-### Credentials
-
-- **Security Guard**:  
-  - Username: `[redacted]`  
-  - Password: `[redacted]`
-
-- **Depot Worker**:  
-  - Username: `[redacted]`  
-  - Password: `12345`
-
-- **Sales Rep**:  
-  - Username: `[redacted]`  
-  - Password: `[redacted]`
-
-- **Department Manager**:  
-  - Username: `[redacted]`  
-  - Password: `[redacted]`
-
-**Note**: These credentials correspond to the different roles available in the system, each providing specific functionalities for users.
-
-### Google API Details
-
-The system uses Google APIs for certain functionality. Below are the API credentials:
-
-- **CSE ID**: `[redacted]`
+For users and testers outside of Fontys, please ensure you have an active VPN connection to `vdi.fhict.nl` to access the MS SQL database. Demo credentials for each role, and the Google API key used for search functionality, are available on request rather than published here.
 
 ## Repository
 
